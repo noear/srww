@@ -21,6 +21,21 @@
             <groupId>org.noear</groupId>
             <artifactId>solon</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>snack3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>water-solon-plugin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>weed3-solon-plugin</artifactId>
+        </dependency>
     </dependencies>
 
 
