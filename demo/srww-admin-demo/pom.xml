@@ -12,17 +12,17 @@
     </parent>
 
     <groupId>org.noear</groupId>
-    <artifactId>srww-demo-uapi</artifactId>
+    <artifactId>srww-admin-demo</artifactId>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
-    <description>java project for demo_uapi</description>
+    <description>java project for srww-demo-admin</description>
 
     <dependencies>
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>srww-api-wrap</artifactId>
+            <artifactId>srww-admin</artifactId>
             <version>${srww.ver}</version>
         </dependency>
 

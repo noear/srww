@@ -12,7 +12,9 @@
 
     <modules>
         <module>srww-parent</module>
-        <module>demo/srww-demo-api</module>
+
+        <module>demo/srww-admin-demo</module>
+        <module>demo/srww-api-demo</module>
     </modules>
 
 

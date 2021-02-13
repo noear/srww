@@ -10,13 +10,17 @@
         <version>1.0</version>
         <relativePath>../srww-parent/pom.xml</relativePath>
     </parent>
-
-    <artifactId>srww-api-wrap</artifactId>
+    <artifactId>srww-admin</artifactId>
     <packaging>jar</packaging>
 
-    <description>Java project for srww-api-wrap</description>
+    <description>Java project for srww-admin</description>
 
     <dependencies>
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>srww.base</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.noear</groupId>
             <artifactId>solon-lib</artifactId>
@@ -29,17 +33,17 @@
 
         <dependency>
             <groupId>org.noear</groupId>
+            <artifactId>solon.extend.staticfiles</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
             <artifactId>solon.view.freemarker</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.serialization.fastjson</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>solon.extend.staticfiles</artifactId>
+            <artifactId>solon.extend.sessionstate.jwt</artifactId>
         </dependency>
 
         <dependency>
@@ -54,13 +58,14 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>snack3</artifactId>
+            <artifactId>bcfclient-solon-plugin</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
         </dependency>
+
 
         <dependency>
             <groupId>redis.clients</groupId>
@@ -97,16 +102,12 @@
             <artifactId>nami.coder.snack3</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.noear.sponge</groupId>
-            <artifactId>rock.uapi</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.noear.sponge</groupId>
             <artifactId>rockrpc.client</artifactId>
         </dependency>
+
+
     </dependencies>
 
     <build>

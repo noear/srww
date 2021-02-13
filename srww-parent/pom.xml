@@ -19,8 +19,8 @@
     <modules>
         <module>../srww.base</module>
 
-        <module>../srww-admin-wrap</module>
-        <module>../srww-api-wrap</module>
+        <module>../srww-admin</module>
+        <module>../srww-api</module>
     </modules>
 
     <properties>
