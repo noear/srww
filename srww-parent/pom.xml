@@ -17,6 +17,8 @@
     </parent>
 
     <modules>
+        <module>../srww.base</module>
+
         <module>../srww-admin-wrap</module>
         <module>../srww-api-wrap</module>
     </modules>
@@ -47,6 +49,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.noear</groupId>
+                <artifactId>srww.base</artifactId>
+                <version>${srww.ver}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.noear</groupId>
                 <artifactId>srww-api-wrap</artifactId>

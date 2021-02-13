@@ -14,7 +14,7 @@
     <artifactId>srww-api-wrap</artifactId>
     <packaging>jar</packaging>
 
-    <description>Java project for solon.api</description>
+    <description>Java project for srww-api-wrap</description>
 
     <dependencies>
         <dependency>

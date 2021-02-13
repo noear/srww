@@ -13,6 +13,7 @@
     <artifactId>srww-admin-wrap</artifactId>
     <packaging>jar</packaging>
 
+    <description>Java project for srww-api-admin</description>
 
     <dependencies>
         <dependency>
