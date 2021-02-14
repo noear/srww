@@ -1,11 +1,11 @@
 package demo;
 
-import org.noear.sponge.rockuapi.UapiGateway;
-import org.noear.sponge.rockuapi.UapiCode;
-import org.noear.sponge.rockuapi.decoder.AesDecoder;
-import org.noear.sponge.rockuapi.encoder.AesEncoder;
-import org.noear.sponge.rockuapi.encoder.Sha1Encoder;
-import org.noear.sponge.rockuapi.interceptor.*;
+import org.noear.srww.uapi.UapiGateway;
+import org.noear.srww.uapi.UapiCode;
+import org.noear.srww.uapi.decoder.AesDecoder;
+import org.noear.srww.uapi.encoder.AesEncoder;
+import org.noear.srww.uapi.encoder.Sha1Encoder;
+import org.noear.srww.uapi.interceptor.*;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 

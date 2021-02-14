@@ -1,7 +1,7 @@
 package apidemo.controller;
 
-import org.noear.sponge.rockuapi.UapiCodes;
-import org.noear.sponge.rockuapi.UapiCode;
+import org.noear.srww.uapi.UapiCodes;
+import org.noear.srww.uapi.UapiCode;
 
 /**
  * 系统状态码

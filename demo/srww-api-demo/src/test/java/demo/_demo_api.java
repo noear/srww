@@ -1,10 +1,10 @@
 package demo;
 
-import org.noear.sponge.rockuapi.UapiGateway;
-import org.noear.sponge.rockuapi.UapiCode;
-import org.noear.sponge.rockuapi.interceptor.EndInterceptor;
-import org.noear.sponge.rockuapi.interceptor.OutputInterceptor;
-import org.noear.sponge.rockuapi.interceptor.StartInterceptor;
+import org.noear.srww.uapi.UapiGateway;
+import org.noear.srww.uapi.UapiCode;
+import org.noear.srww.uapi.interceptor.EndInterceptor;
+import org.noear.srww.uapi.interceptor.OutputInterceptor;
+import org.noear.srww.uapi.interceptor.StartInterceptor;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 

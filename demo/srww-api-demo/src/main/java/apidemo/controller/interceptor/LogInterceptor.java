@@ -2,8 +2,8 @@ package apidemo.controller.interceptor;
 
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
-import org.noear.sponge.rockuapi.UapiParams;
-import org.noear.sponge.rockuapi.interceptor.Attrs;
+import org.noear.srww.uapi.UapiParams;
+import org.noear.srww.uapi.interceptor.Attrs;
 import apidemo.controller.UapiBase;
 import apidemo.dso.Logger;
 

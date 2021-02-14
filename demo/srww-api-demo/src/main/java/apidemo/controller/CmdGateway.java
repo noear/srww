@@ -3,12 +3,12 @@ package apidemo.controller;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.Aop;
-import org.noear.sponge.rockuapi.UapiGateway;
-import org.noear.sponge.rockuapi.decoder.AesDecoder;
-import org.noear.sponge.rockuapi.encoder.AesEncoder;
-import org.noear.sponge.rockuapi.encoder.Sha1Encoder;
-import org.noear.sponge.rockuapi.encoder.Sha256Encoder;
-import org.noear.sponge.rockuapi.interceptor.*;
+import org.noear.srww.uapi.UapiGateway;
+import org.noear.srww.uapi.decoder.AesDecoder;
+import org.noear.srww.uapi.encoder.AesEncoder;
+import org.noear.srww.uapi.encoder.Sha1Encoder;
+import org.noear.srww.uapi.encoder.Sha256Encoder;
+import org.noear.srww.uapi.interceptor.*;
 import apidemo.Config;
 import apidemo.controller.interceptor.LogInterceptor;
 

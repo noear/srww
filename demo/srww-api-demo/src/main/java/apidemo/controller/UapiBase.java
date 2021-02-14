@@ -2,7 +2,7 @@ package apidemo.controller;
 
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.extend.validation.annotation.Valid;
-import org.noear.sponge.rockuapi.Uapi;
+import org.noear.srww.uapi.Uapi;
 import apidemo.dso.db.UserService;
 import apidemo.models.UserModel;
 
