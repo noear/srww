@@ -14,7 +14,7 @@ public class WhitelistInterceptor implements Handler {
         String ip = IPUtils.getIP(ctx);
 
         if (!WaterClient.Whitelist.existsOfServerIp(ip)) {
-            throw SysCodes.CODE_16;
+            throw SysCodes.CODE_4001016;
         }
     }
 }

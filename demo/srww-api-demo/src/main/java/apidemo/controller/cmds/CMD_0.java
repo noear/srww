@@ -10,6 +10,6 @@ public class CMD_0 extends UapiBase {
 
     @Mapping
     public void exec() throws Exception {
-        throw SysCodes.CODE_11;
+        throw SysCodes.CODE_4001011;
     }
 }

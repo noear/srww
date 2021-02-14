@@ -24,6 +24,11 @@
 
         <dependency>
             <groupId>org.noear</groupId>
+            <artifactId>srww.uapi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
             <artifactId>solon-lib</artifactId>
         </dependency>
 
@@ -102,11 +107,6 @@
             <artifactId>nami.coder.snack3</artifactId>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.noear.sponge</groupId>
-            <artifactId>rock.uapi</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.noear.sponge</groupId>
