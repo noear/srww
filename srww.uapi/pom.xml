@@ -50,8 +50,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.noear.sponge</groupId>
-            <artifactId>rockrpc.client</artifactId>
+            <groupId>org.noear</groupId>
+            <artifactId>rock.client</artifactId>
             <scope>provided</scope>
         </dependency>
 

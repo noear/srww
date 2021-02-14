@@ -1,6 +1,6 @@
 package org.noear.srww.uapi.encoder;
 
-import org.noear.sponge.rock.models.AppModel;
+import org.noear.rock.model.AppModel;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.utils.EncryptUtils;
 

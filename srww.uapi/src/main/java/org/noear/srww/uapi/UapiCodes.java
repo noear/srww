@@ -1,6 +1,6 @@
 package org.noear.srww.uapi;
 
-import org.noear.sponge.rock.RockClient;
+import org.noear.rock.RockClient;
 import org.noear.water.utils.TextUtils;
 
 import java.sql.SQLException;

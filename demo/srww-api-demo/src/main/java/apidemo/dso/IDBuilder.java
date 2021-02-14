@@ -1,6 +1,6 @@
 package apidemo.dso;
 
-import org.noear.sponge.rock.RockUtil;
+import org.noear.rock.RockUtil;
 import org.noear.water.utils.Datetime;
 import org.noear.water.utils.IDUtils;
 import apidemo.Config;

@@ -1,6 +1,6 @@
 package org.noear.srww.uapi.interceptor;
 
-import org.noear.sponge.rock.models.AppModel;
+import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.UapiParams;
 import org.noear.srww.uapi.encoder.DefEncoder;
 import org.noear.srww.uapi.encoder.Encoder;
