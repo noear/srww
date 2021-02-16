@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.Date;
 
 @Getter
-public class PaasFileModel {
+public class PaasFileDo {
     public transient int file_id;
     public int file_type;
     public String tag;

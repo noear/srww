@@ -3,7 +3,7 @@ package admindemo.model.water_cfg;
 import lombok.Getter;
 
 @Getter
-public class LoggerModel {
+public class LoggerDo {
     public int logger_id;
     public String tag;
     public String logger;

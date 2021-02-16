@@ -1,6 +1,6 @@
 package admindemo.dso;
 
-import admindemo.model.water_cfg.EnumModel;
+import admindemo.model.water_cfg.EnumDo;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ConfigType {
                 try {
                     _types.clear();
 
-                    List<EnumModel> enumList = EnumUtil.get("config_type");
+                    List<EnumDo> enumList = EnumUtil.get("config_type");
                     enumList.forEach((di) -> {
                         _types.put(Integer.parseInt(di.value), di.title);
                     });

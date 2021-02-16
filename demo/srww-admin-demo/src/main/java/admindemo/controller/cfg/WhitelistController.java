@@ -4,13 +4,12 @@ import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.dso.TagUtil;
 import admindemo.model.TagCountsModel;
-import admindemo.model.water_cfg.WhitelistModel;
+import admindemo.model.water_cfg.WhitelistDo;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.UploadedFile;
-import org.noear.srww.uadmin.controller.BaseController;
 import org.noear.srww.uadmin.model.ViewModel;
 import org.noear.water.utils.Datetime;
 import org.noear.water.utils.IOUtils;
@@ -41,7 +40,7 @@ public class WhitelistController extends BaseController2 {
     public ModelAndView innerDo(Context ctx, String tag_name, String key) throws Exception {
         int state = ctx.paramAsInt("state",1);
 
-        List<WhitelistModel> list = DbWaterCfgApi.getWhitelistByTag(tag_name, key, state);
+        List<WhitelistDo> list = DbWaterCfgApi.getWhitelistByTag(tag_name, key, state);
 
         viewModel.put("list", list);
         viewModel.put("tag_name", tag_name);
@@ -54,12 +53,12 @@ public class WhitelistController extends BaseController2 {
     //跳转ip白名单新增页面
     @Mapping("edit")
     public ModelAndView whitelistAdd(Integer id, String tag_name) throws SQLException {
-        WhitelistModel model = null;
+        WhitelistDo model = null;
         if (id != null) {
             model = DbWaterCfgApi.getWhitelist(id);
             viewModel.put("m", model);
         } else {
-            model = new WhitelistModel();
+            model = new WhitelistDo();
             viewModel.put("m", model);
         }
 
@@ -112,7 +111,7 @@ public class WhitelistController extends BaseController2 {
     //批量导出
     @Mapping("ajax/export")
     public void exportDo(Context ctx, String tag, String ids) throws Exception {
-        List<WhitelistModel> list = DbWaterCfgApi.getWhitelistByIds(ids);
+        List<WhitelistDo> list = DbWaterCfgApi.getWhitelistByIds(ids);
 
         String jsonD = JsondUtils.encode("water_cfg_whitelist", list);
 
@@ -135,9 +134,9 @@ public class WhitelistController extends BaseController2 {
             return viewModel.code(0, "数据不对！");
         }
 
-        List<WhitelistModel> list = entity.data.toObjectList(WhitelistModel.class);
+        List<WhitelistDo> list = entity.data.toObjectList(WhitelistDo.class);
 
-        for (WhitelistModel m : list) {
+        for (WhitelistDo m : list) {
             DbWaterCfgApi.impWhitelist(tag, m);
         }
 

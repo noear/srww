@@ -4,13 +4,12 @@ import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.dso.TagUtil;
 import admindemo.model.TagCountsModel;
-import admindemo.model.water_cfg.ConfigModel;
+import admindemo.model.water_cfg.ConfigDo;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.UploadedFile;
-import org.noear.srww.uadmin.controller.BaseController;
 import org.noear.srww.uadmin.model.ViewModel;
 import org.noear.water.utils.Datetime;
 import org.noear.water.utils.IOUtils;
@@ -41,7 +40,7 @@ public class PropController extends BaseController2 {
 
         TagUtil.cookieSet(tag_name);
 
-        List<ConfigModel> list = DbWaterCfgApi.getConfigsByTag(tag_name,key, state);
+        List<ConfigDo> list = DbWaterCfgApi.getConfigsByTag(tag_name,key, state);
 
         viewModel.put("list",list);
         viewModel.put("tag_name",tag_name);
@@ -59,7 +58,7 @@ public class PropController extends BaseController2 {
             row_id = 0;
         }
 
-        ConfigModel cfg = DbWaterCfgApi.getConfig(row_id);
+        ConfigDo cfg = DbWaterCfgApi.getConfig(row_id);
 
         if(cfg.row_id > 0){
             tag_name = cfg.tag;
@@ -103,7 +102,7 @@ public class PropController extends BaseController2 {
     //批量导出
     @Mapping("ajax/export")
     public void exportDo(Context ctx, String tag, String ids) throws Exception {
-        List<ConfigModel> list = DbWaterCfgApi.getConfigByIds(ids);
+        List<ConfigDo> list = DbWaterCfgApi.getConfigByIds(ids);
 
         String jsonD = JsondUtils.encode("water_cfg_properties", list);
 
@@ -126,9 +125,9 @@ public class PropController extends BaseController2 {
             return viewModel.code(0, "数据不对！");
         }
 
-        List<ConfigModel> list = entity.data.toObjectList(ConfigModel.class);
+        List<ConfigDo> list = entity.data.toObjectList(ConfigDo.class);
 
-        for (ConfigModel m : list) {
+        for (ConfigDo m : list) {
             DbWaterCfgApi.impConfig(tag, m);
         }
 

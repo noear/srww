@@ -4,16 +4,15 @@ import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbPaaSApi;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.model.TagCountsModel;
-import admindemo.model.water.FieldVoModel;
-import admindemo.model.water_cfg.ConfigModel;
-import admindemo.model.water_paas.PaasFileModel;
+import admindemo.model.water.FieldDo;
+import admindemo.model.water_cfg.ConfigDo;
+import admindemo.model.water_paas.PaasFileDo;
 import admindemo.model.water_paas.PaasFileType;
 import admindemo.utils.UnderlineCamelUtil;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.view.freemarker.RenderUtil;
-import org.noear.srww.uadmin.controller.BaseController;
 import org.noear.srww.uadmin.model.ViewModel;
 import org.noear.water.utils.TextUtils;
 import org.noear.weed.DbContext;
@@ -52,9 +51,9 @@ public class CodeGenerationController extends BaseController2 {
     @Mapping("inner/{tag}")
     public ModelAndView inner(String tag) throws SQLException {
 
-        List<ConfigModel> cfgs = DbWaterCfgApi.getConfigsByType(tag, CFG_TYPE_DB);
+        List<ConfigDo> cfgs = DbWaterCfgApi.getConfigsByType(tag, CFG_TYPE_DB);
 
-        List<PaasFileModel> tmls = DbPaaSApi.getFileList(TEMPLATE_TAG, PaasFileType.tml);
+        List<PaasFileDo> tmls = DbPaaSApi.getFileList(TEMPLATE_TAG, PaasFileType.tml);
 
         viewModel.set("cfgs", cfgs);
         viewModel.set("tmls", tmls);
@@ -69,7 +68,7 @@ public class CodeGenerationController extends BaseController2 {
     public ViewModel tb(String tag,
                         String key) throws SQLException {
 
-        ConfigModel cfg = DbWaterCfgApi.getConfigByTagName(tag , key);
+        ConfigDo cfg = DbWaterCfgApi.getConfigByTagName(tag , key);
         DbContext db = cfg.getDb();
 
         List<String> tbs = new ArrayList<>();
@@ -92,9 +91,9 @@ public class CodeGenerationController extends BaseController2 {
 
         Map<String, Object> model = new HashMap<>();
 
-        List<FieldVoModel> fields = db.sql(buildSqlGetFields(tb)).getList(new FieldVoModel());
+        List<FieldDo> fields = db.sql(buildSqlGetFields(tb)).getList(new FieldDo());
 
-        for (FieldVoModel f : fields) {
+        for (FieldDo f : fields) {
 
             if ("PRI".equals(f.key)) {
                 model.put("pri_key", f.field);
@@ -128,7 +127,7 @@ public class CodeGenerationController extends BaseController2 {
             }
         }
 
-        PaasFileModel tml = DbPaaSApi.getFile(tml_id);
+        PaasFileDo tml = DbPaaSApi.getFile(tml_id);
 
         model.put("fields", fields);
         model.put("table_camel", UnderlineCamelUtil.underline2Camel(tb, false));

@@ -3,7 +3,7 @@ package admindemo.model.water_cfg;
 import lombok.Getter;
 
 @Getter
-public class WhitelistModel
+public class WhitelistDo
 {
     public transient int row_id;
     public String tag;

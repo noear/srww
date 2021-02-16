@@ -1,7 +1,7 @@
 package admindemo.dso;
 
 
-import admindemo.model.water_cfg.ConfigModel;
+import admindemo.model.water_cfg.ConfigDo;
 import org.noear.water.utils.Base64Utils;
 import org.noear.water.utils.HttpUtils;
 import org.noear.water.utils.TextUtils;
@@ -9,7 +9,7 @@ import org.noear.water.utils.TextUtils;
 import java.util.Properties;
 
 public class EsUtil {
-    public static String search(ConfigModel cfg, String method, String path, String json) throws Exception {
+    public static String search(ConfigDo cfg, String method, String path, String json) throws Exception {
         Properties prop = cfg.getProp();
 
 

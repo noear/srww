@@ -7,7 +7,7 @@ import lombok.Getter;
 /// 
 /// </summary>
 @Getter
-public class EnumModel //implements IBinder
+public class EnumDo //implements IBinder
 {
     public int enum_id;
     public String group;

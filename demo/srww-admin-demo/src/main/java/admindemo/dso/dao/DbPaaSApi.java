@@ -30,11 +30,11 @@ public class DbPaaSApi {
 
     private static String list_sels = "file_id,tag,label,path,`rank`,note,is_staticize,is_editable,is_disabled,is_exclude,link_to,edit_mode,content_type,update_fulltime,plan_state,plan_begin_time,plan_last_time,plan_last_timespan,plan_interval,plan_max,plan_count";
 
-    public static List<PaasFileModel> getFileList(String tag, PaasFileType type) throws SQLException {
+    public static List<PaasFileDo> getFileList(String tag, PaasFileType type) throws SQLException {
         return getFileList(tag, type, false, null, 0);
     }
 
-    public static List<PaasFileModel> getFileList(String tag, PaasFileType type, boolean disabled, String key, int keyType) throws SQLException {
+    public static List<PaasFileDo> getFileList(String tag, PaasFileType type, boolean disabled, String key, int keyType) throws SQLException {
         DbTableQuery qr = db().table("paas_file").where("1=1");
 
         if (type.code < PaasFileType.all.code) {
@@ -74,14 +74,14 @@ public class DbPaaSApi {
 
         return qr.orderByAsc("path")
                 .select(list_sels)
-                .getList(PaasFileModel.class);
+                .getList(PaasFileDo.class);
     }
 
-    public static PaasFileModel getFile(int file_id) throws SQLException {
+    public static PaasFileDo getFile(int file_id) throws SQLException {
         return db().table("paas_file")
                 .where("file_id=?", file_id)
                 .select("*")
-                .getItem(PaasFileModel.class);
+                .getItem(PaasFileDo.class);
     }
 
     public static int delFile(int file_id) throws SQLException {
@@ -117,7 +117,7 @@ public class DbPaaSApi {
         }
     }
 
-    public static List<PaasFileModel> getFilesByIds(PaasFileType type, String ids) throws SQLException {
+    public static List<PaasFileDo> getFilesByIds(PaasFileType type, String ids) throws SQLException {
         List<Object> list = Arrays.asList(ids.split(","))
                 .stream()
                 .map(s -> Integer.parseInt(s))
@@ -127,11 +127,11 @@ public class DbPaaSApi {
                 .whereIn("file_id", list)
                 .andEq("file_type", type.code)
                 .select("*")
-                .getList(PaasFileModel.class);
+                .getList(PaasFileDo.class);
     }
 
     //批量导入
-    public static void impFile(PaasFileType type, String tag, PaasFileModel wm) throws SQLException {
+    public static void impFile(PaasFileType type, String tag, PaasFileDo wm) throws SQLException {
         if (TextUtils.isEmpty(tag) == false) {
             wm.tag = tag;
         }

@@ -5,7 +5,7 @@ import org.noear.weed.GetHandlerEx;
 import org.noear.weed.IBinder;
 
 @Getter
-public class FieldVoModel implements IBinder {
+public class FieldDo implements IBinder {
     public String field;
     public String type;
     public String key;
@@ -22,6 +22,6 @@ public class FieldVoModel implements IBinder {
 
     @Override
     public IBinder clone() {
-        return new FieldVoModel();
+        return new FieldDo();
     }
 }

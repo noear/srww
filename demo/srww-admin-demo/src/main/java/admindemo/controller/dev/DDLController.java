@@ -3,11 +3,10 @@ package admindemo.controller.dev;
 import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.model.TagCountsModel;
-import admindemo.model.water_cfg.ConfigModel;
+import admindemo.model.water_cfg.ConfigDo;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.ModelAndView;
-import org.noear.srww.uadmin.controller.BaseController;
 import org.noear.srww.uadmin.model.ViewModel;
 import org.noear.water.utils.TextUtils;
 import org.noear.weed.DbContext;
@@ -48,7 +47,7 @@ public class DDLController extends BaseController2 {
 
     @Mapping("inner/{tag}")
     public ModelAndView inner(String tag) throws SQLException {
-        List<ConfigModel> cfgs = DbWaterCfgApi.getConfigsByType(tag, CFG_TYPE_DB);
+        List<ConfigDo> cfgs = DbWaterCfgApi.getConfigsByType(tag, CFG_TYPE_DB);
 
         viewModel.put("cfgs", cfgs);
 
@@ -60,7 +59,7 @@ public class DDLController extends BaseController2 {
     @Mapping("ajax/tb")
     public ViewModel tb(String tag, String key) throws SQLException {
 
-        ConfigModel cfg = DbWaterCfgApi.getConfigByTagName(tag, key);
+        ConfigDo cfg = DbWaterCfgApi.getConfigByTagName(tag, key);
         DbContext db = cfg.getDb();
 
         List<String> tbs = new ArrayList<>();

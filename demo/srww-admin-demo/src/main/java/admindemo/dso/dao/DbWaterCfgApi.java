@@ -23,7 +23,7 @@ public class DbWaterCfgApi {
         return Config.water;
     }
 
-    public static List<LoggerModel> getLoggerByTag(String tag) throws Exception {
+    public static List<LoggerDo> getLoggerByTag(String tag) throws Exception {
         return db().table("water_cfg_logger")
                 .where("is_enabled=1")
                 .build(tb -> {
@@ -33,17 +33,17 @@ public class DbWaterCfgApi {
                 })
                 .orderBy("logger asc")
                 .select("*")
-                .getList(LoggerModel.class);
+                .getList(LoggerDo.class);
     }
 
     //
-    public static LoggerModel getLogger(String logger) {
+    public static LoggerDo getLogger(String logger) {
         try {
             return db().table("water_cfg_logger")
                     .where("logger = ?", logger)
                     .limit(1)
                     .select("*")
-                    .getItem(LoggerModel.class);
+                    .getItem(LoggerDo.class);
         }catch (Exception ex){
             throw new RuntimeException(ex);
         }
@@ -59,7 +59,7 @@ public class DbWaterCfgApi {
     }
 
     //获取ip白名单列表
-    public static List<WhitelistModel> getWhitelistByTag(String tag_name, String key, int state) throws SQLException {
+    public static List<WhitelistDo> getWhitelistByTag(String tag_name, String key, int state) throws SQLException {
         return db().table("water_cfg_whitelist")
                 .whereEq("is_enabled",state==1)
                 .build(tb -> {
@@ -72,7 +72,7 @@ public class DbWaterCfgApi {
                     }
                 })
                 .select("*")
-                .getList(WhitelistModel.class);
+                .getList(WhitelistDo.class);
     }
 
     //新增ip白名单
@@ -99,7 +99,7 @@ public class DbWaterCfgApi {
     }
 
     //批量导入
-    public static void impWhitelist(String tag, WhitelistModel wm) throws SQLException {
+    public static void impWhitelist(String tag, WhitelistDo wm) throws SQLException {
         if(TextUtils.isEmpty(tag) == false){
             wm.tag = tag;
         }
@@ -139,14 +139,14 @@ public class DbWaterCfgApi {
         }
     }
 
-    public static WhitelistModel getWhitelist(int row_id) throws SQLException {
+    public static WhitelistDo getWhitelist(int row_id) throws SQLException {
         return db().table("water_cfg_whitelist")
                 .where("row_id = ?", row_id)
                 .select("*")
-                .getItem(WhitelistModel.class);
+                .getItem(WhitelistDo.class);
     }
 
-    public static List<WhitelistModel> getWhitelistByIds(String ids) throws SQLException {
+    public static List<WhitelistDo> getWhitelistByIds(String ids) throws SQLException {
         List<Object> list = Arrays.asList(ids.split(","))
                                     .stream()
                                     .map(s->Integer.parseInt(s))
@@ -155,7 +155,7 @@ public class DbWaterCfgApi {
         return db().table("water_cfg_whitelist")
                 .whereIn("row_id", list)
                 .select("*")
-                .getList(WhitelistModel.class);
+                .getList(WhitelistDo.class);
     }
 
     //加载IP白名单到静态缓存里
@@ -223,11 +223,11 @@ public class DbWaterCfgApi {
     }
 
 
-    public static List<ConfigModel> getGateways() throws SQLException {
+    public static List<ConfigDo> getGateways() throws SQLException {
         return db().table("water_cfg_properties")
                 .whereEq("type", ConfigType.water_gateway)
                 .select("tag,key,row_id,type,is_enabled")
-                .getList(ConfigModel.class);
+                .getList(ConfigDo.class);
     }
 
     public static void delConfigByIds(int act, String ids) throws SQLException {
@@ -251,7 +251,7 @@ public class DbWaterCfgApi {
 
 
     //导入
-    public static void impConfig(String tag, ConfigModel wm) throws SQLException {
+    public static void impConfig(String tag, ConfigDo wm) throws SQLException {
         if(TextUtils.isEmpty(tag) == false){
             wm.tag = tag;
         }
@@ -269,7 +269,7 @@ public class DbWaterCfgApi {
                 .insertBy("tag,key");
     }
 
-    public static List<ConfigModel> getConfigByIds(String ids) throws SQLException {
+    public static List<ConfigDo> getConfigByIds(String ids) throws SQLException {
         List<Object> list = Arrays.asList(ids.split(","))
                 .stream()
                 .map(s->Integer.parseInt(s))
@@ -278,7 +278,7 @@ public class DbWaterCfgApi {
         return db().table("water_cfg_properties")
                 .whereIn("row_id", list)
                 .select("*")
-                .getList(ConfigModel.class);
+                .getList(ConfigDo.class);
     }
 
 
@@ -335,22 +335,22 @@ public class DbWaterCfgApi {
     }
 
     //编辑功能，根据row_id获取config信息。
-    public static ConfigModel getConfig(Integer row_id) throws SQLException {
+    public static ConfigDo getConfig(Integer row_id) throws SQLException {
         if(row_id == null || row_id == 0){
-            return new ConfigModel();
+            return new ConfigDo();
         }
 
         return db().table("water_cfg_properties")
                 .where("row_id = ?", row_id)
                 .select("*")
-                .getItem(ConfigModel.class);
+                .getItem(ConfigDo.class);
     }
 
 
     //根据tag列出config。
-    public static ConfigModel getConfigByTagName(String tagName) throws SQLException {
+    public static ConfigDo getConfigByTagName(String tagName) throws SQLException {
         if(TextUtils.isEmpty(tagName)){
-            return new ConfigModel();
+            return new ConfigDo();
         }
 
         String[] ss = tagName.split("/");
@@ -365,7 +365,7 @@ public class DbWaterCfgApi {
             return defDb;
         } else {
             String[] ss = sourceKey.split("/");
-            ConfigModel cfg = getConfigByTagName(ss[0], ss[1]);
+            ConfigDo cfg = getConfigByTagName(ss[0], ss[1]);
 
             if (TextUtils.isEmpty(cfg.value)) {
                 return defDb;
@@ -375,21 +375,21 @@ public class DbWaterCfgApi {
         }
     }
 
-    public static ConfigModel getConfigByTagName(String tag, String name) throws SQLException {
+    public static ConfigDo getConfigByTagName(String tag, String name) throws SQLException {
         return getConfigByTagName(tag,name,false);
     }
 
-    public static ConfigModel getConfigByTagName(String tag, String name, boolean cache) throws SQLException {
+    public static ConfigDo getConfigByTagName(String tag, String name, boolean cache) throws SQLException {
         return db().table("water_cfg_properties")
                 .whereEq("tag", tag)
                 .andEq("key", name)
                 .limit(1)
                 .select("*")
                 .caching(CacheUtil.data).usingCache(cache)
-                .getItem(ConfigModel.class);
+                .getItem(ConfigDo.class);
     }
 
-    public static List<ConfigModel> getConfigsByTag(String tag, String key, int state) throws SQLException {
+    public static List<ConfigDo> getConfigsByTag(String tag, String key, int state) throws SQLException {
         return db().table("water_cfg_properties")
                 .whereEq("tag", tag)
                 .andEq("is_enabled",state==1)
@@ -399,10 +399,10 @@ public class DbWaterCfgApi {
                     }
                 })
                 .select("*")
-                .getList(ConfigModel.class);
+                .getList(ConfigDo.class);
     }
 
-    public static List<ConfigModel> getConfigsByType(String tag, int type) throws SQLException {
+    public static List<ConfigDo> getConfigsByType(String tag, int type) throws SQLException {
         return db().table("water_cfg_properties")
                 .where("type = ?", type)
                 .build((tb)->{
@@ -411,10 +411,10 @@ public class DbWaterCfgApi {
                     }
                 })
                 .select("*")
-                .getList(ConfigModel.class);
+                .getList(ConfigDo.class);
     }
 
-    public static List<ConfigModel> getConfigTagKeyByType(String tag, int type) throws SQLException {
+    public static List<ConfigDo> getConfigTagKeyByType(String tag, int type) throws SQLException {
         return db().table("water_cfg_properties")
                 .where("type = ?", type)
                 .build((tb)->{
@@ -423,36 +423,36 @@ public class DbWaterCfgApi {
                     }
                 })
                 .select("tag,key")
-                .getList(ConfigModel.class);
+                .getList(ConfigDo.class);
     }
 
     //====================================================
 
     //获取type=10的配置（结构化数据库）
-    public static List<ConfigModel> getDbConfigs() throws SQLException {
+    public static List<ConfigDo> getDbConfigs() throws SQLException {
         return db().table("water_cfg_properties")
                 .whereEq("type", ConfigType.db)
                 .orderBy("`tag`,`key`")
                 .select("*")
-                .getList(ConfigModel.class);
+                .getList(ConfigDo.class);
     }
 
     //获取type=10的配置（结构化数据库）
-    public static List<ConfigModel> getLogStoreConfigs() throws SQLException {
+    public static List<ConfigDo> getLogStoreConfigs() throws SQLException {
         return db().table("water_cfg_properties")
                 .whereEq("type", ConfigType.db)
                 .orEq("type",ConfigType.water_logger)
                 .orderBy("`tag`,`key`")
                 .select("*")
-                .getList(ConfigModel.class);
+                .getList(ConfigDo.class);
     }
 
     //获取type=10,11,12的配置（结构化数据库 + 非结构化数据库）
-    public static List<ConfigModel> getDbConfigsEx() throws SQLException {
+    public static List<ConfigDo> getDbConfigsEx() throws SQLException {
         return db().table("water_cfg_properties")
                 .where("type >=10 AND type<20")
                 .select("*")
-                .getList(ConfigModel.class);
+                .getList(ConfigDo.class);
     }
 
     //====================================================
@@ -467,7 +467,7 @@ public class DbWaterCfgApi {
     }
 
     //根据tag获取列表。
-    public static List<LoggerModel> getLoggersByTag(String tag_name, int is_enabled, String sort) throws Exception {
+    public static List<LoggerDo> getLoggersByTag(String tag_name, int is_enabled, String sort) throws Exception {
         return db().table("water_cfg_logger")
                 .where("tag = ?", tag_name)
                 .and("is_enabled = ?",is_enabled)
@@ -479,17 +479,17 @@ public class DbWaterCfgApi {
                     }
                 })
                 .select("*")
-                .getList(LoggerModel.class);
+                .getList(LoggerDo.class);
 
     }
 
     //根据id获取logger。
-    public static LoggerModel getLogger(Integer logger_id) throws Exception {
+    public static LoggerDo getLogger(Integer logger_id) throws Exception {
         return db().table("water_cfg_logger")
                 .where("logger_id=?", logger_id)
                 .limit(1)
                 .select("*")
-                .getItem(LoggerModel.class);
+                .getItem(LoggerDo.class);
     }
 
     //设置logger。

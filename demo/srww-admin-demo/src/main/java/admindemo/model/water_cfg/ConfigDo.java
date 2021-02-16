@@ -15,7 +15,7 @@ import org.noear.weed.cache.memcached.MemCache;
 import java.util.Properties;
 
 @Getter
-public class ConfigModel
+public class ConfigDo
 {
     public transient int row_id;
     public String tag;

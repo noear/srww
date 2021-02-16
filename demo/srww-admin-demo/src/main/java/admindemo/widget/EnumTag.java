@@ -1,7 +1,7 @@
 package admindemo.widget;
 
 import admindemo.dso.EnumUtil;
-import admindemo.model.water_cfg.EnumModel;
+import admindemo.model.water_cfg.EnumDo;
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
@@ -51,7 +51,7 @@ public class EnumTag implements TemplateDirectiveModel {
     }
 
     private String buildHtml() throws Exception {
-        List<EnumModel> enumList = EnumUtil.get(group);
+        List<EnumDo> enumList = EnumUtil.get(group);
 
         StringBuffer sb = new StringBuffer();
 
@@ -66,7 +66,7 @@ public class EnumTag implements TemplateDirectiveModel {
         return sb.toString();
     }
 
-    private void buildHtmlForSelect(List<EnumModel> enumList, StringBuffer sb) {
+    private void buildHtmlForSelect(List<EnumDo> enumList, StringBuffer sb) {
         sb.append("<select ");
         if (TextUtils.isEmpty(id) == false) {
             sb.append("id=\"").append(id).append("\" ");
@@ -78,7 +78,7 @@ public class EnumTag implements TemplateDirectiveModel {
 
         sb.append(">");
 
-        for (EnumModel m : enumList) {
+        for (EnumDo m : enumList) {
             sb.append("<option value='").append(m.value).append("'");
 
             if (String.valueOf(m.value).equals(value)) {
@@ -91,14 +91,14 @@ public class EnumTag implements TemplateDirectiveModel {
         sb.append("</select>");
     }
 
-    private void buildHtmlForCheckbox(List<EnumModel> enumList, StringBuffer sb) {
+    private void buildHtmlForCheckbox(List<EnumDo> enumList, StringBuffer sb) {
 
         List<String> list = null;
         if (!TextUtils.isEmpty(value)) {
             list = Arrays.asList(value.split(","));
         }
 
-        for (EnumModel m : enumList) {
+        for (EnumDo m : enumList) {
             sb.append("<label><input type=\"checkbox\" name='").append(name).append("' value='").append(m.value).append("'");
 
             if (list != null && list.contains(String.valueOf(m.value))) {
@@ -109,9 +109,9 @@ public class EnumTag implements TemplateDirectiveModel {
         }
     }
 
-    private void buildHtmlForRadio(List<EnumModel> enumList, StringBuffer sb) {
+    private void buildHtmlForRadio(List<EnumDo> enumList, StringBuffer sb) {
 
-        for (EnumModel m : enumList) {
+        for (EnumDo m : enumList) {
             sb.append("<label><input type=\"radio\" name='").append(name).append("' value='").append(m.value).append("'");
 
             if (String.valueOf(m.value).equals(value)) {

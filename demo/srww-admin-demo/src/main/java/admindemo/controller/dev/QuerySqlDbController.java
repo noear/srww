@@ -3,11 +3,10 @@ package admindemo.controller.dev;
 import admindemo.controller.BaseController2;
 import admindemo.dso.ConfigType;
 import admindemo.dso.dao.DbWaterCfgApi;
-import admindemo.model.water_cfg.ConfigModel;
+import admindemo.model.water_cfg.ConfigDo;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.ModelAndView;
-import org.noear.srww.uadmin.controller.BaseController;
 import org.noear.water.utils.TextUtils;
 import org.noear.water.utils.ThrowableUtils;
 import org.noear.weed.DataItem;
@@ -26,7 +25,7 @@ import java.util.regex.Pattern;
 public class QuerySqlDbController extends BaseController2 {
    @Mapping("")
    public ModelAndView query() throws SQLException {
-       List<ConfigModel> cfgs = DbWaterCfgApi.getConfigTagKeyByType(null, ConfigType.db);
+       List<ConfigDo> cfgs = DbWaterCfgApi.getConfigTagKeyByType(null, ConfigType.db);
 
        viewModel.put("cfgs", cfgs);
 

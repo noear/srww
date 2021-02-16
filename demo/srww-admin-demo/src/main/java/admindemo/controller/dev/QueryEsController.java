@@ -5,7 +5,7 @@ import admindemo.controller.BaseController2;
 import admindemo.dso.ConfigType;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.dso.EsUtil;
-import admindemo.model.water_cfg.ConfigModel;
+import admindemo.model.water_cfg.ConfigDo;
 import admindemo.utils.JsonFormatTool;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -13,7 +13,6 @@ import org.noear.snack.ONode;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.ModelAndView;
-import org.noear.srww.uadmin.controller.BaseController;
 import org.noear.water.utils.TextUtils;
 
 import java.sql.SQLException;
@@ -26,7 +25,7 @@ import java.util.regex.Pattern;
 public class QueryEsController extends BaseController2 {
     @Mapping("")
     public ModelAndView query() throws SQLException {
-        List<ConfigModel> list = DbWaterCfgApi.getConfigTagKeyByType(null, ConfigType.elasticsearch);
+        List<ConfigDo> list = DbWaterCfgApi.getConfigTagKeyByType(null, ConfigType.elasticsearch);
 
         viewModel.put("cfgs", list);
 
@@ -97,7 +96,7 @@ public class QueryEsController extends BaseController2 {
         }
 
         try {
-            ConfigModel cfg = DbWaterCfgApi.getConfigByTagName(cfg_str);
+            ConfigDo cfg = DbWaterCfgApi.getConfigByTagName(cfg_str);
 
             return EsUtil.search(cfg, method, path, json.toString());
         } catch (Exception ex) {
