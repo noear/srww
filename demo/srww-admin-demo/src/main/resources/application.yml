@@ -1,0 +1,11 @@
+server.port: 9020
+server.request.maxRequestSize: 2Mb
+
+solon.app:
+  name: "wateradmin"
+  group: "water"
+  title: "UADMIN"
+
+solon.cloud.water:
+  server: water
+
