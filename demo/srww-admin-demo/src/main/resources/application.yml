@@ -7,5 +7,5 @@ solon.app:
   title: "UADMIN"
 
 solon.cloud.water:
-  server: water
+  server: "water"
 
