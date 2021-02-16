@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="${css}/main.css" />
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" >
     <script src="/_session/domain.js"></script>
-    <script src="${js}/lib.js" ></script>
+    <script src="${js}/jtadmin.js" ></script>
     <script src="//static.kdz6.cn/lib/ace/ace.js" ></script>
     <script src="//static.kdz6.cn/lib/ace/ext-language_tools.js"></script>
     <style>
