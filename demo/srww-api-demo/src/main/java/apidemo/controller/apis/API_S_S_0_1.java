@@ -8,10 +8,10 @@ import apidemo.controller.UapiBase;
 import apidemo.dso.Logger;
 import apidemo.dso.db.BullOrderService;
 import apidemo.dso.db.CoProductService;
-import apidemo.models.BullOrderModel;
-import apidemo.models.BullOrderStatusEnum;
-import apidemo.models.CoProductModel;
-import apidemo.models.UserModel;
+import apidemo.model.BullOrderModel;
+import apidemo.model.BullOrderStatusEnum;
+import apidemo.model.CoProductModel;
+import apidemo.model.UserModel;
 import org.noear.solon.extend.validation.annotation.NotNull;
 
 import java.util.Map;

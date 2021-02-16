@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import org.noear.weed.annotation.Db;
 import org.noear.weed.xml.Namespace;
-import apidemo.models.*;
+import apidemo.model.*;
 
 @Db("dobbin")
 @Namespace("zm.data.dobbin.bull.dso.db.mapper.UserMapper")

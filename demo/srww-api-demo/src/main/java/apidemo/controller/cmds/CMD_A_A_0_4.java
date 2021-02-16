@@ -9,9 +9,9 @@ import apidemo.controller.SysCodes;
 import apidemo.controller.UapiBase;
 import apidemo.dso.db.BullOrderService;
 import apidemo.dso.db.CoProductService;
-import apidemo.models.BullOrderModel;
-import apidemo.models.BullOrderStatusEnum;
-import apidemo.models.CoProductModel;
+import apidemo.model.BullOrderModel;
+import apidemo.model.BullOrderStatusEnum;
+import apidemo.model.CoProductModel;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

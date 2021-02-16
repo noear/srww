@@ -5,7 +5,7 @@ import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.water.utils.EncryptUtils;
 import apidemo.dso.db.CoProductService;
-import apidemo.models.CoProductModel;
+import apidemo.model.CoProductModel;
 import org.noear.water.utils.HttpUtils;
 
 import java.util.*;

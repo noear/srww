@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//noear.org//DTD Mapper 3.0//EN" "http://noear.org/dtd/weed3-mapper.dtd">
 
 <mapper namespace="apidemo.dso.db.mapper.CoProductMapper"
-        import="apidemo.models.*"
+        import="apidemo.model.*"
         db="sponge_sugar">
 
     <sql id="get_co_product"

@@ -6,8 +6,8 @@ import org.noear.solon.extend.data.annotation.Tran;
 import org.noear.water.utils.Datetime;
 import apidemo.dso.IDBuilder;
 import apidemo.dso.db.mapper.BullOrderMapper;
-import apidemo.models.BullOrderModel;
-import apidemo.models.BullOrderStatusEnum;
+import apidemo.model.BullOrderModel;
+import apidemo.model.BullOrderStatusEnum;
 
 import java.sql.SQLException;
 import java.util.Date;

@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//noear.org//DTD Mapper 3.0//EN" "http://noear.org/dtd/weed3-mapper.dtd">
 
 <mapper namespace="apidemo.dso.db.mapper.UserMapper"
-        import="apidemo.models.*"
+        import="apidemo.model.*"
         db="dobbin">
 
     <sql id="get_user_by_user_id"

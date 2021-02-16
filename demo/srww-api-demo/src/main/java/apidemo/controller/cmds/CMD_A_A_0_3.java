@@ -11,7 +11,7 @@ import apidemo.dso.RedisUtil;
 import apidemo.dso.StandardApi;
 import apidemo.dso.db.BullOrderService;
 import apidemo.dso.db.CoProductService;
-import apidemo.models.*;
+import apidemo.model.*;
 
 import java.util.Map;
 

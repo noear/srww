@@ -5,7 +5,7 @@ import java.util.*;
 
 import org.noear.weed.annotation.Db;
 import org.noear.weed.xml.Namespace;
-import apidemo.models.*;
+import apidemo.model.*;
 
 @Db("sponge_sugar")
 @Namespace("zm.data.dobbin.bull.dso.db.mapper.CoProductMapper")
