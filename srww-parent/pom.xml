@@ -296,6 +296,7 @@
         <module>../srww.uapi</module>
 
         <module>../srww-admin</module>
+        <module>../srww-admin-ui</module>
         <module>../srww-api</module>
     </modules>
 
