@@ -28,7 +28,7 @@
 </head>
 <body>
 <main>
-    <middle>
+    <left>
         <tree id="tree">
             <ul>
                 <#list resp as m>
@@ -36,7 +36,7 @@
                 </#list>
             </ul>
         </tree>
-    </middle>
+    </left>
     <right class="frm">
         <iframe src="/dev/ddl/inner/${tag_name!}" frameborder="0" id="table"></iframe>
     </right>

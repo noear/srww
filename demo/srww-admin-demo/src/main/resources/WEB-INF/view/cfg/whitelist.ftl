@@ -26,7 +26,7 @@
 </head>
 <body>
 <main>
-    <middle>
+    <left>
         <tree id="tree">
             <ul>
                 <#list tags as m>
@@ -34,7 +34,7 @@
                 </#list>
             </ul>
         </tree>
-    </middle>
+    </left>
     <right class="frm">
         <iframe src="/cfg/whitelist/inner?tag_name=${tag_name!}" frameborder="0" id="table"></iframe>
     </right>
