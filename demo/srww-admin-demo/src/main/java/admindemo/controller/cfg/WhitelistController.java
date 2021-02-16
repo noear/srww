@@ -1,6 +1,6 @@
 package admindemo.controller.cfg;
 
-import admindemo.dso.DbWaterCfgApi;
+import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.dso.TagUtil;
 import admindemo.model.TagCountsModel;
 import admindemo.model.water_cfg.WhitelistModel;

@@ -1,6 +1,6 @@
 package admindemo.controller.cfg;
 
-import admindemo.dso.DbWaterCfgApi;
+import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.dso.TagUtil;
 import admindemo.model.TagCountsModel;
 import admindemo.model.water_cfg.ConfigModel;
@@ -10,7 +10,6 @@ import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.UploadedFile;
 import org.noear.srww.uadmin.controller.BaseController;
-import org.noear.srww.uadmin.dso.Session;
 import org.noear.srww.uadmin.model.ViewModel;
 import org.noear.water.utils.Datetime;
 import org.noear.water.utils.IOUtils;
