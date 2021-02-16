@@ -11,8 +11,8 @@ import apidemo.model.*;
 @Namespace("zm.data.dobbin.bull.dso.db.mapper.CoProductMapper")
 public interface CoProductMapper{
     //获取产品详情
-    CoProductModel get_co_product(long product_id) throws SQLException;
+    CoProductDo get_co_product(long product_id) throws SQLException;
 
     //获取产品列表
-    List<CoProductModel> list_co_product() throws SQLException;
+    List<CoProductDo> list_co_product() throws SQLException;
 }

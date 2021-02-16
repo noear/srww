@@ -3,7 +3,7 @@ package admindemo.controller.cfg;
 import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.dso.TagUtil;
-import admindemo.model.TagCountsModel;
+import admindemo.model.TagCountsVo;
 import admindemo.model.water_cfg.ConfigDo;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -24,7 +24,7 @@ import java.util.List;
 public class PropController extends BaseController2 {
     @Mapping("")
     public ModelAndView index(String tag_name) throws SQLException {
-        List<TagCountsModel> tags = DbWaterCfgApi.getConfigTags();
+        List<TagCountsVo> tags = DbWaterCfgApi.getConfigTags();
 
 
         tag_name = TagUtil.build(tag_name,tags);

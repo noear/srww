@@ -4,7 +4,7 @@ import org.noear.solon.annotation.Inject;
 import org.noear.solon.extend.validation.annotation.Valid;
 import org.noear.srww.uapi.Uapi;
 import apidemo.dso.db.UserService;
-import apidemo.model.UserModel;
+import apidemo.model.UserDo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
 @Valid
 public class UapiBase extends Uapi {
 
-    private UserModel _user = null;
+    private UserDo _user = null;
 
     private String _g_lkey;
     private String g_lkey(){
@@ -33,13 +33,13 @@ public class UapiBase extends Uapi {
     }
 
 
-    public UserModel getUser() throws Exception {
+    public UserDo getUser() throws Exception {
         if (null == _user) {
             _user = userService.getUser(g_lkey());
         }
 
         if (null == _user) {
-            _user = new UserModel();
+            _user = new UserDo();
         }
 
         return _user;

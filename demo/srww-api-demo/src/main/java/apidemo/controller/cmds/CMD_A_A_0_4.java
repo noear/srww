@@ -9,9 +9,9 @@ import apidemo.controller.SysCodes;
 import apidemo.controller.UapiBase;
 import apidemo.dso.db.BullOrderService;
 import apidemo.dso.db.CoProductService;
-import apidemo.model.BullOrderModel;
-import apidemo.model.BullOrderStatusEnum;
-import apidemo.model.CoProductModel;
+import apidemo.model.BullOrderDo;
+import apidemo.model.BullOrderStatus;
+import apidemo.model.CoProductDo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -37,7 +37,7 @@ public class CMD_A_A_0_4 extends UapiBase {
             throw SysCodes.CODE_102;
         }
 
-        List<BullOrderModel> orders = bullOrderService.list_bull_order(getUserID(), type, next, size);
+        List<BullOrderDo> orders = bullOrderService.list_bull_order(getUserID(), type, next, size);
 
         ArrayList<Map<String, Object>> list = new ArrayList<>();
 
@@ -47,11 +47,11 @@ public class CMD_A_A_0_4 extends UapiBase {
             return data;
         }
 
-        List<CoProductModel> products = coProductService.list_co_product();
+        List<CoProductDo> products = coProductService.list_co_product();
 
         for (int i = 0; i < orders.size(); i++) {
 
-            BullOrderModel bom = orders.get(i);
+            BullOrderDo bom = orders.get(i);
             HashMap<String, Object> map = new HashMap<>();
 
             String dString = intToDateString(bom.over_date);
@@ -70,9 +70,9 @@ public class CMD_A_A_0_4 extends UapiBase {
             map.put("repayDate", intToDateString(bom.repay_date));
             map.put("link", "");
 
-            if (bom.status == BullOrderStatusEnum.PUT_LOAN.type() ||
-                    bom.status == BullOrderStatusEnum.OVER_DAY.type() ||
-                    bom.status == BullOrderStatusEnum.ORDER_FINISH.type()) {
+            if (bom.status == BullOrderStatus.PUT_LOAN.type() ||
+                    bom.status == BullOrderStatus.OVER_DAY.type() ||
+                    bom.status == BullOrderStatus.ORDER_FINISH.type()) {
 
                 map.put("amount", bom.r_amount / 100);
                 map.put("term", bom.r_term + "days");
@@ -82,21 +82,21 @@ public class CMD_A_A_0_4 extends UapiBase {
                 map.put("term", bom.l_term + "days");
             }
 
-            if (bom.status == BullOrderStatusEnum.REFUSE.type()) {
+            if (bom.status == BullOrderStatus.REFUSE.type()) {
                 // 被拒跳转链接
                 map.put("link", "");
             }
 
-            if (bom.status == BullOrderStatusEnum.ORDER_FINISH.type()) {
+            if (bom.status == BullOrderStatus.ORDER_FINISH.type()) {
                 map.put("link", "");
             }
 
             for (int j = 0; j < products.size(); j++) {
-                CoProductModel cpm = products.get(j);
+                CoProductDo cpm = products.get(j);
 
                 if (bom.p_id == cpm.product_id) {
 
-                    if (bom.status == BullOrderStatusEnum.BASIC_SUCCESS.type()) {
+                    if (bom.status == BullOrderStatus.BASIC_SUCCESS.type()) {
                         map.put("link", cpm.link_url);
                     }
 

@@ -43,7 +43,7 @@ public class CMD_A_A_0_2 extends UapiBase {
         int disabled = 0;
         String link = "";
 
-        CoProductModel cpm = coProductService.get_co_product(pId);
+        CoProductDo cpm = coProductService.get_co_product(pId);
 
         // 检测产品是否存在
         if (cpm.product_id <= 0) {
@@ -51,11 +51,11 @@ public class CMD_A_A_0_2 extends UapiBase {
         }
 
         // 查询用户是否存在该产品订单
-        BullOrderModel addBom = bullOrderService.get_bull_order(getUserID(), pId);
+        BullOrderDo addBom = bullOrderService.get_bull_order(getUserID(), pId);
 
         // 如果不存在订单，或者订单已经完结，新生成软件层面订单
-        if (addBom.order_id <= 0 || addBom.status == BullOrderStatusEnum.ORDER_FINISH.type()
-                || addBom.status == BullOrderStatusEnum.REFUSE.type()) {
+        if (addBom.order_id <= 0 || addBom.status == BullOrderStatus.ORDER_FINISH.type()
+                || addBom.status == BullOrderStatus.REFUSE.type()) {
 
             // 对该用户上锁
             if (!LockUtils.tryLock(Config.group_name, LockKeyBuilder.buildUserBullOrder(getUser().user_id))) {
@@ -73,9 +73,9 @@ public class CMD_A_A_0_2 extends UapiBase {
         }
 
         // 是否存在进行中的订单
-        BullOrderModel bom = bullOrderService.get_bull_order(getUserID(), pId);
+        BullOrderDo bom = bullOrderService.get_bull_order(getUserID(), pId);
 
-        if (bom.status > BullOrderStatusEnum.SUBMIT_SUCCESS.type()) {
+        if (bom.status > BullOrderStatus.SUBMIT_SUCCESS.type()) {
             ONode oNode = standardApi.getOrderDetail(getUserID(), bom.out_no);
 //            // 回调如果失败修正数据
 //            if (oNode.get("status").equals(bom.status)) {
@@ -83,15 +83,15 @@ public class CMD_A_A_0_2 extends UapiBase {
 //            } else {
 //                status = oNode.get("status").getInt();
 //            }
-            if (bom.status == BullOrderStatusEnum.PUT_LOAN.type()) {
+            if (bom.status == BullOrderStatus.PUT_LOAN.type()) {
                 link = oNode.get("link").getString();
             }
 
         } else {
 
             // todo 找用户认证表的状态 如果ID在其他产品认证过
-            UserValidateModel uvm = userService.get_user_validate(getUserID());
-            if (uvm.id_status == 2 && bom.status == BullOrderStatusEnum.USER_CLICKED.type()) {
+            UserValidateDo uvm = userService.get_user_validate(getUserID());
+            if (uvm.id_status == 2 && bom.status == BullOrderStatus.USER_CLICKED.type()) {
                 status = 89;
             } else {
                 status = bom.status;

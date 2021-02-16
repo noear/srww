@@ -6,9 +6,9 @@ import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.utils.EncryptUtils;
 import apidemo.dso.Logger;
-import apidemo.model.BullOrderModel;
-import apidemo.model.BullOrderStatusEnum;
-import apidemo.model.CoProductModel;
+import apidemo.model.BullOrderDo;
+import apidemo.model.BullOrderStatus;
+import apidemo.model.CoProductDo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -34,7 +34,7 @@ public class StandardOrderController extends BaseController {
         String cId = kArray[0];
         String sign = kArray[2];
 
-        CoProductModel cpm = coProductService.get_co_product(Integer.valueOf(cId));
+        CoProductDo cpm = coProductService.get_co_product(Integer.valueOf(cId));
 
         if (cpm.product_id <= 0) {
             result.put("code", 2);
@@ -68,11 +68,11 @@ public class StandardOrderController extends BaseController {
 
 
         // 只用于获取用户ID
-        BullOrderModel tmp = bullOrderService.get_bull_order_by_order_no(lmNo);
+        BullOrderDo tmp = bullOrderService.get_bull_order_by_order_no(lmNo);
 
 
         // 获取用户
-        BullOrderModel bom = bullOrderService.get_bull_order(tmp.user_id, tmp.p_id);
+        BullOrderDo bom = bullOrderService.get_bull_order(tmp.user_id, tmp.p_id);
 
         if (bom.order_id <= 0) {
             result.put("code", 4);
@@ -88,22 +88,22 @@ public class StandardOrderController extends BaseController {
         }
 
         // 被拒订单
-        if (status == BullOrderStatusEnum.REFUSE.type()) {
+        if (status == BullOrderStatus.REFUSE.type()) {
             bullOrderService.set_bull_order_auth_status(status, tmp.user_id, tmp.p_id);
         }
 
         // 放款状态
-        if (status == BullOrderStatusEnum.PUT_LOAN.type()) {
+        if (status == BullOrderStatus.PUT_LOAN.type()) {
             bullOrderService.set_put_loan_bull_order(status, amount, term, tmp.user_id, tmp.p_id);
         }
 
         // 逾期
-        if (status == BullOrderStatusEnum.PUT_LOAN.type()) {
+        if (status == BullOrderStatus.PUT_LOAN.type()) {
             bullOrderService.set_over_due_bull_order(status, dateStringToInt(overDate), tmp.user_id, tmp.p_id);
         }
 
         // 完结
-        if (status == BullOrderStatusEnum.ORDER_FINISH.type()) {
+        if (status == BullOrderStatus.ORDER_FINISH.type()) {
             bullOrderService.set_finish_bull_order(status, dateStringToInt(repayDate), tmp.user_id, tmp.p_id);
         }
 

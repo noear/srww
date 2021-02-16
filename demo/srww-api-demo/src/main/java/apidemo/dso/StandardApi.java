@@ -5,7 +5,7 @@ import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.water.utils.EncryptUtils;
 import apidemo.dso.db.CoProductService;
-import apidemo.model.CoProductModel;
+import apidemo.model.CoProductDo;
 import org.noear.water.utils.HttpUtils;
 
 import java.util.*;
@@ -82,7 +82,7 @@ public class StandardApi {
 
         json = ONode.loadStr(json).toJson();
 
-        CoProductModel model = coProductService.get_co_product(C_ID);
+        CoProductDo model = coProductService.get_co_product(C_ID);
 
         Map<String, String> query = new HashMap<>();
         StringBuilder sb = new StringBuilder();

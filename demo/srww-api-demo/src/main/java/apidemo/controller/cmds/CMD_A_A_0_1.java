@@ -7,7 +7,7 @@ import org.noear.solon.extend.validation.annotation.NotNull;
 import apidemo.controller.SysCodes;
 import apidemo.controller.UapiBase;
 import apidemo.dso.db.mapper.CoProductMapper;
-import apidemo.model.CoProductModel;
+import apidemo.model.CoProductDo;
 
 import java.util.Map;
 
@@ -26,7 +26,7 @@ public class CMD_A_A_0_1 extends UapiBase {
             throw SysCodes.CODE_102;
         }
 
-        CoProductModel model = productService.get_co_product(pId);
+        CoProductDo model = productService.get_co_product(pId);
 
         data.put("logo", model.logo);
         data.put("name", model.product_name);

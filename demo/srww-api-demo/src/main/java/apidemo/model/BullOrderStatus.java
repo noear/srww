@@ -1,6 +1,6 @@
 package apidemo.model;
 
-public enum BullOrderStatusEnum {
+public enum BullOrderStatus {
 
 
     // 0 用户点击过此产品
@@ -31,12 +31,12 @@ public enum BullOrderStatusEnum {
 
     private int status;
 
-    BullOrderStatusEnum(int status) {
+    BullOrderStatus(int status) {
         this.status = status;
     }
 
-    public static BullOrderStatusEnum of(int type) {
-        for (BullOrderStatusEnum activityAuctionStatus : values()) {
+    public static BullOrderStatus of(int type) {
+        for (BullOrderStatus activityAuctionStatus : values()) {
             if (type == activityAuctionStatus.status) {
                 return activityAuctionStatus;
             }

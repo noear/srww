@@ -2,7 +2,7 @@ package apidemo.model;
 
 import java.util.Date;
 
-public class UserValidateModel {
+public class UserValidateDo {
     /**  */
     public long user_id;
 

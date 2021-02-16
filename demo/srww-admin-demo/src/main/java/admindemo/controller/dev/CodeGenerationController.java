@@ -3,7 +3,7 @@ package admindemo.controller.dev;
 import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbPaaSApi;
 import admindemo.dso.dao.DbWaterCfgApi;
-import admindemo.model.TagCountsModel;
+import admindemo.model.TagCountsVo;
 import admindemo.model.water.FieldDo;
 import admindemo.model.water_cfg.ConfigDo;
 import admindemo.model.water_paas.PaasFileDo;
@@ -38,7 +38,7 @@ public class CodeGenerationController extends BaseController2 {
     @Mapping("")
     public ModelAndView code(String tag_name) throws SQLException {
 
-        List<TagCountsModel> tags = DbWaterCfgApi.getConfigTagsByType(CFG_TYPE_DB);
+        List<TagCountsVo> tags = DbWaterCfgApi.getConfigTagsByType(CFG_TYPE_DB);
 
         viewModel.set("tag_name", TextUtils.isNotEmpty(tag_name) ? tag_name : (tags.size() > 0 ? tags.get(0).tag : null));
 

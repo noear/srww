@@ -17,13 +17,13 @@ public interface BullOrderMapper{
     long add_bull_order(long order_id, String order_no, int agroup_id, int ugroup_id, int app_id, long p_id, long user_id, String mobile, int status, int update_date, Date update_fulltime, int create_date, Date create_fulltime) throws SQLException;
 
     //根据订单号获取订单详情
-    BullOrderModel get_bull_order_by_order_no(String order_no) throws SQLException;
+    BullOrderDo get_bull_order_by_order_no(String order_no) throws SQLException;
 
     //获取订单详情
-    BullOrderModel get_bull_order(long user_id, long p_id) throws SQLException;
+    BullOrderDo get_bull_order(long user_id, long p_id) throws SQLException;
 
     //获取订单列表
-    List<BullOrderModel> list_bull_order(long user_id, int status, long order_id, int limit) throws SQLException;
+    List<BullOrderDo> list_bull_order(long user_id, int status, long order_id, int limit) throws SQLException;
 
     //更新认证状态
     void set_bull_order_auth_status(int status, int update_date, Date update_fulltime, long user_id, long p_id) throws SQLException;

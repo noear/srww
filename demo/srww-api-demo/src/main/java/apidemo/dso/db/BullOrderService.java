@@ -6,8 +6,8 @@ import org.noear.solon.extend.data.annotation.Tran;
 import org.noear.water.utils.Datetime;
 import apidemo.dso.IDBuilder;
 import apidemo.dso.db.mapper.BullOrderMapper;
-import apidemo.model.BullOrderModel;
-import apidemo.model.BullOrderStatusEnum;
+import apidemo.model.BullOrderDo;
+import apidemo.model.BullOrderStatus;
 
 import java.sql.SQLException;
 import java.util.Date;
@@ -43,7 +43,7 @@ public class BullOrderService {
                 pId,
                 userId,
                 mobile,
-                BullOrderStatusEnum.USER_CLICKED.type(),
+                BullOrderStatus.USER_CLICKED.type(),
                 nowInt,
                 now,
                 nowInt,
@@ -51,16 +51,16 @@ public class BullOrderService {
     }
 
     //根据订单号获取订单详情
-    public BullOrderModel get_bull_order_by_order_no(String order_no) throws SQLException {
+    public BullOrderDo get_bull_order_by_order_no(String order_no) throws SQLException {
         return mapper.get_bull_order_by_order_no(order_no);
     }
 
-    public BullOrderModel get_bull_order(long userId, long p_id) throws SQLException {
+    public BullOrderDo get_bull_order(long userId, long p_id) throws SQLException {
         return mapper.get_bull_order(userId, p_id);
     }
 
     //获取订单列表
-    public List<BullOrderModel> list_bull_order(long user_id, int status, long order_id, int limit) throws SQLException {
+    public List<BullOrderDo> list_bull_order(long user_id, int status, long order_id, int limit) throws SQLException {
         return mapper.list_bull_order(user_id, status, order_id, limit);
     }
 
@@ -75,7 +75,7 @@ public class BullOrderService {
     public void set_pm_bull_order(long user_id, long p_id) throws SQLException {
         Date now = new Date();
         int nowInt = new Datetime(now).getDate();
-        mapper.set_pm_bull_order(BullOrderStatusEnum.BASIC_SUCCESS.type(), nowInt, now, nowInt, now, user_id, p_id);
+        mapper.set_pm_bull_order(BullOrderStatus.BASIC_SUCCESS.type(), nowInt, now, nowInt, now, user_id, p_id);
     }
 
     //设置认证完成状态
@@ -90,7 +90,7 @@ public class BullOrderService {
     public void set_submit_success_bull_order(long user_id, long p_id, String outNo) throws SQLException {
         Date now = new Date();
         int nowInt = new Datetime(now).getDate();
-        mapper.set_submit_success_bull_order(BullOrderStatusEnum.SUBMIT_SUCCESS.type(), outNo, nowInt, now, nowInt, now, user_id, p_id);
+        mapper.set_submit_success_bull_order(BullOrderStatus.SUBMIT_SUCCESS.type(), outNo, nowInt, now, nowInt, now, user_id, p_id);
     }
 
     //设为已放款状态

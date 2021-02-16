@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.*;
 
 @Data
-public class CoProductModel {
+public class CoProductDo {
 
     /**  */
     public long product_id;

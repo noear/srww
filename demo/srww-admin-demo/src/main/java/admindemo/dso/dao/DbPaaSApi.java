@@ -1,7 +1,7 @@
 package admindemo.dso.dao;
 
 import admindemo.Config;
-import admindemo.model.TagCountsModel;
+import admindemo.model.TagCountsVo;
 import admindemo.model.water_paas.*;
 import org.noear.water.WaterClient;
 import org.noear.water.utils.TextUtils;
@@ -20,12 +20,12 @@ public class DbPaaSApi {
     }
 
     //获取logger表tag
-    public static List<TagCountsModel> getFileTags(PaasFileType type) throws SQLException {
+    public static List<TagCountsVo> getFileTags(PaasFileType type) throws SQLException {
         return db().table("paas_file").where("file_type=?", type.code)
                 .groupBy("tag")
                 .orderByAsc("tag")
                 .select("tag,count(*) counts")
-                .getList(TagCountsModel.class);
+                .getList(TagCountsVo.class);
     }
 
     private static String list_sels = "file_id,tag,label,path,`rank`,note,is_staticize,is_editable,is_disabled,is_exclude,link_to,edit_mode,content_type,update_fulltime,plan_state,plan_begin_time,plan_last_time,plan_last_timespan,plan_interval,plan_max,plan_count";

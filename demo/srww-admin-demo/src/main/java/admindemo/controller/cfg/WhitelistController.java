@@ -3,7 +3,7 @@ package admindemo.controller.cfg;
 import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.dso.TagUtil;
-import admindemo.model.TagCountsModel;
+import admindemo.model.TagCountsVo;
 import admindemo.model.water_cfg.WhitelistDo;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -27,7 +27,7 @@ public class WhitelistController extends BaseController2 {
     //IP白名单列表
     @Mapping("")
     public ModelAndView whitelist(String tag_name) throws Exception {
-        List<TagCountsModel> tags = DbWaterCfgApi.getWhitelistTags();
+        List<TagCountsVo> tags = DbWaterCfgApi.getWhitelistTags();
 
         tag_name = TagUtil.build(tag_name,tags);
 

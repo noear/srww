@@ -1,13 +1,13 @@
 package admindemo.dso;
 
-import admindemo.model.TagCountsModel;
+import admindemo.model.TagCountsVo;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.utils.TextUtils;
 
 import java.util.List;
 
 public class TagUtil {
-    public static String build(String tag_name, List<TagCountsModel> tags) {
+    public static String build(String tag_name, List<TagCountsVo> tags) {
         if (TextUtils.isEmpty(tag_name)) {
             tag_name = cookieGet();
         }

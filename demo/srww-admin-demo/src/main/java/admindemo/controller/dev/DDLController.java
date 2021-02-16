@@ -2,7 +2,7 @@ package admindemo.controller.dev;
 
 import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbWaterCfgApi;
-import admindemo.model.TagCountsModel;
+import admindemo.model.TagCountsVo;
 import admindemo.model.water_cfg.ConfigDo;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -29,7 +29,7 @@ public class DDLController extends BaseController2 {
 
     @Mapping("")
     public ModelAndView ddl(String tag_name) throws SQLException {
-        List<TagCountsModel> tags = DbWaterCfgApi.getConfigTagsByType(CFG_TYPE_DB);
+        List<TagCountsVo> tags = DbWaterCfgApi.getConfigTagsByType(CFG_TYPE_DB);
 
         if (!TextUtils.isEmpty(tag_name)) {
             viewModel.put("tag_name", tag_name);

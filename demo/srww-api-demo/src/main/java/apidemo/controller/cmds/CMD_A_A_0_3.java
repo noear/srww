@@ -38,7 +38,7 @@ public class CMD_A_A_0_3 extends UapiBase {
         }
 
         // 先判断产品是否可用
-        CoProductModel cpm = coProductService.get_co_product(pId);
+        CoProductDo cpm = coProductService.get_co_product(pId);
 
         if (cpm.product_id <= 0) {
             throw SysCodes.CODE_1000;
@@ -56,14 +56,14 @@ public class CMD_A_A_0_3 extends UapiBase {
             throw SysCodes.CODE_1001;
         }
 
-        BullOrderModel bom = bullOrderService.get_bull_order(getUserID(), pId);
+        BullOrderDo bom = bullOrderService.get_bull_order(getUserID(), pId);
 
         // 如果当前订单状态不是银行卡认证成功，则不能进行进件
-        if (bom.status != BullOrderStatusEnum.BANK_SUCCESS.type()) {
+        if (bom.status != BullOrderStatus.BANK_SUCCESS.type()) {
             throw SysCodes.CODE_1002;
         }
 
-        UserValidateModel uvm = userService.get_user_validate(getUserID());
+        UserValidateDo uvm = userService.get_user_validate(getUserID());
 
         // 把数据传输给合作方
         ONode oNode = standardApi.submitUserInfo(getUserID(),

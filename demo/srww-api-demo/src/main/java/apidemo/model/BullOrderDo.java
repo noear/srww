@@ -2,7 +2,7 @@ package apidemo.model;
 
 import java.util.Date;
 
-public class BullOrderModel {
+public class BullOrderDo {
     /**  */
     public long order_id;
     /** 内部订单号 */

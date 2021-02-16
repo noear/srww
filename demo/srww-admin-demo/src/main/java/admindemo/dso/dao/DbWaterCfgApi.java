@@ -3,7 +3,7 @@ package admindemo.dso.dao;
 import admindemo.Config;
 import admindemo.dso.CacheUtil;
 import admindemo.dso.ConfigType;
-import admindemo.model.TagCountsModel;
+import admindemo.model.TagCountsVo;
 import admindemo.model.water_cfg.*;
 import org.noear.snack.ONode;
 import org.noear.water.WaterClient;
@@ -50,12 +50,12 @@ public class DbWaterCfgApi {
     }
 
     //获取白名单表tag
-    public static List<TagCountsModel> getWhitelistTags() throws Exception {
+    public static List<TagCountsVo> getWhitelistTags() throws Exception {
         return db().table("water_cfg_whitelist")
                 .groupBy("tag")
                 .orderByAsc("tag")
                 .select("tag,count(*) counts")
-                .getList(TagCountsModel.class);
+                .getList(TagCountsVo.class);
     }
 
     //获取ip白名单列表
@@ -316,22 +316,22 @@ public class DbWaterCfgApi {
 
 
     //获取标签数组。
-    public static List<TagCountsModel> getConfigTags() throws SQLException {
+    public static List<TagCountsVo> getConfigTags() throws SQLException {
         return db().table("water_cfg_properties")
                 .groupBy("tag")
                 .orderByAsc("tag")
                 .select("tag,count(*) counts")
-                .getList(TagCountsModel.class);
+                .getList(TagCountsVo.class);
     }
 
     // 获取有特定类型配置的TAG
-    public static List<TagCountsModel> getConfigTagsByType(int type) throws SQLException {
+    public static List<TagCountsVo> getConfigTagsByType(int type) throws SQLException {
         return db().table("water_cfg_properties")
                 .where("type = ?", type)
                 .groupBy("tag")
                 .orderByAsc("tag")
                 .select("tag, COUNT(*) AS counts")
-                .getList(TagCountsModel.class);
+                .getList(TagCountsVo.class);
     }
 
     //编辑功能，根据row_id获取config信息。
@@ -458,12 +458,12 @@ public class DbWaterCfgApi {
     //====================================================
 
     //获取logger表tag
-    public static List<TagCountsModel> getLoggerTags() throws Exception {
+    public static List<TagCountsVo> getLoggerTags() throws Exception {
         return db().table("water_cfg_logger").whereEq("is_enabled",1)
                 .groupBy("tag")
                 .orderByAsc("tag")
                 .select("tag,count(*) counts")
-                .getList(TagCountsModel.class);
+                .getList(TagCountsVo.class);
     }
 
     //根据tag获取列表。
