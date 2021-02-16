@@ -1,5 +1,6 @@
 package admindemo.controller.dev;
 
+import admindemo.controller.BaseController2;
 import admindemo.dso.ConfigType;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.model.water_cfg.ConfigModel;
@@ -22,7 +23,7 @@ import java.util.regex.Pattern;
 //非单例
 @Controller
 @Mapping("/dev/query_db")
-public class QuerySqlDbController extends BaseController {
+public class QuerySqlDbController extends BaseController2 {
    @Mapping("")
    public ModelAndView query() throws SQLException {
        List<ConfigModel> cfgs = DbWaterCfgApi.getConfigTagKeyByType(null, ConfigType.db);

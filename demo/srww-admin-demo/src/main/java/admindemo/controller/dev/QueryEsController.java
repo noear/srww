@@ -1,6 +1,7 @@
 package admindemo.controller.dev;
 
 
+import admindemo.controller.BaseController2;
 import admindemo.dso.ConfigType;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.dso.EsUtil;
@@ -22,7 +23,7 @@ import java.util.regex.Pattern;
 //非单例
 @Controller
 @Mapping("/dev/query_es")
-public class QueryEsController extends BaseController {
+public class QueryEsController extends BaseController2 {
     @Mapping("")
     public ModelAndView query() throws SQLException {
         List<ConfigModel> list = DbWaterCfgApi.getConfigTagKeyByType(null, ConfigType.elasticsearch);

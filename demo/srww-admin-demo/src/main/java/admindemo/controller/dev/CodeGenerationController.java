@@ -1,5 +1,6 @@
 package admindemo.controller.dev;
 
+import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbPaaSApi;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.model.TagCountsModel;
@@ -25,7 +26,7 @@ import java.util.Map;
 
 @Controller
 @Mapping("/dev/code")
-public class CodeGenerationController extends BaseController {
+public class CodeGenerationController extends BaseController2 {
 
     private static final int CFG_TYPE_DB = 10;
 

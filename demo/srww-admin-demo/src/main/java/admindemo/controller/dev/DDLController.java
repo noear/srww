@@ -1,5 +1,6 @@
 package admindemo.controller.dev;
 
+import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.model.TagCountsModel;
 import admindemo.model.water_cfg.ConfigModel;
@@ -17,7 +18,7 @@ import java.util.List;
 
 @Controller
 @Mapping("dev/ddl")
-public class DDLController extends BaseController {
+public class DDLController extends BaseController2 {
 
     private static final int CFG_TYPE_DB = 10;
 

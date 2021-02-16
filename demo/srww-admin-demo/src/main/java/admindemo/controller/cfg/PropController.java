@@ -1,5 +1,6 @@
 package admindemo.controller.cfg;
 
+import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.dso.TagUtil;
 import admindemo.model.TagCountsModel;
@@ -21,7 +22,7 @@ import java.util.List;
 
 @Controller
 @Mapping("/cfg/prop")
-public class PropController extends BaseController {
+public class PropController extends BaseController2 {
     @Mapping("")
     public ModelAndView index(String tag_name) throws SQLException {
         List<TagCountsModel> tags = DbWaterCfgApi.getConfigTags();

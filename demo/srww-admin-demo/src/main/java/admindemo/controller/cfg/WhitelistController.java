@@ -1,5 +1,6 @@
 package admindemo.controller.cfg;
 
+import admindemo.controller.BaseController2;
 import admindemo.dso.dao.DbWaterCfgApi;
 import admindemo.dso.TagUtil;
 import admindemo.model.TagCountsModel;
@@ -22,7 +23,7 @@ import java.util.List;
 
 @Controller
 @Mapping("/cfg/whitelist")
-public class WhitelistController extends BaseController {
+public class WhitelistController extends BaseController2 {
 
     //IP白名单列表
     @Mapping("")
