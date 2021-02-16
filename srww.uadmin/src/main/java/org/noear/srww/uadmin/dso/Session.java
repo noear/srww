@@ -1,4 +1,4 @@
-package org.noear.srww.admin.ui.dso;
+package org.noear.srww.uadmin.dso;
 
 import org.noear.bcf.BcfSessionBase;
 import org.noear.bcf.models.BcfUserModel;

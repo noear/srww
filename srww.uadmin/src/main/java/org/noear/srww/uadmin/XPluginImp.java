@@ -1,4 +1,4 @@
-package org.noear.srww.admin.ui;
+package org.noear.srww.uadmin;
 
 
 import org.noear.solon.SolonApp;

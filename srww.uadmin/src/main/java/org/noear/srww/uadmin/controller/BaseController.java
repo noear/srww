@@ -1,11 +1,11 @@
-package org.noear.srww.admin.ui.controller;
+package org.noear.srww.uadmin.controller;
 
 
 import org.noear.solon.Solon;
 import org.noear.solon.annotation.Singleton;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.ModelAndView;
-import org.noear.srww.admin.ui.model.ViewModel;
+import org.noear.srww.uadmin.model.ViewModel;
 
 
 /**

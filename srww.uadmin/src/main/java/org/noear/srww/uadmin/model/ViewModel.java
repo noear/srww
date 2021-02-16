@@ -1,4 +1,4 @@
-package org.noear.srww.admin.ui.model;
+package org.noear.srww.uadmin.model;
 
 
 import org.noear.solon.core.handle.ModelAndView;

@@ -1,4 +1,4 @@
-package org.noear.srww.admin.ui.controller;
+package org.noear.srww.uadmin.controller;
 
 import org.noear.bcf.BcfClient;
 import org.noear.bcf.models.BcfResourceModel;

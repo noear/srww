@@ -1,4 +1,4 @@
-package org.noear.srww.admin.ui.widget;
+package org.noear.srww.uadmin.widget;
 
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;

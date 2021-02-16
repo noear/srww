@@ -1,4 +1,4 @@
-package org.noear.srww.admin.ui.widget;
+package org.noear.srww.uadmin.widget;
 
 
 import freemarker.core.Environment;
@@ -12,7 +12,7 @@ import org.noear.bcf.models.BcfResourceModel;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.core.NvMap;
 import org.noear.solon.core.handle.Context;
-import org.noear.srww.admin.ui.dso.Session;
+import org.noear.srww.uadmin.dso.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;

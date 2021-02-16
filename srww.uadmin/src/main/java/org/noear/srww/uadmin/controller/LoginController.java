@@ -1,4 +1,4 @@
-package org.noear.srww.admin.ui.controller;
+package org.noear.srww.uadmin.controller;
 
 import org.noear.bcf.BcfClient;
 import org.noear.bcf.BcfUtil;
@@ -10,7 +10,7 @@ import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.MethodType;
 import org.noear.solon.core.handle.ModelAndView;
-import org.noear.srww.admin.ui.dso.Session;
+import org.noear.srww.uadmin.dso.Session;
 import org.noear.water.utils.ImageUtils;
 import org.noear.water.utils.RandomUtils;
 import org.noear.water.utils.TextUtils;
