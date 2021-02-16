@@ -43,7 +43,7 @@
 </head>
 <body onkeydown="checkKey()">
 <main>
-  <p>${title}</p>
+  <p>${app}</p>
   <br />
   <section>
     <form>
