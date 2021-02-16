@@ -22,7 +22,9 @@ public class XPluginImp implements Plugin {
     @Override
     public void start(SolonApp app) {
         isDebugMode = Solon.cfg().isDebugMode() || Solon.cfg().isFilesMode();
-        isWeedStyle2 = "text2".equals(Solon.cfg().get("weed.debug.style"));
+
+        String style = Solon.cfg().get("srww.weed.print.style");
+        isWeedStyle2 = "sql".equals(style);
 
         initWeed();
     }
