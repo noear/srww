@@ -2,11 +2,11 @@ package org.noear.srww.admin.ui.controller;
 
 import org.noear.bcf.BcfClient;
 import org.noear.bcf.models.BcfResourceModel;
+import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.ModelAndView;
-import org.noear.water.utils.TextUtils;
 
 import java.net.URLDecoder;
 
@@ -50,7 +50,7 @@ public class DockController extends BaseController {
         String fun_name = uri.split("/@")[1];
         String fun_url = uri.split("/@")[0].toLowerCase();
 
-        if (TextUtils.isEmpty(query) == false) {
+        if (Utils.isEmpty(query) == false) {
             fun_url = fun_url + "?" + query;
         }
 

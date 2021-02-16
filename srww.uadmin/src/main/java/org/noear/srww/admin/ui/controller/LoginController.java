@@ -4,6 +4,7 @@ import org.noear.bcf.BcfClient;
 import org.noear.bcf.BcfUtil;
 import org.noear.bcf.models.BcfResourceModel;
 import org.noear.bcf.models.BcfUserModel;
+import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
@@ -46,7 +47,7 @@ public class LoginController extends BaseController {
         int puid = Session.current().getPUID();
         if (puid > 0) {
             String def_url = BcfClient.getUserFirstResource(puid).uri_path;
-            if (TextUtils.isEmpty(def_url) == false) {
+            if (Utils.isEmpty(def_url) == false) {
                 redirect(def_url);
                 return;
             }

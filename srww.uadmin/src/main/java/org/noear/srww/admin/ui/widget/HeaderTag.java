@@ -10,10 +10,10 @@ import org.noear.bcf.BcfUtil;
 import org.noear.bcf.models.BcfGroupModel;
 import org.noear.bcf.models.BcfResourceModel;
 import org.noear.solon.Solon;
+import org.noear.solon.Utils;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.core.handle.Context;
 import org.noear.srww.admin.ui.dso.Session;
-import org.noear.water.utils.TextUtils;
 
 import java.io.IOException;
 import java.util.List;
@@ -62,7 +62,7 @@ public class HeaderTag implements TemplateDirectiveModel {
         for(BcfGroupModel g :list) {
             BcfResourceModel res = BcfClient.getUserFirstResourceByPack(Session.current().getPUID(), g.pgid);
 
-            if (TextUtils.isEmpty(res.uri_path) == false) {
+            if (Utils.isEmpty(res.uri_path) == false) {
                 buildItem(sb, g.cn_name, res, cPath, g.uri_path); //::en_name 改为 uri_path
             }
         }

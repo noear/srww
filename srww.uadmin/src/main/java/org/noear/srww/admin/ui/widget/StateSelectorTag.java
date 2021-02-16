@@ -5,10 +5,10 @@ import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
+import org.noear.solon.Utils;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.core.NvMap;
 import org.noear.solon.core.handle.Context;
-import org.noear.water.utils.TextUtils;
 
 import java.io.IOException;
 import java.util.Map;
@@ -42,7 +42,7 @@ public class StateSelectorTag implements TemplateDirectiveModel {
 
         sb.append("<script>").append("function " + clientID + "_onStateSelect(val,e) { ");
 
-        if (forPage && TextUtils.isEmpty(onSelect))
+        if (forPage && Utils.isEmpty(onSelect))
             sb.append("    UrlQueryBy('" + stateKey + "',val,'page');");
         else {
             sb.append("    $('#" + clinetStateKey + "').val(val);")
@@ -50,7 +50,7 @@ public class StateSelectorTag implements TemplateDirectiveModel {
                     .append("    m.find('.selected').removeClass('selected');")
                     .append("    $(e).addClass('selected');");
 
-            if (TextUtils.isEmpty(onSelect) == false) {
+            if (Utils.isEmpty(onSelect) == false) {
                 sb.append(onSelect).append("(val,e);");
             }
         }

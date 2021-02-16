@@ -10,15 +10,25 @@
         <version>1.0</version>
         <relativePath>../srww-parent/pom.xml</relativePath>
     </parent>
-    <artifactId>srww-admin-ui</artifactId>
+    <artifactId>srww.uadmin</artifactId>
     <packaging>jar</packaging>
 
-    <description>Java project for srww-admin</description>
+    <description>Java project for srww.uadmin</description>
 
     <dependencies>
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>srww-admin</artifactId>
+            <artifactId>solon.view.freemarker</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>bcfclient-solon-plugin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>water-solon-plugin</artifactId>
         </dependency>
 
     </dependencies>
