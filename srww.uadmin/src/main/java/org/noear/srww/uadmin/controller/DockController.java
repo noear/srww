@@ -21,7 +21,7 @@ public class DockController extends BaseController {
     //支持外部url
     @Mapping("/**/$*") //视图 返回
     public ModelAndView dock1(Context ctx) {
-        String uri = ctx.path().toLowerCase();
+        String uri = ctx.pathNew().toLowerCase();
         String query = ctx.queryString();
 
         try {
@@ -44,7 +44,7 @@ public class DockController extends BaseController {
     //此处改过，noear，201811(uadmin) //增加内部url支持
     @Mapping("/**/@*") //视图 返回
     public ModelAndView dock2(Context ctx) {
-        String uri = ctx.path();
+        String uri = ctx.pathNew();
         String query = ctx.queryString();
 
         String fun_name = uri.split("/@")[1];

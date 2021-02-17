@@ -33,7 +33,7 @@ public class HeaderTag implements TemplateDirectiveModel {
     private void build(Environment env) throws Exception{
         //当前视图path //此处改过，noear，20180831
         Context context = Context.current();
-        String cPath = context.path();
+        String cPath = context.pathNew();
 
 
         if (Session.current().getPUID() == 0) {   //检查用户是已登录

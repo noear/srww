@@ -27,7 +27,7 @@ public class StandardOrderController extends BaseController {
 
         Logger.logPartyOutput("callback", "raw", "", p, k);
 
-        String cmd = ctx.path().replace("/CB/", "");
+        String cmd = ctx.pathNew().replace("/CB/", "");
 
         String[] kArray = k.split("\\.");
 

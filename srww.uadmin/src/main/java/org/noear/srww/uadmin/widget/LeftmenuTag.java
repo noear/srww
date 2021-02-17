@@ -34,7 +34,7 @@ public class LeftmenuTag implements TemplateDirectiveModel {
 
         Context context = Context.current();
         //当前视图path //此处改过，noear，20180831
-        String cPath = context.path();
+        String cPath = context.pathNew();
         StringBuffer sb = new StringBuffer();
 
         List<BcfGroupModel> plist = BcfClient.getAllPacks();

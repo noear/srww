@@ -22,7 +22,7 @@ public class BcfInterceptor extends BcfInterceptorBase {
     @Override
     @Mapping(value = "**", before = true)
     public void verifyHandle(Context ctx) throws Exception {
-        String path = ctx.path().toLowerCase();
+        String path = ctx.pathNew().toLowerCase();
 
         if (path.equals("/login")) {
             return;

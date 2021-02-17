@@ -16,7 +16,7 @@ import java.util.Map;
 public class FooterTag implements TemplateDirectiveModel {
     @Override
     public void execute(Environment env, Map map, TemplateModel[] templateModels, TemplateDirectiveBody body) throws TemplateException, IOException {
-        String cpath = Context.current().path();
+        String cpath = Context.current().pathNew();
 
         if (cpath.startsWith("/login")) {
             StringBuffer sb = new StringBuffer();

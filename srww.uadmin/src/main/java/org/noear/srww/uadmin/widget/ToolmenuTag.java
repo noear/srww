@@ -42,7 +42,7 @@ public class ToolmenuTag implements TemplateDirectiveModel {
 
         Context request = Context.current();
         //当前视图path
-        String cPath = request.path();
+        String cPath = request.pathNew();
         StringBuffer sb = new StringBuffer();
 
         BcfGroupModel gPack = BcfClient.getGroupByCode(pack);

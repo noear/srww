@@ -93,7 +93,7 @@ public class XPluginImp implements Plugin {
             String chkUp = "User_Id=? AND Pass_Wd=? AND Is_Disabled=0".toUpperCase();
 
             if (cmd.timespan() > 2000 || cmd.isLog > 0 || sqlUp.indexOf("INSERT INTO ") >= 0 || sqlUp.indexOf("UPDATE ") >= 0 || sqlUp.indexOf("DELETE ") >= 0 || sqlUp.indexOf(chkUp) >= 0) {
-                WaterClient.Track.track(service_name(), cmd, ctx.userAgent(), ctx.path(), user_puid + "." + user_name, IPUtils.getIP(ctx));
+                WaterClient.Track.track(service_name(), cmd, ctx.userAgent(), ctx.pathNew(), user_puid + "." + user_name, IPUtils.getIP(ctx));
             }
         });
     }
