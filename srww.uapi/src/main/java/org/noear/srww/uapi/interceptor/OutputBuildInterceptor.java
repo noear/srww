@@ -12,7 +12,7 @@ public class OutputBuildInterceptor implements Handler {
 
     Encoder _encoder;
 
-    public OutputBuildInterceptor(){
+    public OutputBuildInterceptor() {
         _encoder = new DefEncoder();
     }
 
@@ -39,6 +39,8 @@ public class OutputBuildInterceptor implements Handler {
             output = ONode.stringify(result);
         }
 
-        ctx.attrSet(Attrs.output, output);
+        ctx.result = output;
+
+        ctx.attrSet(Attrs.output, _encoder.tryEncode(ctx, ctx.attr(Attrs.app), output));
     }
 }

@@ -7,4 +7,5 @@ public class Attrs {
     public static final String sign = "sign";
     public static final String user_id = "user_id";
     public static final String handler_name = "handler_name";
+    public static final String app = "app";
 }

@@ -7,7 +7,7 @@ import org.noear.srww.uapi.UapiCodes;
 /**
  * @author noear 2021/2/11 created
  */
-public class AuthJwtHandler implements Handler {
+public class AuthJwtInterceptor implements Handler {
     @Override
     public void handle(Context c) throws Throwable {
         if (c.header("JWT") == null) {
