@@ -1,5 +1,6 @@
 package org.noear.srww.uapi.interceptor;
 
+import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.encoder.DefEncoder;
 import org.noear.snack.ONode;
 
@@ -41,6 +42,8 @@ public class OutputBuildInterceptor implements Handler {
 
         ctx.result = output;
 
-        ctx.attrSet(Attrs.output, _encoder.tryEncode(ctx, ctx.attr(Attrs.app), output));
+        Uapi uapi = (Uapi) ctx.controller();
+
+        ctx.attrSet(Attrs.output, _encoder.tryEncode(ctx, uapi.getApp(), output));
     }
 }

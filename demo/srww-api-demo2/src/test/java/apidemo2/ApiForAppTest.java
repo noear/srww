@@ -17,6 +17,9 @@ import java.util.Map;
 @SolonTest(App.class)
 public class ApiForAppTest extends HttpTestBase {
     public ONode call(String method, Map<String, Object> args) throws Exception {
+
+        args.put("appId",1);
+
         String json = path("/api/v1/app/" + method)
                 .data(args)
                 .post();

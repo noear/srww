@@ -80,7 +80,7 @@ public class ParamsBuildInterceptor implements Handler {
                 params.sgin = token[2];
             }
 
-            ctx.attr("org_token", params.org_token);
+            ctx.attr(Attrs.org_token, params.org_token);
         }
 
         //3.尝试解析参数（涉及解码器）
