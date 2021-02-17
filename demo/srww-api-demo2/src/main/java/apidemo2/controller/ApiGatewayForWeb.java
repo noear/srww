@@ -1,6 +1,6 @@
 package apidemo2.controller;
 
-import apidemo2.controller.trigger.*;
+import apidemo2.controller.interceptor.*;
 import org.noear.snack.ONode;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;

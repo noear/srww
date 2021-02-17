@@ -3,6 +3,7 @@ package apidemo2;
 import com.zaxxer.hikari.HikariDataSource;
 import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Inject;
+import org.noear.solon.cloud.annotation.CloudConfig;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Result;
 import org.noear.solon.extend.validation.ValidatorFailureHandler;
@@ -19,17 +20,17 @@ public class Config {
 
     /**
      * 配置数据源
-     * */
+     */
     @Bean
-    public DataSource db1(@Inject("${test.db1}") HikariDataSource ds) {
+    public DataSource db1(@CloudConfig("water") HikariDataSource ds) {
         return ds;
     }
 
     /**
      * 配置验证注解的错误处理
-     * */
+     */
     @Bean
-    public ValidatorFailureHandler failureHandler(){
+    public ValidatorFailureHandler failureHandler() {
         return new ValidatorFailureHandler() {
             @Override
             public boolean onFailure(Context ctx, Annotation ano, Result result, String message) {
