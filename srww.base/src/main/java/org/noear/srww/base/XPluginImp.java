@@ -37,6 +37,7 @@ public class XPluginImp implements Plugin {
     }
 
 
+
     /**
      * 初始化Weed监听事件
      */
