@@ -12,7 +12,7 @@ import org.noear.weed.DataList;
 import org.noear.weed.annotation.Db;
 import org.noear.weed.xml.Namespace;
 
-@Namespace("demo.dso.mapper.ConfigMapper")
+@Namespace("apidemo2.dso.mapper.ConfigMapper")
 public interface ConfigMapper{
     //获取配置列表
     List<WaterCfgPropertiesDo> getConfigsByTag(String tag) throws SQLException;

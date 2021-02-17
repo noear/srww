@@ -12,7 +12,7 @@ import org.noear.weed.DataList;
 import org.noear.weed.annotation.Db;
 import org.noear.weed.xml.Namespace;
 
-@Namespace("demo.dso.mapper.RegisterMapper")
+@Namespace("apidemo2.dso.mapper.RegisterMapper")
 public interface RegisterMapper{
     //添加服务
     long addService(WaterRegServiceDo model) throws SQLException;

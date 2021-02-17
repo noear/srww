@@ -2,7 +2,7 @@ package apidemo2;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.noear.solon.annotation.Bean;
-import org.noear.solon.annotation.Inject;
+import org.noear.solon.annotation.Configuration;
 import org.noear.solon.cloud.annotation.CloudConfig;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Result;
@@ -15,6 +15,7 @@ import java.lang.annotation.Annotation;
 /**
  * @author noear 2021/2/17 created
  */
+@Configuration
 public class Config {
     public static final String logger = "demo03_api_log";
 
