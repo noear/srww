@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.validation;
+package org.noear.srww.base.validation;
 
 import org.noear.solon.Solon;
 import org.noear.solon.extend.validation.annotation.NoRepeatLock;

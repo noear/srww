@@ -8,6 +8,8 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.Plugin;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.extend.validation.ValidatorManager;
+import org.noear.srww.base.validation.NoRepeatLockNew;
+import org.noear.srww.base.validation.WhitelistCheckerNew;
 import org.noear.water.WW;
 import org.noear.water.WaterClient;
 import org.noear.water.utils.IPUtils;
@@ -22,6 +24,10 @@ public class XPluginImp implements Plugin {
 
     @Override
     public void start(SolonApp app) {
+        ValidatorManager.setNoRepeatLock(new NoRepeatLockNew());
+        ValidatorManager.setWhitelistChecker(new WhitelistCheckerNew());
+
+
         isDebugMode = Solon.cfg().isDebugMode() || Solon.cfg().isFilesMode();
 
         String style = Solon.cfg().get("srww.weed.print.style");

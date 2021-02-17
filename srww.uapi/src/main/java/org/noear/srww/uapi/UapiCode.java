@@ -1,6 +1,7 @@
 package org.noear.srww.uapi;
 
 
+import org.noear.solon.core.handle.Result;
 import org.noear.solon.ext.DataThrowable;
 
 public class UapiCode extends DataThrowable {
@@ -41,7 +42,7 @@ public class UapiCode extends DataThrowable {
     }
 
     public UapiCode(Throwable cause) {
-        super("0: " + cause.getMessage(), cause);
+        super(Result.FAILURE_CODE + ": " + cause.getMessage(), cause);
         this.description = cause.getMessage();
     }
 }

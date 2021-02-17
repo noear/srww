@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.validation;
+package org.noear.srww.base.validation;
 
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.extend.validation.annotation.Whitelist;
