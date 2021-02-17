@@ -4,6 +4,7 @@ import org.noear.snack.ONode;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Gateway;
 import org.noear.solon.core.handle.ModelAndView;
+import org.noear.solon.core.handle.Result;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -47,41 +48,23 @@ public abstract class UapiGateway extends Gateway {
             if (obj instanceof UapiCode) {
                 //处理标准的状态码
                 UapiCode err = (UapiCode) obj;
-                Map<String, Object> map = new HashMap<>();
+                String description = UapiCodes.CODE_txt(agroup_id(), g_lang(c), err);
 
-                map.put("code", err.getCode());
-                map.put("msg", UapiCodes.CODE_txt(agroup_id(), g_lang(c), err));
-
-                c.result = map;
+                c.result = Result.failure(err.getCode(), description);
             } else if (obj instanceof Throwable) {
                 //处理未知异常
-                Map<String, Object> map = new HashMap<>();
+                String description = UapiCodes.CODE_txt(agroup_id(), g_lang(c), UapiCodes.CODE_400);
 
-                map.put("code", 0);
-                map.put("msg", UapiCodes.CODE_txt(agroup_id(), g_lang(c), UapiCodes.CODE_400));
-
-                c.result = map;
+                c.result = Result.failure(Result.FAILURE_CODE, description);
             } else if (obj instanceof ONode) {
                 //处理ONode数据（为兼容旧的）
-                ONode tmp = new ONode();
-
-                tmp.set("code", 1);
-                tmp.set("msg", "");
-                tmp.setNode("data", (ONode) obj);
-
-                c.result = tmp;
+                c.result = Result.succeed(obj);
+            } else if (obj instanceof Result) {
+                //处理Result结构
+                c.result = obj;
             } else {
                 //处理java bean数据（为扩展新的）
-                Map<String, Object> map = new LinkedHashMap<>();
-
-                map.put("code", 1);
-                map.put("msg", "");
-
-                if (obj != null) {
-                    map.put("data", obj);
-                }
-
-                c.result = map;
+                c.result = Result.succeed(obj);
             }
         }
     }
