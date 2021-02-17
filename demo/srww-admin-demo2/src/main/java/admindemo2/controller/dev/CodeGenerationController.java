@@ -61,7 +61,6 @@ public class CodeGenerationController extends BaseController2 {
         viewModel.set("tag_name", tag);
 
         return view("dev/code_inner");
-
     }
 
     @Mapping("ajax/tb")

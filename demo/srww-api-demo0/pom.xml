@@ -57,7 +57,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>apidemo2.App</mainClass>
+                            <mainClass>apidemo3.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

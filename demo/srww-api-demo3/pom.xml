@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.noear</groupId>
-    <artifactId>srww-api-demo2</artifactId>
+    <artifactId>srww-api-demo3</artifactId>
     <version>demo</version>
     <packaging>jar</packaging>
 
@@ -18,12 +18,6 @@
             <groupId>org.noear</groupId>
             <artifactId>srww-api</artifactId>
             <version>1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.5.8</version>
         </dependency>
 
         <dependency>
@@ -63,7 +57,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>apidemo2.App</mainClass>
+                            <mainClass>apidemo3.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

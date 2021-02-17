@@ -7,4 +7,10 @@ solon.app:
 
 solon.cloud.water:
   server: water
+  config:
+    loadKey: demoapi.config
+  event:
+    hostname: @{demoapi_host}
+  log:
+    default: demoapi_log_slf4j
 

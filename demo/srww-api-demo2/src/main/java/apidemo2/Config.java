@@ -1,61 +1,40 @@
 package apidemo2;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.noear.solon.annotation.Bean;
-import org.noear.solon.annotation.Configuration;
-import org.noear.solon.core.cache.CacheService;
-import org.noear.water.WaterClient;
-import org.noear.water.model.ConfigM;
-import org.noear.water.utils.CacheWrap;
-import org.noear.water.utils.RedisX;
-import org.noear.weed.cache.ICacheServiceEx;
-import org.noear.weed.cache.LocalCache;
-import org.noear.weed.cache.SecondCache;
+import org.noear.solon.annotation.Inject;
+import org.noear.solon.core.handle.Context;
+import org.noear.solon.core.handle.Result;
+import org.noear.solon.extend.validation.ValidatorFailureHandler;
+import org.noear.srww.uapi.UapiCodes;
 
 import javax.sql.DataSource;
+import java.lang.annotation.Annotation;
 
-@Configuration
+/**
+ * @author noear 2021/2/17 created
+ */
 public class Config {
-    //静态配置
-    //
-    public static final int agroupId = 6;
-
-    public static final String water_config_tag = "dobbin";
-
-    public static ConfigM cfg(String key) {
-        return WaterClient.Config.get(water_config_tag, key);
-    }
-
-    public static final RedisX rd_pepper_18 = cfg("dobbin_redis").getRd(18);
-
-    public static final String group_name = "BULL";
-
-    //动态配置
+    public static final String logger = "demo03_api_log";
 
     /**
-     * 数据库
-     * @return
-     */
-    @Bean(value = "dobbin", typed = true)
-    public DataSource db1() {
-        return cfg("dobbin").getDs(true);
+     * 配置数据源
+     * */
+    @Bean
+    public DataSource db1(@Inject("${test.db1}") HikariDataSource ds) {
+        return ds;
     }
 
     /**
-     * 数据库
-     * @return
-     */
-    @Bean(value = "sponge_sugar", typed = true)
-    public DataSource db2() {
-        return cfg("sponge_sugar").getDs(true);
-    }
-
-    @Bean(value = "cache_bull", typed = true)
-    public CacheService getCacheDobbin() {
-
-        ICacheServiceEx cache_remote = cfg("dobbinapi_cache").getCh("DATA_CACHE", 60 * 5);
-        ICacheServiceEx cache_local = new LocalCache(60 * 5);
-        ICacheServiceEx cache = new SecondCache(cache_local, cache_remote).nameSet("cache_bull");
-
-        return CacheWrap.wrap(cache);
+     * 配置验证注解的错误处理
+     * */
+    @Bean
+    public ValidatorFailureHandler failureHandler(){
+        return new ValidatorFailureHandler() {
+            @Override
+            public boolean onFailure(Context ctx, Annotation ano, Result result, String message) {
+                throw UapiCodes.CODE_4001012;
+            }
+        };
     }
 }
