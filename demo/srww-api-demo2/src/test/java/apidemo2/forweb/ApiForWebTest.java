@@ -1,5 +1,6 @@
-package apidemo2;
+package apidemo2.forweb;
 
+import apidemo2.App;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.noear.snack.ONode;
@@ -35,6 +36,10 @@ public class ApiForWebTest extends HttpTestBase {
         System.out.println("Decoded: "+json);
 
         return ONode.loadStr(json);
+    }
+
+    public ONode call(String method, String args) throws Exception {
+        return call(method, (Map<String, Object>) ONode.loadStr(args).toData());
     }
 
 

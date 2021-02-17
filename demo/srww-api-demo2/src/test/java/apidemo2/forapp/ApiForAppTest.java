@@ -1,5 +1,6 @@
-package apidemo2;
+package apidemo2.forapp;
 
+import apidemo2.App;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.noear.snack.ONode;
@@ -26,17 +27,21 @@ public class ApiForAppTest extends HttpTestBase {
 
         return ONode.loadStr(json);
     }
+    public ONode call(String method, String args) throws Exception {
+        return call(method, (Map<String, Object>) ONode.loadStr(args).toData());
+    }
 
     @Test
     public void config_set() throws Exception {
-        ONode node = call("config.set", new KvMap().set("tag", "demo").set("key","test").set("value","test"));
-
+//        ONode node = call("config.set", new KvMap().set("tag", "demo").set("key","test").set("value","test"));
+        ONode node = call("config.set", "{tag:'demo',key:'test',value:'test'}");
         assert node.get("code").getInt() == 200;
     }
 
     @Test
     public void config_get() throws Exception {
-        ONode node = call("config.get", new KvMap().set("tag", "demo"));
+//        ONode node = call("config.get", new KvMap().set("tag", "demo"));
+        ONode node = call("config.get", "{tag:'demo'}");
 
         assert node.get("code").getInt() == 200;
         assert node.get("data").count() > 0;
