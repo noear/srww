@@ -17,6 +17,11 @@ public class Uapi {
         ctx = Context.current();
     }
 
+
+    public static <T extends Uapi> T current(){
+        return (T) Context.current().controller();
+    }
+
     /**
      * 接口名称（不一定会有）
      * */
@@ -28,8 +33,11 @@ public class Uapi {
         }
     }
 
-    public static <T extends Uapi> T current(){
-        return (T) Context.current().controller();
+    /**
+     * 上下文对象
+     * */
+    public Context context(){
+        return ctx;
     }
 
 
@@ -85,13 +93,6 @@ public class Uapi {
         return _params;
     }
 
-    /**
-     * 未知错误
-     * */
-    public Throwable error(){
-        return ctx.attr(Attrs.error);
-    }
-
     private String _ip;
     public String ip() {
         if (_ip == null) {
@@ -118,5 +119,10 @@ public class Uapi {
 
     public AppModel getApp(int appID) throws SQLException{
         return RockClient.getAppByID(appID);
+    }
+
+
+    public long getUserID(){
+        return 0;
     }
 }

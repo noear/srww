@@ -57,7 +57,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>admindemo1.App</mainClass>
+                            <mainClass>admindemo2.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

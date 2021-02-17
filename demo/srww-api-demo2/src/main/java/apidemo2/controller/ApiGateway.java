@@ -2,7 +2,6 @@ package apidemo2.controller;
 
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
-import org.noear.solon.core.Aop;
 import org.noear.srww.uapi.UapiGateway;
 import org.noear.srww.uapi.decoder.AesDecoder;
 import org.noear.srww.uapi.encoder.AesEncoder;
@@ -10,7 +9,6 @@ import org.noear.srww.uapi.encoder.Sha1Encoder;
 import org.noear.srww.uapi.encoder.Sha256Encoder;
 import org.noear.srww.uapi.interceptor.*;
 import apidemo2.Config;
-import apidemo2.controller.interceptor.LogInterceptor;
 import org.noear.srww.uapi.interceptor.ParamsAuthInterceptor;
 
 @Mapping("/API/*")
@@ -31,7 +29,7 @@ public class ApiGateway extends UapiGateway {
         after(new OutputBuildInterceptor(new AesEncoder()));//构建输出内容
         after(new OutputSignInterceptor(new Sha1Encoder()));//输出签名
         after(new OutputInterceptor());//输出
-        after(new LogInterceptor());//记录日志
+        after(new LogInterceptor("demoapi_log"));//记录日志
         after(new EndInterceptor("API"));//结束计时，并上报
 
         addBeans(bw -> "api".equals(bw.tag()));
