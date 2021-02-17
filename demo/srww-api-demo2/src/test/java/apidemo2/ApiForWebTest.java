@@ -32,7 +32,7 @@ public class ApiForWebTest extends HttpTestBase {
 
         String json = new String(Base64.getDecoder().decode(josn_b64));
 
-        System.out.println("Base64 decoded: "+json);
+        System.out.println("Decoded: "+json);
 
         return ONode.loadStr(json);
     }
