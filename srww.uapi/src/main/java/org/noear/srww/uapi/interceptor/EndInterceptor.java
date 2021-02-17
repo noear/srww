@@ -26,7 +26,7 @@ public class EndInterceptor implements Handler {
         String _from = FromUtils.getFrom(ctx);
 
         String service = Instance.local().service();
-        String path = ctx.path();
+        String path = ctx.pathNew();
         String node = Instance.local().address();
 
         WaterClient.Track.track(service, _tag, path, timecount.stop().milliseconds(), node, _from);
