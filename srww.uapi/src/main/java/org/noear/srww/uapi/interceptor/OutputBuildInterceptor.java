@@ -45,6 +45,12 @@ public class OutputBuildInterceptor implements Handler {
         Uapi uapi = (Uapi) ctx.controller();
 
         ctx.attrSet(Attrs.org_output, output);
-        ctx.attrSet(Attrs.output, _encoder.tryEncode(ctx, uapi.getApp(), output));
+
+        if (uapi.getAppId() > 0) {
+            ctx.attrSet(Attrs.output, _encoder.tryEncode(ctx, uapi.getApp(), output));
+        } else {
+            //ctx.attrSet(Attrs.output, output);
+            ctx.statusSet(400);
+        }
     }
 }

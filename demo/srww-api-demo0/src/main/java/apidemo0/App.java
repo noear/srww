@@ -3,6 +3,7 @@ package apidemo0;
 import org.noear.solon.Solon;
 
 /**
+ *
  * @author noear 2021/2/17 created
  */
 public class App {

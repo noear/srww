@@ -14,9 +14,15 @@ import org.noear.srww.uapi.interceptor.*;
 public class ApiGateway extends UapiGateway {
     @Override
     protected void register() {
+        // 快速体验：
+        //
+        // http://localhost:8080/api/v1/xxx
+        //
+        // http://localhost:8080/api/v1/a.0.1
+        //
         before(new StartInterceptor()); //开始计时
 
-        after(new OutputBuildInterceptor(new AesEncoder()));//构建输出内容
+        after(new OutputBuildInterceptor());//构建输出内容
         after(new OutputInterceptor());//输出
         after(new LogInterceptor());//记录日志
         after(new EndInterceptor("API"));//结束计时，并上报

@@ -15,6 +15,12 @@ import org.noear.srww.uapi.interceptor.*;
 public class ApiGateway3x extends ApiGateway {
     @Override
     protected void register() {
+        // 快速体验：
+        //
+        // 通过单元测试走
+        //
+        // http://localhost:8080/api/v2/app/a.b.c
+        //
         before(new StartInterceptor());
         before(new ParamsBuildInterceptor(new AesDecoder()));
         before(new ParamsAuthInterceptor(new Md5Encoder()));

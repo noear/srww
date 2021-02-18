@@ -20,6 +20,12 @@ import java.util.Base64;
 public class ApiGateway2x extends ApiGateway {
     @Override
     protected void register() {
+        // 快速体验：
+        //
+        // 通过单元测试走
+        //
+        // http://localhost:8080/api/v1/web/a.b.c
+        //
         before(new StartInterceptor());
         before(new AuthJwtInterceptor());
 
