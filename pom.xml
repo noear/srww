@@ -9,7 +9,6 @@
     <version>structure</version>
     <packaging>pom</packaging>
 
-
     <modules>
         <module>srww-parent</module>
 
