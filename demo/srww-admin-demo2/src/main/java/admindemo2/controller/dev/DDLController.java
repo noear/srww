@@ -1,7 +1,7 @@
 package admindemo2.controller.dev;
 
 import admindemo2.controller.BaseController2;
-import admindemo2.dso.dao.DbWaterCfgApi;
+import admindemo2.dso.db.DbWaterCfgApi;
 import admindemo2.model.TagCountsVo;
 import admindemo2.model.water_cfg.ConfigDo;
 import org.noear.solon.annotation.Controller;

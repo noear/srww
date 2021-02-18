@@ -1,7 +1,7 @@
 package admindemo2.dso;
 
 
-import admindemo2.dso.dao.DbWaterCfgApi;
+import admindemo2.dso.db.DbWaterCfgApi;
 import admindemo2.model.water_cfg.EnumDo;
 
 import java.sql.SQLException;

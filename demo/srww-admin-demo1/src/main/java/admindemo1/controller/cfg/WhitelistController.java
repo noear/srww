@@ -1,10 +1,10 @@
-package admindemo2.controller.cfg;
+package admindemo1.controller.cfg;
 
-import admindemo2.controller.BaseController2;
-import admindemo2.dso.db.DbWaterCfgApi;
-import admindemo2.dso.TagUtil;
-import admindemo2.model.TagCountsVo;
-import admindemo2.model.water_cfg.WhitelistDo;
+import admindemo1.controller.BaseController2;
+import admindemo1.dso.TagUtil;
+import admindemo1.dso.db.DbWaterCfgApi;
+import admindemo1.model.TagCountsVo;
+import admindemo1.model.water_cfg.WhitelistDo;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;

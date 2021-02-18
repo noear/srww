@@ -1,4 +1,4 @@
-package admindemo2.dso.dao;
+package admindemo2.dso.db;
 
 import admindemo2.Config;
 import admindemo2.dso.CacheUtil;

@@ -1,4 +1,4 @@
-package admindemo2;
+package admindemo1;
 
 import org.noear.water.WW;
 import org.noear.water.WaterClient;
