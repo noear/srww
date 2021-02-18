@@ -1,7 +1,7 @@
 package apidemo1.dso;
 
 
-import apidemo2.App;
+import apidemo1.App;
 import org.noear.mlog.utils.Tags;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.cloud.CloudLogger;

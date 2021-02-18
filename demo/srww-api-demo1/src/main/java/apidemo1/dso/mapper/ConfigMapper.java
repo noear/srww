@@ -5,14 +5,14 @@ import java.sql.SQLException;
 import java.time.*;
 import java.util.*;
 
-import apidemo2.model.db.WaterCfgPropertiesDo;
+import apidemo1.model.db.WaterCfgPropertiesDo;
 import org.noear.weed.BaseMapper;
 import org.noear.weed.DataItem;
 import org.noear.weed.DataList;
 import org.noear.weed.annotation.Db;
 import org.noear.weed.xml.Namespace;
 
-@Namespace("apidemo2.dso.mapper.ConfigMapper")
+@Namespace("apidemo1.dso.mapper.ConfigMapper")
 public interface ConfigMapper{
     //获取配置列表
     List<WaterCfgPropertiesDo> getConfigsByTag(String tag) throws SQLException;
