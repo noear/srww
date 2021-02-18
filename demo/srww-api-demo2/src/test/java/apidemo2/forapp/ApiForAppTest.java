@@ -8,6 +8,7 @@ import org.noear.solon.test.HttpTestBase;
 import org.noear.solon.test.KvMap;
 import org.noear.solon.test.SolonJUnit4ClassRunner;
 import org.noear.solon.test.SolonTest;
+import org.noear.srww.uapi.interceptor.Attrs;
 
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import java.util.Map;
 public class ApiForAppTest extends HttpTestBase {
     public ONode call(String method, Map<String, Object> args) throws Exception {
 
-        args.put("appId",1);
+        args.put(Attrs.app_id, 1);
 
         String json = path("/api/v1/app/" + method)
                 .data(args)
@@ -27,6 +28,7 @@ public class ApiForAppTest extends HttpTestBase {
 
         return ONode.loadStr(json);
     }
+
     public ONode call(String method, String args) throws Exception {
         return call(method, (Map<String, Object>) ONode.loadStr(args).toData());
     }

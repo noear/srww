@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.noear.snack.ONode;
 import org.noear.solon.test.*;
+import org.noear.srww.uapi.interceptor.Attrs;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -17,7 +18,7 @@ import java.util.Map;
 @SolonTest(App.class)
 public class ApiForWebTest extends HttpTestBase {
     public ONode call(String method, Map<String, Object> args) throws Exception {
-        args.put("appId",1);
+        args.put(Attrs.app_id, 1);
 
         ONode node = new ONode();
         node.set("method", method);
