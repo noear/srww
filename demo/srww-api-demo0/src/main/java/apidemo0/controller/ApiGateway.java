@@ -18,7 +18,7 @@ public class ApiGateway extends UapiGateway {
 
         after(new OutputBuildInterceptor(new AesEncoder()));//构建输出内容
         after(new OutputInterceptor());//输出
-        after(new LogInterceptor("demoapi_log"));//记录日志
+        after(new LogInterceptor());//记录日志
         after(new EndInterceptor("API"));//结束计时，并上报
 
         addBeans(bw -> "api".equals(bw.tag()));
