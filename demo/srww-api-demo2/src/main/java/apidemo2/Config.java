@@ -17,8 +17,6 @@ import java.lang.annotation.Annotation;
  */
 @Configuration
 public class Config {
-    public static final String logger = "demo03_api_log";
-
     /**
      * 配置数据源
      */

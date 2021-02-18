@@ -3,6 +3,7 @@ package org.noear.srww.uapi.interceptor;
 import org.noear.mlog.Logger;
 import org.noear.mlog.LoggerFactory;
 import org.noear.mlog.utils.Tags;
+import org.noear.snack.ONode;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.srww.uapi.Uapi;
@@ -46,7 +47,7 @@ public class LogInterceptor implements Handler {
 
         String orgInput = uapi.getOrgInput();
         if (null == orgInput) {
-            orgInput = "";
+            orgInput = ONode.stringify(uapi.context().paramMap());
         }
         if (orgInput.length() > 900) {
             orgInput = orgInput.substring(0, 900);
@@ -77,7 +78,7 @@ public class LogInterceptor implements Handler {
 
         String orgInput = uapi.getOrgInput();
         if (null == orgInput) {
-            orgInput = "";
+            orgInput = ONode.stringify(uapi.context().paramMap());
         }
         if (orgInput.length() > 900) {
             orgInput = orgInput.substring(0, 900);
