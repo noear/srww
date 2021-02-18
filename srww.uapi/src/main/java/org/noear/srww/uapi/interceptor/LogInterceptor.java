@@ -21,16 +21,20 @@ public class LogInterceptor implements Handler {
 
     @Override
     public void handle(Context ctx) throws Exception {
-        Uapi api = (Uapi) ctx.controller();
+        Uapi uapi = (Uapi) ctx.controller();
 
-        String orgOutput = api.getOrgOutput();
+        if(uapi == null){
+            return;
+        }
+
+        String orgOutput = uapi.getOrgOutput();
 
         if (null != orgOutput) {
-            logOutput(api, orgOutput);
+            logOutput(uapi, orgOutput);
         }
 
         if (null != ctx.errors) {
-            logError(api, ctx.errors);
+            logError(uapi, ctx.errors);
         }
     }
 
