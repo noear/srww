@@ -1,10 +1,11 @@
-package apidemo2.forweb;
+package apidemo2;
 
 import apidemo2.App;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.noear.snack.ONode;
 import org.noear.solon.test.*;
+import org.noear.srww.uapi.interceptor.Attrs;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -15,9 +16,12 @@ import java.util.Map;
  */
 @RunWith(SolonJUnit4ClassRunner.class)
 @SolonTest(App.class)
-public class ApiForWebTest extends HttpTestBase {
+public class ApiTest2x extends HttpTestBase {
+    public static final int app_id = 2;
+    public static final String app_sign_secret = "djjePPbqBz35U328";
+
     public ONode call(String method, Map<String, Object> args) throws Exception {
-        args.put("appId",1);
+        args.put(Attrs.app_id, app_id);
 
         ONode node = new ONode();
         node.set("method", method);
@@ -27,7 +31,7 @@ public class ApiForWebTest extends HttpTestBase {
         String json_b640 = Base64.getEncoder().encodeToString(json0.getBytes(StandardCharsets.UTF_8));
 
         String josn_b64 = path("/api/v1/web/")
-                .header("JWT", "noear")
+                .header(Attrs.h_token, "noear")
                 .bodyTxt(json_b640)
                 .post();
 

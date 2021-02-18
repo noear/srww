@@ -9,7 +9,7 @@ import org.noear.srww.uapi.interceptor.*;
  */
 @Mapping("/api/v1/app/**")
 @Controller
-public class ApiGatewayForApp extends ApiGateway {
+public class ApiGateway1x extends ApiGateway {
     @Override
     protected void register() {
         before(new StartInterceptor());

@@ -68,7 +68,7 @@ public class ParamsAuthInterceptor implements Handler {
     /**
      * 签权算法
      */
-    private boolean checkSign(Context context, AppModel app, String cmd, String params, String sign) throws Exception {
+    private boolean checkSign(Context context, AppModel app, String cmd, String orgInput, String orgInputSign) throws Exception {
         if (TextUtils.isEmpty(cmd)) {
             return false;
         }
@@ -76,10 +76,10 @@ public class ParamsAuthInterceptor implements Handler {
         String key = app.app_key;
 
         StringBuilder sb = new StringBuilder();
-        sb.append(cmd).append("#").append(params).append("#").append(key);
+        sb.append(cmd).append("#").append(orgInput).append("#").append(key);
 
         String _sign_ = _encoder.tryEncode(context, app, sb.toString());
 
-        return (_sign_.equalsIgnoreCase(sign));
+        return (_sign_.equalsIgnoreCase(orgInputSign));
     }
 }

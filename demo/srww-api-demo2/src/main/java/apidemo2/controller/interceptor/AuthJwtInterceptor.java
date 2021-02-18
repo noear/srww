@@ -3,6 +3,7 @@ package apidemo2.controller.interceptor;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.srww.uapi.UapiCodes;
+import org.noear.srww.uapi.interceptor.Attrs;
 
 /**
  * @author noear 2021/2/11 created
@@ -10,7 +11,7 @@ import org.noear.srww.uapi.UapiCodes;
 public class AuthJwtInterceptor implements Handler {
     @Override
     public void handle(Context c) throws Throwable {
-        if (c.header("JWT") == null) {
+        if (c.header(Attrs.h_token) == null) {
             throw UapiCodes.CODE_4001012;
         }
     }

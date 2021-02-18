@@ -20,7 +20,7 @@ import java.util.Base64;
  */
 @Mapping("/api/v1/web/")
 @Controller
-public class ApiGatewayForWeb extends ApiGateway {
+public class ApiGateway2x extends ApiGateway {
     @Override
     protected void register() {
         before(new StartInterceptor());
