@@ -14,7 +14,7 @@
 </parent>
 ```
 
-#### 接口开发
+#### 接口开发依赖
 ```xml
 <dependencies>
     <dependency>
@@ -24,7 +24,7 @@
 </dependencies>
 ```
 
-#### 管理后台开发
+#### 管理后台开发依赖
 ```xml
 <dependencies>
     <dependency>
