@@ -20,7 +20,7 @@ public class ApiGateway3x extends ApiGateway {
 
         after(new OutputBuildInterceptor(new AesEncoder()));
         after(new OutputInterceptor());
-        after(new EndInterceptor("api.web"));
+        after(new EndInterceptor("v2.api.app"));
 
         super.register();
     }

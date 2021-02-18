@@ -28,7 +28,7 @@ public class ApiTest3x extends HttpTestBase {
         String json0 = ONode.stringify(args);
         String json_b640 = EncryptUtils.aesEncrypt(json0, app_sign_secret);
 
-        String authorization = String.format("%d.1.%s", app_id, EncryptUtils.md5(json_b640));
+        String authorization = String.format("%d.1.%s", app_id, EncryptUtils.md5(json0));
 
         String josn_b64 = path("/api/v2/app/" + method)
                 .header(Attrs.h_token, "noear")

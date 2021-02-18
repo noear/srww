@@ -81,8 +81,6 @@ public class ParamsBuildInterceptor implements Handler {
                 ctx.paramSet(Attrs.ver_id, String.valueOf(ver_id));
                 ctx.attrSet(Attrs.org_input_sign, org_input_sgin);
             }
-
-            ctx.attrSet(Attrs.org_token, org_token);
         }
 
         //3.尝试解析参数（涉及解码器）
@@ -112,7 +110,7 @@ public class ParamsBuildInterceptor implements Handler {
             }
 
 
-            ctx.attr(Attrs.org_input, org_input);
+            ctx.attrSet(Attrs.org_input, org_input);
         }
     }
 }
