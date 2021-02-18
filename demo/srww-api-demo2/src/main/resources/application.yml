@@ -7,6 +7,4 @@ solon.app:
 
 solon.cloud.water:
   server: water
-  log:
-    default: wateradmin_log
 

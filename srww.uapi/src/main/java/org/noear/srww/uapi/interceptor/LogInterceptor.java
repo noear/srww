@@ -10,6 +10,10 @@ import org.noear.srww.uapi.Uapi;
 public class LogInterceptor implements Handler {
     Logger logger;
 
+    public LogInterceptor() {
+        logger = LoggerFactory.get(LogInterceptor.class);
+    }
+
     public LogInterceptor(String loggerName) {
         logger = LoggerFactory.get(loggerName);
     }
@@ -33,7 +37,7 @@ public class LogInterceptor implements Handler {
      * 日志拦截器中使用
      *
      * @param uapi
-     * @param result
+     * @param orgOutput
      */
     protected void logOutput(Uapi uapi, String orgOutput) {
         if (orgOutput == null) {
@@ -64,10 +68,10 @@ public class LogInterceptor implements Handler {
      * 日志拦截器中使用
      *
      * @param uapi
-     * @param e
+     * @param err
      */
-    protected void logError(Uapi uapi, Throwable e) {
-        if (e == null) {
+    protected void logError(Uapi uapi, Throwable err) {
+        if (err == null) {
             return;
         }
 
@@ -86,7 +90,7 @@ public class LogInterceptor implements Handler {
                 Tags.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId)),
                 "{}\n\n{}",
                 orgInput,
-                e
+                err
         );
     }
 }
