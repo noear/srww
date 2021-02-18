@@ -34,18 +34,9 @@ public class ApiTest extends HttpTestBase {
     }
 
     @Test
-    public void config_set() throws Exception {
+    public void A_0_1() throws Exception {
 //        ONode node = call("config.set", new KvMap().set("tag", "demo").set("key","test").set("value","test"));
-        ONode node = call("config.set", "{tag:'demo',key:'test',value:'test'}");
+        ONode node = call("A.0.1", "{tag:'demo',key:'test',value:'test'}");
         assert node.get("code").getInt() == 200;
-    }
-
-    @Test
-    public void config_get() throws Exception {
-//        ONode node = call("config.get", new KvMap().set("tag", "demo"));
-        ONode node = call("config.get", "{tag:'demo'}");
-
-        assert node.get("code").getInt() == 200;
-        assert node.get("data").count() > 0;
     }
 }
