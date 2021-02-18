@@ -92,8 +92,6 @@ public class WhitelistController extends BaseController2 {
     //删除IP白名单记录
     @Mapping("ajax/del")
     public ViewModel saveWhitelistDel(Integer row_id) throws Exception {
-
-
         boolean result = DbWaterCfgApi.delWhitelist(row_id);
         if (result) {
             DbWaterCfgApi.reloadWhitelist();
@@ -146,8 +144,6 @@ public class WhitelistController extends BaseController2 {
     //批量删除
     @Mapping("ajax/batch")
     public ViewModel batchDo(Context ctx, String tag, Integer act, String ids) throws Exception {
-
-
         if(act == null){
             act = 0;
         }
