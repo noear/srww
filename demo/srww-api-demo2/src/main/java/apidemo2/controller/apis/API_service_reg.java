@@ -3,10 +3,10 @@ package apidemo2.controller.apis;
 import apidemo2.controller.ApiBase;
 import apidemo2.dso.mapper.RegisterMapper;
 import apidemo2.model.db.WaterRegServiceDo;
-import cn.hutool.crypto.SecureUtil;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.extend.validation.annotation.NotEmpty;
+import org.noear.water.utils.EncryptUtils;
 import org.noear.weed.annotation.Db;
 
 /**
@@ -24,7 +24,7 @@ public class API_service_reg extends ApiBase {
         WaterRegServiceDo model = new WaterRegServiceDo();
 
         //1.拼装一个模型
-        model.key = SecureUtil.md5(service + "#" + address);
+        model.key = EncryptUtils.md5(service + "#" + address);
         model.name = service;
         model.address = address;
         model.meta = meta;

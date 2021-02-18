@@ -2,10 +2,10 @@ package apidemo2.controller.apis;
 
 import apidemo2.controller.ApiBase;
 import apidemo2.dso.mapper.RegisterMapper;
-import cn.hutool.crypto.SecureUtil;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.extend.validation.annotation.NotEmpty;
+import org.noear.water.utils.EncryptUtils;
 import org.noear.weed.annotation.Db;
 
 /**
@@ -21,7 +21,7 @@ public class API_service_unreg extends ApiBase {
     @Mapping("service.unreg")
     public void exec(String service, String address) throws Throwable {
 
-        String key = SecureUtil.md5(service + "#" + address);
+        String key = EncryptUtils.md5(service + "#" + address);
 
         //1.删除注册的服务
         registerMapper.delService(key);
