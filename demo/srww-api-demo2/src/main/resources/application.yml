@@ -8,5 +8,5 @@ solon.app:
 solon.cloud.water:
   server: water
   log:
-    default: water_log_api
+    default: wateradmin_log
 
