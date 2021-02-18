@@ -6,12 +6,11 @@ import org.noear.mlog.utils.Tags;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.srww.uapi.Uapi;
-import org.noear.srww.uapi.UapiParams;
 
 public class LogInterceptor implements Handler {
     Logger logger;
 
-    public LogInterceptor(String loggerName){
+    public LogInterceptor(String loggerName) {
         logger = LoggerFactory.get(loggerName);
     }
 
@@ -19,16 +18,14 @@ public class LogInterceptor implements Handler {
     public void handle(Context ctx) throws Exception {
         Uapi api = (Uapi) ctx.controller();
 
-        UapiParams params = api.params();
+        String orgOutput = api.getOrgOutput();
 
-        String output = ctx.attr(Attrs.output);
-
-        if (null != output) {
-            logOutput(api, params, output);
+        if (null != orgOutput) {
+            logOutput(api, orgOutput);
         }
 
         if (null != ctx.errors) {
-            logError(api, params, ctx.errors);
+            logError(api, ctx.errors);
         }
     }
 
@@ -36,33 +33,30 @@ public class LogInterceptor implements Handler {
      * 日志拦截器中使用
      *
      * @param uapi
-     * @param params
      * @param result
      */
-    protected void logOutput(Uapi uapi, UapiParams params, String result) {
-
-        String summary = (null == params) ? "" : params.org_param;
-        if (null == summary) {
-            summary = "";
-        }
-        if (summary.length() > 900) {
-            summary = summary.substring(0, 900);
+    protected void logOutput(Uapi uapi, String orgOutput) {
+        if (orgOutput == null) {
+            return;
         }
 
-        String content = (null == result) ? "" : result.toString();
-
-        int ver = 0;
-        if (null != params) {
-            ver = params.verID;
+        String orgInput = uapi.getOrgInput();
+        if (null == orgInput) {
+            orgInput = "";
+        }
+        if (orgInput.length() > 900) {
+            orgInput = orgInput.substring(0, 900);
         }
 
-        long user_id = uapi.getUserID();
+
+        int verId = uapi.getVerId();
+        long userId = uapi.getUserID();
 
         logger.info(
-                Tags.tag0(uapi.name()).tag1(String.valueOf(user_id)).tag2(String.valueOf(ver)),
+                Tags.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId)),
                 "{}\n\n{}",
-                summary,
-                content
+                orgInput,
+                orgOutput
         );
     }
 
@@ -70,19 +64,28 @@ public class LogInterceptor implements Handler {
      * 日志拦截器中使用
      *
      * @param uapi
-     * @param params
      * @param e
      */
-    protected void logError(Uapi uapi, UapiParams params, Throwable e) {
+    protected void logError(Uapi uapi, Throwable e) {
+        if (e == null) {
+            return;
+        }
 
-        String summary = null != params ? params.org_param : "";
-        String tag2 = null != params ? String.valueOf(params.verID) : "";
-        long user_id = uapi.getUserID();
+        String orgInput = uapi.getOrgInput();
+        if (null == orgInput) {
+            orgInput = "";
+        }
+        if (orgInput.length() > 900) {
+            orgInput = orgInput.substring(0, 900);
+        }
+
+        int verId = uapi.getVerId();
+        long userId = uapi.getUserID();
 
         logger.error(
-                Tags.tag0(uapi.name()).tag1(String.valueOf(user_id)).tag2(tag2),
+                Tags.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId)),
                 "{}\n\n{}",
-                summary,
+                orgInput,
                 e
         );
     }

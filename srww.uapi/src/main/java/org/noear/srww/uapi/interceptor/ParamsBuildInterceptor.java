@@ -1,7 +1,7 @@
 package org.noear.srww.uapi.interceptor;
 
-import org.noear.srww.uapi.UapiParams;
 import org.noear.snack.ONode;
+import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.decoder.Decoder;
 import org.noear.srww.uapi.decoder.DefDecoder;
 import org.noear.solon.Utils;
@@ -45,74 +45,74 @@ public class ParamsBuildInterceptor implements Handler {
 
 
         /** 处理CMD风格的参数 */
-        UapiParams params = new UapiParams(ctx);
-        ctx.attrSet(Attrs.params, params);
 
         //1.获取参数与令牌
         //
-        params.org_param = ctx.param("p"); //参数
-        params.org_token = ctx.param("k"); //令牌
+        String org_input = ctx.param("p"); //参数
+        String org_token = ctx.param("k"); //令牌
+        String org_input_sgin;
+        int app_id = 0;
+        int ver_id = 0;
 
-        if (params.org_token == null) {
+        if (org_token == null) {
             //支持 header 传
-            params.org_token = ctx.header("Authorization"); //令牌
+            org_token = ctx.header("Authorization"); //令牌
         }
 
-        if (params.org_param == null) {
+        if (org_input == null) {
             //支持 body 传
-            String ct = ctx.contentType();
-            if (ct != null && ct.indexOf("/json") > 0) { //参数
-                params.org_param = ctx.body();
-            }
+            org_input = ctx.body();
         }
 
         //2.尝试解析令牌
         //
-        if (!Utils.isEmpty(params.org_token)) {
+        if (!Utils.isEmpty(org_token)) {
             //
             //token:{appid}.{verid}.{sgin}
             //
-            String[] token = params.org_token.split("\\.");
+            String[] token = org_token.split("\\.");
 
             if (token.length >= 3) {
-                params.appID = Integer.parseInt(token[0]);
-                params.verID = Integer.parseInt(token[1]);
-                params.sgin = token[2];
+                app_id = Integer.parseInt(token[0]);
+                ver_id = Integer.parseInt(token[1]);
+                org_input_sgin = token[2];
+
+                ctx.paramSet(Attrs.app_id, String.valueOf(app_id));
+                ctx.paramSet(Attrs.ver_id, String.valueOf(ver_id));
+                ctx.attrSet(Attrs.org_input_sign, org_input_sgin);
             }
 
-            ctx.attr(Attrs.org_token, params.org_token);
+            ctx.attrSet(Attrs.org_token, org_token);
         }
 
         //3.尝试解析参数（涉及解码器）
         //
-        if (!Utils.isEmpty(params.org_param)) {
-            //尝试解码
-            //
-            params.org_param = _decoder.tryDecode(ctx, params.getApp(), params.org_param);
+        if (!Utils.isEmpty(org_input)) {
 
-            //解析数据
-            //
-            ONode tmp = ONode.load(params.org_param);
-
-            if (tmp.isObject()) {
-                //转到上下文参数
+            //如果有应用id
+            if (app_id > 0) {
+                //尝试解码
                 //
-                tmp.obj().forEach((k, v) -> {
-                    if (v.isValue()) {
-                        ctx.paramSet(k, v.getString());
-                    }
-                });
+                Uapi uapi = (Uapi) ctx.controller();
+                org_input = _decoder.tryDecode(ctx, uapi.getApp(), org_input);
+
+                //解析数据
+                //
+                ONode tmp = ONode.load(org_input);
+
+                if (tmp.isObject()) {
+                    //转到上下文参数
+                    //
+                    tmp.obj().forEach((k, v) -> {
+                        if (v.isValue()) {
+                            ctx.paramSet(k, v.getString());
+                        }
+                    });
+                }
             }
 
-            if (ctx.paramMap().containsKey("appID")) {
-                ctx.paramSet("appID", params.appID + "");
-            }
 
-            if (ctx.paramMap().containsKey("verID")) {
-                ctx.paramSet("verID", params.verID + "");
-            }
-
-            ctx.attr("org_param", params.org_param);
+            ctx.attr(Attrs.org_input, org_input);
         }
     }
 }

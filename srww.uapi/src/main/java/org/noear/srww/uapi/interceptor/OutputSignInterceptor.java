@@ -1,6 +1,6 @@
 package org.noear.srww.uapi.interceptor;
 
-import org.noear.srww.uapi.UapiParams;
+import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.encoder.DefEncoder;
 import org.noear.srww.uapi.encoder.Encoder;
 import org.noear.solon.core.handle.Context;
@@ -9,10 +9,6 @@ import org.noear.solon.core.handle.Handler;
 /** 输出签名拦截器（用于输出内容的签名） */
 public class OutputSignInterceptor implements Handler {
     private Encoder _encoder;
-
-    public OutputSignInterceptor(){
-        _encoder = new DefEncoder();
-    }
 
     public OutputSignInterceptor(Encoder encoder) {
         if (encoder == null) {
@@ -25,17 +21,17 @@ public class OutputSignInterceptor implements Handler {
     @Override
     public void handle(Context ctx) throws Throwable {
         /** 获取参数 */
-        UapiParams ctp = ctx.attr(Attrs.params);
+        Uapi uapi = (Uapi) ctx.controller();
 
-        if(ctp == null){
+        if (uapi == null) {
             return;
         }
 
-        String output = ctx.attr(Attrs.output, null);
+        String orgOutput = uapi.getOrgOutput();
 
-        if (output != null) {
-            String out_sign = _encoder.tryEncode(ctx, ctp.getApp(), output);
-            ctx.headerSet(Attrs.sign, out_sign);
+        if (orgOutput != null) {
+            String x_sign = _encoder.tryEncode(ctx, uapi.getApp(), orgOutput);
+            ctx.headerSet(Attrs.x_sign, x_sign);
         }
     }
 }

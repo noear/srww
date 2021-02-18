@@ -1,7 +1,7 @@
 package org.noear.srww.uapi.interceptor;
 
 import org.noear.rock.model.AppModel;
-import org.noear.srww.uapi.UapiParams;
+import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.encoder.DefEncoder;
 import org.noear.srww.uapi.encoder.Encoder;
 import org.noear.srww.uapi.UapiCodes;
@@ -38,20 +38,23 @@ public class ParamsAuthInterceptor implements Handler {
 
 
         /** 获取参数 */
-        UapiParams ctp = ctx.attr(Attrs.params);
+        Uapi uapi = (Uapi) ctx.controller();
 
-        if (ctp == null) {
+        if (uapi == null) {
             return;
         }
 
-        boolean isOk = (ctp.appID > 0);
+        boolean isOk = (uapi.getAppId() > 0);
 
         if (isOk) {
-            String name = ctx.attr(Attrs.handler_name);
+            String apiName = uapi.name();
+            String orgInput = uapi.getOrgInput();
+            String orgInputSign  = uapi.getOrgInputSign();
+
 
             /** 如果是CMD方案，则进行签名对比（签权） */
-            if (ctp.appID > 0 && ctp.org_param != null) {
-                isOk = checkSign(ctx, ctp.getApp(), name, ctp.org_param, ctp.sgin);
+            if (uapi.getAppId() > 0 && orgInput != null) {
+                isOk = checkSign(ctx, uapi.getApp(), apiName, orgInput, orgInputSign);
             } else {
                 isOk = false;
             }
