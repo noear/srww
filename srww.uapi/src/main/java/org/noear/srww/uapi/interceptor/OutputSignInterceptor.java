@@ -31,7 +31,7 @@ public class OutputSignInterceptor implements Handler {
 
         if (orgOutput != null) {
             String x_sign = _encoder.tryEncode(ctx, uapi.getApp(), orgOutput);
-            ctx.headerSet(Attrs.x_sign, x_sign);
+            ctx.headerSet(Attrs.h_sign, x_sign);
         }
     }
 }

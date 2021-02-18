@@ -1,9 +1,15 @@
 server.port: 9020
 server.request.maxRequestSize: 2Mb
 
+
+server.session.state.jwt:
+  requestUseHeader: true
+  responseUseHeader: true
+
 solon.app:
   name: demoapi
   group: water
+
 
 solon.cloud.water:
   server: water

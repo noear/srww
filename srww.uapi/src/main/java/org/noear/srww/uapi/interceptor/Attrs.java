@@ -14,6 +14,7 @@ public class Attrs {
     public static final String org_output = "org_output";
     public static final String output = "output";
 
-    public static final String x_token = "X-Token";
-    public static final String x_sign = "X-Sign";
+    public static final String h_authorization = "Authorization";
+    public static final String h_token = "Token";
+    public static final String h_sign = "Sign";
 }

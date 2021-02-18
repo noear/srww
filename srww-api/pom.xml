@@ -44,12 +44,12 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.serialization.fastjson</artifactId>
+            <artifactId>solon.extend.sessionstate.jwt</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.extend.staticfiles</artifactId>
+            <artifactId>solon.serialization.fastjson</artifactId>
         </dependency>
 
         <dependency>

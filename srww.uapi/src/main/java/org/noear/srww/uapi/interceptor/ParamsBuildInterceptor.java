@@ -56,7 +56,7 @@ public class ParamsBuildInterceptor implements Handler {
 
         if (org_token == null) {
             //支持 header 传
-            org_token = ctx.header("Authorization"); //令牌
+            org_token = ctx.header(Attrs.h_authorization); //令牌
         }
 
         if (org_input == null) {
