@@ -59,7 +59,7 @@ public class LogInterceptor implements Handler {
 
         logger.info(
                 Tags.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId)),
-                "{}\n\n{}",
+                "Inp::{}\n\nOut::{}",
                 orgInput,
                 orgOutput
         );
@@ -89,7 +89,7 @@ public class LogInterceptor implements Handler {
 
         logger.error(
                 Tags.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId)),
-                "{}\n\n{}",
+                "Inp::{}\n\nErr::{}",
                 orgInput,
                 err
         );
