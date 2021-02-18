@@ -1,8 +1,11 @@
 package apidemo2;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.impl.DefaultClaims;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.noear.snack.ONode;
+import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
 import org.noear.solon.test.HttpTestBase;
 import org.noear.solon.test.KvMap;
 import org.noear.solon.test.SolonJUnit4ClassRunner;
@@ -10,8 +13,6 @@ import org.noear.solon.test.SolonTest;
 import org.noear.srww.uapi.interceptor.Attrs;
 import org.noear.water.utils.EncryptUtils;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.Map;
 
 /**
@@ -26,17 +27,26 @@ public class ApiTest3x extends HttpTestBase {
     public ONode call(String method, Map<String, Object> args) throws Exception {
 
         String json0 = ONode.stringify(args);
-        String json_b640 = EncryptUtils.aesEncrypt(json0, app_sign_secret);
+        String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_sign_secret);
 
-        String authorization = String.format("%d.1.%s", app_id, EncryptUtils.md5(json0));
+        //生成领牌
+        Claims claims = new DefaultClaims();
+        claims.put("user_id",1);
+        String token = JwtUtils.buildJwt(claims,0);
 
-        String josn_b64 = path("/api/v2/app/" + method)
-                .header(Attrs.h_token, "noear")
-                .header(Attrs.h_authorization, authorization)
-                .bodyTxt(json_b640)
+        //生成签名
+        StringBuilder sb = new StringBuilder();
+        sb.append(method).append("#").append(json0).append("#").append(app_sign_secret);
+        String sign = String.format("%d.1.%s", app_id, EncryptUtils.md5(sb.toString()));
+
+        //请求
+        String json_encoded2 = path("/api/v2/app/" + method)
+                .header(Attrs.h_token, token)
+                .header(Attrs.h_sign, sign)
+                .bodyTxt(json_encoded0)
                 .post();
 
-        String json = EncryptUtils.aesDecrypt(josn_b64, app_sign_secret);
+        String json = EncryptUtils.aesDecrypt(json_encoded2, app_sign_secret);
 
         System.out.println("Decoded: " + json);
 

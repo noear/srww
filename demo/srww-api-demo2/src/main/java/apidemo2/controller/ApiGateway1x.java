@@ -17,7 +17,7 @@ public class ApiGateway1x extends ApiGateway {
         after(new OutputBuildInterceptor());
         after(new OutputInterceptor());
         after(new LogInterceptor());
-        after(new EndInterceptor("api.app"));
+        after(new EndInterceptor("v1.api.app"));
 
         super.register();
     }

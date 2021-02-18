@@ -13,7 +13,7 @@ public class Attrs {
     public static final String org_output = "org_output";
     public static final String output = "output";
 
-    public static final String h_authorization = "Authorization";
+    //public static final String h_authorization = "Authorization";
     public static final String h_token = "Token";
     public static final String h_sign = "Sign";
 }

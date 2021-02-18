@@ -49,14 +49,14 @@ public class ParamsBuildInterceptor implements Handler {
         //1.获取参数与令牌
         //
         String org_input = ctx.param("p"); //参数
-        String org_token = ctx.param("k"); //令牌
+        String org_sign = ctx.param("k"); //令牌
         String org_input_sgin;
         int app_id = 0;
         int ver_id = 0;
 
-        if (org_token == null) {
+        if (org_sign == null) {
             //支持 header 传
-            org_token = ctx.header(Attrs.h_authorization); //令牌
+            org_sign = ctx.header(Attrs.h_sign); //令牌
         }
 
         if (org_input == null) {
@@ -66,16 +66,16 @@ public class ParamsBuildInterceptor implements Handler {
 
         //2.尝试解析令牌
         //
-        if (!Utils.isEmpty(org_token)) {
+        if (!Utils.isEmpty(org_sign)) {
             //
-            //token:{appid}.{verid}.{sgin}
+            //sign:{appid}.{verid}.{sgin}
             //
-            String[] token = org_token.split("\\.");
+            String[] sign = org_sign.split("\\.");
 
-            if (token.length >= 3) {
-                app_id = Integer.parseInt(token[0]);
-                ver_id = Integer.parseInt(token[1]);
-                org_input_sgin = token[2];
+            if (sign.length >= 3) {
+                app_id = Integer.parseInt(sign[0]);
+                ver_id = Integer.parseInt(sign[1]);
+                org_input_sgin = sign[2];
 
                 ctx.paramSet(Attrs.app_id, String.valueOf(app_id));
                 ctx.paramSet(Attrs.ver_id, String.valueOf(ver_id));

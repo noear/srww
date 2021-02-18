@@ -28,7 +28,7 @@ public class ApiGateway2x extends ApiGateway {
 
         after(new OutputBuildInterceptor(new Base64Encoder()));
         after(new OutputInterceptor());
-        after(new EndInterceptor("api.web"));
+        after(new EndInterceptor("v1.api.web"));
 
         super.register();
     }

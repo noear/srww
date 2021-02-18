@@ -4,6 +4,7 @@ import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.srww.uapi.decoder.AesDecoder;
 import org.noear.srww.uapi.encoder.AesEncoder;
+import org.noear.srww.uapi.encoder.Md5Encoder;
 import org.noear.srww.uapi.interceptor.*;
 
 /**
@@ -16,9 +17,10 @@ public class ApiGateway3x extends ApiGateway {
     protected void register() {
         before(new StartInterceptor());
         before(new ParamsBuildInterceptor(new AesDecoder()));
-        before(new ParamsAuthInterceptor());
+        before(new ParamsAuthInterceptor(new Md5Encoder()));
 
         after(new OutputBuildInterceptor(new AesEncoder()));
+        after(new OutputSignInterceptor(new Md5Encoder()));
         after(new OutputInterceptor());
         after(new EndInterceptor("v2.api.app"));
 
