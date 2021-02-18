@@ -1,20 +1,20 @@
 package org.noear.srww.uapi.validation;
 
-import org.noear.srww.uapi.UapiCodes;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Result;
-import org.noear.solon.extend.validation.ValidatorManager;
-import org.noear.solon.extend.validation.annotation.*;
+import org.noear.solon.extend.validation.ValidatorFailureHandler;
+import org.noear.solon.extend.validation.annotation.NoRepeatSubmit;
+import org.noear.solon.extend.validation.annotation.Whitelist;
+import org.noear.srww.uapi.UapiCodes;
 
 import java.lang.annotation.Annotation;
 
-public class ValidatorManagerNew extends ValidatorManager {
-    public ValidatorManagerNew() {
-        super();
-    }
-
+/**
+ * @author noear 2021/2/18 created
+ */
+public class ValidatorFailureHandlerImp implements ValidatorFailureHandler {
     @Override
-    protected boolean failureDo(Context ctx, Annotation ano, Result result, String message) {
+    public boolean onFailure(Context ctx, Annotation ano, Result result, String message) {
         ctx.setHandled(true);
 
         Class<?> type = ano.annotationType();
