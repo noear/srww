@@ -8,14 +8,16 @@
     <script src="/_session/domain.js"></script>
     <script src="${js}/jtadmin.js"></script>
     <script>
+        var tagName = '${tag_name!}';
+
         $(function () {
-            if ('${tag_name!}') {
-                $('#${tag_name!}').addClass('sel');
+            if (tagName) {
+                $('#'+tagName).addClass('sel');
             } else {
                 $('tree li:first').addClass('sel');
             }
         });
-        var tagName = '${tag_name!}';
+
         function node_onclick(tag_name,obj) {
             tagName = tag_name
             $('li.sel').removeClass('sel');
@@ -27,7 +29,7 @@
 <body>
 <main>
     <left>
-        <tree id="tree">
+        <tree>
             <ul>
                 <#list tags as m>
                     <li onclick="node_onclick('${m.tag}',this)" id="${m.tag}">${m.tag} (${m.counts})</li>

@@ -71,23 +71,22 @@
 </head>
 <body>
 
-<main>
-    <toolbar class="blockquote">
-        <left>
-            <h2 class="ln30"><a href="#" onclick="javascript:history.back();" class="noline">安全名单</a></h2> / 编辑
-        </left>
-        <right class="form">
-            <n>ctrl + s 可快捷保存</n>
-            <button type="button" onclick="save()">保存</button>
-            <#if is_admin == 1>
-                <button type="button" class="minor" onclick="del()">删除</button>
-            </#if>
-        </right>
-    </toolbar>
+<toolbar class="blockquote">
+    <left>
+        <h2 class="ln30"><a href="#" onclick="javascript:history.back();" class="noline">安全名单</a></h2> / 编辑
+    </left>
+    <right class="form">
+        <n>ctrl + s 可快捷保存</n>
+        <button type="button" onclick="save()">保存</button>
+        <#if is_admin == 1>
+            <button type="button" class="minor" onclick="del()">删除</button>
+        </#if>
+    </right>
+</toolbar>
 
-    <detail>
-        <form id="form">
-            <input type="hidden" id="row_id" value="${m.row_id!0}">
+<detail>
+    <form id="form">
+        <input type="hidden" id="row_id" value="${m.row_id!0}">
         <table>
             <tr>
                 <th>tag</th>
@@ -114,11 +113,10 @@
                 <th>note</th>
                 <td><input type="text" id="note" value="${m.note!}" /></td>
             </tr>
-
         </table>
-        </form>
-    </detail>
-</main>
+    </form>
+</detail>
+
 
 </body>
 </html>
