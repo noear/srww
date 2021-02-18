@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.noear</groupId>
-    <artifactId>srww-admin-demo2</artifactId>
+    <artifactId>srww-api-demo1</artifactId>
     <version>demo</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
-    <description>java project for srww-admin-demo</description>
+    <description>java project for srww-demo-api</description>
 
     <parent>
         <groupId>org.noear</groupId>
@@ -23,7 +23,12 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>srww-admin</artifactId>
+            <artifactId>srww-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
         </dependency>
 
         <dependency>
@@ -32,12 +37,30 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>solon-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
 
         <plugins>
+            <plugin>
+                <groupId>org.noear</groupId>
+                <artifactId>weed3-maven-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.18</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -62,7 +85,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>admindemo2.App</mainClass>
+                            <mainClass>apidemo2.App</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
