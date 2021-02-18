@@ -14,7 +14,7 @@
 
     <properties>
         <solon.ver>1.3.5</solon.ver>
-        <weed.ver>3.3.0</weed.ver>
+        <weed3.ver>3.3.0</weed3.ver>
     </properties>
 
     <dependencies>
