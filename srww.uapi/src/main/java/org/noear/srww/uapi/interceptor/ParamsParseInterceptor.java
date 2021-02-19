@@ -26,10 +26,10 @@ public class ParamsParseInterceptor implements Handler {
 
         /** 处理CMD风格的参数 */
 
-        //1.获取参数与令牌
+        //1.获取参数与签名
         //
         String org_input = ctx.param("p"); //参数
-        String org_sign = ctx.param("k"); //令牌
+        String org_sign = ctx.param("s"); //令牌
         String org_input_sgin;
         int app_id = 0;
         int ver_id = 0;
