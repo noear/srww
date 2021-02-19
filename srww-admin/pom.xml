@@ -114,6 +114,11 @@
 
         <dependency>
             <groupId>org.noear</groupId>
+            <artifactId>mlog-slf4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
             <artifactId>rock.client</artifactId>
         </dependency>
 

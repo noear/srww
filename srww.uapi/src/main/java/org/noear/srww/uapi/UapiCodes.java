@@ -49,6 +49,11 @@ public class UapiCodes {
      */
     public static final UapiCode CODE_4001016 = new UapiCode(4001016, "The request is not in the whitelist");
 
+    /**
+     * 登录已失效
+     */
+    public static final UapiCode CODE_4001021 = new UapiCode(4001021, "Login has expired");
+
 
     public static final String CODE_txt(int agroup_id, String lang, UapiCode error) throws SQLException {
         if (agroup_id > 0) {

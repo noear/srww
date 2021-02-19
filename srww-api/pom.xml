@@ -112,6 +112,10 @@
             <artifactId>nami.coder.snack3</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>mlog-slf4j</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.noear</groupId>

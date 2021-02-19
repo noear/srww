@@ -3,6 +3,7 @@ package org.noear.srww.uapi.validation;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Result;
 import org.noear.solon.extend.validation.ValidatorFailureHandler;
+import org.noear.solon.extend.validation.annotation.Logined;
 import org.noear.solon.extend.validation.annotation.NoRepeatSubmit;
 import org.noear.solon.extend.validation.annotation.Whitelist;
 import org.noear.srww.uapi.UapiCodes;
@@ -23,6 +24,8 @@ public class ValidatorFailureHandlerImp implements ValidatorFailureHandler {
             throw UapiCodes.CODE_4001015;
         } else if (type.equals(Whitelist.class)) {
             throw UapiCodes.CODE_4001016;
+        } else if (type.equals(Logined.class)) {
+            throw UapiCodes.CODE_4001021;
         } else {
             throw UapiCodes.CODE_4001014(result.getDescription());
         }
