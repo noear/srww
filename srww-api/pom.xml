@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>srww.base</artifactId>
+            <artifactId>srww-lib</artifactId>
         </dependency>
 
         <dependency>
@@ -29,97 +29,7 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon-lib</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
             <artifactId>solon.boot.jetty</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>solon.view.freemarker</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>solon.extend.sessionstate.jwt</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>solon.serialization.fastjson</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>water-solon-plugin</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>weed3</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>weed3-solon-plugin</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>snack3</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>net.spy</groupId>
-            <artifactId>spymemcached</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>nami.channel.http.okhttp</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>nami.coder.snack3</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>mlog-slf4j</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>rock.client</artifactId>
         </dependency>
     </dependencies>
 
