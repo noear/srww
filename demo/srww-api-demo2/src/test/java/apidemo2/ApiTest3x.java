@@ -10,9 +10,11 @@ import org.noear.solon.test.HttpTestBase;
 import org.noear.solon.test.KvMap;
 import org.noear.solon.test.SolonJUnit4ClassRunner;
 import org.noear.solon.test.SolonTest;
+import org.noear.srww.uapi.UapiCodes;
 import org.noear.srww.uapi.interceptor.Attrs;
 import org.noear.water.utils.EncryptUtils;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -32,6 +34,7 @@ public class ApiTest3x extends HttpTestBase {
         //生成领牌
         Claims claims = new DefaultClaims();
         claims.put("user_id",1);
+        claims.setExpiration(new Date(System.currentTimeMillis() + 60*2*1000));
         String token = JwtUtils.buildJwt(claims,0);
 
         //生成签名
@@ -72,5 +75,12 @@ public class ApiTest3x extends HttpTestBase {
 
         assert node.get("code").getInt() == 200;
         assert node.get("data").count() > 0;
+    }
+
+    @Test
+    public void login_test() throws Exception {
+        ONode node = call("login.test", "{tag:'demo'}");
+
+        assert node.get("code").getInt() == 200;
     }
 }
