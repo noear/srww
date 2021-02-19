@@ -36,7 +36,7 @@ public class ApiTest3x extends HttpTestBase {
 
         //生成签名
         StringBuilder sb = new StringBuilder();
-        sb.append(method).append("#").append(json0).append("#").append(app_sign_secret);
+        sb.append(method).append("#").append(json_encoded0).append("#").append(app_sign_secret);
         String sign = String.format("%d.1.%s", app_id, EncryptUtils.md5(sb.toString()));
 
         //请求

@@ -1,5 +1,6 @@
 package org.noear.srww.uapi.interceptor;
 
+import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.encoder.DefEncoder;
 import org.noear.srww.uapi.encoder.Encoder;
@@ -30,7 +31,12 @@ public class OutputSignInterceptor implements Handler {
         String orgOutput = uapi.getOrgOutput();
 
         if (orgOutput != null) {
-            String x_sign = _encoder.tryEncode(ctx, uapi.getApp(), orgOutput);
+            AppModel app = uapi.getApp();
+
+            StringBuilder buf = new StringBuilder();
+            buf.append(uapi.name()).append("#").append(orgOutput).append("#").append(app.app_key);
+
+            String x_sign = _encoder.tryEncode(ctx, app, buf.toString());
             ctx.headerSet(Attrs.h_sign, x_sign);
         }
     }

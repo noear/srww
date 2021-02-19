@@ -27,9 +27,9 @@ class _demo_cmd extends UapiGateway {
         //开始计时
         before(new StartInterceptor());
         //构建参数
-        before(new ParamsBuildInterceptor(new AesDecoder()));
+        before(new ParamsRebuildInterceptor(new AesDecoder()));
         //签权
-        before(new ParamsAuthInterceptor(new Sha1Encoder()));
+        before(new ParamsSignCheckInterceptor(new Sha1Encoder()));
 
         //
         //::执行后::

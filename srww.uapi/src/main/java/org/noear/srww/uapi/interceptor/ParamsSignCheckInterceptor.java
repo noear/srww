@@ -10,18 +10,18 @@ import org.noear.solon.core.handle.Handler;
 import org.noear.water.utils.TextUtils;
 
 /**
- * 参数签权拦截器
+ * 参数签名检测拦截器
  *
  * 对cmd有用；对api没用
  * */
-public class ParamsAuthInterceptor implements Handler {
+public class ParamsSignCheckInterceptor implements Handler {
     private Encoder _encoder;
 
-    public ParamsAuthInterceptor(){
+    public ParamsSignCheckInterceptor(){
         _encoder = new DefEncoder();
     }
 
-    public ParamsAuthInterceptor(Encoder encoder) {
+    public ParamsSignCheckInterceptor(Encoder encoder) {
         if (encoder == null) {
             _encoder = new DefEncoder();
         } else {

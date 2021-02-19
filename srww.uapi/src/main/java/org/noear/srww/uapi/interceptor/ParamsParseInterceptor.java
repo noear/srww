@@ -1,15 +1,11 @@
 package org.noear.srww.uapi.interceptor;
 
-import org.noear.snack.ONode;
-import org.noear.srww.uapi.Uapi;
-import org.noear.srww.uapi.decoder.Decoder;
-import org.noear.srww.uapi.decoder.DefDecoder;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 
 /**
- * 参数构建拦截器（将输出内容构建为统一的参数模型）
+ * 参数解析拉截器
  *
  * 对cmd 有用；对api 没用（api 不要使用了）
  *
@@ -19,23 +15,7 @@ import org.noear.solon.core.handle.Handler;
  *  header: Authorization (相当于 form:k)
  *  body: (content type: application/json)（相当于 form:p）
  * */
-public class ParamsBuildInterceptor implements Handler {
-
-    private Decoder _decoder;
-
-
-    public ParamsBuildInterceptor() {
-        _decoder = new DefDecoder();
-    }
-
-    public ParamsBuildInterceptor(Decoder decoder) {
-        if (decoder == null) {
-            _decoder = new DefDecoder();
-        } else {
-            _decoder = decoder;
-        }
-    }
-
+public class ParamsParseInterceptor implements Handler {
     @Override
     public void handle(Context ctx) throws Throwable {
         /** 如果已处理，不再执行 */
@@ -66,7 +46,7 @@ public class ParamsBuildInterceptor implements Handler {
 
         //2.尝试解析令牌
         //
-        if (!Utils.isEmpty(org_sign)) {
+        if (Utils.isNotEmpty(org_sign)) {
             //
             //sign:{appid}.{verid}.{sgin}
             //
@@ -85,31 +65,7 @@ public class ParamsBuildInterceptor implements Handler {
 
         //3.尝试解析参数（涉及解码器）
         //
-        if (!Utils.isEmpty(org_input)) {
-
-            //如果有应用id
-            if (app_id > 0) {
-                //尝试解码
-                //
-                Uapi uapi = (Uapi) ctx.controller();
-                org_input = _decoder.tryDecode(ctx, uapi.getApp(), org_input);
-
-                //解析数据
-                //
-                ONode tmp = ONode.load(org_input);
-
-                if (tmp.isObject()) {
-                    //转到上下文参数
-                    //
-                    tmp.obj().forEach((k, v) -> {
-                        if (v.isValue()) {
-                            ctx.paramSet(k, v.getString());
-                        }
-                    });
-                }
-            }
-
-
+        if (Utils.isNotEmpty(org_input)) {
             ctx.attrSet(Attrs.org_input, org_input);
         }
     }
