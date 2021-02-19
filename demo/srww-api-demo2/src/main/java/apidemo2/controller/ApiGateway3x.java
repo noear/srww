@@ -22,10 +22,12 @@ public class ApiGateway3x extends ApiGateway {
         // http://localhost:8080/api/v2/app/a.b.c
         //
         before(new StartInterceptor());
-        before(new ParamsRebuildInterceptor(new AesDecoder()));
-        before(new ParamsSignCheckInterceptor(new Md5Encoder()));
 
-        after(new ParamsParseInterceptor());
+        before(new ParamsParseInterceptor());
+        before(new ParamsSignCheckInterceptor(new Md5Encoder()));
+        before(new ParamsRebuildInterceptor(new AesDecoder()));
+
+
         after(new OutputSignInterceptor(new Md5Encoder()));
         after(new OutputBuildInterceptor(new AesEncoder()));
         after(new OutputInterceptor());
