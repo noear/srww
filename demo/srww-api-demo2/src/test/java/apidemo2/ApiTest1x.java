@@ -6,6 +6,7 @@ import org.noear.snack.ONode;
 import org.noear.solon.test.HttpTestBase;
 import org.noear.solon.test.SolonJUnit4ClassRunner;
 import org.noear.solon.test.SolonTest;
+import org.noear.srww.uapi.UapiCodes;
 import org.noear.srww.uapi.interceptor.Attrs;
 
 import java.util.Map;
@@ -48,5 +49,12 @@ public class ApiTest1x extends HttpTestBase {
 
         assert node.get("code").getInt() == 200;
         assert node.get("data").count() > 0;
+    }
+
+    @Test
+    public void login_test() throws Exception {
+        ONode node = call("login.test", "{tag:'demo'}");
+
+        assert node.get("code").getInt() == UapiCodes.CODE_4001021.getCode();
     }
 }

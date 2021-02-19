@@ -24,17 +24,4 @@ public class Config {
     public DataSource db1(@CloudConfig("water") HikariDataSource ds) {
         return ds;
     }
-
-    /**
-     * 配置验证注解的错误处理
-     */
-    @Bean
-    public ValidatorFailureHandler failureHandler() {
-        return new ValidatorFailureHandler() {
-            @Override
-            public boolean onFailure(Context ctx, Annotation ano, Result result, String message) {
-                throw UapiCodes.CODE_4001012;
-            }
-        };
-    }
 }
