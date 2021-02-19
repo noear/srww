@@ -37,7 +37,7 @@ public class SignHandler {
             String sign = buildSign(app, cmd, arg);
 
             n.set("sign", sign);
-            String r = EncryptUtils.aesEncrypt(arg, app.app_key, null);
+            String r = EncryptUtils.aesEncrypt(arg, app.app_secret_key, null);
             n.set("p64", r);
 
             cxt.outputAsJson(n.toJson());
@@ -48,11 +48,10 @@ public class SignHandler {
     }
 
     private String buildSign(AppModel app, String cmd, String params) {
-        String key = app.app_key;
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append(cmd).append("#").append(params).append("#").append(key);
+        sb.append(cmd).append("#").append(params).append("#").append(app.app_secret_key);
 
         return EncryptUtils.sha256(sb.toString());
     }

@@ -73,10 +73,9 @@ public class ParamsSignCheckInterceptor implements Handler {
             return false;
         }
 
-        String key = app.app_key;
 
         StringBuilder sb = new StringBuilder();
-        sb.append(cmd).append("#").append(orgInput).append("#").append(key);
+        sb.append(cmd).append("#").append(orgInput).append("#").append(app.app_secret_key);
 
         String _sign_ = _encoder.tryEncode(context, app, sb.toString());
 
