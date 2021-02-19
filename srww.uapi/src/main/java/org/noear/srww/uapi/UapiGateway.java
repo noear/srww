@@ -5,6 +5,7 @@ import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Gateway;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.Result;
+import org.noear.srww.uapi.interceptor.Attrs;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -23,7 +24,7 @@ public abstract class UapiGateway extends Gateway {
      * 语言
      */
     public String g_lang(Context c) {
-        return c.param("g_lang");
+        return c.param(Attrs.g_lang);
     }
 
     @Override

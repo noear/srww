@@ -16,4 +16,6 @@ public class Attrs {
     //public static final String h_authorization = "Authorization";
     public static final String h_token = "Token";
     public static final String h_sign = "Sign";
+
+    public static final String g_lang = "g_lang";
 }
