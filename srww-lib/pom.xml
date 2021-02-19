@@ -29,11 +29,6 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.extend.sessionstate.jwt</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
             <artifactId>solon.serialization.fastjson</artifactId>
         </dependency>
 
@@ -94,7 +89,7 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>nami.coder.snack3</artifactId>
+            <artifactId>nami.coder.fastjson</artifactId>
         </dependency>
 
         <dependency>

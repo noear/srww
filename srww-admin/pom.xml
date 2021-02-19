@@ -33,6 +33,11 @@
 
         <dependency>
             <groupId>org.noear</groupId>
+            <artifactId>solon.extend.sessionstate.jwt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
             <artifactId>solon.view.freemarker</artifactId>
         </dependency>
 
