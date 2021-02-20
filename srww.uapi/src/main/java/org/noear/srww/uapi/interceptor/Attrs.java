@@ -9,6 +9,7 @@ public class Attrs {
 
     public static final String org_input = "org_input";
     public static final String org_input_sign = "org_input_sign";
+    public static final String org_input_timestamp = "org_input_timestamp";
 
     public static final String org_output = "org_output";
     public static final String output = "output";

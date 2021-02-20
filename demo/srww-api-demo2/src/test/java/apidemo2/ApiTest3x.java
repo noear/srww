@@ -33,14 +33,15 @@ public class ApiTest3x extends HttpTestBase {
 
         //生成领牌
         Claims claims = new DefaultClaims();
-        claims.put("user_id",1);
-        claims.setExpiration(new Date(System.currentTimeMillis() + 60*2*1000));
-        String token = JwtUtils.buildJwt(claims,0);
+        claims.put("user_id", 1);
+        claims.setExpiration(new Date(System.currentTimeMillis() + 60 * 2 * 1000));
+        String token = JwtUtils.buildJwt(claims, 0);
 
         //生成签名
+        long timestamp = System.currentTimeMillis();
         StringBuilder sb = new StringBuilder();
-        sb.append(method).append("#").append(json_encoded0).append("#").append(app_sign_secret);
-        String sign = String.format("%d.1.%s", app_id, EncryptUtils.md5(sb.toString()));
+        sb.append(method).append("#").append(json_encoded0).append("#").append(app_sign_secret).append("#").append(timestamp);
+        String sign = String.format("%d.1.%s.%d", app_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求
         String json_encoded2 = path("/api/v2/app/" + method)

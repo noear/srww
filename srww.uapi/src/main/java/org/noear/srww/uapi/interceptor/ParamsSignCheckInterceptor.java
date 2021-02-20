@@ -17,7 +17,7 @@ import org.noear.water.utils.TextUtils;
 public class ParamsSignCheckInterceptor implements Handler {
     private Encoder _encoder;
 
-    public ParamsSignCheckInterceptor(){
+    public ParamsSignCheckInterceptor() {
         _encoder = new DefEncoder();
     }
 
@@ -49,12 +49,13 @@ public class ParamsSignCheckInterceptor implements Handler {
         if (isOk) {
             String apiName = uapi.name();
             String orgInput = uapi.getOrgInput();
-            String orgInputSign  = uapi.getOrgInputSign();
+            String orgInputSign = uapi.getOrgInputSign();
+            String orgInputTimestamp = uapi.getOrgInputTimestamp();
 
 
             /** 如果是CMD方案，则进行签名对比（签权） */
             if (uapi.getAppId() > 0 && orgInput != null) {
-                isOk = checkSign(ctx, uapi.getApp(), apiName, orgInput, orgInputSign);
+                isOk = checkSign(ctx, uapi.getApp(), apiName, orgInput, orgInputSign, orgInputTimestamp);
             } else {
                 isOk = false;
             }
@@ -68,14 +69,14 @@ public class ParamsSignCheckInterceptor implements Handler {
     /**
      * 签权算法
      */
-    private boolean checkSign(Context context, AppModel app, String cmd, String orgInput, String orgInputSign) throws Exception {
+    private boolean checkSign(Context context, AppModel app, String cmd, String orgInput, String orgInputSign, String orgInputTimestamp) throws Exception {
         if (TextUtils.isEmpty(cmd)) {
             return false;
         }
 
 
         StringBuilder sb = new StringBuilder();
-        sb.append(cmd).append("#").append(orgInput).append("#").append(app.app_secret_key);
+        sb.append(cmd).append("#").append(orgInput).append("#").append(app.app_secret_key).append("#").append(orgInputTimestamp);
 
         String _sign_ = _encoder.tryEncode(context, app, sb.toString());
 

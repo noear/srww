@@ -30,9 +30,6 @@ public class ParamsParseInterceptor implements Handler {
         //
         String org_input = ctx.param("p"); //参数
         String org_sign = ctx.param("s"); //令牌
-        String org_input_sgin;
-        int app_id = 0;
-        int ver_id = 0;
 
         if (org_sign == null) {
             //支持 header 传
@@ -48,18 +45,15 @@ public class ParamsParseInterceptor implements Handler {
         //
         if (Utils.isNotEmpty(org_sign)) {
             //
-            //sign:{appid}.{verid}.{sgin}
+            //sign:{appid}.{verid}.{sgin}.{timestamp}
             //
-            String[] sign = org_sign.split("\\.");
+            String[] signs = org_sign.split("\\.");
 
-            if (sign.length >= 3) {
-                app_id = Integer.parseInt(sign[0]);
-                ver_id = Integer.parseInt(sign[1]);
-                org_input_sgin = sign[2];
-
-                ctx.paramSet(Attrs.app_id, String.valueOf(app_id));
-                ctx.paramSet(Attrs.ver_id, String.valueOf(ver_id));
-                ctx.attrSet(Attrs.org_input_sign, org_input_sgin);
+            if (signs.length >= 4) {
+                ctx.paramSet(Attrs.app_id, signs[0]);
+                ctx.paramSet(Attrs.ver_id, signs[1]);
+                ctx.attrSet(Attrs.org_input_sign, signs[2]);
+                ctx.attrSet(Attrs.org_input_timestamp, signs[3]);
             }
         }
 

@@ -151,6 +151,13 @@ public class Uapi {
     }
 
     /**
+     * 原始输入签名
+     */
+    public String getOrgInputTimestamp() {
+        return ctx.attr(Attrs.org_input_timestamp);
+    }
+
+    /**
      * 原始输出（即未加密之前）
      */
     public String getOrgOutput() {
