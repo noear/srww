@@ -14,3 +14,6 @@ solon.app:
 solon.cloud.water:
   server: water
 
+#solon.mlog.appender:
+#  console.level: "TRACE"
+

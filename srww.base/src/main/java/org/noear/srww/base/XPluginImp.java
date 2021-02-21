@@ -1,6 +1,8 @@
 package org.noear.srww.base;
 
 
+import org.noear.mlog.Logger;
+import org.noear.mlog.LoggerFactory;
 import org.noear.snack.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
@@ -21,6 +23,7 @@ import org.noear.weed.WeedConfig;
 public class XPluginImp implements Plugin {
     boolean isDebugMode;
     boolean isWeedStyle2;
+    Logger logger = LoggerFactory.get(XPluginImp.class);
 
     @Override
     public void start(SolonApp app) {
@@ -56,9 +59,9 @@ public class XPluginImp implements Plugin {
         WeedConfig.onExecuteAft(cmd -> {
             if (isDebugMode) {
                 if (isWeedStyle2) {
-                    System.out.println(cmd.toSqlString());
+                    logger.debug(cmd.toSqlString());
                 } else {
-                    System.out.println(cmd.text + "\n" + ONode.stringify(cmd.paramMap()));
+                    logger.debug(cmd.text + "\r\n" + ONode.stringify(cmd.paramMap()));
                 }
             }
 
@@ -71,9 +74,9 @@ public class XPluginImp implements Plugin {
         WeedConfig.onExecuteAft((cmd) -> {
             if (isDebugMode) {
                 if (isWeedStyle2) {
-                    System.out.println(cmd.toSqlString());
+                    logger.debug(cmd.toSqlString());
                 } else {
-                    System.out.println(cmd.text + "\n" + ONode.stringify(cmd.paramMap()));
+                    logger.debug(cmd.text + "\r\n" + ONode.stringify(cmd.paramMap()));
                 }
             }
 
