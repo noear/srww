@@ -1,12 +1,11 @@
 package org.noear.srww.base;
 
 
-import org.noear.mlog.Logger;
-import org.noear.mlog.LoggerFactory;
 import org.noear.snack.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
+import org.noear.solon.cloud.CloudLogger;
 import org.noear.solon.core.Plugin;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.extend.validation.ValidatorManager;
@@ -23,7 +22,7 @@ import org.noear.weed.WeedConfig;
 public class XPluginImp implements Plugin {
     boolean isDebugMode;
     boolean isWeedStyle2;
-    Logger logger = LoggerFactory.get(XPluginImp.class);
+    CloudLogger logger = CloudLogger.get(XPluginImp.class);
 
     @Override
     public void start(SolonApp app) {
@@ -38,7 +37,6 @@ public class XPluginImp implements Plugin {
 
         initWeed();
     }
-
 
 
     /**
