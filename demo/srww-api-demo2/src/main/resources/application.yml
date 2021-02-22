@@ -13,7 +13,12 @@ solon.app:
 
 solon.cloud.water:
   server: water
+#  log:
+#    default: "demoapi_log"
 
-#solon.mlog.appender:
-#  console.level: "TRACE"
+#solon.logging.appender:
+#  console:
+#    level: "TRACE"
+#  water:
+#    level: "INFO"
 
