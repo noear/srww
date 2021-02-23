@@ -8,11 +8,8 @@ import org.noear.solon.core.handle.Handler;
 import org.noear.srww.uapi.Uapi;
 
 public class LogInterceptor implements Handler {
-    Logger logger;
+    static Logger logger = Logger.get(LogInterceptor.class);
 
-    public LogInterceptor() {
-        logger = Logger.get(LogInterceptor.class);
-    }
 
     public LogInterceptor(String loggerName) {
         logger = Logger.get(loggerName);

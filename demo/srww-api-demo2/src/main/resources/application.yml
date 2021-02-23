@@ -1,10 +1,11 @@
 server.port: 8080
 server.request.maxRequestSize: 2Mb
 
-
-server.session.state.jwt:
-  requestUseHeader: true
-  responseUseHeader: true
+server.session:
+  timeout: 7200
+  state.jwt:
+    requestUseHeader: true
+    responseUseHeader: true
 
 solon.app:
   name: demoapi
@@ -16,9 +17,9 @@ solon.cloud.water:
 #  log:
 #    default: "demoapi_log"
 
-solon.logging.appender:
-  console:
-    level: TRACE
-  cloud:
-    level: TRACE
+#solon.logging.appender:
+#  console:
+#    level: TRACE
+#  cloud:
+#    level: INFO
 
