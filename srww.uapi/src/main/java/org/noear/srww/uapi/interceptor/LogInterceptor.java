@@ -1,7 +1,6 @@
 package org.noear.srww.uapi.interceptor;
 
 import org.noear.mlog.Logger;
-import org.noear.mlog.LoggerFactory;
 import org.noear.mlog.utils.Tags;
 import org.noear.snack.ONode;
 import org.noear.solon.core.handle.Context;
@@ -12,11 +11,11 @@ public class LogInterceptor implements Handler {
     Logger logger;
 
     public LogInterceptor() {
-        logger = LoggerFactory.get(LogInterceptor.class);
+        logger = Logger.get(LogInterceptor.class);
     }
 
     public LogInterceptor(String loggerName) {
-        logger = LoggerFactory.get(loggerName);
+        logger = Logger.get(loggerName);
     }
 
     @Override

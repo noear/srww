@@ -2,9 +2,9 @@ package apidemo2.dso;
 
 
 import apidemo2.App;
+import org.noear.mlog.Logger;
 import org.noear.mlog.utils.Tags;
 import org.noear.solon.annotation.Component;
-import org.noear.solon.cloud.CloudLogger;
 import org.noear.solon.core.event.EventListener;
 import org.noear.solon.core.handle.Context;
 
@@ -15,7 +15,7 @@ import org.noear.solon.core.handle.Context;
  */
 @Component
 public class ErrorListener implements EventListener<Throwable> {
-    CloudLogger logger = CloudLogger.get(App.class);
+    Logger logger = Logger.get(App.class);
 
     @Override
     public void onEvent(Throwable err) {

@@ -1,11 +1,11 @@
 package org.noear.srww.base;
 
 
+import org.noear.mlog.Logger;
 import org.noear.snack.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
-import org.noear.solon.cloud.CloudLogger;
 import org.noear.solon.core.Plugin;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.extend.validation.ValidatorManager;
@@ -16,13 +16,14 @@ import org.noear.water.WaterClient;
 import org.noear.water.utils.IPUtils;
 import org.noear.weed.WeedConfig;
 
+
 /**
  * @author noear 2021/2/13 created
  */
 public class XPluginImp implements Plugin {
     boolean isDebugMode;
     boolean isWeedStyle2;
-    CloudLogger logger = CloudLogger.get(XPluginImp.class);
+    Logger logger = Logger.get(XPluginImp.class);
 
     @Override
     public void start(SolonApp app) {
