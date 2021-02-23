@@ -5,13 +5,14 @@ import java.sql.SQLException;
 import java.time.*;
 import java.util.*;
 
-import apidemo2.model.db.WaterRegServiceDo;
 import org.noear.weed.BaseMapper;
 import org.noear.weed.DataItem;
 import org.noear.weed.DataList;
 import org.noear.weed.annotation.Db;
 import org.noear.weed.xml.Namespace;
+import apidemo2.model.db.*;
 
+@Db("water")
 @Namespace("apidemo2.dso.mapper.RegisterMapper")
 public interface RegisterMapper{
     //添加服务
