@@ -33,6 +33,7 @@ public class OutputSignInterceptor implements Handler {
         if (orgOutput != null) {
             AppModel app = uapi.getApp();
 
+            //{name}#{output}#{secretKey}
             StringBuilder buf = new StringBuilder();
             buf.append(uapi.name()).append("#").append(orgOutput).append("#").append(app.app_secret_key);
 

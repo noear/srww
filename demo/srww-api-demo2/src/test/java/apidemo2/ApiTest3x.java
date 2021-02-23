@@ -24,9 +24,10 @@ import java.util.Map;
 @SolonTest(App.class)
 public class ApiTest3x extends HttpTestBase {
     public static final int app_id = 2;
+    public static final int ver_id = 1;
     public static final String app_sign_secret = "djjePPbqBz35U328";
 
-    public ONode call(String method, Map<String, Object> args) throws Exception {
+    public ONode call(String apiName, Map<String, Object> args) throws Exception {
 
         String json0 = ONode.stringify(args);
         String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_sign_secret);
@@ -40,11 +41,11 @@ public class ApiTest3x extends HttpTestBase {
         //生成签名
         long timestamp = System.currentTimeMillis();
         StringBuilder sb = new StringBuilder();
-        sb.append(method).append("#").append(json_encoded0).append("#").append(app_sign_secret).append("#").append(timestamp);
-        String sign = String.format("%d.1.%s.%d", app_id, EncryptUtils.md5(sb.toString()), timestamp);
+        sb.append(apiName).append("#").append(ver_id).append("#").append(json_encoded0).append("#").append(app_sign_secret).append("#").append(timestamp);
+        String sign = String.format("%d.%d.%s.%d", app_id, ver_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求
-        String json_encoded2 = path("/api/v2/app/" + method)
+        String json_encoded2 = path("/api/v2/app/" + apiName)
                 .header(Attrs.h_token, token)
                 .header(Attrs.h_sign, sign)
                 .bodyTxt(json_encoded0)

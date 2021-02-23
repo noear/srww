@@ -20,11 +20,11 @@ public class ApiTest2x extends HttpTestBase {
     public static final int app_id = 2;
     public static final String app_sign_secret = "djjePPbqBz35U328";
 
-    public ONode call(String method, Map<String, Object> args) throws Exception {
+    public ONode call(String apiName, Map<String, Object> args) throws Exception {
         args.put(Attrs.app_id, app_id);
 
         ONode node = new ONode();
-        node.set("method", method);
+        node.set("method", apiName);
         node.get("data").setAll(args);
 
         String json0 = node.toJson();
