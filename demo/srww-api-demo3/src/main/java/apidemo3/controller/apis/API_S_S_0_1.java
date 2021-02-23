@@ -5,7 +5,7 @@ import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;
 import apidemo3.controller.SysCodes;
 import apidemo3.controller.UapiBase;
-import apidemo3.dso.Logger;
+import apidemo3.dso.LogUtil;
 import apidemo3.dso.db.BullOrderService;
 import apidemo3.dso.db.CoProductService;
 import apidemo3.model.BullOrderDo;
@@ -50,7 +50,7 @@ public class API_S_S_0_1 extends UapiBase {
 
         // 如果请求的状态小于数据库中的状态，不能进行更新。
         if (type < bom.status) {
-            Logger.logOutput("S.S.0.1", userId + "", pId + "", type + "",
+            LogUtil.logOutput("S.S.0.1", userId + "", pId + "", type + "",
                     "orderId = " + bom.order_id + ",当前 status = " + bom.status);
             return data;
         }

@@ -65,11 +65,11 @@ public class StandardApi {
         try {
             ONode oNode = doPost("", cmd, json);
 
-            Logger.logPartyOutput(C_ID + "", cmd, userId + "", json, oNode.toJson());
+            LogUtil.logPartyOutput(C_ID + "", cmd, userId + "", json, oNode.toJson());
 
             return oNode;
         } catch (Exception e) {
-            Logger.logPartyError(C_ID + "", cmd, userId + "", json, e);
+            LogUtil.logPartyError(C_ID + "", cmd, userId + "", json, e);
         }
 
         return new ONode().set("code", 0).set("msg", "合作方接口错误");

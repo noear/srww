@@ -5,7 +5,7 @@ import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.utils.EncryptUtils;
-import apidemo3.dso.Logger;
+import apidemo3.dso.LogUtil;
 import apidemo3.model.BullOrderDo;
 import apidemo3.model.BullOrderStatus;
 import apidemo3.model.CoProductDo;
@@ -25,7 +25,7 @@ public class StandardOrderController extends BaseController {
         String p = ctx.param("p");
         String k = ctx.param("k");
 
-        Logger.logPartyOutput("callback", "raw", "", p, k);
+        LogUtil.logPartyOutput("callback", "raw", "", p, k);
 
         String cmd = ctx.pathNew().replace("/CB/", "");
 
@@ -44,13 +44,13 @@ public class StandardOrderController extends BaseController {
 
         String encryptData = EncryptUtils.aesDecrypt(p, cpm.bull_product_key, null);
 
-        Logger.logPartyOutput("callback", "encrypt", cId, k, encryptData);
+        LogUtil.logPartyOutput("callback", "encrypt", cId, k, encryptData);
 
         String s = buildSign(cmd, encryptData, cpm.bull_product_key);
 
         if (!s.equals(sign)) {
             // 验签不通过
-            Logger.logPartyOutput("callback", "sign", cId, "req = " + sign, "lm = " + s);
+            LogUtil.logPartyOutput("callback", "sign", cId, "req = " + sign, "lm = " + s);
             result.put("code", 3);
             result.put("msg", "验签失败");
             return result;

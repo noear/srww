@@ -1,12 +1,12 @@
 package apidemo3.dso;
 
+import org.noear.mlog.Logger;
 import org.noear.mlog.utils.Tags;
-import org.noear.solon.cloud.CloudLogger;
 
-public class Logger {
+public class LogUtil {
 
-    private static final CloudLogger log_api =  CloudLogger.get("bull_log_api");
-    private static final CloudLogger log_api_party =  CloudLogger.get("bull_log_api_party");
+    private static final Logger log_api =  Logger.get("bull_log_api");
+    private static final Logger log_api_party =  Logger.get("bull_log_api_party");
 
 
 
