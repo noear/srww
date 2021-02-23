@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//noear.org//DTD Mapper 3.0//EN" "http://noear.org/dtd/weed3-mapper.dtd">
 <mapper namespace="apidemo2.dso.mapper.RegisterMapper"
-        addService="apidemo2.dso.service.RegisterService"
+        proxy="apidemo2.dso.service.RegisterService"
         import="apidemo2.model.db.*"
         db="water">
 
-    <sql id="addService" return="long" remarks="添加服务" declare="model:WaterRegServiceDo">
+    <sql id="addService" return="long" remarks="添加服务"
+         declare="model:WaterRegServiceDo">
         INSERT INTO water_reg_service
             (`key`,`name`,`address`,`meta`,
              `alarm_mobile`,`is_unstable`,`check_url`,
@@ -17,7 +18,8 @@
                      0,NOW(), '')
     </sql>
 
-    <sql id="udpService" return="long" remarks="更新服务" declare="model:WaterRegServiceDo">
+    <sql id="udpService" return="long" remarks="更新服务"
+         declare="model:WaterRegServiceDo">
         UPDATE water_reg_service
             SET `meta`=@{model.meta},
                 `alarm_mobile`=@{model.alarm_mobile},

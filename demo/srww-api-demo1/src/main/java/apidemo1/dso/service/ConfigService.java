@@ -1,4 +1,4 @@
-package apidemo2.dso.service;
+package apidemo1.dso.service;
 
 import java.math.*;
 import java.sql.SQLException;
@@ -14,12 +14,12 @@ import org.noear.solon.extend.data.annotation.Tran;
 import org.noear.weed.DataItem;
 import org.noear.weed.DataList;
 import org.noear.weed.annotation.Db;
-import apidemo2.model.db.*;
+import apidemo1.model.db.*;
 
 @Service
-public class ConfigService {
+public class ConfigService{
     @Inject
-    apidemo2.dso.mapper.ConfigMapper mapper;
+    apidemo1.dso.mapper.ConfigMapper mapper;
 
     //获取配置列表
     @Cache(tags = "config_tag_${tag}")

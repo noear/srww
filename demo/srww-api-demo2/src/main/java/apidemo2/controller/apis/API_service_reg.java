@@ -31,11 +31,11 @@ public class API_service_reg extends ApiBase {
         model.is_unstable = is_unstable;
 
         //2.更新服务信息
-        boolean isOk = registerService.udpService(model) > 0;
+        boolean isOk = registerService.udpService(service, model) > 0;
 
         if (!isOk) {
             //3.如果更新影响数为0，则需要插入
-            registerService.addService(model);
+            registerService.addService(service, model);
         }
     }
 }

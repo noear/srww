@@ -10,6 +10,7 @@ import org.noear.solon.core.handle.Result;
 import org.noear.solon.extend.validation.ValidatorFailureHandler;
 import org.noear.srww.uapi.UapiCodes;
 import org.noear.water.utils.CacheWrap;
+import org.noear.weed.cache.LocalCache;
 import org.noear.weed.cache.memcached.MemCache;
 
 import javax.sql.DataSource;
@@ -23,7 +24,7 @@ public class Config {
     /**
      * 配置数据源
      */
-    @Bean("water")
+    @Bean(value = "water")
     public DataSource db1(@CloudConfig("water") HikariDataSource ds) {
         return ds;
     }
@@ -32,7 +33,12 @@ public class Config {
      * 配置缓存
      * */
     @Bean
-    public CacheService cache1(@CloudConfig("water_cache") MemCache cache) {
-        return CacheWrap.wrap(cache);
+    public CacheService cache1() {
+        return CacheWrap.wrap(new LocalCache());
     }
+
+//    @Bean
+//    public CacheService cache1(@CloudConfig("water_cache") MemCache cache) {
+//        return CacheWrap.wrap(cache);
+//    }
 }

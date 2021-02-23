@@ -24,6 +24,6 @@ public class API_service_unreg extends ApiBase {
         String key = EncryptUtils.md5(service + "#" + address);
 
         //1.删除注册的服务
-        registerService.delService(key);
+        registerService.delService(service, key);
     }
 }
