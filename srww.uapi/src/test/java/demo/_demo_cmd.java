@@ -12,10 +12,6 @@ import org.noear.srww.uapi.interceptor.*;
 @Mapping("/cmd/*")
 @Controller
 class _demo_cmd extends UapiGateway {
-    @Override
-    public int agroup_id() {
-        return 5;
-    }
 
     @Override
     protected void register() {

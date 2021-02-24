@@ -1,6 +1,8 @@
 package org.noear.srww.uapi;
 
 import org.noear.rock.RockClient;
+import org.noear.solon.Solon;
+import org.noear.solon.Utils;
 import org.noear.solon.annotation.Note;
 import org.noear.water.utils.TextUtils;
 
@@ -65,9 +67,9 @@ public class UapiCodes {
     public static final UapiCode CODE_4001021 = new UapiCode(4001021, "Login is invalid or not logged in");
 
 
-    public static final String CODE_txt(int agroup_id, String lang, UapiCode error) throws SQLException {
-        if (agroup_id > 0) {
-            String description = RockClient.getAppCode(agroup_id, error.getCode(), lang);
+    public static final String CODE_txt(String lang, UapiCode error) throws SQLException {
+        if (Utils.isNotEmpty(Solon.cfg().appName())) {
+            String description = RockClient.getServiceCodeByLang(Solon.cfg().appName(), error.getCode(), lang);
 
             if (TextUtils.isEmpty(description) == false) {
                 return description;
