@@ -1,6 +1,7 @@
 package org.noear.srww.uapi;
 
 import org.noear.rock.RockClient;
+import org.noear.rock.utils.I18nUtils;
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Note;
@@ -69,11 +70,11 @@ public class UapiCodes {
 
     public static final String CODE_note(String lang, UapiCode error) throws SQLException {
         if (Utils.isNotEmpty(Solon.cfg().appName())) {
-            if(lang == null){
+            if (lang == null) {
                 lang = "";
             }
 
-            String description = RockClient.getServiceCodeByLang(Solon.cfg().appName(), error.getCode(), lang);
+            String description = I18nUtils.getByCode(error.getCode(), lang);
 
             if (TextUtils.isEmpty(description) == false) {
                 return description;
