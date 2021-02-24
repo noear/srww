@@ -6,7 +6,7 @@
 
     <groupId>org.noear</groupId>
     <artifactId>srww-parent</artifactId>
-    <version>1.0.3-m6</version>
+    <version>1.0.3-m7</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -56,7 +56,7 @@
         <bcf.ver>2.0.11</bcf.ver>
         <rock.ver>1.0.4-m2</rock.ver>
 
-        <srww.ver>1.0.3-m6</srww.ver>
+        <srww.ver>1.0.3-m7</srww.ver>
 
         <fastjson.ver>1.2.75</fastjson.ver>
         <jedis.ver>3.3.0</jedis.ver>
