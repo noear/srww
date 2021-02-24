@@ -29,7 +29,7 @@
     <parent>
         <groupId>org.noear</groupId>
         <artifactId>srww-parent</artifactId>
-        <version>1.0.3-m7</version>
+        <version>1.0.3</version>
     </parent>
     
     <dependencies>
