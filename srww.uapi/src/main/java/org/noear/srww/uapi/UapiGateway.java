@@ -38,12 +38,12 @@ public abstract class UapiGateway extends Gateway {
             if (obj instanceof UapiCode) {
                 //处理标准的状态码
                 UapiCode err = (UapiCode) obj;
-                String description = UapiCodes.CODE_txt(g_lang(c), err);
+                String description = UapiCodes.CODE_note(g_lang(c), err);
 
                 c.result = Result.failure(err.getCode(), description);
             } else if (obj instanceof Throwable) {
                 //处理未知异常
-                String description = UapiCodes.CODE_txt(g_lang(c), UapiCodes.CODE_400);
+                String description = UapiCodes.CODE_note(g_lang(c), UapiCodes.CODE_400);
 
                 c.result = Result.failure(Result.FAILURE_CODE, description);
             } else if (obj instanceof ONode) {

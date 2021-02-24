@@ -67,9 +67,10 @@ public class UapiCodes {
     public static final UapiCode CODE_4001021 = new UapiCode(4001021, "Login is invalid or not logged in");
 
 
-    public static final String CODE_txt(String lang, UapiCode error) throws SQLException {
+    public static final String CODE_note(String lang, UapiCode error) throws SQLException {
         if (Utils.isNotEmpty(Solon.cfg().appName())) {
-            String description = RockClient.getServiceCodeByLang(Solon.cfg().appName(), error.getCode(), lang);
+            String description = RockClient.getServiceCodesByLang(Solon.cfg().appName(), lang)
+                    .get(error.getCode());
 
             if (TextUtils.isEmpty(description) == false) {
                 return description;
