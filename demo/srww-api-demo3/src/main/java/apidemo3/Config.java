@@ -17,8 +17,6 @@ import javax.sql.DataSource;
 public class Config {
     //静态配置
     //
-    public static final int agroupId = 6;
-
     public static final String water_config_tag = "dobbin";
 
     public static ConfigM cfg(String key) {

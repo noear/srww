@@ -15,11 +15,6 @@ import apidemo3.Config;
 public class CmdGateway extends UapiGateway {
 
     @Override
-    public int agroup_id() {
-        return Config.agroupId;
-    }
-
-    @Override
     protected void register() {
         before(new StartInterceptor());//开始计时
         before(new ParamsRebuildInterceptor(new AesDecoder())); //构建参数

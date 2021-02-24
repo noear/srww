@@ -13,11 +13,6 @@ import org.noear.solon.annotation.Mapping;
 @Controller
 class _demo_cmd extends UapiGateway {
     @Override
-    public int agroup_id() {
-        return 5;
-    }
-
-    @Override
     protected void register() {
 
         //
