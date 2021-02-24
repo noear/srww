@@ -2,7 +2,7 @@ package apidemo2;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.noear.rock.RockClient;
+import org.noear.rock.utils.I18nUtils;
 import org.noear.solon.test.SolonJUnit4ClassRunner;
 import org.noear.solon.test.SolonTest;
 
@@ -16,8 +16,7 @@ import java.sql.SQLException;
 public class I18nTest {
     @Test
     public void test0() throws SQLException {
-        String note = RockClient.getServiceI18nsByLang("demoapi","")
-                .get("title");
+        String note = I18nUtils.getByName("title", "");
 
         System.out.println(note);
     }
