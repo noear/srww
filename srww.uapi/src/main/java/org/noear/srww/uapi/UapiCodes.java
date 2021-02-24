@@ -69,8 +69,11 @@ public class UapiCodes {
 
     public static final String CODE_note(String lang, UapiCode error) throws SQLException {
         if (Utils.isNotEmpty(Solon.cfg().appName())) {
-            String description = RockClient.getServiceCodesByLang(Solon.cfg().appName(), lang)
-                    .get(error.getCode());
+            if(lang == null){
+                lang = "";
+            }
+
+            String description = RockClient.getServiceCodeByLang(Solon.cfg().appName(), error.getCode(), lang);
 
             if (TextUtils.isEmpty(description) == false) {
                 return description;
