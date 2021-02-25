@@ -28,8 +28,8 @@ public class ApiGateway3x extends ApiGateway {
         before(new ParamsRebuildInterceptor(new AesDecoder()));
 
 
-        after(new OutputSignInterceptor(new Md5Encoder()));
         after(new OutputBuildInterceptor(new AesEncoder()));
+        after(new OutputSignInterceptor(new Md5Encoder()));
         after(new OutputInterceptor());
         after(new LogInterceptor());
         after(new EndInterceptor("v2.api.app"));

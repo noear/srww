@@ -23,19 +23,6 @@ public class API_config_set extends ApiBase {
     @NotEmpty({"tag", "key"})
     @Mapping("config.set")
     public void exec(String tag, String key, String value) throws Throwable {
-        //1.查找配置
-        WaterCfgPropertiesDo cfg = configService.getConfig(tag, key);
-
-        if (cfg.row_id == 0) {
-            //2.如果没有，新增配置
-            configService.addConfig(tag, key, value);
-        } else {
-            if (cfg.is_editable == false) {
-                return;
-            }
-
-            //3.如果可以修改，则修改值
-            configService.udpConfig(tag, key, value);
-        }
+        configService.setConfig(tag, key, value);
     }
 }
