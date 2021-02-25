@@ -23,6 +23,7 @@ public class API_config_set extends ApiBase {
     @NotEmpty({"tag", "key"})
     @Mapping("config.set")
     public void exec(String tag, String key, String value) throws Throwable {
+        //设置配置
         configService.setConfig(tag, key, value);
     }
 }
