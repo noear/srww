@@ -22,6 +22,6 @@ public class ErrorListener implements EventListener<Throwable> {
             TagsMDC.tag0(ctx.path());
         }
 
-        log.error("", err);
+        log.error("{}", err);
     }
 }
