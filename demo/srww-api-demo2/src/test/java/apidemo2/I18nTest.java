@@ -19,7 +19,5 @@ public class I18nTest {
         String note = I18nUtils.getByName("title", "");
 
         System.out.println(note);
-
-        Thread.sleep(20*1000);
     }
 }
