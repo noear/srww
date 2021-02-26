@@ -1,28 +1,29 @@
 package org.noear.srww.uapi.interceptor;
 
-import org.noear.mlog.Logger;
-import org.noear.mlog.utils.Tags;
 import org.noear.snack.ONode;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
+import org.noear.solon.logging.utils.TagsMDC;
 import org.noear.srww.uapi.Uapi;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LogInterceptor implements Handler {
     Logger logger;
 
-    public LogInterceptor(){
-        logger = Logger.get(LogInterceptor.class);
+    public LogInterceptor() {
+        logger = LoggerFactory.getLogger(LogInterceptor.class);
     }
 
     public LogInterceptor(String loggerName) {
-        logger = Logger.get(loggerName);
+        logger = LoggerFactory.getLogger(loggerName);
     }
 
     @Override
     public void handle(Context ctx) throws Exception {
         Uapi uapi = (Uapi) ctx.controller();
 
-        if(uapi == null){
+        if (uapi == null) {
             return;
         }
 
@@ -60,12 +61,9 @@ public class LogInterceptor implements Handler {
         int verId = uapi.getVerId();
         long userId = uapi.getUserID();
 
-        logger.info(
-                Tags.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId)),
-                "::{}\r\n::{}",
-                orgInput,
-                orgOutput
-        );
+        TagsMDC.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId));
+
+        logger.info("::{}\r\n::{}", orgInput, orgOutput);
     }
 
     /**
@@ -90,11 +88,8 @@ public class LogInterceptor implements Handler {
         int verId = uapi.getVerId();
         long userId = uapi.getUserID();
 
-        logger.error(
-                Tags.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId)),
-                "::{}\r\n::{}",
-                orgInput,
-                err
-        );
+        TagsMDC.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId));
+
+        logger.error("::{}\r\n::{}", orgInput, err);
     }
 }

@@ -1,7 +1,6 @@
 package org.noear.srww.base;
 
 
-import org.noear.mlog.Logger;
 import org.noear.snack.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
@@ -15,6 +14,8 @@ import org.noear.water.WW;
 import org.noear.water.WaterClient;
 import org.noear.water.utils.IPUtils;
 import org.noear.weed.WeedConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -23,7 +24,7 @@ import org.noear.weed.WeedConfig;
 public class XPluginImp implements Plugin {
     boolean isDebugMode;
     boolean isWeedStyle2;
-    Logger logger = Logger.get(XPluginImp.class);
+    Logger logger = LoggerFactory.getLogger(XPluginImp.class);
 
     @Override
     public void start(SolonApp app) {
