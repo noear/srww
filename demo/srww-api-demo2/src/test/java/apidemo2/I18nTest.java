@@ -15,9 +15,11 @@ import java.sql.SQLException;
 @SolonTest(App.class)
 public class I18nTest {
     @Test
-    public void test0() throws SQLException {
+    public void test0() throws Exception {
         String note = I18nUtils.getByName("title", "");
 
         System.out.println(note);
+
+        Thread.sleep(20*1000);
     }
 }
