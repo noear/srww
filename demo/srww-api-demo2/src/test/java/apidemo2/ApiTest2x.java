@@ -1,6 +1,5 @@
 package apidemo2;
 
-import apidemo2.App;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.noear.snack.ONode;
