@@ -17,7 +17,7 @@ import java.util.Base64;
  */
 @Mapping("/api/v1/web/")
 @Controller
-public class ApiGateway2x extends ApiGateway {
+public class ApiGateway2x extends ApiGatewayBase {
     @Override
     protected void register() {
         // 快速体验：

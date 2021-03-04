@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * @author noear 2021/2/10 created
  */
-public abstract class ApiGateway extends UapiGateway {
+public abstract class ApiGatewayBase extends UapiGateway {
     @Override
     protected void register() {
         addBeans(bw -> "api".equals(bw.tag()));
