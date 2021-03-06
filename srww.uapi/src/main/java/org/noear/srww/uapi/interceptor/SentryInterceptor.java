@@ -17,15 +17,15 @@ import java.util.List;
 /**
  * 熔断拦截器
  */
-public class FuseInterceptor implements Handler {
+public class SentryInterceptor implements Handler {
     int limit_qps = 1000;
     String limit_resource = Solon.cfg().appName();
 
-    public FuseInterceptor() {
+    public SentryInterceptor() {
         initFlowRules();
     }
 
-    public FuseInterceptor(int limitQps) {
+    public SentryInterceptor(int limitQps) {
         limit_qps = limitQps;
         initFlowRules();
     }
@@ -44,10 +44,17 @@ public class FuseInterceptor implements Handler {
 
     private void initFlowRules() {
         List<FlowRule> rules = new ArrayList<>();
-        FlowRule rule = new FlowRule();
+        FlowRule rule = null;
 
+        rule = new FlowRule();
         rule.setResource(limit_resource);
-        rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+        rule.setGrade(RuleConstant.FLOW_GRADE_QPS); //qps
+        rule.setCount(limit_qps);
+        rules.add(rule);
+
+        rule = new FlowRule();
+        rule.setResource(limit_resource);
+        rule.setGrade(RuleConstant.FLOW_GRADE_THREAD); //并发数
         rule.setCount(limit_qps);
         rules.add(rule);
 

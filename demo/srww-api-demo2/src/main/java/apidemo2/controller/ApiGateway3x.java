@@ -22,7 +22,7 @@ public class ApiGateway3x extends ApiGatewayBase {
         // http://localhost:8080/api/v2/app/a.b.c
         //
         before(new StartInterceptor()); //开始
-        before(new FuseInterceptor()); //融断
+        before(new SentryInterceptor()); //融断
 
         before(new ParamsParseInterceptor()); //参数解析
         before(new ParamsSignCheckInterceptor(new Md5Encoder())); //参数签名较验
