@@ -6,6 +6,9 @@ import org.noear.srww.uapi.UapiCodes;
 import org.noear.water.WaterClient;
 import org.noear.water.utils.IPUtils;
 
+/**
+ * 白名单拦截器
+ * */
 public class WhitelistInterceptor implements Handler {
 
     @Override

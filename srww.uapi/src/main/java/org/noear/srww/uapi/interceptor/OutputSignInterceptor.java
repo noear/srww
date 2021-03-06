@@ -7,7 +7,9 @@ import org.noear.srww.uapi.encoder.Encoder;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 
-/** 输出签名拦截器（用于输出内容的签名） */
+/**
+ * 输出签名拦截器（用于输出内容的签名）
+ * */
 public class OutputSignInterceptor implements Handler {
     private Encoder _encoder;
 

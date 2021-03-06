@@ -59,12 +59,19 @@ public class UapiCodes {
      */
     @Note("请求不在白名单")
     public static final UapiCode CODE_4001016 = new UapiCode(4001016, "The request is not in the whitelist");
+    /**
+     * 请求容量超限
+     */
+    @Note("请求容量超限")
+    public static final UapiCode CODE_4001017 = new UapiCode(4001017, "Request capacity exceeds limit");
+
 
     /**
      * 登录已失效
      */
     @Note("登录已失效或未登录")
     public static final UapiCode CODE_4001021 = new UapiCode(4001021, "Login is invalid or not logged in");
+
 
 
     public static final String CODE_note(String lang, UapiCode error) throws SQLException {

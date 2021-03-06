@@ -7,7 +7,9 @@ import org.noear.water.WaterClient;
 import org.noear.water.utils.FromUtils;
 import org.noear.water.utils.Timecount;
 
-/** 结束计时拦截器（完成计时，并发送到WATER） */
+/**
+ * 结束计时拦截器（完成计时，并发送到WATER）
+ * */
 public class EndInterceptor implements Handler {
     private String _tag;
     public EndInterceptor(String tag){

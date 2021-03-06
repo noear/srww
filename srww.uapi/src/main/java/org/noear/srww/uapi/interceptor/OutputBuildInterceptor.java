@@ -8,7 +8,9 @@ import org.noear.srww.uapi.encoder.Encoder;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 
-/** 输出拦截器（用于内容格式化并输出） */
+/**
+ * 输出拦截器（用于内容格式化并输出）
+ * */
 public class OutputBuildInterceptor implements Handler {
 
     Encoder _encoder;

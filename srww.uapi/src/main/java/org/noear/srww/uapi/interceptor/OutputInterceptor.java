@@ -4,7 +4,9 @@ package org.noear.srww.uapi.interceptor;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 
-/** 输出拦截器（用于内容格式化并输出） */
+/**
+ * 输出拦截器（用于内容格式化并输出）
+ * */
 public class OutputInterceptor implements Handler {
 
     @Override

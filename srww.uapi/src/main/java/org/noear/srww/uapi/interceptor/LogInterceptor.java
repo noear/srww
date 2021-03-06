@@ -8,6 +8,9 @@ import org.noear.srww.uapi.Uapi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 日志拦截器
+ * */
 public class LogInterceptor implements Handler {
     Logger logger;
 
