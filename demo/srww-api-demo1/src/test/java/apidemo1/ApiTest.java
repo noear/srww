@@ -6,7 +6,7 @@ import org.noear.snack.ONode;
 import org.noear.solon.test.HttpTestBase;
 import org.noear.solon.test.SolonJUnit4ClassRunner;
 import org.noear.solon.test.SolonTest;
-import org.noear.srww.uapi.interceptor.Attrs;
+import org.noear.srww.uapi.common.Attrs;
 
 import java.util.Map;
 

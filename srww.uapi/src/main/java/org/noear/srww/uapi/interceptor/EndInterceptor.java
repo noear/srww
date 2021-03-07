@@ -3,6 +3,7 @@ package org.noear.srww.uapi.interceptor;
 import org.noear.solon.cloud.model.Instance;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
+import org.noear.srww.uapi.common.Attrs;
 import org.noear.water.WaterClient;
 import org.noear.water.utils.FromUtils;
 import org.noear.water.utils.Timecount;

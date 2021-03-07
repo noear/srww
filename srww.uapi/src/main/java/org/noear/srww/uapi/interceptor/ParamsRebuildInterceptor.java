@@ -7,6 +7,7 @@ import org.noear.srww.uapi.decoder.DefDecoder;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
+import org.noear.srww.uapi.common.Attrs;
 
 /**
  * 参数重构拦截器（将输出内容构建为统一的参数模型）

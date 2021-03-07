@@ -5,7 +5,7 @@ import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Gateway;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.Result;
-import org.noear.srww.uapi.interceptor.Attrs;
+import org.noear.srww.uapi.common.Attrs;
 
 public abstract class UapiGateway extends Gateway {
 

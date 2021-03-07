@@ -3,7 +3,7 @@ package apidemo2.controller.interceptor;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.srww.uapi.UapiCodes;
-import org.noear.srww.uapi.interceptor.Attrs;
+import org.noear.srww.uapi.common.Attrs;
 
 /**
  * @author noear 2021/2/11 created

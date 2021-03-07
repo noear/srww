@@ -2,7 +2,7 @@ package org.noear.srww.uapi;
 
 import org.noear.rock.RockClient;
 import org.noear.rock.model.AppModel;
-import org.noear.srww.uapi.interceptor.Attrs;
+import org.noear.srww.uapi.common.Attrs;
 import org.noear.solon.annotation.Singleton;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.utils.IPUtils;

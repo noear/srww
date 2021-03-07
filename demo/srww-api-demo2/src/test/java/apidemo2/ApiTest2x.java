@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.noear.snack.ONode;
 import org.noear.solon.test.*;
-import org.noear.srww.uapi.interceptor.Attrs;
+import org.noear.srww.uapi.common.Attrs;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;

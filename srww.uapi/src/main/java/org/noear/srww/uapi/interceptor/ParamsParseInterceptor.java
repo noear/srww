@@ -3,6 +3,7 @@ package org.noear.srww.uapi.interceptor;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
+import org.noear.srww.uapi.common.Attrs;
 
 /**
  * 参数解析拉截器

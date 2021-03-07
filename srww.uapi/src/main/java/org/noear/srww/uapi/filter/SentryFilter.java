@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.filter;
 
 import com.alibaba.csp.sentinel.Entry;
 import com.alibaba.csp.sentinel.SphU;
@@ -8,7 +8,8 @@ import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import org.noear.solon.Solon;
 import org.noear.solon.core.handle.Context;
-import org.noear.solon.core.handle.Handler;
+import org.noear.solon.core.handle.Filter;
+import org.noear.solon.core.handle.FilterChain;
 import org.noear.srww.uapi.UapiCodes;
 
 import java.util.ArrayList;
@@ -17,30 +18,31 @@ import java.util.List;
 /**
  * 熔断拦截器
  */
-public class SentryInterceptor implements Handler {
+public class SentryFilter implements Filter {
     int limit_qps = 1000;
     String limit_resource = Solon.cfg().appName();
 
-    public SentryInterceptor() {
+    public SentryFilter() {
         initFlowRules();
     }
 
-    public SentryInterceptor(int limitQps) {
+    public SentryFilter(int limitQps) {
         limit_qps = limitQps;
         initFlowRules();
     }
 
     @Override
-    public void handle(Context context) throws Throwable {
+    public void doFilter(Context ctx, FilterChain chain) throws Throwable {
         // 1.5.0 版本开始可以直接利用 try-with-resources 特性，自动 exit entry
         try (Entry entry = SphU.entry(limit_resource)) {
             // 被保护的逻辑
-            return;
+            chain.doFilter(ctx);
         } catch (BlockException ex) {
             // 处理被流控的逻辑
             throw UapiCodes.CODE_4001017;
         }
     }
+
 
     private void initFlowRules() {
         List<FlowRule> rules = new ArrayList<>();

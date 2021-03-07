@@ -6,6 +6,7 @@ import org.noear.srww.uapi.encoder.DefEncoder;
 import org.noear.srww.uapi.encoder.Encoder;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
+import org.noear.srww.uapi.common.Attrs;
 
 /**
  * 输出签名拦截器（用于输出内容的签名）

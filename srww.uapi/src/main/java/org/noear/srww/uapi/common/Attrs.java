@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.common;
 
 public class Attrs {
     public static final String handler_name = "handler_name";

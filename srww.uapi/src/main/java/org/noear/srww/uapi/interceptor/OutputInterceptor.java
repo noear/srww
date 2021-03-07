@@ -3,6 +3,7 @@ package org.noear.srww.uapi.interceptor;
 
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
+import org.noear.srww.uapi.common.Attrs;
 
 /**
  * 输出拦截器（用于内容格式化并输出）
