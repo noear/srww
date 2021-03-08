@@ -6,8 +6,6 @@ import org.noear.rock.utils.I18nUtils;
 import org.noear.solon.test.SolonJUnit4ClassRunner;
 import org.noear.solon.test.SolonTest;
 
-import java.sql.SQLException;
-
 /**
  * @author noear 2021/2/24 created
  */
