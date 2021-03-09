@@ -1,5 +1,6 @@
 package apidemo2.controller;
 
+import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.srww.uapi.decoder.AesDecoder;
@@ -12,7 +13,7 @@ import org.noear.srww.uapi.interceptor.*;
  * @author noear 2021/2/10 created
  */
 @Mapping("/api/v2/app/**")
-@Controller
+@Component
 public class ApiGateway3x extends ApiGatewayBase {
     @Override
     protected void register() {
