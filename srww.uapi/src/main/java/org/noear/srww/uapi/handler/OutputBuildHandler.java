@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.handler;
 
 import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.encoder.DefEncoder;
@@ -12,15 +12,15 @@ import org.noear.srww.uapi.common.Attrs;
 /**
  * 输出拦截器（用于内容格式化并输出）
  * */
-public class OutputBuildInterceptor implements Handler {
+public class OutputBuildHandler implements Handler {
 
     Encoder _encoder;
 
-    public OutputBuildInterceptor() {
+    public OutputBuildHandler() {
         _encoder = new DefEncoder();
     }
 
-    public OutputBuildInterceptor(Encoder encoder) {
+    public OutputBuildHandler(Encoder encoder) {
         if (encoder == null) {
             _encoder = new DefEncoder();
         } else {

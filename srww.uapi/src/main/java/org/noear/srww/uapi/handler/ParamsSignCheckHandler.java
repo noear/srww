@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.handler;
 
 import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.Uapi;
@@ -14,14 +14,14 @@ import org.noear.water.utils.TextUtils;
  *
  * 对cmd有用；对api没用
  * */
-public class ParamsSignCheckInterceptor implements Handler {
+public class ParamsSignCheckHandler implements Handler {
     private Encoder _encoder;
 
-    public ParamsSignCheckInterceptor() {
+    public ParamsSignCheckHandler() {
         _encoder = new DefEncoder();
     }
 
-    public ParamsSignCheckInterceptor(Encoder encoder) {
+    public ParamsSignCheckHandler(Encoder encoder) {
         if (encoder == null) {
             _encoder = new DefEncoder();
         } else {

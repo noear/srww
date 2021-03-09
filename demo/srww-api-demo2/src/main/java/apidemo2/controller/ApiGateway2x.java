@@ -7,7 +7,7 @@ import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.srww.uapi.UapiCodes;
 import org.noear.srww.uapi.encoder.Base64Encoder;
-import org.noear.srww.uapi.interceptor.*;
+import org.noear.srww.uapi.handler.*;
 
 import java.util.Base64;
 
@@ -47,13 +47,13 @@ public class ApiGateway2x extends ApiGatewayBase {
             chain.doFilter(c);
         });
 
-        before(new StartInterceptor());
+        before(new StartHandler());
         before(new AuthJwtInterceptor());
 
-        after(new OutputBuildInterceptor(new Base64Encoder()));
-        after(new OutputInterceptor());
-        after(new LogInterceptor());
-        after(new EndInterceptor("v1.api.web"));
+        after(new OutputBuildHandler(new Base64Encoder()));
+        after(new OutputHandler());
+        after(new LogHandler());
+        after(new EndHandler("v1.api.web"));
 
         super.register();
     }

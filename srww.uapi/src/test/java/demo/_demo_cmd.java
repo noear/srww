@@ -7,7 +7,7 @@ import org.noear.srww.uapi.encoder.AesEncoder;
 import org.noear.srww.uapi.encoder.Sha1Encoder;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
-import org.noear.srww.uapi.interceptor.*;
+import org.noear.srww.uapi.handler.*;
 
 @Mapping("/cmd/*")
 @Controller
@@ -21,24 +21,24 @@ class _demo_cmd extends UapiGateway {
         //
 
         //开始计时
-        before(new StartInterceptor());
+        before(new StartHandler());
         //构建参数
-        before(new ParamsRebuildInterceptor(new AesDecoder()));
+        before(new ParamsRebuildHandler(new AesDecoder()));
         //签权
-        before(new ParamsSignCheckInterceptor(new Sha1Encoder()));
+        before(new ParamsSignCheckHandler(new Sha1Encoder()));
 
         //
         //::执行后::
         //
 
         //构建输出
-        after(new OutputBuildInterceptor(new AesEncoder()));
+        after(new OutputBuildHandler(new AesEncoder()));
         //签名
-        after(new OutputSignInterceptor(new Sha1Encoder())); //可选
+        after(new OutputSignHandler(new Sha1Encoder())); //可选
         //输出
-        after(new OutputInterceptor());
+        after(new OutputHandler());
         //结束计时
-        after(new EndInterceptor("{tag}"));
+        after(new EndHandler("{tag}"));
 
 
         add(CMD_0_0_1.class);

@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.handler;
 
 import org.noear.solon.cloud.model.Instance;
 import org.noear.solon.core.handle.Context;
@@ -11,9 +11,9 @@ import org.noear.water.utils.Timecount;
 /**
  * 结束计时拦截器（完成计时，并发送到WATER）
  * */
-public class EndInterceptor implements Handler {
+public class EndHandler implements Handler {
     private String _tag;
-    public EndInterceptor(String tag){
+    public EndHandler(String tag){
         _tag = tag;
     }
 

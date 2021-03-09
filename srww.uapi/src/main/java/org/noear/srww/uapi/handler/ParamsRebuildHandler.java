@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.handler;
 
 import org.noear.snack.ONode;
 import org.noear.srww.uapi.Uapi;
@@ -20,16 +20,16 @@ import org.noear.srww.uapi.common.Attrs;
  *  header: Authorization (相当于 form:k)
  *  body: (content type: application/json)（相当于 form:p）
  * */
-public class ParamsRebuildInterceptor implements Handler {
+public class ParamsRebuildHandler implements Handler {
 
     private Decoder _decoder;
 
 
-    public ParamsRebuildInterceptor() {
+    public ParamsRebuildHandler() {
         _decoder = new DefDecoder();
     }
 
-    public ParamsRebuildInterceptor(Decoder decoder) {
+    public ParamsRebuildHandler(Decoder decoder) {
         if (decoder == null) {
             _decoder = new DefDecoder();
         } else {

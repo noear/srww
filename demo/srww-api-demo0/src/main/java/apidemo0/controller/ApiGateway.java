@@ -3,8 +3,7 @@ package apidemo0.controller;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.srww.uapi.UapiGateway;
-import org.noear.srww.uapi.encoder.AesEncoder;
-import org.noear.srww.uapi.interceptor.*;
+import org.noear.srww.uapi.handler.*;
 
 /**
  * @author noear 2021/2/17 created
@@ -20,12 +19,12 @@ public class ApiGateway extends UapiGateway {
         //
         // http://localhost:8080/api/v1/a.0.1
         //
-        before(new StartInterceptor()); //开始计时
+        before(new StartHandler()); //开始计时
 
-        after(new OutputBuildInterceptor());//构建输出内容
-        after(new OutputInterceptor());//输出
-        after(new LogInterceptor());//记录日志
-        after(new EndInterceptor("API"));//结束计时，并上报
+        after(new OutputBuildHandler());//构建输出内容
+        after(new OutputHandler());//输出
+        after(new LogHandler());//记录日志
+        after(new EndHandler("API"));//结束计时，并上报
 
         addBeans(bw -> "api".equals(bw.tag()));
     }

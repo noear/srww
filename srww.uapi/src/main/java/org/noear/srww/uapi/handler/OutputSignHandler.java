@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.handler;
 
 import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.Uapi;
@@ -11,10 +11,10 @@ import org.noear.srww.uapi.common.Attrs;
 /**
  * 输出签名拦截器（用于输出内容的签名）
  * */
-public class OutputSignInterceptor implements Handler {
+public class OutputSignHandler implements Handler {
     private Encoder _encoder;
 
-    public OutputSignInterceptor(Encoder encoder) {
+    public OutputSignHandler(Encoder encoder) {
         if (encoder == null) {
             _encoder = new DefEncoder();
         } else {

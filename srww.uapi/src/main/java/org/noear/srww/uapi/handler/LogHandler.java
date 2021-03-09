@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.handler;
 
 import org.noear.snack.ONode;
 import org.noear.solon.core.handle.Context;
@@ -11,14 +11,14 @@ import org.slf4j.LoggerFactory;
 /**
  * 日志拦截器
  * */
-public class LogInterceptor implements Handler {
+public class LogHandler implements Handler {
     Logger logger;
 
-    public LogInterceptor() {
-        logger = LoggerFactory.getLogger(LogInterceptor.class);
+    public LogHandler() {
+        logger = LoggerFactory.getLogger(LogHandler.class);
     }
 
-    public LogInterceptor(String loggerName) {
+    public LogHandler(String loggerName) {
         logger = LoggerFactory.getLogger(loggerName);
     }
 

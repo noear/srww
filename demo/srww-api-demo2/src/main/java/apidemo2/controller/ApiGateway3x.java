@@ -1,13 +1,12 @@
 package apidemo2.controller;
 
 import org.noear.solon.annotation.Component;
-import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.srww.uapi.decoder.AesDecoder;
 import org.noear.srww.uapi.encoder.AesEncoder;
 import org.noear.srww.uapi.encoder.Md5Encoder;
 import org.noear.srww.uapi.filter.SentryFilter;
-import org.noear.srww.uapi.interceptor.*;
+import org.noear.srww.uapi.handler.*;
 
 /**
  * @author noear 2021/2/10 created
@@ -26,16 +25,16 @@ public class ApiGateway3x extends ApiGatewayBase {
 
         filter(new SentryFilter()); //融断
 
-        before(new StartInterceptor()); //开始
-        before(new ParamsParseInterceptor()); //参数解析
-        before(new ParamsSignCheckInterceptor(new Md5Encoder())); //参数签名较验
-        before(new ParamsRebuildInterceptor(new AesDecoder())); //参数重构
+        before(new StartHandler()); //开始
+        before(new ParamsParseHandler()); //参数解析
+        before(new ParamsSignCheckHandler(new Md5Encoder())); //参数签名较验
+        before(new ParamsRebuildHandler(new AesDecoder())); //参数重构
 
-        after(new OutputBuildInterceptor(new AesEncoder())); //输出构建
-        after(new OutputSignInterceptor(new Md5Encoder())); //输出签名
-        after(new OutputInterceptor()); //输出
-        after(new LogInterceptor()); //日志
-        after(new EndInterceptor("v2.api.app")); //结束
+        after(new OutputBuildHandler(new AesEncoder())); //输出构建
+        after(new OutputSignHandler(new Md5Encoder())); //输出签名
+        after(new OutputHandler()); //输出
+        after(new LogHandler()); //日志
+        after(new EndHandler("v2.api.app")); //结束
 
         super.register();
     }

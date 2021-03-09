@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.handler;
 
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
@@ -16,7 +16,7 @@ import org.noear.srww.uapi.common.Attrs;
  *  header: Authorization (相当于 form:k)
  *  body: (content type: application/json)（相当于 form:p）
  * */
-public class ParamsParseInterceptor implements Handler {
+public class ParamsParseHandler implements Handler {
     @Override
     public void handle(Context ctx) throws Throwable {
         /** 如果已处理，不再执行 */

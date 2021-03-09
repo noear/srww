@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.handler;
 
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
@@ -9,7 +9,7 @@ import org.noear.water.utils.IPUtils;
 /**
  * 白名单拦截器
  * */
-public class WhitelistInterceptor implements Handler {
+public class WhitelistHandler implements Handler {
 
     @Override
     public void handle(Context ctx) throws Exception {

@@ -1,4 +1,4 @@
-package org.noear.srww.uapi.interceptor;
+package org.noear.srww.uapi.handler;
 
 
 import org.noear.solon.core.handle.Context;
@@ -8,7 +8,7 @@ import org.noear.srww.uapi.common.Attrs;
 /**
  * 输出拦截器（用于内容格式化并输出）
  * */
-public class OutputInterceptor implements Handler {
+public class OutputHandler implements Handler {
 
     @Override
     public void handle(Context context) throws Throwable {
