@@ -40,7 +40,15 @@ public class ApiTest3x extends HttpTestBase {
         //生成签名
         long timestamp = System.currentTimeMillis();
         StringBuilder sb = new StringBuilder();
-        sb.append(apiName).append("#").append(ver_id).append("#").append(json_encoded0).append("#").append(app_sign_secret).append("#").append(timestamp);
+        sb.append(apiName)
+                .append("#")
+                .append(ver_id)
+                .append("#")
+                .append(json_encoded0)
+                .append("#")
+                .append(app_sign_secret)
+                .append("#")
+                .append(timestamp);
         String sign = String.format("%d.%d.%s.%d", app_id, ver_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求

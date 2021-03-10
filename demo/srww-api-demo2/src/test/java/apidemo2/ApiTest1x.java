@@ -18,7 +18,6 @@ import java.util.Map;
 @SolonTest(App.class)
 public class ApiTest1x extends HttpTestBase {
     public static final int app_id = 2;
-    public static final String app_sign_secret = "djjePPbqBz35U328";
 
     public ONode call(String apiName, Map<String, Object> args) throws Exception {
 
