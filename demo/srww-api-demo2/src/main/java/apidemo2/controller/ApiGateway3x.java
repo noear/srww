@@ -23,7 +23,6 @@ public class ApiGateway3x extends UapiGateway {
         //
         // http://localhost:8080/api/v2/app/a.b.c
         //
-
         filter(new SentryFilter()); //融断
 
         before(new StartHandler()); //开始
