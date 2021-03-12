@@ -6,6 +6,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.srww.uapi.UapiCodes;
+import org.noear.srww.uapi.UapiGateway;
 import org.noear.srww.uapi.encoder.Base64Encoder;
 import org.noear.srww.uapi.handler.*;
 
@@ -16,7 +17,7 @@ import java.util.Base64;
  */
 @Mapping("/api/v1/web/")
 @Controller
-public class ApiGateway2x extends ApiGatewayBase {
+public class ApiGateway2x extends UapiGateway {
     @Override
     protected void register() {
         // 快速体验：
@@ -55,7 +56,7 @@ public class ApiGateway2x extends ApiGatewayBase {
         after(new LogHandler());
         after(new EndHandler("v1.api.web"));
 
-        super.register();
+        addBeans(bw -> "api".equals(bw.tag()));
     }
 
     @Override

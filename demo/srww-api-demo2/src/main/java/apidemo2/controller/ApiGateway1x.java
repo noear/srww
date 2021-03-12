@@ -2,6 +2,7 @@ package apidemo2.controller;
 
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
+import org.noear.srww.uapi.UapiGateway;
 import org.noear.srww.uapi.handler.*;
 
 /**
@@ -9,7 +10,7 @@ import org.noear.srww.uapi.handler.*;
  */
 @Mapping("/api/v1/app/**")
 @Controller
-public class ApiGateway1x extends ApiGatewayBase {
+public class ApiGateway1x extends UapiGateway {
     @Override
     protected void register() {
         // 快速体验：
@@ -25,6 +26,6 @@ public class ApiGateway1x extends ApiGatewayBase {
         after(new LogHandler());
         after(new EndHandler("v1.api.app"));
 
-        super.register();
+        addBeans(bw -> "api".equals(bw.tag()));
     }
 }
