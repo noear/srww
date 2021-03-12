@@ -14,3 +14,12 @@ solon.app:
 
 solon.cloud.water:
   server: water
+  discovery:
+    enable: true  #设为 false 时，solon.cloud.local 会生效（一般用于RPC本地调试）
+
+# 用于RPC本地调试
+#solon.cloud.local:
+#  discovery:
+#    service:
+#      helloapi:
+#        - "http://localhost:7112"
