@@ -41,6 +41,11 @@
             <groupId>org.noear</groupId>
             <artifactId>solon.extend.sessionstate.jwt</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>guava-solon-plugin</artifactId>
+        </dependency>
     </dependencies>
 
 

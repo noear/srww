@@ -6,7 +6,7 @@ import org.noear.srww.uapi.UapiGateway;
 import org.noear.srww.uapi.decoder.AesDecoder;
 import org.noear.srww.uapi.encoder.AesEncoder;
 import org.noear.srww.uapi.encoder.Md5Encoder;
-import org.noear.srww.uapi.filter.SentryFilter;
+import org.noear.srww.uapi.filter.BreakerFilter;
 import org.noear.srww.uapi.handler.*;
 
 /**
@@ -23,7 +23,7 @@ public class ApiGateway3x extends UapiGateway {
         //
         // http://localhost:8080/api/v2/app/a.b.c
         //
-        filter(new SentryFilter()); //融断
+        filter(new BreakerFilter()); //融断
 
         before(new StartHandler()); //开始
         before(new ParamsParseHandler()); //参数解析
