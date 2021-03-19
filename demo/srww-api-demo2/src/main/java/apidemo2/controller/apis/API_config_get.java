@@ -37,4 +37,20 @@ public class API_config_get extends ApiBase {
                         .build())
                 .collect(Collectors.toList());
     }
+
+    @NotEmpty("tag")
+    @Mapping("config.get2")
+    public List<ConfigVo> exec2(String tag) throws Throwable {
+        //1.根据tag查询配置信息
+        List<WaterCfgPropertiesDo> listD = configService.getConfigsByTag(tag);
+
+        //2.转为视图格式
+        return listD.stream()
+                .map(d -> ConfigVo.builder()
+                        .key(d.key)
+                        .value(d.value)
+                        .lastModified((d.update_fulltime == null ? 0 : d.update_fulltime.getTime()))
+                        .build())
+                .collect(Collectors.toList());
+    }
 }
