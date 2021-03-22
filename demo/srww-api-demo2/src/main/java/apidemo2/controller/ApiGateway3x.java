@@ -25,7 +25,7 @@ public class ApiGateway3x extends UapiGateway {
         //
         filter(new BreakerFilter()); //融断
 
-        before(new StartHandler()); //开始
+        before(new StartHandler()); //开始计时
         before(new ParamsParseHandler()); //参数解析
         before(new ParamsSignCheckHandler(new Md5Encoder())); //参数签名较验
         before(new ParamsRebuildHandler(new AesDecoder())); //参数重构
@@ -34,7 +34,7 @@ public class ApiGateway3x extends UapiGateway {
         after(new OutputSignHandler(new Md5Encoder())); //输出签名
         after(new OutputHandler()); //输出
         after(new LogHandler()); //日志
-        after(new EndHandler("v2.api.app")); //结束
+        after(new EndHandler("v2.api.app")); //结束计时
 
         addBeans(bw -> "api".equals(bw.tag()));
     }
