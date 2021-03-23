@@ -23,13 +23,13 @@ import java.util.Map;
 @SolonTest(App.class)
 public class ApiTest3x extends HttpTestBase {
     public static final int app_id = 2;
-    public static final int ver_id = 1;
-    public static final String app_sign_secret = "djjePPbqBz35U328";
+    public static final String app_secret = "djjePPbqBz35U328";
+    public static final int client_ver_id = 10001; //1.0.1
 
     public ONode call(String apiName, Map<String, Object> args) throws Exception {
 
         String json0 = ONode.stringify(args);
-        String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_sign_secret);
+        String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_secret);
 
         //生成领牌
         Claims claims = new DefaultClaims();
@@ -42,14 +42,14 @@ public class ApiTest3x extends HttpTestBase {
         StringBuilder sb = new StringBuilder();
         sb.append(apiName)
                 .append("#")
-                .append(ver_id)
+                .append(client_ver_id)
                 .append("#")
                 .append(json_encoded0)
                 .append("#")
-                .append(app_sign_secret)
+                .append(app_secret)
                 .append("#")
                 .append(timestamp);
-        String sign = String.format("%d.%d.%s.%d", app_id, ver_id, EncryptUtils.md5(sb.toString()), timestamp);
+        String sign = String.format("%d.%d.%s.%d", app_id, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求
         String json_encoded2 = path("/api/v2/app/" + apiName)
@@ -58,7 +58,7 @@ public class ApiTest3x extends HttpTestBase {
                 .bodyTxt(json_encoded0)
                 .post();
 
-        String json = EncryptUtils.aesDecrypt(json_encoded2, app_sign_secret);
+        String json = EncryptUtils.aesDecrypt(json_encoded2, app_secret);
 
         System.out.println("Decoded: " + json);
 
