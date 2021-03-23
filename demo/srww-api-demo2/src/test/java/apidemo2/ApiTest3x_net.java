@@ -21,7 +21,7 @@ import java.util.Map;
  */
 @RunWith(SolonJUnit4ClassRunner.class)
 @SolonTest(App.class)
-public class ApiTest3x extends HttpTestBase {
+public class ApiTest3x_net extends HttpTestBase {
     public static final int app_id = 4;
     public static final String app_secret = "ZVJ4swhbNUV3Uc36";
     public static final int client_ver_id = 10001; //1.0.1
@@ -52,7 +52,7 @@ public class ApiTest3x extends HttpTestBase {
         String sign = String.format("%d.%d.%s.%d", app_id, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求
-        String json_encoded2 = path("/api/v2/app/" + apiName)
+        String json_encoded2 = http("http://8.136.190.8:8091/api/v2/app/" + apiName)
                 .header(Attrs.h_token, token)
                 .header(Attrs.h_sign, sign)
                 .bodyTxt(json_encoded0)
