@@ -19,8 +19,7 @@ import java.util.Map;
 /**
  * @author noear 2021/2/11 created
  */
-@RunWith(SolonJUnit4ClassRunner.class)
-@SolonTest(App.class)
+
 public class ApiTest3x_net extends HttpTestBase {
     public static final int app_id = 4;
     public static final String app_secret = "ZVJ4swhbNUV3Uc36";
