@@ -74,7 +74,7 @@ public class ApiTest3x extends HttpTestBase {
     @Test
     public void config_set() throws Exception {
         //ONode node = call("config.set", new KvMap().set("tag", "demo").set("key","test").set("value","test"));
-        ONode node = call("config.set", "{tag:'demo',key:'test',value:'test'}");
+        ONode node = call("config.set", "{tag:'demo',key:'test',value:'test',map:{k1:1,k2:2}}");
 
         assert node.get("code").getInt() == 200;
     }

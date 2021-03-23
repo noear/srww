@@ -9,6 +9,8 @@ import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.extend.validation.annotation.NotEmpty;
 
+import java.util.Map;
+
 /**
  * @author noear 2021/2/11 created
  */
@@ -20,8 +22,9 @@ public class API_config_set extends ApiBase {
 
     @NotEmpty({"tag", "key"})
     @Mapping("config.set")
-    public void exec(String tag, String key, String value) throws Throwable {
+    public void exec(String tag, String key, String value, Map<String,Object> map) throws Throwable {
         //设置配置
+
         configService.setConfig(tag, key, value);
     }
 }

@@ -34,6 +34,7 @@ public class ApiGateway2x extends UapiGateway {
             }
 
             String json = new String(Base64.getDecoder().decode(josn_b64));
+            c.bodyNew(json);
 
             ONode node = ONode.loadStr(json);
 

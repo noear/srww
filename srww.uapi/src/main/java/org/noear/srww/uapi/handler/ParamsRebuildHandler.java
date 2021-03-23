@@ -59,6 +59,8 @@ public class ParamsRebuildHandler implements Handler {
                 //
                 orgInput = _decoder.tryDecode(ctx, uapi.getApp(), orgInput);
 
+                ctx.bodyNew(orgInput);
+
                 //解析数据
                 //
                 ONode tmp = ONode.load(orgInput);
