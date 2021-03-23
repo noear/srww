@@ -7,6 +7,16 @@ import org.noear.water.utils.EncryptUtils;
 import java.net.URLDecoder;
 
 public class AesDecoder implements Decoder {
+    private String algorithm = "AES/ECB/PKCS5Padding";
+
+    public AesDecoder() {
+
+    }
+
+    public AesDecoder(String algorithm) {
+        this.algorithm = algorithm;
+    }
+
     @Override
     public String tryDecode(Context context, AppModel app, String text) throws Exception {
         if (text.indexOf("{") < 0 && text.indexOf("<") < 0) {
@@ -14,7 +24,7 @@ public class AesDecoder implements Decoder {
                 text = URLDecoder.decode(text, "UTF-8");
             }
 
-            return EncryptUtils.aesDecrypt(text, app.app_secret_key, "AES/CBC/PKCS7Padding");
+            return EncryptUtils.aesDecrypt(text, app.app_secret_key, algorithm);
         }
 
         return text;
