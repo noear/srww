@@ -24,6 +24,7 @@ public class ApiTest1x extends HttpTestBase {
         args.put(Attrs.app_id, app_id);
 
         String json = path("/api/v1/app/" + apiName)
+                .header("Content-type","application/json")
                 .data(args)
                 .post();
 

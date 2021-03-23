@@ -53,6 +53,7 @@ public class ApiTest3x_net extends HttpTestBase {
 
         //请求
         String json_encoded2 = http("http://8.136.190.8:8091/api/v2/app/" + apiName)
+                .header("Content-type","application/json")
                 .header(Attrs.h_token, token)
                 .header(Attrs.h_sign, sign)
                 .bodyTxt(json_encoded0)

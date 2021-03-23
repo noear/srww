@@ -31,6 +31,7 @@ public class ApiTest2x extends HttpTestBase {
 
         String josn_b64 = path("/api/v1/web/")
                 .header(Attrs.h_token, "noear")
+                .header("Content-type","application/json")
                 .bodyTxt(json_b640)
                 .post();
 
