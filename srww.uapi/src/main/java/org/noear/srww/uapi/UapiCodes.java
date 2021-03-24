@@ -74,23 +74,39 @@ public class UapiCodes {
 
 
 
-    public static final String CODE_note(String lang, UapiCode error) throws SQLException {
+    public static final String CODE_note(String lang, UapiCode uapiCode) throws SQLException {
         if (Utils.isNotEmpty(Solon.cfg().appName())) {
             if (lang == null) {
                 lang = "";
             }
 
-            String description = I18nUtils.getByCode(error.getCode(), lang);
+            String description = I18nUtils.getByCode(uapiCode.getCode(), lang);
 
             if (TextUtils.isEmpty(description) == false) {
                 return description;
             }
         }
 
-        if (error.getCode() == 4001014) {
-            return "Parameter missing or error" + (error.getDescription() == null ? "" : "(" + error.getDescription() + ")");
+        if (uapiCode.getCode() == 4001014) {
+            return "Parameter missing or error" + (uapiCode.getDescription() == null ? "" : "(" + uapiCode.getDescription() + ")");
         } else {
-            return error.getDescription();
+            return uapiCode.getDescription();
         }
+    }
+
+    public static final String CODE_note(String lang, int uapiCode) throws SQLException {
+        if (Utils.isNotEmpty(Solon.cfg().appName())) {
+            if (lang == null) {
+                lang = "";
+            }
+
+            String description = I18nUtils.getByCode(uapiCode, lang);
+
+            if (TextUtils.isEmpty(description) == false) {
+                return description;
+            }
+        }
+
+        return "";
     }
 }
