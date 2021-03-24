@@ -59,6 +59,8 @@ public class ParamsRebuildHandler implements Handler {
                 //
                 orgInput = _decoder.tryDecode(ctx, uapi.getApp(), orgInput);
 
+                ctx.contentType();
+                ctx.headerMap().put("Content-type","application/json");
                 ctx.bodyNew(orgInput);
 
                 //解析数据
