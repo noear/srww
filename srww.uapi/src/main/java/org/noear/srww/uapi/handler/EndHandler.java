@@ -1,6 +1,7 @@
 package org.noear.srww.uapi.handler;
 
 import org.noear.solon.cloud.model.Instance;
+import org.noear.solon.core.handle.Action;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.srww.uapi.common.Attrs;
@@ -13,7 +14,8 @@ import org.noear.water.utils.Timecount;
  * */
 public class EndHandler implements Handler {
     private String _tag;
-    public EndHandler(String tag){
+
+    public EndHandler(String tag) {
         _tag = tag;
     }
 
@@ -26,10 +28,20 @@ public class EndHandler implements Handler {
             return;
         }
 
+        Action action = ctx.action();
+
         String _from = FromUtils.getFrom(ctx);
 
         String service = Instance.local().service();
-        String path = ctx.pathNew();
+        String path = null;
+        if (action != null) {
+            path = action.name();
+        }
+
+        if (path == null) {
+            path = ctx.pathNew();
+        }
+
         String node = Instance.local().address();
 
         WaterClient.Track.track(service, _tag, path, timecount.stop().milliseconds(), node, _from);
