@@ -14,9 +14,15 @@ import org.noear.water.utils.Timecount;
  * */
 public class EndHandler implements Handler {
     private String _tag;
+    private boolean _usePath = false;
 
     public EndHandler(String tag) {
         _tag = tag;
+    }
+
+    public EndHandler(String tag, boolean usePath) {
+        _tag = tag;
+        _usePath = usePath;
     }
 
     @Override
@@ -28,18 +34,24 @@ public class EndHandler implements Handler {
             return;
         }
 
-        Action action = ctx.action();
 
         String _from = FromUtils.getFrom(ctx);
 
         String service = Instance.local().service();
         String path = null;
-        if (action != null) {
-            path = action.name();
-        }
 
-        if (path == null) {
+        if(_usePath){
             path = ctx.pathNew();
+        }else {
+            Action action = ctx.action();
+
+            if (action != null) {
+                path = action.name();
+            }
+
+            if (path == null) {
+                path = ctx.pathNew();
+            }
         }
 
         String node = Instance.local().address();
