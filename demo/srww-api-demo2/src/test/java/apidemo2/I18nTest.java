@@ -27,7 +27,7 @@ public class I18nTest {
 
     @Test
     public void test1() throws Exception {
-        String note = I18nUtils.getByNameAndFormat("hello", "", "noear");
+        String note = I18nUtils.getByNameAndFormat("hello", "en_Us", "noear");
 
         assert note != null;
         assert note.indexOf("noear") >= 0;
