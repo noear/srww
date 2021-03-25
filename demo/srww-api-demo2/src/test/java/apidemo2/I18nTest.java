@@ -18,4 +18,11 @@ public class I18nTest {
 
         System.out.println(note);
     }
+
+    @Test
+    public void test1() throws Exception {
+        String note = I18nUtils.getByNameAndFormat("hello", "", "noear");
+
+        System.out.println(note);
+    }
 }
