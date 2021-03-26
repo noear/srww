@@ -66,6 +66,7 @@ public class XPluginImp implements Plugin {
             }
 
             WaterClient.Track.track(Solon.cfg().appName(), cmd, 1000);
+            WaterClient.Track.track(service_name() + "_sql", "sql", cmd.text, cmd.timespan());
         });
     }
 
@@ -98,6 +99,10 @@ public class XPluginImp implements Plugin {
 
             if (cmd.timespan() > 2000 || cmd.isLog > 0 || sqlUp.indexOf("INSERT INTO ") >= 0 || sqlUp.indexOf("UPDATE ") >= 0 || sqlUp.indexOf("DELETE ") >= 0 || sqlUp.indexOf(chkUp) >= 0) {
                 WaterClient.Track.track(service_name(), cmd, ctx.userAgent(), ctx.pathNew(), user_puid + "." + user_name, IPUtils.getIP(ctx));
+            }
+
+            if (cmd.isLog > 0) {
+                WaterClient.Track.track(service_name() + "_sql", "sql", cmd.text, cmd.timespan());
             }
         });
     }
