@@ -101,9 +101,7 @@ public class XPluginImp implements Plugin {
                 WaterClient.Track.track(service_name(), cmd, ctx.userAgent(), ctx.pathNew(), user_puid + "." + user_name, IPUtils.getIP(ctx));
             }
 
-            if (cmd.isLog > 0) {
-                WaterClient.Track.track(service_name() + "_sql", "sql", cmd.text, cmd.timespan());
-            }
+            WaterClient.Track.track(service_name() + "_sql", "sql", cmd.text, cmd.timespan());
         });
     }
 
