@@ -13,6 +13,7 @@ import org.noear.srww.base.validation.WhitelistCheckerNew;
 import org.noear.water.WW;
 import org.noear.water.WaterClient;
 import org.noear.water.utils.IPUtils;
+import org.noear.water.utils.TextUtils;
 import org.noear.weed.WeedConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,7 @@ import org.slf4j.LoggerFactory;
 public class XPluginImp implements Plugin {
     boolean isDebugMode;
     boolean isWeedStyle2;
+    boolean isTrackEnable;
     Logger logger = LoggerFactory.getLogger(XPluginImp.class);
 
     @Override
@@ -36,6 +38,7 @@ public class XPluginImp implements Plugin {
 
         String style = Solon.cfg().get("srww.weed.print.style");
         isWeedStyle2 = "sql".equals(style);
+        isTrackEnable = Solon.cfg().getBool("srww.weed.track.enable", true);
 
         initWeed();
     }
@@ -67,8 +70,14 @@ public class XPluginImp implements Plugin {
 
             WaterClient.Track.track(service_name(), cmd, 1000);
 
-            String tag = "main";
-            WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
+            if (isTrackEnable) {
+                String tag = cmd.context.schema();
+                if (TextUtils.isEmpty(tag)) {
+                    tag = "sql";
+                }
+
+                WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
+            }
         });
     }
 
@@ -103,12 +112,14 @@ public class XPluginImp implements Plugin {
                 WaterClient.Track.track(service_name(), cmd, ctx.userAgent(), ctx.pathNew(), user_puid + "." + user_name, IPUtils.getIP(ctx));
             }
 
-            String tag = "main";
-            if (cmd.text.contains("bcf_")) {
-                tag = "bcf";
-            }
+            if (isTrackEnable) {
+                String tag = cmd.context.schema();
+                if (TextUtils.isEmpty(tag)) {
+                    tag = "sql";
+                }
 
-            WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
+                WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
+            }
         });
     }
 
