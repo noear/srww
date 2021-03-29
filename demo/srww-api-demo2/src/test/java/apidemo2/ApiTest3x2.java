@@ -2,6 +2,7 @@ package apidemo2;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.impl.DefaultClaims;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +21,7 @@ import java.util.Map;
 /**
  * @author noear 2021/2/11 created
  */
+@Slf4j
 @RunWith(SolonJUnit4ClassRunner.class)
 @SolonTest(App.class)
 public class ApiTest3x2 extends HttpTestBase {
@@ -62,8 +64,7 @@ public class ApiTest3x2 extends HttpTestBase {
 
         String token2 = response.header("Token");
 
-        System.out.println("token2="+token2);
-
+        log.debug(token2);
 
         String json_encoded2 = response.body().string();
 

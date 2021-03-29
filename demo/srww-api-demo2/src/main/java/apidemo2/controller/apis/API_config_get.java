@@ -8,6 +8,7 @@ import apidemo2.model.view.ConfigVo;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;
+import org.noear.solon.core.handle.Context;
 import org.noear.solon.extend.validation.annotation.NotEmpty;
 
 import java.util.List;
@@ -24,7 +25,9 @@ public class API_config_get extends ApiBase {
 
     @NotEmpty("tag")
     @Mapping("config.get")
-    public List<ConfigVo> exec(String tag) throws Throwable {
+    public List<ConfigVo> exec(String tag, Context ctx) throws Throwable {
+        ctx.sessionSet("user_id",12);
+
         //1.根据tag查询配置信息
         List<WaterCfgPropertiesDo> listD = configService.getConfigsByTag(tag);
 
