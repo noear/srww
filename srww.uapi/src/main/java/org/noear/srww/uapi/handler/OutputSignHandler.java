@@ -42,6 +42,7 @@ public class OutputSignHandler implements Handler {
 
             String x_sign = _encoder.tryEncode(ctx, app, buf.toString());
             ctx.headerSet(Attrs.h_sign, x_sign);
+            ctx.attr(Attrs.h_sign, x_sign);
         }
     }
 }

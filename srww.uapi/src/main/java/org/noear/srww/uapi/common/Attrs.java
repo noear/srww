@@ -7,6 +7,7 @@ public class Attrs {
     public static final String ver_id = "ver_id";
     public static final String app_id = "app_id";
 
+    public static final String org_sign = "org_sign";
     public static final String org_input = "org_input";
     public static final String org_input_sign = "org_input_sign";
     public static final String org_input_timestamp = "org_input_timestamp";

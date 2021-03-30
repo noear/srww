@@ -50,6 +50,9 @@ public class ParamsParseHandler implements Handler {
         //
         if (Utils.isNotEmpty(org_sign)) {
             log.trace("Org sign: {}", org_sign);
+
+            ctx.attrSet(Attrs.org_sign, org_sign);
+
             //
             //sign:{appid}.{verid}.{sgin}.{timestamp}
             //

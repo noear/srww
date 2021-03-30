@@ -1,10 +1,12 @@
 package org.noear.srww.uapi.handler;
 
 import org.noear.snack.ONode;
+import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.solon.logging.utils.TagsMDC;
 import org.noear.srww.uapi.Uapi;
+import org.noear.srww.uapi.common.Attrs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,13 +54,45 @@ public class LogHandler implements Handler {
             return;
         }
 
+        StringBuilder logInput = new StringBuilder();
+        StringBuilder logOutput = new StringBuilder();
+
+        //构建输入项
         String orgInput = uapi.getOrgInput();
         if (null == orgInput) {
             orgInput = ONode.stringify(uapi.context().paramMap());
         }
-        if (orgInput.length() > 900) {
-            orgInput = orgInput.substring(0, 900);
+        if (orgInput.length() > 2000) {
+            orgInput = orgInput.substring(0, 2000);
         }
+
+
+        String org_sign = uapi.context().attr(Attrs.org_sign);
+        String org_token = uapi.context().header(Attrs.h_token);
+
+        if (Utils.isNotEmpty(org_token)) {
+            logInput.append(" $token: ").append(org_token);
+        }
+        if (Utils.isNotEmpty(org_sign)) {
+            logInput.append(" $sign: ").append(org_sign);
+        }
+        logInput.append(" $body: ").append(orgInput);
+
+
+        //构建输出项
+        String out_sign = uapi.context().attr(Attrs.h_sign);
+        String out_token = uapi.context().attr(Attrs.h_token);
+
+        if(Utils.isNotEmpty(out_token)){
+            logOutput.append(" $token: ").append(out_token);
+        }
+
+        if(Utils.isNotEmpty(out_sign)) {
+            logOutput.append(" $sign: ").append(out_sign);
+        }
+
+        logOutput.append(" $body: ").append(orgOutput);
+
 
 
         int verId = uapi.getVerId();
@@ -66,7 +100,7 @@ public class LogHandler implements Handler {
 
         TagsMDC.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId));
 
-        logger.info("::{}\r\n::{}", orgInput, orgOutput);
+        logger.info("::{}\r\n::{}", logInput.toString(), logOutput.toString());
     }
 
     /**
