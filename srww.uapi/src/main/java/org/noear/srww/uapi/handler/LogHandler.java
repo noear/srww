@@ -55,7 +55,6 @@ public class LogHandler implements Handler {
         }
 
         StringBuilder logInput = new StringBuilder();
-        StringBuilder logOutput = new StringBuilder();
 
         //构建输入项
         String orgInput = uapi.getOrgInput();
@@ -80,6 +79,7 @@ public class LogHandler implements Handler {
 
 
         //构建输出项
+        StringBuilder logOutput = new StringBuilder();
         String out_sign = uapi.context().attr(Attrs.h_sign);
         String out_token = uapi.context().attr(Attrs.h_token);
 
@@ -114,19 +114,34 @@ public class LogHandler implements Handler {
             return;
         }
 
+        StringBuilder logInput = new StringBuilder();
+
+        //构建输入项
         String orgInput = uapi.getOrgInput();
         if (null == orgInput) {
             orgInput = ONode.stringify(uapi.context().paramMap());
         }
-        if (orgInput.length() > 900) {
-            orgInput = orgInput.substring(0, 900);
+        if (orgInput.length() > 2000) {
+            orgInput = orgInput.substring(0, 2000);
         }
+
+
+        String org_sign = uapi.context().attr(Attrs.org_sign);
+        String org_token = uapi.context().header(Attrs.h_token);
+
+        if (Utils.isNotEmpty(org_token)) {
+            logInput.append("> Token: ").append(org_token).append("\r\n");
+        }
+        if (Utils.isNotEmpty(org_sign)) {
+            logInput.append("> Sign: ").append(org_sign).append("\r\n");
+        }
+        logInput.append("> Body: ").append(orgInput).append("\r\n");
 
         int verId = uapi.getVerId();
         long userId = uapi.getUserID();
 
         TagsMDC.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId));
 
-        logger.error("::{}\r\n::{}", orgInput, err);
+        logger.error("{}\r\n{}", logInput.toString(), err);
     }
 }
