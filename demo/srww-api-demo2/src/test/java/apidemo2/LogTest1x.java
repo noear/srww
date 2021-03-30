@@ -10,12 +10,12 @@ import org.slf4j.LoggerFactory;
 /**
  * @author noear 2021/2/23 created
  */
-//@RunWith(SolonJUnit4ClassRunner.class)
-//@SolonTest(App.class)
+@RunWith(SolonJUnit4ClassRunner.class)
+@SolonTest(App.class)
 public class LogTest1x {
     Logger logger = LoggerFactory.getLogger(LogTest1x.class);
 
-//    @Test
+    @Test
     public void test() throws Throwable{
         logger.trace("test");
         logger.debug("test");
