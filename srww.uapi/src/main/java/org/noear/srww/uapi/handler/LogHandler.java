@@ -84,7 +84,7 @@ public class LogHandler implements Handler {
         String out_token = uapi.context().attr(Attrs.h_token);
 
         if(Utils.isNotEmpty(out_token)){
-            logOutput.append("< token: ").append(out_token).append("\r\n");
+            logOutput.append("< Token: ").append(out_token).append("\r\n");
         }
 
         if(Utils.isNotEmpty(out_sign)) {
