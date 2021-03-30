@@ -74,7 +74,7 @@ public class LogHandler implements Handler {
             logInput.append("> Token: ").append(org_token).append("\r\n");
         }
         if (Utils.isNotEmpty(org_sign)) {
-            logInput.append("> Tign: ").append(org_sign).append("\r\n");
+            logInput.append("> Sign: ").append(org_sign).append("\r\n");
         }
         logInput.append("> Body: ").append(orgInput).append("\r\n");
 
