@@ -4,6 +4,8 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.srww.uapi.common.Attrs;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 参数解析拉截器
@@ -17,6 +19,8 @@ import org.noear.srww.uapi.common.Attrs;
  *  body: (content type: application/json)（相当于 form:p）
  * */
 public class ParamsParseHandler implements Handler {
+    static Logger log = LoggerFactory.getLogger(ParamsParseHandler.class);
+
     @Override
     public void handle(Context ctx) throws Throwable {
         /** 如果已处理，不再执行 */
@@ -45,6 +49,7 @@ public class ParamsParseHandler implements Handler {
         //2.尝试解析令牌
         //
         if (Utils.isNotEmpty(org_sign)) {
+            log.trace("Org sign: {}", org_sign);
             //
             //sign:{appid}.{verid}.{sgin}.{timestamp}
             //
@@ -61,6 +66,8 @@ public class ParamsParseHandler implements Handler {
         //3.尝试解析参数（涉及解码器）
         //
         if (Utils.isNotEmpty(org_input)) {
+            log.trace("Org input: {}", org_input);
+
             ctx.attrSet(Attrs.org_input, org_input);
         }
     }
