@@ -71,12 +71,12 @@ public class LogHandler implements Handler {
         String org_token = uapi.context().header(Attrs.h_token);
 
         if (Utils.isNotEmpty(org_token)) {
-            logInput.append(" $token: ").append(org_token);
+            logInput.append("> Token: ").append(org_token).append("\r\n");
         }
         if (Utils.isNotEmpty(org_sign)) {
-            logInput.append(" $sign: ").append(org_sign);
+            logInput.append("> Tign: ").append(org_sign).append("\r\n");
         }
-        logInput.append(" $body: ").append(orgInput);
+        logInput.append("> Body: ").append(orgInput).append("\r\n");
 
 
         //构建输出项
@@ -84,14 +84,14 @@ public class LogHandler implements Handler {
         String out_token = uapi.context().attr(Attrs.h_token);
 
         if(Utils.isNotEmpty(out_token)){
-            logOutput.append(" $token: ").append(out_token);
+            logOutput.append("< token: ").append(out_token).append("\r\n");
         }
 
         if(Utils.isNotEmpty(out_sign)) {
-            logOutput.append(" $sign: ").append(out_sign);
+            logOutput.append("< Sign: ").append(out_sign).append("\r\n");
         }
 
-        logOutput.append(" $body: ").append(orgOutput);
+        logOutput.append("< Body: ").append(orgOutput);
 
 
 
@@ -100,7 +100,7 @@ public class LogHandler implements Handler {
 
         TagsMDC.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId));
 
-        logger.info("::{}\r\n::{}", logInput.toString(), logOutput.toString());
+        logger.info("{}\r\n{}", logInput.toString(), logOutput.toString());
     }
 
     /**
