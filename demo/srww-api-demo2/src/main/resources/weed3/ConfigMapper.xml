@@ -6,11 +6,11 @@
         db="water">
 
     <sql id="getConfigsByTag" return="List[WaterCfgPropertiesDo]" remarks="获取配置列表">
-        select * from water_cfg_propertiesx where tag = @{tag:String}
+        select * from water_cfg_properties where tag = @{tag:String}
     </sql>
 
     <sql id="getConfig" return="WaterCfgPropertiesDo" remarks="获取配置">
-        select * from water_cfg_propertiesx where `tag` = @{tag:String} and `key` = @{key:String}
+        select * from water_cfg_properties where `tag` = @{tag:String} and `key` = @{key:String}
     </sql>
 
     <sql id="addConfig" return="long" remarks="设置配置">
