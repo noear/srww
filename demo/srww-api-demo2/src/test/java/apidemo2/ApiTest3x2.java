@@ -62,11 +62,19 @@ public class ApiTest3x2 extends HttpTestBase {
                 .bodyTxt(json_encoded0)
                 .exec("POST");
 
-        String token2 = response.header("Token");
+
+        String sign2 = response.header(Attrs.h_sign);
+        String token2 = response.header(Attrs.h_token);
 
         log.debug(token2);
 
         String json_encoded2 = response.body().string();
+
+        String sign22 = EncryptUtils.md5(apiName+"#"+json_encoded2+"#"+app_secret);
+
+        if(sign2.equals(sign22)==false){
+            throw new RuntimeException("签名对不上，数据被串改了");
+        }
 
         String json = EncryptUtils.aesDecrypt(json_encoded2, app_secret);
 

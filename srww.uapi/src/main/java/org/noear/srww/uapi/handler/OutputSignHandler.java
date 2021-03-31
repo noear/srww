@@ -31,14 +31,14 @@ public class OutputSignHandler implements Handler {
             return;
         }
 
-        String orgOutput = uapi.getOrgOutput();
+        String output = uapi.context().attr(Attrs.output);
 
-        if (orgOutput != null) {
+        if (output != null) {
             AppModel app = uapi.getApp();
 
             //{name}#{output}#{secretKey}
             StringBuilder buf = new StringBuilder();
-            buf.append(uapi.name()).append("#").append(orgOutput).append("#").append(app.app_secret_key);
+            buf.append(uapi.name()).append("#").append(output).append("#").append(app.app_secret_key);
 
             String x_sign = _encoder.tryEncode(ctx, app, buf.toString());
             ctx.headerSet(Attrs.h_sign, x_sign);
