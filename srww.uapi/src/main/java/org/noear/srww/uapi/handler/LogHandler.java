@@ -126,7 +126,7 @@ public class LogHandler implements Handler {
         }
 
 
-        String org_sign = uapi.context().attr(Attrs.h_sign);
+        String org_sign = uapi.context().attr(Attrs.org_sign);
         String org_token = uapi.context().header(Attrs.h_token);
 
         if (Utils.isNotEmpty(org_token)) {
