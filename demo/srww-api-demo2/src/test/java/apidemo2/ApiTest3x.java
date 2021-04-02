@@ -93,4 +93,11 @@ public class ApiTest3x extends HttpTestBase {
 
         assert node.get("code").getInt() == 200;
     }
+
+    @Test
+    public void num_test() throws Exception {
+        ONode node = call("num.test", "{'product_type':'1','is_home':'1'}");
+
+        assert node.get("code").getInt() == 200;
+    }
 }
