@@ -23,10 +23,11 @@ import org.slf4j.LoggerFactory;
  * @author noear 2021/2/13 created
  */
 public class XPluginImp implements Plugin {
+    static Logger log = LoggerFactory.getLogger(XPluginImp.class);
+
     boolean isDebugMode;
     boolean isWeedStyle2;
     boolean isTrackEnable;
-    Logger logger = LoggerFactory.getLogger(XPluginImp.class);
 
     @Override
     public void start(SolonApp app) {
@@ -62,9 +63,9 @@ public class XPluginImp implements Plugin {
         WeedConfig.onExecuteAft(cmd -> {
             if (isDebugMode) {
                 if (isWeedStyle2) {
-                    logger.debug(cmd.toSqlString());
+                    log.debug(cmd.toSqlString());
                 } else {
-                    logger.debug(cmd.text + "\r\n" + ONode.stringify(cmd.paramMap()));
+                    log.debug(cmd.text + "\r\n" + ONode.stringify(cmd.paramMap()));
                 }
             }
 
@@ -86,9 +87,9 @@ public class XPluginImp implements Plugin {
         WeedConfig.onExecuteAft((cmd) -> {
             if (isDebugMode) {
                 if (isWeedStyle2) {
-                    logger.debug(cmd.toSqlString());
+                    log.debug(cmd.toSqlString());
                 } else {
-                    logger.debug(cmd.text + "\r\n" + ONode.stringify(cmd.paramMap()));
+                    log.debug(cmd.text + "\r\n" + ONode.stringify(cmd.paramMap()));
                 }
             }
 
