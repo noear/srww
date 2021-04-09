@@ -142,6 +142,6 @@ public class LogHandler implements Handler {
 
         TagsMDC.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId));
 
-        logger.error("{}\r\n{}", logInput.toString(), err);
+        logger.error("{}\r\n{}", logInput, err);
     }
 }
