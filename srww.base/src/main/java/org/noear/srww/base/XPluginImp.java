@@ -34,6 +34,9 @@ public class XPluginImp implements Plugin {
         ValidatorManager.setNoRepeatLock(new NoRepeatLockNew());
         ValidatorManager.setWhitelistChecker(new WhitelistCheckerNew());
 
+        Utils.loadClass("com.mysql.jdbc.Driver");
+        Utils.loadClass("com.mysql.cj.jdbc.Driver");
+
 
         isDebugMode = Solon.cfg().isDebugMode() || Solon.cfg().isFilesMode();
 
