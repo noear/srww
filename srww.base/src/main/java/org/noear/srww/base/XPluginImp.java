@@ -62,9 +62,9 @@ public class XPluginImp implements Plugin {
 
         WeedConfig.onException((cmd, err) -> {
             if (cmd == null) {
-                log.error("> Sql:{}\n> Args:{}\n\n< Error: {}", cmd.text, ONode.stringify(cmd.paramMap()), err);
-            } else {
-                log.error("< Error: {}", err);
+                log.error("::Error= {}", err);
+            }else{
+                log.error("::Sql= {}\n::Args= {}\n\n::Error= {}", cmd.text, ONode.stringify(cmd.paramMap()), err);
             }
         });
     }
