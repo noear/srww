@@ -3,6 +3,7 @@ server.session:
   state.jwt:
     requestUseHeader: true
     responseUseHeader: true
+    secret: "Mbwv70uWhBCLDmNiRKBgW/PMXIucwAtyRO4hxuS1jNY="
 
 
 server.port: 8091
