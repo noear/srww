@@ -8,6 +8,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.Plugin;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.extend.validation.ValidatorManager;
+import org.noear.solon.logging.utils.TagsMDC;
 import org.noear.srww.base.validation.NoRepeatLockNew;
 import org.noear.srww.base.validation.WhitelistCheckerNew;
 import org.noear.water.WW;
@@ -28,6 +29,7 @@ public class XPluginImp implements Plugin {
     boolean isDebugMode;
     boolean isWeedStyle2;
     boolean isTrackEnable;
+    boolean isErrorLogEnable;
 
     @Override
     public void start(SolonApp app) {
@@ -43,6 +45,8 @@ public class XPluginImp implements Plugin {
         String style = Solon.cfg().get("srww.weed.print.style");
         isWeedStyle2 = "sql".equals(style);
         isTrackEnable = Solon.cfg().getBool("srww.weed.track.enable", true);
+        isErrorLogEnable = Solon.cfg().getBool("srww.weed.error.log.enable", true);
+
 
         initWeed();
     }
@@ -60,11 +64,22 @@ public class XPluginImp implements Plugin {
             initWeedForAdmin();
         }
 
+
         WeedConfig.onException((cmd, err) -> {
-            if (cmd == null) {
-                log.error("::Error= {}", err);
-            }else{
-                log.error("::Sql= {}\n::Args= {}\n\n::Error= {}", cmd.text, ONode.stringify(cmd.paramMap()), err);
+            TagsMDC.tag0("weed");
+
+            if (isErrorLogEnable) {
+                if (cmd == null) {
+                    log.error("::Error= {}", err);
+                } else {
+                    log.error("::Sql= {}\n::Args= {}\n\n::Error= {}", cmd.text, ONode.stringify(cmd.paramMap()), err);
+                }
+            } else {
+                if (cmd == null) {
+                    log.debug("::Error= {}", err);
+                } else {
+                    log.debug("::Sql= {}\n::Args= {}\n\n::Error= {}", cmd.text, ONode.stringify(cmd.paramMap()), err);
+                }
             }
         });
     }
