@@ -52,7 +52,8 @@ public class OutputBuildHandler implements Handler {
         if (uapi.getAppId() > 0) {
             ctx.attrSet(Attrs.output, _encoder.tryEncode(ctx, uapi.getApp(), output));
         } else {
-            //ctx.attrSet(Attrs.output, output);
+            //用于记录日志，不能去掉
+            ctx.attrSet(Attrs.output, output);
             ctx.statusSet(400);
         }
     }

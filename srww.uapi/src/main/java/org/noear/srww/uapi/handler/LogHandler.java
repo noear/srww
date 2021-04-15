@@ -9,6 +9,7 @@ import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.common.Attrs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.event.Level;
 
 /**
  * 日志拦截器
@@ -35,7 +36,7 @@ public class LogHandler implements Handler {
         String orgOutput = uapi.getOrgOutput();
 
         if (null != orgOutput) {
-            logOutput(uapi, orgOutput);
+            logOutput(ctx,uapi, orgOutput);
         }
 
         if (null != ctx.errors) {
@@ -49,7 +50,7 @@ public class LogHandler implements Handler {
      * @param uapi
      * @param orgOutput
      */
-    protected void logOutput(Uapi uapi, String orgOutput) {
+    protected void logOutput(Context ctx, Uapi uapi, String orgOutput) {
         if (orgOutput == null) {
             return;
         }
@@ -83,16 +84,15 @@ public class LogHandler implements Handler {
         String out_sign = uapi.context().attr(Attrs.h_sign);
         String out_token = uapi.context().attr(Attrs.h_token);
 
-        if(Utils.isNotEmpty(out_token)){
+        if (Utils.isNotEmpty(out_token)) {
             logOutput.append("< Token: ").append(out_token).append("\r\n");
         }
 
-        if(Utils.isNotEmpty(out_sign)) {
+        if (Utils.isNotEmpty(out_sign)) {
             logOutput.append("< Sign: ").append(out_sign).append("\r\n");
         }
 
         logOutput.append("< Body: ").append(orgOutput);
-
 
 
         int verId = uapi.getVerId();
@@ -100,7 +100,13 @@ public class LogHandler implements Handler {
 
         TagsMDC.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId));
 
-        logger.info("{}\r\n{}", logInput.toString(), logOutput.toString());
+        int level = ctx.attr(Attrs.log_level, 0);
+
+        if (Level.WARN.toInt() == level) {
+            logger.warn("{}\r\n{}", logInput.toString(), logOutput.toString());
+        } else {
+            logger.info("{}\r\n{}", logInput.toString(), logOutput.toString());
+        }
     }
 
     /**

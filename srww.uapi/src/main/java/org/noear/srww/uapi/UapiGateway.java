@@ -7,6 +7,7 @@ import org.noear.solon.core.handle.Gateway;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.Result;
 import org.noear.srww.uapi.common.Attrs;
+import org.slf4j.event.Level;
 
 public abstract class UapiGateway extends Gateway {
 
@@ -38,15 +39,18 @@ public abstract class UapiGateway extends Gateway {
             //
             Result result = null;
             if (obj instanceof UapiCode) {
+                c.attrSet(Attrs.log_level, Level.WARN.toInt());
+
                 //处理标准的状态码
                 UapiCode err = (UapiCode) obj;
                 String description = UapiCodes.CODE_note(lang(c), err);
 
                 result = Result.failure(err.getCode(), description);
             } else if (obj instanceof Throwable) {
+                c.attrSet(Attrs.log_level, Level.WARN.toInt());
+
                 //处理未知异常
                 String description = UapiCodes.CODE_note(lang(c), UapiCodes.CODE_400);
-
                 result = Result.failure(Result.FAILURE_CODE, description);
             } else if (obj instanceof ONode) {
                 //处理ONode数据（为兼容旧的）
