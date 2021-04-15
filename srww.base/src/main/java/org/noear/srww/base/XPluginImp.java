@@ -127,9 +127,9 @@ public class XPluginImp implements Plugin {
             String user_name = user_name(ctx);
             int user_puid = user_puid(ctx);
 
-            if (user_name == null) {
-                return;
-            }
+//            if (user_name == null) {
+//                return;
+//            }
 
 
             String sqlUp = cmd.text.toUpperCase();
