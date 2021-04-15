@@ -76,7 +76,7 @@ public class EndBeforeLogHandler implements Handler {
         if (Utils.isNotEmpty(org_sign)) {
             logInput.append("> Sign: ").append(org_sign).append("\r\n");
         }
-        logInput.append("> Body: ").append(orgInput).append("\r\n");
+        logInput.append("> Param: ").append(orgInput).append("\r\n");
 
 
         //构建输出项
@@ -141,7 +141,7 @@ public class EndBeforeLogHandler implements Handler {
         if (Utils.isNotEmpty(org_sign)) {
             logInput.append("> Sign: ").append(org_sign).append("\r\n");
         }
-        logInput.append("> Body: ").append(orgInput).append("\r\n");
+        logInput.append("> Param: ").append(orgInput).append("\r\n");
 
         int verId = uapi.getVerId();
         long userId = uapi.getUserID();

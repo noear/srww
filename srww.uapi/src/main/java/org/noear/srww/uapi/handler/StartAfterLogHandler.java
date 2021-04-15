@@ -23,6 +23,6 @@ public class StartAfterLogHandler implements Handler {
 
     @Override
     public void handle(Context ctx) throws Throwable {
-        logger.info("> Handers: {}\n> Params: {}\n> Body: {}", ONode.stringify(ctx.headerMap()), ONode.stringify(ctx.paramMap()), ctx.body());
+        logger.info("> Header: {}\n> Param: {}\n> Body: {}", ONode.stringify(ctx.headerMap()), ONode.stringify(ctx.paramMap()), ctx.body());
     }
 }

@@ -15,11 +15,11 @@ public class BaseLogHandler implements Handler {
     @Override
     public void handle(Context ctx) throws Throwable {
         if (ctx.errors == null) {
-            log.info("> Handler: {}\n> Body: {}",
+            log.info("> Header: {}\n> Param: {}",
                     ONode.stringify(ctx.headerMap()),
                     ONode.stringify(ctx.paramMap()));
         } else {
-            log.info("> Handler: {}\n> Body: {}\r\n{}",
+            log.info("> Header: {}\n> Param: {}\r\n{}",
                     ONode.stringify(ctx.headerMap()),
                     ONode.stringify(ctx.paramMap()),
                     ctx.errors);
