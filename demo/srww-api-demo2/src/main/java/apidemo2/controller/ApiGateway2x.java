@@ -54,7 +54,7 @@ public class ApiGateway2x extends UapiGateway {
 
         after(new OutputBuildHandler(new Base64Encoder()));
         after(new OutputHandler());
-        after(new LogHandler());
+        after(new OutputLogHandler());
         after(new EndHandler("v1.api.web"));
 
         addBeans(bw -> "api".equals(bw.tag()));

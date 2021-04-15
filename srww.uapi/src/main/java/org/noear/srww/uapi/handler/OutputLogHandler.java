@@ -14,14 +14,14 @@ import org.slf4j.event.Level;
 /**
  * 日志拦截器
  * */
-public class LogHandler implements Handler {
+public class OutputLogHandler implements Handler {
     Logger logger;
 
-    public LogHandler() {
-        logger = LoggerFactory.getLogger(LogHandler.class);
+    public OutputLogHandler() {
+        logger = LoggerFactory.getLogger(OutputLogHandler.class);
     }
 
-    public LogHandler(String loggerName) {
+    public OutputLogHandler(String loggerName) {
         logger = LoggerFactory.getLogger(loggerName);
     }
 

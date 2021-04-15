@@ -33,7 +33,7 @@ public class ApiGateway3x extends UapiGateway {
         after(new OutputBuildHandler(new AesEncoder())); //输出构建
         after(new OutputSignHandler(new Md5Encoder())); //输出签名
         after(new OutputHandler()); //输出
-        after(new LogHandler()); //日志
+        after(new OutputLogHandler()); //日志
         after(new EndHandler("v2.api.app")); //结束计时
 
         addBeans(bw -> "api".equals(bw.tag()));
