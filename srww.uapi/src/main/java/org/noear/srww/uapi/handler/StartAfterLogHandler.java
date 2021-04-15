@@ -9,14 +9,14 @@ import org.slf4j.LoggerFactory;
 /**
  * @author noear 2021/4/15 created
  */
-public class ParamsLogHandler implements Handler {
+public class StartAfterLogHandler implements Handler {
     Logger logger;
 
-    public ParamsLogHandler() {
-        logger = LoggerFactory.getLogger(OutputLogHandler.class);
+    public StartAfterLogHandler() {
+        logger = LoggerFactory.getLogger(EndBeforeLogHandler.class);
     }
 
-    public ParamsLogHandler(String loggerName) {
+    public StartAfterLogHandler(String loggerName) {
         logger = LoggerFactory.getLogger(loggerName);
     }
 

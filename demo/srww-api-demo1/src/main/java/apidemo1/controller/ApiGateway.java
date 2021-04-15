@@ -23,7 +23,7 @@ public class ApiGateway extends UapiGateway {
 
         after(new OutputBuildHandler());
         after(new OutputHandler());
-        after(new OutputLogHandler());
+        after(new EndBeforeLogHandler());
         after(new EndHandler("api.app"));
 
         addBeans(bw -> "api".equals(bw.tag()));

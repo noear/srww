@@ -23,7 +23,7 @@ public class ApiGateway extends UapiGateway {
         after(new OutputBuildHandler(new AesEncoder()));//构建输出内容
         after(new OutputSignHandler(new Sha1Encoder()));//输出签名
         after(new OutputHandler());//输出
-        after(new OutputLogHandler("demoapi_log"));//记录日志
+        after(new EndBeforeLogHandler("demoapi_log"));//记录日志
         after(new EndHandler("API"));//结束计时，并上报
 
         addBeans(bw -> "api".equals(bw.tag()));
