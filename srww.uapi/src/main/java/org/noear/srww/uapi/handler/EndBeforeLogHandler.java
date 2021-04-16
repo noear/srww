@@ -1,9 +1,11 @@
 package org.noear.srww.uapi.handler;
 
+import io.jsonwebtoken.Claims;
 import org.noear.snack.ONode;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
+import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
 import org.noear.solon.logging.utils.TagsMDC;
 import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.common.Attrs;
@@ -72,6 +74,11 @@ public class EndBeforeLogHandler implements Handler {
 
         if (Utils.isNotEmpty(org_token)) {
             logInput.append("> Token: ").append(org_token).append("\r\n");
+            try {
+                Claims tmp = JwtUtils.parseJwt(org_token);
+                logInput.append("> Token.Val: ").append(ONode.stringify(tmp)).append("\r\n");
+            } catch (Throwable ex) {
+            }
         }
         if (Utils.isNotEmpty(org_sign)) {
             logInput.append("> Sign: ").append(org_sign).append("\r\n");
@@ -86,6 +93,12 @@ public class EndBeforeLogHandler implements Handler {
 
         if (Utils.isNotEmpty(out_token)) {
             logOutput.append("< Token: ").append(out_token).append("\r\n");
+            try {
+                Claims tmp = JwtUtils.parseJwt(out_token);
+                logOutput.append("< Token.Val: ").append(ONode.stringify(tmp)).append("\r\n");
+            } catch (Throwable ex) {
+
+            }
         }
 
         if (Utils.isNotEmpty(out_sign)) {
@@ -137,6 +150,11 @@ public class EndBeforeLogHandler implements Handler {
 
         if (Utils.isNotEmpty(org_token)) {
             logInput.append("> Token: ").append(org_token).append("\r\n");
+            try {
+                Claims tmp = JwtUtils.parseJwt(org_token);
+                logInput.append("> Token.Val: ").append(ONode.stringify(tmp)).append("\r\n");
+            } catch (Throwable ex) {
+            }
         }
         if (Utils.isNotEmpty(org_sign)) {
             logInput.append("> Sign: ").append(org_sign).append("\r\n");
