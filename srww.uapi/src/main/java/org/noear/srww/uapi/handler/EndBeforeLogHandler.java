@@ -111,6 +111,10 @@ public class EndBeforeLogHandler implements Handler {
 
 
         long userId = uapi.getUserID();
+        String clientId = ctx.header(Attrs.h_clientId);
+        if(Utils.isNotEmpty(clientId)){
+            orgIp = clientId;
+        }
 
         TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2("ip_" + orgIp);
 
@@ -163,6 +167,10 @@ public class EndBeforeLogHandler implements Handler {
         logInput.append("> Param: ").append(orgInput).append("\r\n");
 
         long userId = uapi.getUserID();
+        String clientId = ctx.header(Attrs.h_clientId);
+        if(Utils.isNotEmpty(clientId)){
+            orgIp = clientId;
+        }
 
         TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2("ip_" + orgIp);
 
