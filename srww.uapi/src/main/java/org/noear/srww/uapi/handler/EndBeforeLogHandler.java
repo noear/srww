@@ -38,7 +38,7 @@ public class EndBeforeLogHandler implements Handler {
         String orgOutput = uapi.getOrgOutput();
 
         if (null != orgOutput) {
-            logOutput(ctx,uapi, orgOutput);
+            logOutput(ctx, uapi, orgOutput);
         }
 
         if (null != ctx.errors) {
@@ -111,7 +111,7 @@ public class EndBeforeLogHandler implements Handler {
         int verId = uapi.getVerId();
         long userId = uapi.getUserID();
 
-        TagsMDC.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId));
+        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2("ver_" + verId);
 
         int level = ctx.attr(Attrs.log_level, 0);
 
@@ -164,7 +164,7 @@ public class EndBeforeLogHandler implements Handler {
         int verId = uapi.getVerId();
         long userId = uapi.getUserID();
 
-        TagsMDC.tag0(uapi.name()).tag1(String.valueOf(userId)).tag2(String.valueOf(verId));
+        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2("ver_" + verId);
 
         logger.error("{}\r\n{}", logInput, err);
     }
