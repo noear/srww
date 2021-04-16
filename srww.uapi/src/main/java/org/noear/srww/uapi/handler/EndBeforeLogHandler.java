@@ -112,11 +112,13 @@ public class EndBeforeLogHandler implements Handler {
 
         long userId = uapi.getUserID();
         String clientId = ctx.header(Attrs.h_clientId);
-        if(Utils.isNotEmpty(clientId)){
-            orgIp = clientId;
+        if (Utils.isEmpty(clientId)) {
+            clientId = "ip_" + orgIp;
+        } else {
+            clientId = "c_" + clientId;
         }
 
-        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2("ip_" + orgIp);
+        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2(clientId);
 
         int level = ctx.attr(Attrs.log_level, 0);
 
@@ -168,11 +170,13 @@ public class EndBeforeLogHandler implements Handler {
 
         long userId = uapi.getUserID();
         String clientId = ctx.header(Attrs.h_clientId);
-        if(Utils.isNotEmpty(clientId)){
-            orgIp = clientId;
+        if (Utils.isEmpty(clientId)) {
+            clientId = "ip_" + orgIp;
+        } else {
+            clientId = "c_" + clientId;
         }
 
-        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2("ip_" + orgIp);
+        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2(clientId);
 
         logger.error("{}\r\n{}", logInput, err);
     }
