@@ -9,6 +9,7 @@ import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
 import org.noear.solon.logging.utils.TagsMDC;
 import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.common.Attrs;
+import org.noear.water.utils.IPUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.Level;
@@ -35,14 +36,15 @@ public class EndBeforeLogHandler implements Handler {
             return;
         }
 
+        String orgIp = IPUtils.getIP(ctx);
         String orgOutput = uapi.getOrgOutput();
 
         if (null != orgOutput) {
-            logOutput(ctx, uapi, orgOutput);
+            logOutput(ctx, uapi, orgOutput, orgIp);
         }
 
         if (null != ctx.errors) {
-            logError(uapi, ctx.errors);
+            logError(ctx, uapi, ctx.errors, orgIp);
         }
     }
 
@@ -52,7 +54,7 @@ public class EndBeforeLogHandler implements Handler {
      * @param uapi
      * @param orgOutput
      */
-    protected void logOutput(Context ctx, Uapi uapi, String orgOutput) {
+    protected void logOutput(Context ctx, Uapi uapi, String orgOutput, String orgIp) {
         if (orgOutput == null) {
             return;
         }
@@ -108,10 +110,9 @@ public class EndBeforeLogHandler implements Handler {
         logOutput.append("< Body: ").append(orgOutput);
 
 
-        int verId = uapi.getVerId();
         long userId = uapi.getUserID();
 
-        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2("ver_" + verId);
+        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2("ip_" + orgIp);
 
         int level = ctx.attr(Attrs.log_level, 0);
 
@@ -128,7 +129,7 @@ public class EndBeforeLogHandler implements Handler {
      * @param uapi
      * @param err
      */
-    protected void logError(Uapi uapi, Throwable err) {
+    protected void logError(Context ctx, Uapi uapi, Throwable err, String orgIp) {
         if (err == null) {
             return;
         }
@@ -161,10 +162,9 @@ public class EndBeforeLogHandler implements Handler {
         }
         logInput.append("> Param: ").append(orgInput).append("\r\n");
 
-        int verId = uapi.getVerId();
         long userId = uapi.getUserID();
 
-        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2("ver_" + verId);
+        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2("ip_" + orgIp);
 
         logger.error("{}\r\n{}", logInput, err);
     }
