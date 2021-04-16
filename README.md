@@ -18,7 +18,6 @@
 * 采用 solon cloud 框架
 * 采用 water 技术中台
 * 采用 weed 框架
-* 采用 rock 做为渠道管理
 * 采用 luna 结构组织模型
 * 采用集成式网关
 * 集成大量常用网关拦截器
@@ -70,7 +69,6 @@
 * 采用 solon cloud 框架
 * 采用 water 技术中台
 * 采用 weed 框架
-* 采用 rock 做为渠道管理  
 * 采用 luna 结构组织模型
 * 采用前后不分离模式，避免前后扯皮
 * 集成慢SQL自动记录
@@ -83,8 +81,8 @@
 * 集成 jtadmin js 框架（含 jquery ）
 * 集成配置服务、事件总线、日志服务、监测服务
 * 集成静态内容国际化支持
-* 集成solon.boot
-* 支持bcfdock跨系统整合
+* 集成 solon.boot
+* 支持 bcfdock 跨系统整合
 
 #### 要求
 
