@@ -2,6 +2,7 @@ package apidemo2;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.impl.DefaultClaims;
+import okhttp3.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.noear.snack.ONode;
@@ -32,10 +33,10 @@ public class ApiTest3x extends HttpTestBase {
         String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_secret);
 
         //生成领牌
-        Claims claims = new DefaultClaims();
-        claims.put("user_id", 1);
-        claims.setExpiration(new Date(System.currentTimeMillis() + 60 * 2 * 1000));
-        String token = JwtUtils.buildJwt(claims, 0);
+//        Claims claims = new DefaultClaims();
+//        claims.put("user_id", 1);
+//        claims.setExpiration(new Date(System.currentTimeMillis() + 60 * 2 * 1000));
+        String token = "";//JwtUtils.buildJwt(claims, 0);
 
         //生成签名
         long timestamp = System.currentTimeMillis();
@@ -52,12 +53,14 @@ public class ApiTest3x extends HttpTestBase {
         String sign = String.format("%d.%d.%s.%d", app_id, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求
-        String json_encoded2 = path("/api/v2/app/" + apiName)
+        Response response = path("/api/v2/app/" + apiName)
                 .header("Content-type","application/json")
                 .header(Attrs.h_token, token)
                 .header(Attrs.h_sign, sign)
                 .bodyTxt(json_encoded0)
-                .post();
+                .exec("POST");
+
+        String json_encoded2 = response.body().string();
 
         String json = EncryptUtils.aesDecrypt(json_encoded2, app_secret);
 
