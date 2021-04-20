@@ -4,7 +4,7 @@
 ` QQ交流群：22200020 `
 
 
-# srww 集成框架（solon + rock + weed + water）
+# srww 集成框架（solon cloud + rock + weed + water）
 
 
 ## 一、srwww-api（统一接口开发集成框架）
@@ -17,7 +17,7 @@
 
 * 采用 solon cloud 框架
 * 采用 water 技术中台
-* 采用 weed 框架
+* 采用 weed orm 框架
 * 采用 luna 结构组织模型
 * 采用集成式网关
 * 集成大量常用网关拦截器
@@ -68,7 +68,7 @@
 
 * 采用 solon cloud 框架
 * 采用 water 技术中台
-* 采用 weed 框架
+* 采用 weed orm 框架
 * 采用 luna 结构组织模型
 * 采用前后不分离模式，避免前后扯皮
 * 集成慢SQL自动记录
