@@ -54,7 +54,7 @@ public class ApiTest3x extends HttpTestBase {
 
         //请求
         Response response = path("/api/v2/app/" + apiName)
-                .header("Content-type","application/json")
+                .header("Content-type", "application/json")
                 .header(Attrs.h_token, token)
                 .header(Attrs.h_sign, sign)
                 .bodyTxt(json_encoded0)
@@ -62,7 +62,13 @@ public class ApiTest3x extends HttpTestBase {
 
         String json_encoded2 = response.body().string();
 
-        String json = EncryptUtils.aesDecrypt(json_encoded2, app_secret);
+        String json = null;
+        if (response.code() == 200) {
+            json = EncryptUtils.aesDecrypt(json_encoded2, app_secret);
+        } else {
+            //不是200时，可能不是正常数据体了
+            json = json_encoded2;
+        }
 
         System.out.println("Decoded: " + json);
 
@@ -102,5 +108,12 @@ public class ApiTest3x extends HttpTestBase {
         ONode node = call("num.test", "{'product_type':'1','is_home':'1'}");
 
         assert node.get("code").getInt() == 200;
+    }
+
+    @Test
+    public void noapi_test() throws Exception {
+        ONode node = call("noapi_test", "{}");
+
+        assert node.get("code").getInt() == 4001011;
     }
 }
