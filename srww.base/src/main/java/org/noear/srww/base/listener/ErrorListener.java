@@ -17,6 +17,15 @@ import org.slf4j.LoggerFactory;
 public class ErrorListener implements EventListener<Throwable> {
     static final Logger log = LoggerFactory.getLogger(ErrorListener.class);
 
+    private static ErrorListener instance;
+    public static synchronized ErrorListener instance(){
+        if(instance == null){
+            instance = new ErrorListener();
+        }
+
+        return instance;
+    }
+
     @Override
     public void onEvent(Throwable error) {
         Context ctx = Context.current();
