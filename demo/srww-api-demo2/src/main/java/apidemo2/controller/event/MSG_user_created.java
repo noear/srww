@@ -7,9 +7,7 @@ import org.noear.solon.cloud.annotation.CloudEvent;
 import org.noear.solon.cloud.model.Event;
 import org.noear.water.utils.Datetime;
 
-/**
- * @author noear 2021/3/12 created
- */
+//接收消息
 @Slf4j
 @CloudEvent("user.created")
 public class MSG_user_created implements CloudEventHandler {
@@ -17,13 +15,10 @@ public class MSG_user_created implements CloudEventHandler {
     public boolean handler(Event event) throws Throwable {
         log.info("有个用户创建了...");
 
-//        Datetime datetime = Datetime.Now();
-//        datetime.addDay(1);
-//
+// 发送消息
 //        CloudClient.event().publish(
 //                new Event("user.created", "test")
-//                        .tags("demo")
-//                        .scheduled(datetime.getFulltime()));
+//                        .tags("demo"));
 
         return true;
     }
