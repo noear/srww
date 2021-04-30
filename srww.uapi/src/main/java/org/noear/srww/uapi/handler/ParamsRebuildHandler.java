@@ -2,6 +2,7 @@ package org.noear.srww.uapi.handler;
 
 import org.noear.snack.ONode;
 import org.noear.srww.uapi.Uapi;
+import org.noear.srww.uapi.UapiCodes;
 import org.noear.srww.uapi.decoder.Decoder;
 import org.noear.srww.uapi.decoder.DefDecoder;
 import org.noear.solon.Utils;
@@ -57,7 +58,11 @@ public class ParamsRebuildHandler implements Handler {
             if (uapi.getAppId() > 0) {
                 //尝试解码
                 //
-                orgInput = _decoder.tryDecode(ctx, uapi.getApp(), orgInput);
+                try {
+                    orgInput = _decoder.tryDecode(ctx, uapi.getApp(), orgInput);
+                }catch (Exception ex){
+                    throw UapiCodes.CODE_4001018;
+                }
 
                 ctx.contentType();
                 ctx.headerMap().put("Content-type","application/json");

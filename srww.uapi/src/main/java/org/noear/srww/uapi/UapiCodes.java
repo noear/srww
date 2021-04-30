@@ -66,6 +66,10 @@ public class UapiCodes {
     public static final UapiCode CODE_4001017 = new UapiCode(4001017, "Request capacity exceeds limit");
 
 
+    @Note("请求加解密失败")
+    public static final UapiCode CODE_4001018 = new UapiCode(4001018, "The request for encryption and decryption failed");
+
+
     /**
      * 登录已失效
      */
