@@ -23,6 +23,13 @@ solon.cloud.local:
   breaker:
     global: 10
 
+
+solon.logging.logger:
+  "org.eclipse.jetty.*":
+    level: INFO
+  "com.zaxxer.hikari.*":
+    level: INFO
+
 # 用于RPC本地调试
 #solon.cloud.local:
 #  discovery:
