@@ -7,27 +7,26 @@ import org.noear.solon.core.handle.Context;
 import org.noear.rock.RockClient;
 import org.noear.rock.model.AppModel;
 import org.noear.water.WaterClient;
-import org.noear.water.utils.IPUtils;
 import org.noear.water.utils.EncryptUtils;
 
 @Controller
 public class SignHandler {
 
     @Mapping("/SIGN/{cmd}")
-    public void handle(Context cxt, String cmd) throws Exception {
+    public void handle(Context ctx, String cmd) throws Exception {
 
-        String ip = IPUtils.getIP(cxt);
+        String ip = ctx.realIp();
 
         if (!WaterClient.Whitelist.existsOfServerIp(ip)) {
-            cxt.statusSet(403);
-            cxt.setHandled(true);
+            ctx.statusSet(403);
+            ctx.setHandled(true);
             return;
         }
 
-        cxt.charset("UTF-8");
+        ctx.charset("UTF-8");
 
-        String arg = cxt.param("p");//访问参数
-        String cid = cxt.param("cid");//访问参数
+        String arg = ctx.param("p");//访问参数
+        String cid = ctx.param("cid");//访问参数
 
         ONode n = new ONode();
 
@@ -40,10 +39,10 @@ public class SignHandler {
             String r = EncryptUtils.aesEncrypt(arg, app.app_secret_key, null);
             n.set("p64", r);
 
-            cxt.outputAsJson(n.toJson());
+            ctx.outputAsJson(n.toJson());
         } catch (Exception ex) {
             n.set("error", ex.getMessage());
-            cxt.outputAsJson(n.toJson());
+            ctx.outputAsJson(n.toJson());
         }
     }
 
