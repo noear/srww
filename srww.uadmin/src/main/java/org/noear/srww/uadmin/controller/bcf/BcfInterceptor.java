@@ -7,7 +7,6 @@ import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
 import org.noear.srww.uadmin.dso.Session;
 import org.noear.water.WaterClient;
-import org.noear.water.utils.IPUtils;
 
 /**
  * @author noear 2021/2/16 created
@@ -34,7 +33,7 @@ public class BcfInterceptor extends BcfInterceptorBase {
 
         if (Solon.cfg().isWhiteMode()) {
             if (ctx.uri().getHost().indexOf("localhost") < 0) {
-                String ip = IPUtils.getIP(ctx);
+                String ip = ctx.realIp();
                 if (WaterClient.Whitelist.existsOfClientAndServerIp(ip) == false) {
                     ctx.output(ip + ",not is whitelist!");
                     ctx.setHandled(true);

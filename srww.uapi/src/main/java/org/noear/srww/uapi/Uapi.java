@@ -5,7 +5,6 @@ import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.common.Attrs;
 import org.noear.solon.annotation.Singleton;
 import org.noear.solon.core.handle.Context;
-import org.noear.water.utils.IPUtils;
 
 import java.sql.SQLException;
 
@@ -80,7 +79,7 @@ public class Uapi {
 
     public String ip() {
         if (_ip == null) {
-            _ip = IPUtils.getIP(ctx);
+            _ip = ctx.realIp();
         }
 
         return _ip;

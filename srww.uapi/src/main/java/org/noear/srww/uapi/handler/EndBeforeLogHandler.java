@@ -9,7 +9,6 @@ import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
 import org.noear.solon.logging.utils.TagsMDC;
 import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.common.Attrs;
-import org.noear.water.utils.IPUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.Level;
@@ -36,7 +35,7 @@ public class EndBeforeLogHandler implements Handler {
             return;
         }
 
-        String orgIp = IPUtils.getIP(ctx);
+        String orgIp = ctx.realIp();
         String orgOutput = uapi.getOrgOutput();
 
         if (null != orgOutput) {
