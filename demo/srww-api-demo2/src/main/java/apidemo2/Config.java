@@ -5,16 +5,10 @@ import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Configuration;
 import org.noear.solon.cloud.annotation.CloudConfig;
 import org.noear.solon.core.cache.CacheService;
-import org.noear.solon.core.handle.Context;
-import org.noear.solon.core.handle.Result;
-import org.noear.solon.extend.validation.ValidatorFailureHandler;
-import org.noear.srww.uapi.UapiCodes;
-import org.noear.water.utils.CacheWrap;
 import org.noear.weed.cache.LocalCache;
-import org.noear.weed.cache.memcached.MemCache;
+import org.noear.weed.solon.plugin.CacheWrap;
 
 import javax.sql.DataSource;
-import java.lang.annotation.Annotation;
 
 /**
  * @author noear 2021/2/17 created

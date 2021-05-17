@@ -5,11 +5,11 @@ import org.noear.solon.annotation.Configuration;
 import org.noear.solon.core.cache.CacheService;
 import org.noear.water.WaterClient;
 import org.noear.water.model.ConfigM;
-import org.noear.water.utils.CacheWrap;
 import org.noear.water.utils.RedisX;
 import org.noear.weed.cache.ICacheServiceEx;
 import org.noear.weed.cache.LocalCache;
 import org.noear.weed.cache.SecondCache;
+import org.noear.weed.solon.plugin.CacheWrap;
 
 import javax.sql.DataSource;
 
