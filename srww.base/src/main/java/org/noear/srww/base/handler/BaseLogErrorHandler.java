@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  * @author noear 2021/4/9 created
  */
 public class BaseLogErrorHandler implements Handler {
-    static Logger log = LoggerFactory.getLogger(BaseEndHandler.class);
+    static Logger log = LoggerFactory.getLogger(BaseLogErrorHandler.class);
 
     @Override
     public void handle(Context ctx) throws Throwable {

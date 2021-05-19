@@ -17,6 +17,10 @@ public class BaseEndHandler implements Handler {
         _tag = tag;
     }
 
+    public BaseEndHandler(){
+        this("api");
+    }
+
     @Override
     public void handle(Context ctx) throws Throwable {
         /** 获取一下计时器（开始计时的时候设置的） */
