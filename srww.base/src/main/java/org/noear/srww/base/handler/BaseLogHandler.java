@@ -1,7 +1,6 @@
 package org.noear.srww.base.handler;
 
 import org.noear.snack.ONode;
-import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.solon.logging.utils.TagsMDC;
@@ -18,15 +17,10 @@ public class BaseLogHandler implements Handler {
     public void handle(Context ctx) throws Throwable {
         TagsMDC.tag0(ctx.path());
 
-        StringBuilder sb = new StringBuilder(1000);
-
-        sb.append("> Header: ").append(ONode.stringify(ctx.headerMap())).append("\n");
-        sb.append("> Param: ").append(ONode.stringify(ctx.paramMap())).append("\n");
-        sb.append("\n");
-
-        if (ctx.result != null) {
+        if (ctx.errors == null) {
             String output = ctx.attr("output");
-            if (output == null) {
+
+            if(output == null) {
                 if (ctx.result instanceof String) {
                     output = (String) ctx.result;
                 } else {
@@ -34,16 +28,15 @@ public class BaseLogHandler implements Handler {
                 }
             }
 
-            sb.append("< Body: ").append(output);
-            sb.append("\n");
-        }
-
-
-        if (ctx.errors != null) {
-            sb.append("< Error: ").append(Utils.throwableToString(ctx.errors));
-            log.error(sb.toString());
+            log.info("> Header: {}\n> Param: {}\n\n< Body: {}",
+                    ONode.stringify(ctx.headerMap()),
+                    ONode.stringify(ctx.paramMap()),
+                    output);
         } else {
-            log.info(sb.toString());
+            log.error("> Header: {}\n> Param: {}\n\n< Error: {}",
+                    ONode.stringify(ctx.headerMap()),
+                    ONode.stringify(ctx.paramMap()),
+                    ctx.errors);
         }
     }
 }
