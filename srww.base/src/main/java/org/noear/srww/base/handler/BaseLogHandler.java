@@ -25,11 +25,16 @@ public class BaseLogHandler implements Handler {
         sb.append("\n");
 
         if (ctx.result != null) {
-            if (ctx.result instanceof String) {
-                sb.append("< Body: ").append((String) ctx.result);
-            } else {
-                sb.append("< Body: ").append(ONode.stringify(ctx.result));
+            String output = ctx.attr("output");
+            if (output == null) {
+                if (ctx.result instanceof String) {
+                    output = (String) ctx.result;
+                } else {
+                    output = ONode.stringify(ctx.result);
+                }
             }
+
+            sb.append("< Body: ").append(output);
             sb.append("\n");
         }
 
