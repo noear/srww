@@ -42,13 +42,13 @@ public class ValidatorFailureHandlerSrwwImp implements ValidatorFailureHandler {
             }
         } else {
             if (type.equals(NoRepeatSubmit.class)) {
-                throw new RuntimeException(UapiCodes.CODE_4001015.getDescription());
+                throw new IllegalArgumentException(UapiCodes.CODE_4001015.getDescription());
             } else if (type.equals(Whitelist.class)) {
-                throw new RuntimeException(UapiCodes.CODE_4001016.getDescription());
+                throw new IllegalArgumentException(UapiCodes.CODE_4001016.getDescription());
             } else if (type.equals(Logined.class)) {
-                throw new RuntimeException(UapiCodes.CODE_4001021.getDescription());
+                throw new IllegalArgumentException(UapiCodes.CODE_4001021.getDescription());
             } else {
-                throw new RuntimeException(result.getDescription());
+                throw new IllegalArgumentException(result.getDescription());
             }
         }
     }
