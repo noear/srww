@@ -7,8 +7,6 @@ import admindemo2.dso.db.DbWaterCfgApi;
 import admindemo2.dso.EsUtil;
 import admindemo2.model.water_cfg.ConfigDo;
 import admindemo2.utils.JsonFormatTool;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.noear.snack.ONode;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
@@ -100,10 +98,7 @@ public class QueryEsController extends BaseController2 {
 
             return EsUtil.search(cfg, method, path, json.toString());
         } catch (Exception ex) {
-            return JSON.toJSONString(ex,
-                    SerializerFeature.BrowserCompatible,
-                    SerializerFeature.WriteClassName,
-                    SerializerFeature.DisableCircularReferenceDetect);
+            return ONode.serialize(ex);
         }
     }
 }

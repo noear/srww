@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.noear</groupId>
         <artifactId>srww-parent</artifactId>
-        <version>1.0.12-r3</version>
+        <version>1.0.12-r5</version>
         <relativePath>../srww-parent/pom.xml</relativePath>
     </parent>
 
@@ -34,7 +34,7 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.serialization.fastjson</artifactId>
+            <artifactId>solon.serialization.snack3</artifactId>
         </dependency>
         <dependency>
             <groupId>org.noear</groupId>
@@ -103,7 +103,7 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>nami.coder.fastjson</artifactId>
+            <artifactId>nami.coder.snack3</artifactId>
         </dependency>
         <dependency>
             <groupId>org.noear</groupId>
