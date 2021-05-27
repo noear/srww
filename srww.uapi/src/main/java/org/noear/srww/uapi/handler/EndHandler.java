@@ -35,9 +35,6 @@ public class EndHandler implements Handler {
         }
 
 
-        String _from = CloudClient.trace().getFromId();
-
-        String service = Instance.local().service();
         String path = null;
 
         if(_usePath){
@@ -54,8 +51,13 @@ public class EndHandler implements Handler {
             }
         }
 
-        String node = Instance.local().address();
 
-        WaterClient.Track.track(service, _tag, path, timecount.stop().milliseconds(), node, _from);
+        CloudClient.metric().addMeter(_tag, path, timecount.stop().milliseconds(), false);
+
+
+//        String _from = CloudClient.trace().getFromId();
+//        String service = Instance.local().service();
+//        String node = Instance.local().address();
+//        WaterClient.Track.track(service, _tag, path, timecount.stop().milliseconds(), node, _from);
     }
 }

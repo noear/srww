@@ -1,10 +1,8 @@
 package org.noear.srww.base.handler;
 
 import org.noear.solon.cloud.CloudClient;
-import org.noear.solon.cloud.model.Instance;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
-import org.noear.water.WaterClient;
 import org.noear.water.utils.Timecount;
 
 /**
@@ -17,7 +15,7 @@ public class BaseEndHandler implements Handler {
         _tag = tag;
     }
 
-    public BaseEndHandler(){
+    public BaseEndHandler() {
         this("api");
     }
 
@@ -30,13 +28,13 @@ public class BaseEndHandler implements Handler {
             return;
         }
 
-        String _from = CloudClient.trace().getFromId();
-
-        String service = Instance.local().service();
         String path = ctx.pathNew();
 
-        String node = Instance.local().address();
+        CloudClient.metric().addMeter(_tag, path, timecount.stop().milliseconds(), false);
 
-        WaterClient.Track.track(service, _tag, path, timecount.stop().milliseconds(), node, _from);
+//        String _from = CloudClient.trace().getFromId();
+//        String service = Instance.local().service();
+//        String node = Instance.local().address();
+//        WaterClient.Track.track(service, _tag, path, timecount.stop().milliseconds(), node, _from);
     }
 }

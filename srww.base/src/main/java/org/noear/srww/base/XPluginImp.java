@@ -5,6 +5,7 @@ import org.noear.snack.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
+import org.noear.solon.cloud.CloudClient;
 import org.noear.solon.core.Plugin;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.extend.validation.ValidatorManager;
@@ -102,7 +103,8 @@ public class XPluginImp implements Plugin {
                     tag = "sql";
                 }
 
-                WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
+                CloudClient.metric().addMeter(service_name() + "_sql", tag, cmd.text, cmd.timespan(), true);
+                //WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
             }
         });
     }
@@ -144,7 +146,8 @@ public class XPluginImp implements Plugin {
                     tag = "sql";
                 }
 
-                WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
+                CloudClient.metric().addMeter(service_name() + "_sql", tag, cmd.text, cmd.timespan(), true);
+                //WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
             }
         });
     }
