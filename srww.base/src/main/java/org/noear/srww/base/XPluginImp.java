@@ -103,7 +103,7 @@ public class XPluginImp implements Plugin {
                     tag = "sql";
                 }
 
-                CloudClient.metric().addMeter(service_name() + "_sql", tag, cmd.text, cmd.timespan(), true);
+                CloudClient.metric().addMeter(service_name() + "_sql", tag, cmd.text, cmd.timespan());
                 //WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
             }
         });
@@ -146,7 +146,7 @@ public class XPluginImp implements Plugin {
                     tag = "sql";
                 }
 
-                CloudClient.metric().addMeter(service_name() + "_sql", tag, cmd.text, cmd.timespan(), true);
+                CloudClient.metric().addMeter(service_name() + "_sql", tag, cmd.text, cmd.timespan());
                 //WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
             }
         });
