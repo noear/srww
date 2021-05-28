@@ -57,7 +57,7 @@ public class EndHandler implements Handler {
 
         long milliseconds = timecount.stop().milliseconds();
         String _from = CloudClient.trace().getFromId();
-        String _node = Instance.local().serviceAndAddress();
+        String _node = Instance.local().address();
 
 
         CloudClient.metric().addMeter(service, _tag, path, milliseconds);
