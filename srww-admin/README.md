@@ -35,7 +35,7 @@
     <parent>
         <groupId>org.noear</groupId>
         <artifactId>srww-parent</artifactId>
-        <version>1.0.14</version>
+        <version>1.0.15-r2</version>
     </parent>
     
     <dependencies>

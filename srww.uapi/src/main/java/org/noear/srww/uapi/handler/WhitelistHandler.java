@@ -1,9 +1,9 @@
 package org.noear.srww.uapi.handler;
 
+import org.noear.solon.cloud.CloudClient;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.srww.uapi.UapiCodes;
-import org.noear.water.WaterClient;
 
 /**
  * 白名单拦截器
@@ -15,7 +15,7 @@ public class WhitelistHandler implements Handler {
 
         String ip = ctx.realIp();
 
-        if (!WaterClient.Whitelist.existsOfServerIp(ip)) {
+        if (CloudClient.list().inListOfServerIp(ip) == false) {
             throw UapiCodes.CODE_4001016;
         }
     }
