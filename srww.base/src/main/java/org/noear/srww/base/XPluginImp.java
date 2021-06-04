@@ -18,6 +18,7 @@ import org.noear.water.utils.TextUtils;
 import org.noear.weed.WeedConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 
 /**
@@ -49,6 +50,12 @@ public class XPluginImp implements Plugin {
 
 
         initWeed();
+
+        //清除MDC状态
+        app.filter((ctx, chain) -> {
+            chain.doFilter(ctx);
+            MDC.clear();
+        });
     }
 
 
