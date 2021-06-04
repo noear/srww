@@ -50,12 +50,6 @@ public class XPluginImp implements Plugin {
 
 
         initWeed();
-
-        //清除MDC状态
-        app.filter((ctx, chain) -> {
-            chain.doFilter(ctx);
-            MDC.clear();
-        });
     }
 
 
