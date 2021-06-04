@@ -1,6 +1,7 @@
 package org.noear.srww.base;
 
 
+import org.noear.nami.NamiContext;
 import org.noear.snack.ONode;
 import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
@@ -50,6 +51,15 @@ public class XPluginImp implements Plugin {
 
 
         initWeed();
+
+        app.filter((ctx, chain) -> {
+            try {
+                chain.doFilter(ctx);
+            } finally {
+                MDC.clear();
+                NamiContext.clear();
+            }
+        });
     }
 
 
