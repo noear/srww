@@ -4,7 +4,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Configuration;
 import org.noear.solon.cloud.annotation.CloudConfig;
-import org.noear.solon.core.cache.CacheService;
+import org.noear.solon.data.cache.CacheService;
 import org.noear.weed.cache.LocalCache;
 import org.noear.weed.solon.plugin.CacheWrap;
 

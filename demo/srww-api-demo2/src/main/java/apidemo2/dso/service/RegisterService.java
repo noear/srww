@@ -7,8 +7,8 @@ import java.util.*;
 
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.extend.aspect.annotation.Service;
-import org.noear.solon.extend.data.annotation.Cache;
-import org.noear.solon.extend.data.annotation.CacheRemove;
+import org.noear.solon.data.annotation.Cache;
+import org.noear.solon.data.annotation.CacheRemove;
 import org.noear.weed.DataItem;
 import org.noear.weed.DataList;
 import org.noear.weed.annotation.Db;

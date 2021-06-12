@@ -2,7 +2,7 @@ package apidemo3.dso.db;
 
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.extend.aspect.annotation.Service;
-import org.noear.solon.extend.data.annotation.Tran;
+import org.noear.solon.data.annotation.Tran;
 import org.noear.water.utils.Datetime;
 import apidemo3.dso.IDBuilder;
 import apidemo3.dso.db.mapper.BullOrderMapper;

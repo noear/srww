@@ -2,7 +2,7 @@ package apidemo3;
 
 import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Configuration;
-import org.noear.solon.core.cache.CacheService;
+import org.noear.solon.data.cache.CacheService;
 import org.noear.water.WaterClient;
 import org.noear.water.model.ConfigM;
 import org.noear.water.utils.RedisX;
