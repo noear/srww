@@ -12,7 +12,7 @@ import apidemo3.model.BullOrderDo;
 import apidemo3.model.BullOrderStatus;
 import apidemo3.model.CoProductDo;
 import apidemo3.model.UserDo;
-import org.noear.solon.extend.validation.annotation.NotNull;
+import org.noear.solon.validation.annotation.NotNull;
 
 import java.util.Map;
 

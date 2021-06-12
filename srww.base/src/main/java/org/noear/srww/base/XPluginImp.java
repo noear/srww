@@ -9,9 +9,9 @@ import org.noear.solon.Utils;
 import org.noear.solon.cloud.CloudClient;
 import org.noear.solon.core.Plugin;
 import org.noear.solon.core.handle.Context;
-import org.noear.solon.extend.validation.ValidatorManager;
+import org.noear.solon.validation.ValidatorManager;
 import org.noear.solon.logging.utils.TagsMDC;
-import org.noear.srww.base.validation.NoRepeatLockNew;
+import org.noear.srww.base.validation.NoRepeatSubmitCheckerNew;
 import org.noear.srww.base.validation.WhitelistCheckerNew;
 import org.noear.water.WW;
 import org.noear.water.WaterClient;
@@ -35,7 +35,7 @@ public class XPluginImp implements Plugin {
 
     @Override
     public void start(SolonApp app) {
-        ValidatorManager.setNoRepeatLock(new NoRepeatLockNew());
+        ValidatorManager.setNoRepeatSubmitChecker(new NoRepeatSubmitCheckerNew());
         ValidatorManager.setWhitelistChecker(new WhitelistCheckerNew());
 
         Utils.loadClass("com.mysql.jdbc.Driver");

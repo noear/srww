@@ -9,7 +9,7 @@ import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
-import org.noear.solon.extend.validation.annotation.NotEmpty;
+import org.noear.solon.validation.annotation.NotEmpty;
 
 import java.util.List;
 import java.util.stream.Collectors;

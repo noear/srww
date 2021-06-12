@@ -13,7 +13,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;
-import org.noear.solon.extend.validation.annotation.NotEmpty;
+import org.noear.solon.validation.annotation.NotEmpty;
 import org.noear.srww.uapi.UapiCodes;
 
 import java.util.ArrayList;

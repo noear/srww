@@ -4,9 +4,9 @@ import apidemo2.controller.ApiBase;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Result;
-import org.noear.solon.extend.validation.annotation.Logined;
-import org.noear.solon.extend.validation.annotation.NotEmpty;
-import org.noear.solon.extend.validation.annotation.NotZero;
+import org.noear.solon.validation.annotation.Logined;
+import org.noear.solon.validation.annotation.NotEmpty;
+import org.noear.solon.validation.annotation.NotZero;
 
 /**
  * @author noear 2021/4/2 created

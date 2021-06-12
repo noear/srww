@@ -8,7 +8,7 @@ import apidemo1.model.db.WaterCfgPropertiesDo;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;
-import org.noear.solon.extend.validation.annotation.NotEmpty;
+import org.noear.solon.validation.annotation.NotEmpty;
 import org.noear.weed.annotation.Db;
 
 /**

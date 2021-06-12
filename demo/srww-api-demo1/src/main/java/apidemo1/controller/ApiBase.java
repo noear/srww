@@ -1,6 +1,6 @@
 package apidemo1.controller;
 
-import org.noear.solon.extend.validation.annotation.Valid;
+import org.noear.solon.validation.annotation.Valid;
 import org.noear.srww.uapi.Uapi;
 
 /**

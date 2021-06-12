@@ -4,7 +4,7 @@ import org.noear.snack.ONode;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;
-import org.noear.solon.extend.validation.annotation.NotNull;
+import org.noear.solon.validation.annotation.NotNull;
 import apidemo3.controller.SysCodes;
 import apidemo3.controller.UapiBase;
 import apidemo3.dso.RedisUtil;

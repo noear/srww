@@ -1,12 +1,12 @@
 package org.noear.srww.base.validation;
 
 import org.noear.solon.Solon;
-import org.noear.solon.extend.validation.annotation.NoRepeatLock;
+import org.noear.solon.validation.annotation.NoRepeatSubmitChecker;
 import org.noear.water.utils.LockUtils;
 
-public class NoRepeatLockNew implements NoRepeatLock {
+public class NoRepeatSubmitCheckerNew implements NoRepeatSubmitChecker {
     @Override
-    public boolean tryLock(String key, int seconds) {
+    public boolean check(String key, int seconds) {
         return LockUtils.tryLock(Solon.cfg().appName(), key, seconds);
     }
 }
