@@ -1,5 +1,6 @@
 package org.noear.srww.uapi.handler;
 
+import org.noear.rock.model.AppModel;
 import org.noear.snack.ONode;
 import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.UapiCodes;
@@ -58,8 +59,13 @@ public class ParamsRebuildHandler implements Handler {
             if (uapi.getAppId() > 0) {
                 //尝试解码
                 //
+                AppModel app = uapi.getApp();
+                if (app == null) {
+                    throw UapiCodes.CODE_4001010;
+                }
+
                 try {
-                    orgInput = _decoder.tryDecode(ctx, uapi.getApp(), orgInput);
+                    orgInput = _decoder.tryDecode(ctx, app, orgInput);
                 }catch (Exception ex){
                     throw UapiCodes.CODE_4001018;
                 }

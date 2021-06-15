@@ -53,8 +53,14 @@ public class ParamsSignCheckHandler implements Handler {
 
             /** 如果是CMD方案，则进行签名对比（签权） */
             if (uapi.getAppId() > 0 && orgInput != null) {
+                AppModel app = uapi.getApp();
 
-                isOk = checkSign(ctx, uapi, apiName, orgInput);
+                if (app == null) {
+                    throw UapiCodes.CODE_4001010;
+                }
+
+                isOk = checkSign(ctx, uapi, app, apiName, orgInput);
+
             } else {
                 isOk = false;
             }
@@ -68,7 +74,7 @@ public class ParamsSignCheckHandler implements Handler {
     /**
      * 签权算法
      */
-    private boolean checkSign(Context context, Uapi uapi, String apiName, String orgInput) throws Exception {
+    private boolean checkSign(Context context, Uapi uapi, AppModel app, String apiName, String orgInput) throws Exception {
         if (TextUtils.isEmpty(apiName)) {
             return false;
         }
@@ -76,7 +82,7 @@ public class ParamsSignCheckHandler implements Handler {
         String orgInputSign = uapi.getOrgInputSign();
         String orgInputTimestamp = uapi.getOrgInputTimestamp();
 
-        AppModel app = uapi.getApp();
+
         int verId = uapi.getVerId();
 
         //{name}#{verId}#{orgInput}#{secretKey}#{orgInputTimestamp}

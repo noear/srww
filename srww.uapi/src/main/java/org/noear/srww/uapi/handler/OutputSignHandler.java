@@ -2,16 +2,21 @@ package org.noear.srww.uapi.handler;
 
 import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.Uapi;
+import org.noear.srww.uapi.UapiCodes;
 import org.noear.srww.uapi.encoder.DefEncoder;
 import org.noear.srww.uapi.encoder.Encoder;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.srww.uapi.common.Attrs;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 输出签名拦截器（用于输出内容的签名）
  * */
 public class OutputSignHandler implements Handler {
+    static final Logger log = LoggerFactory.getLogger(OutputSignHandler.class);
+
     private Encoder _encoder;
 
     public OutputSignHandler(Encoder encoder) {
@@ -35,6 +40,11 @@ public class OutputSignHandler implements Handler {
 
         if (output != null) {
             AppModel app = uapi.getApp();
+
+            if (app == null) {
+                log.error(UapiCodes.CODE_4001010.getDescription() + "[" + uapi.getAppId() + "]");
+                return;
+            }
 
             //{name}#{output}#{secretKey}
             StringBuilder buf = new StringBuilder();

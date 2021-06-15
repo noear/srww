@@ -21,6 +21,12 @@ public class UapiCodes {
     @Note("失败，未知错误")
     public static final UapiCode CODE_400 = new UapiCode(400, "Unknown error");
 
+    /**
+     * 失败，未知错误
+     */
+    @Note("请求的通道不存在或不再支持")
+    public static final UapiCode CODE_4001010 = new UapiCode(4001010, "The channel not exist");
+
 
     /**
      * 请求的接口不存在或不再支持
