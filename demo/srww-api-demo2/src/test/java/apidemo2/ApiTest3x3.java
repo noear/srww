@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.noear.snack.ONode;
 import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
 import org.noear.solon.test.HttpTestBase;
-import org.noear.solon.test.KvMap;
 import org.noear.solon.test.SolonJUnit4ClassRunner;
 import org.noear.solon.test.SolonTest;
 import org.noear.srww.uapi.common.Attrs;
@@ -19,6 +18,8 @@ import java.util.Date;
 import java.util.Map;
 
 /**
+ * 无效通道测试
+ *
  * @author noear 2021/2/11 created
  */
 @Slf4j
@@ -68,15 +69,7 @@ public class ApiTest3x3 extends HttpTestBase {
 
         log.debug(token2);
 
-        String json_encoded2 = response.body().string();
-
-        String sign22 = EncryptUtils.md5(apiName+"#"+json_encoded2+"#"+app_secret);
-
-        if(sign2.equals(sign22)==false){
-            throw new RuntimeException("签名对不上，数据被串改了");
-        }
-
-        String json = EncryptUtils.aesDecrypt(json_encoded2, app_secret);
+        String json = response.body().string();
 
         System.out.println("Decoded: " + json);
 
@@ -92,6 +85,6 @@ public class ApiTest3x3 extends HttpTestBase {
     public void login_test() throws Exception {
         ONode node = call("login.test", "{tag:'demo'}");
 
-        assert node.get("code").getInt() == 200;
+        assert node.get("code").getInt() != 4001010;
     }
 }
