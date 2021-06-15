@@ -85,6 +85,6 @@ public class ApiTest3x3 extends HttpTestBase {
     public void login_test() throws Exception {
         ONode node = call("login.test", "{tag:'demo'}");
 
-        assert node.get("code").getInt() != 4001010;
+        assert node.get("code").getInt() == 4001010;
     }
 }
