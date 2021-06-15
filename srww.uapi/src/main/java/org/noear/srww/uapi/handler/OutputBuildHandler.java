@@ -56,7 +56,7 @@ public class OutputBuildHandler implements Handler {
 
         if (uapi.getAppId() > 0) {
             AppModel app = uapi.getApp();
-            if (app != null) {
+            if (app.app_id == uapi.getAppId()) {
                 ctx.attrSet(Attrs.output, _encoder.tryEncode(ctx, app, output));
                 return;
             }

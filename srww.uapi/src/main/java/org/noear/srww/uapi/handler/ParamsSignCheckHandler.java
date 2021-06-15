@@ -55,7 +55,7 @@ public class ParamsSignCheckHandler implements Handler {
             if (uapi.getAppId() > 0 && orgInput != null) {
                 AppModel app = uapi.getApp();
 
-                if (app == null) {
+                if (app.app_id != uapi.getAppId()) {
                     throw UapiCodes.CODE_4001010;
                 }
 

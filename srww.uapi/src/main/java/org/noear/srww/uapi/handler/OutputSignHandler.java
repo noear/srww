@@ -41,7 +41,7 @@ public class OutputSignHandler implements Handler {
         if (output != null) {
             AppModel app = uapi.getApp();
 
-            if (app == null) {
+            if (app.app_id != uapi.getAppId()) {
                 log.error(UapiCodes.CODE_4001010.getDescription() + "[" + uapi.getAppId() + "]");
                 return;
             }

@@ -60,7 +60,7 @@ public class ParamsRebuildHandler implements Handler {
                 //尝试解码
                 //
                 AppModel app = uapi.getApp();
-                if (app == null) {
+                if (app.app_id != uapi.getAppId()) {
                     throw UapiCodes.CODE_4001010;
                 }
 
