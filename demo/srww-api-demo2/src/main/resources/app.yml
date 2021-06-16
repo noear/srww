@@ -1,8 +1,7 @@
 server.session:
   timeout: 7200
   state.jwt:
-    requestUseHeader: true
-    responseUseHeader: true
+    allowUseHeader: true
     secret: "Mbwv70uWhBCLDmNiRKBgW/PMXIucwAtyRO4hxuS1jNY="
 
 

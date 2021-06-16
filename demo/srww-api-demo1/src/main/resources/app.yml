@@ -2,9 +2,10 @@ server.port: 8080
 server.request.maxRequestSize: 2Mb
 
 
-server.session.state.jwt:
-  requestUseHeader: true
-  responseUseHeader: true
+server.session:
+  state:
+    jwt:
+      allowUseHeader: true
 
 solon.app:
   name: demoapi
