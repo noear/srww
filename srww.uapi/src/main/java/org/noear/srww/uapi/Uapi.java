@@ -9,7 +9,6 @@ import org.noear.solon.annotation.Singleton;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.utils.StringUtils;
 
-import java.awt.*;
 import java.sql.SQLException;
 
 @Singleton(false)
@@ -101,9 +100,9 @@ public class Uapi {
             if (Utils.isNotEmpty(appStr)) {
                 try {
                     if (StringUtils.isNumeric(appStr)) {
-                        _app = getApp(Integer.parseInt(appStr));
+                        _app = getAppById(Integer.parseInt(appStr));
                     } else {
-                        _app = getApp(appStr);
+                        _app = getAppByKey(appStr);
                     }
                 } catch (SQLException e) {
                     EventBus.push(e);
@@ -114,11 +113,11 @@ public class Uapi {
         return _app;
     }
 
-    public AppModel getApp(int appID) throws SQLException {
+    public AppModel getAppById(int appID) throws SQLException {
         return RockClient.getAppByID(appID);
     }
 
-    public AppModel getApp(String appKey) throws SQLException {
+    public AppModel getAppByKey(String appKey) throws SQLException {
         return RockClient.getAppByKey(appKey);
     }
 
