@@ -23,7 +23,7 @@ import java.util.Map;
 @RunWith(SolonJUnit4ClassRunner.class)
 @SolonTest(App.class)
 public class ApiTest3x extends HttpTestBase {
-    public static final int app_id = 4;
+    public static final String app_key = "73f0759694a9441980562788a9e4256b";
     public static final String app_secret = "ZVJ4swhbNUV3Uc36";
     public static final int client_ver_id = 10001; //1.0.1
 
@@ -50,7 +50,7 @@ public class ApiTest3x extends HttpTestBase {
                 .append(app_secret)
                 .append("#")
                 .append(timestamp);
-        String sign = String.format("%d.%d.%s.%d", app_id, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
+        String sign = String.format("%s.%d.%s.%d", app_key, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求
         Response response = path("/api/v2/app/" + apiName)

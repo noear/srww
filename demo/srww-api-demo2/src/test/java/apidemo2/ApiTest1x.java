@@ -17,11 +17,11 @@ import java.util.Map;
 @RunWith(SolonJUnit4ClassRunner.class)
 @SolonTest(App.class)
 public class ApiTest1x extends HttpTestBase {
-    public static final int app_id = 2;
+    public static final String app_key = "d9ae2bfddd8040e296df186f67868103";
 
     public ONode call(String apiName, Map<String, Object> args) throws Exception {
 
-        args.put(Attrs.app_id, app_id);
+        args.put(Attrs.app_id, app_key);
 
         String json = path("/api/v1/app/" + apiName)
                 .header("Content-type","application/json")
