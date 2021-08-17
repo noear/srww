@@ -53,7 +53,7 @@ public class ApiTest3_noapp extends HttpTestBase {
                 .append(app_secret)
                 .append("#")
                 .append(timestamp);
-        String sign = String.format("%d.%d.%s.%d", app_id, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
+        String sign = String.format("%s.%d.%s.%d", app_id, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求
         Response response = path("/api/v2/app/" + apiName)

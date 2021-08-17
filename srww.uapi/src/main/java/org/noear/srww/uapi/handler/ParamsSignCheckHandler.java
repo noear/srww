@@ -64,6 +64,8 @@ public class ParamsSignCheckHandler implements Handler {
             } else {
                 isOk = false;
             }
+        } else {
+            throw UapiCodes.CODE_4001010;
         }
 
         if (isOk == false) {
