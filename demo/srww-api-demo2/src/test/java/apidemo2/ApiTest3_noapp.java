@@ -26,7 +26,7 @@ import java.util.Map;
 @RunWith(SolonJUnit4ClassRunner.class)
 @SolonTest(App.class)
 public class ApiTest3_noapp extends HttpTestBase {
-    public static final int app_id = 12;
+    public static final String app_id = "100000001"; //不存在的 app
     public static final String app_secret = "ZVJ4swhbNUV3Uc36";
     public static final int client_ver_id = 10001; //1.0.1
 

@@ -2,10 +2,14 @@ package org.noear.srww.uapi;
 
 import org.noear.rock.RockClient;
 import org.noear.rock.model.AppModel;
+import org.noear.solon.Utils;
+import org.noear.solon.core.event.EventBus;
 import org.noear.srww.uapi.common.Attrs;
 import org.noear.solon.annotation.Singleton;
 import org.noear.solon.core.handle.Context;
+import org.noear.water.utils.StringUtils;
 
+import java.awt.*;
 import java.sql.SQLException;
 
 @Singleton(false)
@@ -87,12 +91,23 @@ public class Uapi {
 
     private AppModel _app;
 
-    public AppModel getApp() throws SQLException {
+    public AppModel getApp() {
         if (_app == null) {
-            if (getAppId() > 0) {
-                _app = getApp(getAppId());
-            } else {
-                _app = new AppModel();
+            //先赋值，避各种后续异常时重复进入
+            _app = new AppModel();
+
+            String appStr = ctx.param(Attrs.app_id);
+
+            if (Utils.isNotEmpty(appStr)) {
+                try {
+                    if (StringUtils.isNumeric(appStr)) {
+                        _app = getApp(Integer.parseInt(appStr));
+                    } else {
+                        _app = getApp(appStr);
+                    }
+                } catch (SQLException e) {
+                    EventBus.push(e);
+                }
             }
         }
 
@@ -103,22 +118,17 @@ public class Uapi {
         return RockClient.getAppByID(appID);
     }
 
-    private int appId = -1;
+    public AppModel getApp(String appKey) throws SQLException {
+        return RockClient.getAppByKey(appKey);
+    }
+
 
     public int getAppId() {
-        if (appId < 0) {
-            appId = ctx.paramAsInt(Attrs.app_id);
-        }
-
-        return appId;
+        return getApp().app_id;
     }
 
     public int getAgroupId() throws SQLException {
-        if (getAppId() > 0) {
-            return getApp().agroup_id;
-        } else {
-            return 0;
-        }
+        return getApp().agroup_id;
     }
 
     private int verId = -1;
