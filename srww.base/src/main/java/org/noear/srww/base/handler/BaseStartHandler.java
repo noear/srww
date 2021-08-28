@@ -5,7 +5,9 @@ import org.noear.solon.core.handle.Handler;
 import org.noear.water.utils.Timecount;
 
 /**
- * 开始计时拦截器（用于计时开始）
+ * 开始计时处理器[前置处理]
+ *
+ * @author noear
  * */
 public class BaseStartHandler implements Handler {
     @Override

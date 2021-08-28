@@ -9,7 +9,9 @@ import org.noear.water.WW;
 import org.noear.water.utils.Timecount;
 
 /**
- * 结束计时拦截器（完成计时，并发送到WATER）
+ * 结束计时处理器（完成计时，并发送到WATER）[后置处理]
+ *
+ * @author noear
  * */
 public class BaseEndHandler implements Handler {
     private String _tag;

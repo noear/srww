@@ -8,7 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author noear 2021/4/9 created
+ * 日志记录处理器，含输入输出及异常[后置处理]
+ *
+ * @author noear
  */
 public class BaseLogHandler implements Handler {
     static Logger log = LoggerFactory.getLogger(BaseLogHandler.class);

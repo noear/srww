@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 全局未处理异常监听
  *
- * @author noear 2021/4/21 created
+ * @author noear
  */
 public class BaseErrorListener implements EventListener<Throwable> {
     static final Logger log = LoggerFactory.getLogger(BaseErrorListener.class);

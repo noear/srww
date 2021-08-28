@@ -7,7 +7,9 @@ import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 
 /**
- * @author noear 2021/5/19 created
+ * 白名单限制处理器[前置处理]
+ *
+ * @author noear
  */
 public class BaseIpHandler implements Handler {
     @Override
