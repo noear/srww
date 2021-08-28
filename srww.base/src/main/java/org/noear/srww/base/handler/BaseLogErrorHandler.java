@@ -17,7 +17,7 @@ public class BaseLogErrorHandler implements Handler {
 
     @Override
     public void handle(Context ctx) throws Throwable {
-        TagsMDC.tag0(ctx.path());
+        TagsMDC.tag0(ctx.pathNew());
 
         if (ctx.errors != null) {
             log.error("> Header: {}\n> Param: {}\n\n< Error: {}",

@@ -33,17 +33,13 @@ public class BaseEndHandler implements Handler {
             return;
         }
 
-        String path = ctx.pathNew();
-
         String service = Solon.cfg().appName();
-
 
         long milliseconds = timecount.stop().milliseconds();
         String _from = CloudClient.trace().getFromId();
         String _node = Instance.local().address();
 
-
-        CloudClient.metric().addMeter(service, _tag, path, milliseconds);
+        CloudClient.metric().addMeter(service, _tag, ctx.pathNew(), milliseconds);
         CloudClient.metric().addMeter(WW.track_service, service, _node, milliseconds);
         CloudClient.metric().addMeter(WW.track_from, service, _from, milliseconds);
     }

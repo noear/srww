@@ -17,7 +17,7 @@ public class BaseLogHandler implements Handler {
 
     @Override
     public void handle(Context ctx) throws Throwable {
-        TagsMDC.tag0(ctx.path());
+        TagsMDC.tag0(ctx.pathNew());
 
         if (ctx.errors == null) {
             String output = ctx.attr("output");
