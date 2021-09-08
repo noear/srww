@@ -63,8 +63,8 @@ public class UapiCodes {
     /**
      * 请求不在白名单
      */
-    @Note("请求不在白名单")
-    public static final UapiCode CODE_4001016 = new UapiCode(4001016, "The request is not in the whitelist");
+    @Note("请求不在安全名单")
+    public static final UapiCode CODE_4001016 = new UapiCode(4001016, "The request is not in the safelist");
     /**
      * 请求容量超限
      */
