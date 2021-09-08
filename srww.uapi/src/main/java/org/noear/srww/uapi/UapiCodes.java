@@ -1,6 +1,6 @@
 package org.noear.srww.uapi;
 
-import org.noear.rock.utils.I18nUtils;
+import org.noear.rock.i18n.I18nUtils;
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Note;
