@@ -41,11 +41,6 @@
             <groupId>org.noear</groupId>
             <artifactId>solon.extend.sessionstate.jwt</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>sentinel-solon-plugin</artifactId>
-        </dependency>
     </dependencies>
 
 </project>
