@@ -5,7 +5,7 @@ import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 
 /**
- * @author noear 2021/4/19 created
+ * 输出令牌拦截器
  */
 public class OutputTokenHandler implements Handler {
     private String userLabel = "user_id";
