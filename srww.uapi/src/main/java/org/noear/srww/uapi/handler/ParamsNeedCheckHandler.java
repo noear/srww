@@ -6,12 +6,12 @@ import org.noear.solon.core.handle.Handler;
 import org.noear.srww.uapi.UapiCodes;
 
 /**
- * 参数必要性较验拦截器
+ * 参数需要性较验拦截器
  */
-public class ParamsRequireCheckHandler implements Handler {
+public class ParamsNeedCheckHandler implements Handler {
     private String[] paramNames;
 
-    public ParamsRequireCheckHandler(String... names) {
+    public ParamsNeedCheckHandler(String... names) {
         paramNames = names;
     }
 
