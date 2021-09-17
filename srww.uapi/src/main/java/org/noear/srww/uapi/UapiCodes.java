@@ -72,15 +72,25 @@ public class UapiCodes {
     public static final UapiCode CODE_4001017 = new UapiCode(4001017, "Request capacity exceeds limit");
 
 
+    /**
+     * 请求加解密失败
+     * */
     @Note("请求加解密失败")
     public static final UapiCode CODE_4001018 = new UapiCode(4001018, "The request for encryption and decryption failed");
 
+
+    /**
+     * 系统正在维护中
+     * */
+    @Note("系统正在维护中")
+    public static final UapiCode CODE_4001020 = new UapiCode(4001020, "The system is being maintained");
 
     /**
      * 登录已失效
      */
     @Note("登录已失效或未登录")
     public static final UapiCode CODE_4001021 = new UapiCode(4001021, "Login is invalid or not logged in");
+
 
 
 
