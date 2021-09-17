@@ -111,8 +111,8 @@ public class EndBeforeLogHandler implements Handler {
 
         long userId = uapi.getUserID();
         String deviceId = ctx.param(Attrs.g_deviceId);
-        if (deviceId == null) {
-            ctx.header(Attrs.h_clientId);
+        if (Utils.isEmpty(deviceId)) {
+            deviceId = ctx.header(Attrs.h_clientId);
         }
         if (Utils.isEmpty(deviceId)) {
             deviceId = "ip_" + orgIp;
@@ -172,8 +172,8 @@ public class EndBeforeLogHandler implements Handler {
 
         long userId = uapi.getUserID();
         String deviceId = ctx.param(Attrs.g_deviceId);
-        if (deviceId == null) {
-            ctx.header(Attrs.h_clientId);
+        if (Utils.isEmpty(deviceId)) {
+            deviceId = ctx.header(Attrs.h_clientId);
         }
         if (Utils.isEmpty(deviceId)) {
             deviceId = "ip_" + orgIp;
