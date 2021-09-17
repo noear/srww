@@ -110,14 +110,17 @@ public class EndBeforeLogHandler implements Handler {
 
 
         long userId = uapi.getUserID();
-        String clientId = ctx.header(Attrs.h_clientId);
-        if (Utils.isEmpty(clientId)) {
-            clientId = "ip_" + orgIp;
+        String deviceId = ctx.param(Attrs.g_deviceId);
+        if (deviceId == null) {
+            ctx.header(Attrs.h_clientId);
+        }
+        if (Utils.isEmpty(deviceId)) {
+            deviceId = "ip_" + orgIp;
         } else {
-            clientId = "c_" + clientId;
+            deviceId = "c_" + deviceId;
         }
 
-        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2(clientId);
+        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2(deviceId);
 
         int level = ctx.attr(Attrs.log_level, 0);
 
@@ -168,14 +171,17 @@ public class EndBeforeLogHandler implements Handler {
         logInput.append("> Param: ").append(orgInput).append("\r\n");
 
         long userId = uapi.getUserID();
-        String clientId = ctx.header(Attrs.h_clientId);
-        if (Utils.isEmpty(clientId)) {
-            clientId = "ip_" + orgIp;
+        String deviceId = ctx.param(Attrs.g_deviceId);
+        if (deviceId == null) {
+            ctx.header(Attrs.h_clientId);
+        }
+        if (Utils.isEmpty(deviceId)) {
+            deviceId = "ip_" + orgIp;
         } else {
-            clientId = "c_" + clientId;
+            deviceId = "c_" + deviceId;
         }
 
-        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2(clientId);
+        TagsMDC.tag0(uapi.name()).tag1("user_" + userId).tag2(deviceId);
 
         logger.error("{}\r\n{}", logInput, err);
     }
