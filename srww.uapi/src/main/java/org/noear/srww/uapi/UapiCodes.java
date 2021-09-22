@@ -103,7 +103,11 @@ public class UapiCodes {
             String description = I18nUtils.getByCode(uapiCode.getCode(), lang);
 
             if (TextUtils.isEmpty(description) == false) {
-                return description;
+                if (uapiCode.getCode() == 4001014) {
+                    return description + (uapiCode.getDescription() == null ? "" : "(" + uapiCode.getDescription() + ")");
+                } else {
+                    return description;
+                }
             }
         }
 
