@@ -21,6 +21,14 @@ public class UapiCodes {
     @Note("失败，未知错误")
     public static final UapiCode CODE_400 = new UapiCode(400, "Unknown error");
 
+
+    /**
+     * 系统正在维护中
+     * */
+    @Note("系统正在维护中")
+    public static final UapiCode CODE_4001000 = new UapiCode(4001000, "The system is being maintained");
+
+
     /**
      * 失败，未知错误
      */
@@ -79,11 +87,6 @@ public class UapiCodes {
     public static final UapiCode CODE_4001018 = new UapiCode(4001018, "The request for encryption and decryption failed");
 
 
-    /**
-     * 系统正在维护中
-     * */
-    @Note("系统正在维护中")
-    public static final UapiCode CODE_4001020 = new UapiCode(4001020, "The system is being maintained");
 
     /**
      * 登录已失效
