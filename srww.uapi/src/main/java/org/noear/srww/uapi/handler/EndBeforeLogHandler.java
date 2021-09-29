@@ -95,7 +95,7 @@ public class EndBeforeLogHandler implements Handler {
         logInput.append("> Param: ").append(orgInput).append("\r\n");
 
         if(timespan> 0) {
-            logInput.append("T Elapsed time: ").append(timespan);
+            logInput.append("T Elapsed time: ").append(timespan).append("\r\n");
         }
 
 
@@ -183,7 +183,7 @@ public class EndBeforeLogHandler implements Handler {
         logInput.append("> Param: ").append(orgInput).append("\r\n");
 
         if(timespan> 0) {
-            logInput.append("T Elapsed time: ").append(timespan);
+            logInput.append("T Elapsed time: ").append(timespan).append("\r\n");
         }
 
 
