@@ -9,6 +9,7 @@ import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
 import org.noear.solon.logging.utils.TagsMDC;
 import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.common.Attrs;
+import org.noear.water.utils.Timecount;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.event.Level;
@@ -35,15 +36,22 @@ public class EndBeforeLogHandler implements Handler {
             return;
         }
 
+        /** 获取一下计时器（开始计时的时候设置的） */
+        Timecount timecount = ctx.attr(Attrs.timecount, null);
+        long timespan = 0L;
+        if(timecount != null){
+            timespan = timecount.stop().milliseconds();
+        }
+
         String orgIp = ctx.realIp();
         String orgOutput = uapi.getOrgOutput();
 
         if (null != orgOutput) {
-            logOutput(ctx, uapi, orgOutput, orgIp);
+            logOutput(ctx, uapi, orgOutput, orgIp, timespan);
         }
 
         if (null != ctx.errors) {
-            logError(ctx, uapi, ctx.errors, orgIp);
+            logError(ctx, uapi, ctx.errors, orgIp, timespan);
         }
     }
 
@@ -53,7 +61,7 @@ public class EndBeforeLogHandler implements Handler {
      * @param uapi
      * @param orgOutput
      */
-    protected void logOutput(Context ctx, Uapi uapi, String orgOutput, String orgIp) {
+    protected void logOutput(Context ctx, Uapi uapi, String orgOutput, String orgIp, long timespan) {
         if (orgOutput == null) {
             return;
         }
@@ -85,6 +93,10 @@ public class EndBeforeLogHandler implements Handler {
             logInput.append("> Sign: ").append(org_sign).append("\r\n");
         }
         logInput.append("> Param: ").append(orgInput).append("\r\n");
+
+        if(timespan> 0) {
+            logInput.append("T Elapsed time: ").append(timespan);
+        }
 
 
         //构建输出项
@@ -125,9 +137,9 @@ public class EndBeforeLogHandler implements Handler {
         int level = ctx.attr(Attrs.log_level, 0);
 
         if (Level.WARN.toInt() == level) {
-            logger.warn("{}\r\n{}", logInput.toString(), logOutput.toString());
+            logger.warn("{}\r\n{}", logInput, logOutput);
         } else {
-            logger.info("{}\r\n{}", logInput.toString(), logOutput.toString());
+            logger.info("{}\r\n{}", logInput, logOutput);
         }
     }
 
@@ -137,7 +149,7 @@ public class EndBeforeLogHandler implements Handler {
      * @param uapi
      * @param err
      */
-    protected void logError(Context ctx, Uapi uapi, Throwable err, String orgIp) {
+    protected void logError(Context ctx, Uapi uapi, Throwable err, String orgIp, long timespan) {
         if (err == null) {
             return;
         }
@@ -169,6 +181,12 @@ public class EndBeforeLogHandler implements Handler {
             logInput.append("> Sign: ").append(org_sign).append("\r\n");
         }
         logInput.append("> Param: ").append(orgInput).append("\r\n");
+
+        if(timespan> 0) {
+            logInput.append("T Elapsed time: ").append(timespan);
+        }
+
+
 
         long userId = uapi.getUserID();
         String deviceId = ctx.param(Attrs.g_deviceId);
