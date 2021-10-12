@@ -24,7 +24,7 @@ public class ApiTest2x extends HttpTestBase {
 
         ONode node = new ONode();
         node.set("method", apiName);
-        node.get("data").setAll(args);
+        node.getOrNew("data").setAll(args);
 
         String json0 = node.toJson();
         String json_b640 = Base64.getEncoder().encodeToString(json0.getBytes(StandardCharsets.UTF_8));
