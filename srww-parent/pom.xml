@@ -59,7 +59,7 @@
         <bcf.ver>2.1.10</bcf.ver>
         <rock.ver>1.2.4</rock.ver>
 
-        <jedis.ver>3.6.1</jedis.ver>
+        <jedis.ver>3.6.3</jedis.ver>
         <okhttp.ver>3.14.9</okhttp.ver>
     </properties>
 
