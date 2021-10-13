@@ -1,11 +1,11 @@
 package apidemo3;
 
+import org.noear.redisx.RedisClient;
 import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Configuration;
 import org.noear.solon.data.cache.CacheService;
 import org.noear.water.WaterClient;
 import org.noear.water.model.ConfigM;
-import org.noear.water.utils.RedisX;
 import org.noear.weed.cache.ICacheServiceEx;
 import org.noear.weed.cache.LocalCache;
 import org.noear.weed.cache.SecondCache;
@@ -23,7 +23,7 @@ public class Config {
         return WaterClient.Config.get(water_config_tag, key);
     }
 
-    public static final RedisX rd_pepper_18 = cfg("dobbin_redis").getRd(18);
+    public static final RedisClient rd_pepper_18 = cfg("dobbin_redis").getRd(18);
 
     public static final String group_name = "BULL";
 

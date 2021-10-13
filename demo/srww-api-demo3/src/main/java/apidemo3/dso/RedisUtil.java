@@ -1,7 +1,7 @@
 package apidemo3.dso;
 
+import org.noear.redisx.RedisClient;
 import org.noear.water.utils.Datetime;
-import org.noear.water.utils.RedisX;
 import apidemo3.Config;
 
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class RedisUtil {
 
-    private static final RedisX redis18 = Config.rd_pepper_18;
+    private static final RedisClient redis18 = Config.rd_pepper_18;
 
     private static final int EXPIRE_IN_1_DAY = 60 * 60 * 24;
 
@@ -32,9 +32,9 @@ public class RedisUtil {
     public static int getSubmitStock(long p_id) {
         Date now = new Date();
         int nowInt = new Datetime(now).getDate();
-        return redis18.open1(r ->
+        return redis18.openAndGet(r ->
                 r.key("BULL_co_product_id")
-                        .hashVal("p_id_" + nowInt + "_" + p_id)
+                        .hashGetAsLong("p_id_" + nowInt + "_" + p_id)
         ).intValue();
     }
 }
