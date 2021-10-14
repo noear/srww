@@ -6,13 +6,13 @@
 
     <groupId>org.noear</groupId>
     <artifactId>srww-parent</artifactId>
-    <version>1.2.13</version>
+    <version>1.2.14</version>
     <packaging>pom</packaging>
 
     <parent>
         <groupId>org.noear</groupId>
         <artifactId>solon-parent</artifactId>
-        <version>1.5.44</version>
+        <version>1.5.45</version>
         <relativePath />
     </parent>
 
@@ -50,16 +50,16 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <srww.ver>1.2.13</srww.ver>
+        <srww.ver>1.2.14</srww.ver>
 
-        <water.ver>2.2.13</water.ver>
+        <water.ver>2.2.14</water.ver>
 
         <weed3.ver>3.3.24</weed3.ver>
         <snack3.ver>3.2.0</snack3.ver>
-        <bcf.ver>2.1.10</bcf.ver>
-        <rock.ver>1.2.4</rock.ver>
+        <redisx.ver>1.2</redisx.ver>
 
-        <redisx.ver>1.1</redisx.ver>
+        <bcf.ver>2.1.11</bcf.ver>
+        <rock.ver>1.2.5</rock.ver>
 
         <okhttp.ver>3.14.9</okhttp.ver>
     </properties>
