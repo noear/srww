@@ -15,8 +15,7 @@ import org.noear.weed.cache.memcached.MemCache;
 import java.util.Properties;
 
 @Getter
-public class ConfigDo
-{
+public class ConfigDo {
     public transient int row_id;
     public String tag;
     public String key;
@@ -25,8 +24,8 @@ public class ConfigDo
     public String edit_mode;
     public transient int is_enabled;
 
-	public String type_str(){
-	    return ConfigType.getTitle(type);
+    public String type_str() {
+        return ConfigType.getTitle(type);
     }
 
 
@@ -38,12 +37,12 @@ public class ConfigDo
         return value == null ? def : value;
     }
 
-    public String value_html(){
-	    if(value == null){
-	        return "";
-        }else{
-	        return value.replace("\n","<br/>")
-                    .replace(" ","&nbsp;");
+    public String value_html() {
+        if (value == null) {
+            return "";
+        } else {
+            return value.replace("\n", "<br/>")
+                    .replace(" ", "&nbsp;");
         }
     }
 
@@ -111,9 +110,9 @@ public class ConfigDo
      * 获取 cache:ICacheServiceEx
      */
     public ICacheServiceEx getCh(String keyHeader, int defSeconds) {
-        if(TextUtils.isEmpty(value)){
-            return new LocalCache(keyHeader,defSeconds);
-        }else {
+        if (TextUtils.isEmpty(value)) {
+            return new LocalCache(keyHeader, defSeconds);
+        } else {
             return new MemCache(getProp(), keyHeader, defSeconds);
         }
     }
@@ -126,7 +125,6 @@ public class ConfigDo
     }
 
     public DbContext getDb(boolean pool) {
-        DbContext db = new DbContext();
         Properties prop = getProp();
         String url = prop.getProperty("url");
 
@@ -158,13 +156,9 @@ public class ConfigDo
                 source.setDriverClassName(driverClassName);
             }
 
-            db.dataSourceSet(source);
-            db.schemaSet(schema);
+            return new DbContext(source, schema);
         } else {
-            db.propSet(getProp());
+            return new DbContext(prop);
         }
-
-        return db;
     }
-
 }
