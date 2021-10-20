@@ -1,8 +1,8 @@
 package apidemo3.dso;
 
 import org.noear.snack.ONode;
+import org.noear.solon.cloud.utils.http.HttpUtils;
 import org.noear.water.utils.EncryptUtils;
-import org.noear.water.utils.HttpUtils;
 
 import java.util.*;
 
@@ -38,7 +38,7 @@ public class TestClient {
             String value = entry.getValue();
             stringBuilder.append(key + "=" + value + "&");
         }
-        String result = HttpUtils.getString(url + "?" + stringBuilder.toString());
+        String result = HttpUtils.http(url + "?" + stringBuilder).get();
         System.err.println(url + "接口返回: " + result);
         return ONode.load(result);
     }
@@ -46,7 +46,7 @@ public class TestClient {
     //测试用发送请求数据, 自动加密, 用于测试CMD接口
     public static ONode doPost(String cId, String vId, String key, String url, String cmd, String json) throws Exception {
         Map<String, String> map = buildQueryParam(cId, vId, key, cmd, json);
-        String result = HttpUtils.postString(url, map);
+        String result = HttpUtils.http(url).data(map).post();
 
         return ONode.load(result);
     }

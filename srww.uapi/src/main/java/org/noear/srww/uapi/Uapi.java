@@ -7,7 +7,7 @@ import org.noear.solon.core.event.EventBus;
 import org.noear.srww.uapi.common.Attrs;
 import org.noear.solon.annotation.Singleton;
 import org.noear.solon.core.handle.Context;
-import org.noear.water.utils.StringUtils;
+import org.noear.water.utils.TextUtils;
 
 import java.sql.SQLException;
 
@@ -99,7 +99,7 @@ public class Uapi {
 
             if (Utils.isNotEmpty(appStr)) {
                 try {
-                    if (StringUtils.isNumeric(appStr)) {
+                    if (TextUtils.isNumeric(appStr)) {
                         _app = getAppById(Integer.parseInt(appStr));
                     } else {
                         _app = getAppByKey(appStr);

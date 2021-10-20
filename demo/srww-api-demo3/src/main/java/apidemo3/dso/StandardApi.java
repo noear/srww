@@ -3,10 +3,10 @@ package apidemo3.dso;
 import org.noear.snack.ONode;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
+import org.noear.solon.cloud.utils.http.HttpUtils;
 import org.noear.water.utils.EncryptUtils;
 import apidemo3.dso.db.CoProductService;
 import apidemo3.model.CoProductDo;
-import org.noear.water.utils.HttpUtils;
 
 import java.util.*;
 
@@ -108,7 +108,7 @@ public class StandardApi {
         StandardApi standardApi = new StandardApi();
 
         Map<String, String> map = standardApi.buildQueryParam(cmd, json);
-        String result = HttpUtils.postString(url, map);
+        String result = HttpUtils.http(url).data(map).post();
 
         return ONode.load(result);
     }
