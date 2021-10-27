@@ -6,7 +6,7 @@
 
     <groupId>org.noear</groupId>
     <artifactId>srww</artifactId>
-    <version>structure</version>
+    <version>group</version>
     <packaging>pom</packaging>
 
     <modules>
