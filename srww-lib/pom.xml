@@ -104,7 +104,7 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>rock.client</artifactId>
+            <artifactId>rock.client-solon-plugin</artifactId>
         </dependency>
     </dependencies>
 
