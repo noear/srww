@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.noear</groupId>
         <artifactId>solon-parent</artifactId>
-        <version>1.5.54</version>
+        <version>1.5.55</version>
         <relativePath />
     </parent>
 
@@ -54,7 +54,7 @@
 
         <water.ver>2.2.18</water.ver>
 
-        <weed3.ver>3.4.6</weed3.ver>
+        <weed3.ver>3.4.7</weed3.ver>
         <snack3.ver>3.2.0</snack3.ver>
         <redisx.ver>1.2</redisx.ver>
 
