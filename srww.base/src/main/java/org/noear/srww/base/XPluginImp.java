@@ -13,7 +13,6 @@ import org.noear.solon.validation.ValidatorManager;
 import org.noear.solon.logging.utils.TagsMDC;
 import org.noear.srww.base.validation.NoRepeatSubmitCheckerNew;
 import org.noear.srww.base.validation.WhitelistCheckerNew;
-import org.noear.water.WW;
 import org.noear.water.WaterClient;
 import org.noear.water.utils.TextUtils;
 import org.noear.weed.WeedConfig;
@@ -26,6 +25,7 @@ import org.slf4j.MDC;
  * @author noear 2021/2/13 created
  */
 public class XPluginImp implements Plugin {
+    static final String clz_BcfClient = "org.noear.bcf.BcfClient";
     static Logger log = LoggerFactory.getLogger(XPluginImp.class);
 
     boolean isDebugMode;
@@ -67,7 +67,7 @@ public class XPluginImp implements Plugin {
      * 初始化Weed监听事件
      */
     protected void initWeed() {
-        Class<?> bcfClz = Utils.loadClass(WW.clz_BcfClient);
+        Class<?> bcfClz = Utils.loadClass(clz_BcfClient);
 
         if (bcfClz == null) {
             initWeedForApi();
