@@ -2,6 +2,7 @@ package org.noear.srww.uapi.handler;
 
 import io.jsonwebtoken.Claims;
 import org.noear.snack.ONode;
+import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
@@ -18,14 +19,21 @@ import org.slf4j.event.Level;
  * 日志拦截器
  * */
 public class EndBeforeLogHandler implements Handler {
-    Logger logger;
+    final Logger logger;
+    final int inputLimitSize;
 
     public EndBeforeLogHandler() {
-        logger = LoggerFactory.getLogger(EndBeforeLogHandler.class);
+        this(null);
     }
 
     public EndBeforeLogHandler(String loggerName) {
-        logger = LoggerFactory.getLogger(loggerName);
+        if (Utils.isNotEmpty(loggerName)) {
+            logger = LoggerFactory.getLogger(loggerName);
+        } else {
+            logger = LoggerFactory.getLogger(EndBeforeLogHandler.class);
+        }
+
+        inputLimitSize = Solon.cfg().getInt("srww.log.inputLimitSize", 0);
     }
 
     @Override
@@ -39,7 +47,7 @@ public class EndBeforeLogHandler implements Handler {
         /** 获取一下计时器（开始计时的时候设置的） */
         Timecount timecount = ctx.attr(Attrs.timecount, null);
         long timespan = 0L;
-        if(timecount != null){
+        if (timecount != null) {
             timespan = timecount.stop().milliseconds();
         }
 
@@ -73,8 +81,11 @@ public class EndBeforeLogHandler implements Handler {
         if (null == orgInput) {
             orgInput = ONode.stringify(uapi.context().paramMap());
         }
-        if (orgInput.length() > 2000) {
-            orgInput = orgInput.substring(0, 2000);
+
+        if (inputLimitSize > 0) {
+            if (orgInput.length() > inputLimitSize) {
+                orgInput = orgInput.substring(0, inputLimitSize);
+            }
         }
 
 
@@ -94,7 +105,7 @@ public class EndBeforeLogHandler implements Handler {
         }
         logInput.append("> Param: ").append(orgInput).append("\r\n");
 
-        if(timespan> 0) {
+        if (timespan > 0) {
             logInput.append("T Elapsed time: ").append(timespan).append("ms\r\n");
         }
 
@@ -161,8 +172,11 @@ public class EndBeforeLogHandler implements Handler {
         if (null == orgInput) {
             orgInput = ONode.stringify(uapi.context().paramMap());
         }
-        if (orgInput.length() > 2000) {
-            orgInput = orgInput.substring(0, 2000);
+
+        if (inputLimitSize > 0) {
+            if (orgInput.length() > inputLimitSize) {
+                orgInput = orgInput.substring(0, inputLimitSize);
+            }
         }
 
 
@@ -182,10 +196,9 @@ public class EndBeforeLogHandler implements Handler {
         }
         logInput.append("> Param: ").append(orgInput).append("\r\n");
 
-        if(timespan> 0) {
+        if (timespan > 0) {
             logInput.append("T Elapsed time: ").append(timespan).append("ms\r\n");
         }
-
 
 
         long userId = uapi.getUserID();
