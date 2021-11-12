@@ -19,8 +19,10 @@ import org.slf4j.event.Level;
  * 日志拦截器
  * */
 public class EndBeforeLogHandler implements Handler {
-    final Logger logger;
-    final int inputLimitSize;
+    final String KEY_inputLimitSize = "srww.log.inputLimitSize";
+
+    Logger logger;
+    int inputLimitSize;
 
     public EndBeforeLogHandler() {
         this(null);
@@ -33,7 +35,13 @@ public class EndBeforeLogHandler implements Handler {
             logger = LoggerFactory.getLogger(EndBeforeLogHandler.class);
         }
 
-        inputLimitSize = Solon.cfg().getInt("srww.log.inputLimitSize", 0);
+        inputLimitSize = Solon.cfg().getInt(KEY_inputLimitSize, 0);
+        Solon.cfg().onChange((k, v) -> {
+            //自动更新
+            if (KEY_inputLimitSize.equals(k)) {
+                inputLimitSize = Integer.parseInt(v);
+            }
+        });
     }
 
     @Override
