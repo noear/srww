@@ -13,11 +13,9 @@ public class ParamsLocaleHandler implements Handler {
 
     @Override
     public void handle(Context ctx) throws Throwable {
-        if (ctx.getLocale() == null) {
-            String lang = ctx.param(Attrs.g_lang);
-            if (Utils.isNotEmpty(lang)) {
-                ctx.setLocale(LocaleUtil.toLocale(lang));
-            }
+        String lang = ctx.param(Attrs.g_lang);
+        if (Utils.isNotEmpty(lang)) {
+            ctx.setLocale(LocaleUtil.toLocale(lang));
         }
     }
 }
