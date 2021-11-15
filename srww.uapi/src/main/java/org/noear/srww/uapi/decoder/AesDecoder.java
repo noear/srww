@@ -8,13 +8,20 @@ import java.net.URLDecoder;
 
 public class AesDecoder implements Decoder {
     private String algorithm = "AES/ECB/PKCS5Padding";
+    private String offset;
 
     public AesDecoder() {
 
     }
 
-    public AesDecoder(String algorithm) {
+    public AesDecoder algorithm(String algorithm) {
         this.algorithm = algorithm;
+        return this;
+    }
+
+    public AesDecoder offset(String offset) {
+        this.offset = offset;
+        return this;
     }
 
     @Override
@@ -24,7 +31,7 @@ public class AesDecoder implements Decoder {
                 text = URLDecoder.decode(text, "UTF-8");
             }
 
-            return EncryptUtils.aesDecrypt(text, app.app_secret_key, algorithm);
+            return EncryptUtils.aesDecrypt(text, app.app_secret_key, algorithm, offset);
         }
 
         return text;
