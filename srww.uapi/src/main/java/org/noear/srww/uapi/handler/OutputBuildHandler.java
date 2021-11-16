@@ -2,7 +2,6 @@ package org.noear.srww.uapi.handler;
 
 import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.Uapi;
-import org.noear.srww.uapi.UapiCodes;
 import org.noear.srww.uapi.encoder.DefEncoder;
 import org.noear.snack.ONode;
 
