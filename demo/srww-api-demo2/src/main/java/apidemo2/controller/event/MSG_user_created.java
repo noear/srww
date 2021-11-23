@@ -1,18 +1,16 @@
 package apidemo2.controller.event;
 
 import lombok.extern.slf4j.Slf4j;
-import org.noear.solon.cloud.CloudClient;
-import org.noear.solon.cloud.CloudEventHandler;
 import org.noear.solon.cloud.annotation.CloudEvent;
 import org.noear.solon.cloud.model.Event;
-import org.noear.water.utils.Datetime;
+import org.noear.srww.uapi.event.EventBase;
 
 //接收消息
 @Slf4j
 @CloudEvent("user.created")
-public class MSG_user_created implements CloudEventHandler {
+public class MSG_user_created extends EventBase {
     @Override
-    public boolean handler(Event event) throws Throwable {
+    protected boolean exec(Event event) throws Throwable {
         log.info("有个用户创建了...");
 
 // 发送消息

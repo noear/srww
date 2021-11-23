@@ -12,7 +12,7 @@ import org.noear.srww.uapi.UapiCodes;
 @Component(tag = "api")
 public class API_A_0_1 extends Uapi {
     @Mapping("A.0.1")
-    public Result exec() {
-        return Result.succeed();
+    public boolean exec() {
+        return true;
     }
 }
