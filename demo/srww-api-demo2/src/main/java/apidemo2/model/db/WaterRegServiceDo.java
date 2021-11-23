@@ -1,11 +1,12 @@
 package apidemo2.model.db;
 
+import java.io.Serializable;
 import java.util.Date;
 import org.noear.weed.annotation.*;
 
 
 @Table("water_reg_service")
-public class WaterRegServiceDo{
+public class WaterRegServiceDo implements Serializable {
   @PrimaryKey
   public int service_id;
   /** md5(name+‘#’+address) */

@@ -1,11 +1,12 @@
 package apidemo2.model.db;
 
+import java.io.Serializable;
 import java.util.Date;
 import org.noear.weed.annotation.*;
 
 
 @Table("water_cfg_properties")
-public class WaterCfgPropertiesDo{
+public class WaterCfgPropertiesDo implements Serializable {
   @PrimaryKey
   public int row_id;
   /** 分组标签 */
