@@ -9,7 +9,7 @@ import org.noear.srww.uapi.encoder.Sha1Encoder;
 import org.noear.srww.uapi.encoder.Sha256Encoder;
 import org.noear.srww.uapi.handler.*;
 
-@Mapping("/CMD/*")
+@Mapping("/cmd/v1/*")
 @Controller
 public class CmdGateway extends UapiGateway {
 

@@ -8,7 +8,7 @@ import org.noear.srww.uapi.handler.*;
 /**
  * @author noear 2021/2/17 created
  */
-@Mapping("/API/V1/**")
+@Mapping("/api/v1/**")
 @Controller
 public class ApiGateway extends UapiGateway {
     @Override

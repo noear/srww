@@ -10,7 +10,7 @@ import org.noear.srww.uapi.encoder.Sha256Encoder;
 import org.noear.srww.uapi.handler.*;
 import org.noear.srww.uapi.handler.ParamsSignCheckHandler;
 
-@Mapping("/API/*")
+@Mapping("/api/v1/*")
 @Controller
 public class ApiGateway extends UapiGateway {
 
