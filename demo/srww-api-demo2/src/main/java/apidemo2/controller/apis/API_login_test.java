@@ -14,7 +14,7 @@ import org.noear.solon.validation.annotation.Logined;
 public class API_login_test extends ApiBase {
     @Logined
     @Mapping("login.test")
-    public Result exec(){
-        return Result.succeed();
+    public boolean exec() {
+        return true;
     }
 }

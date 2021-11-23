@@ -39,32 +39,32 @@ public class API_service_find extends ApiBase {
         WaterCfgPropertiesDo configD = configService.getConfig("_gateway", service);
         List<WaterRegServiceDo> listD = registerService.getServiceList(service);
 
-        if(Utils.isEmpty(configD.value)){
-            discoverVo.url = "";
-            discoverVo.policy = "default";
-        }else{
-            if(configD.is_enabled != 1){
+        if (Utils.isEmpty(configD.value)) {
+            discoverVo.setUrl("");
+            discoverVo.setPolicy("default");
+        } else {
+            if (configD.is_enabled != 1) {
                 throw UapiCodes.CODE_4001012;
             }
 
             ONode node = ONode.loadStr(configD.value);
-            discoverVo.url = node.get("url").getString();
-            discoverVo.policy = node.get("policy").getString();
-            if(Utils.isEmpty(discoverVo.policy)){
-                discoverVo.policy = "default";
+            discoverVo.setUrl(node.get("url").getString());
+            discoverVo.setPolicy(node.get("policy").getString());
+            if (Utils.isEmpty(discoverVo.getPolicy())) {
+                discoverVo.setPolicy("default");
             }
         }
 
-        discoverVo.list = new ArrayList<>();
+        discoverVo.setList(new ArrayList<>());
 
-        for(WaterRegServiceDo s1: listD){
+        for (WaterRegServiceDo s1 : listD) {
             ServiceVo s2 = new ServiceVo();
-            s2.protocol = "http";
-            s2.address = s1.address;
-            s2.meta = s1.meta;
-            s2.weight = 1.0D;
+            s2.setProtocol("http");
+            s2.setAddress(s1.address);
+            s2.setMeta(s1.meta);
+            s2.setWeight(1.0D);
 
-            discoverVo.list.add(s2);
+            discoverVo.getList().add(s2);
         }
 
         return discoverVo;

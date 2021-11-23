@@ -16,7 +16,7 @@ public class API_num_test extends ApiBase {
     @Mapping("num.test")
     @NotZero({"product_type"})
     @NotEmpty({"is_home"})
-    public Result exec(Integer product_type, Integer is_home, Integer page, Integer page_size, String coin_type){
-        return Result.succeed();
+    public Long exec(Integer product_type, Integer is_home, Integer page, Integer page_size, String coin_type) {
+        return 12L;
     }
 }
