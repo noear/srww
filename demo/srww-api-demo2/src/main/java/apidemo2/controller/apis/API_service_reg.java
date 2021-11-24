@@ -2,7 +2,7 @@ package apidemo2.controller.apis;
 
 import apidemo2.controller.ApiBase;
 import apidemo2.dso.service.RegisterService;
-import apidemo2.model.db.WaterRegServiceDo;
+import apidemo2.model.data.WaterRegServiceDo;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;

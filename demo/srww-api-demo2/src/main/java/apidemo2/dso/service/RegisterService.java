@@ -1,18 +1,13 @@
 package apidemo2.dso.service;
 
-import java.math.*;
 import java.sql.SQLException;
-import java.time.*;
 import java.util.*;
 
+import apidemo2.model.data.WaterRegServiceDo;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.extend.aspect.annotation.Service;
 import org.noear.solon.data.annotation.Cache;
 import org.noear.solon.data.annotation.CacheRemove;
-import org.noear.weed.DataItem;
-import org.noear.weed.DataList;
-import org.noear.weed.annotation.Db;
-import apidemo2.model.db.*;
 
 @Service
 public class RegisterService {

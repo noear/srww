@@ -3,7 +3,7 @@ package apidemo3.dso.db;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.extend.aspect.annotation.Service;
 import apidemo3.dso.db.mapper.CoProductMapper;
-import apidemo3.model.CoProductDo;
+import apidemo3.model.data.CoProductDo;
 
 import java.sql.SQLException;
 import java.util.List;

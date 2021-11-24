@@ -2,9 +2,10 @@ package apidemo3.dso.db.mapper;
 
 import java.sql.SQLException;
 
+import apidemo3.model.data.UserDo;
+import apidemo3.model.data.UserValidateDo;
 import org.noear.weed.annotation.Db;
 import org.noear.weed.xml.Namespace;
-import apidemo3.model.*;
 
 @Db("dobbin")
 @Namespace("zm.data.dobbin.bull.dso.db.mapper.UserMapper")

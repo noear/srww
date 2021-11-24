@@ -3,7 +3,7 @@ package apidemo2.controller.apis;
 
 import apidemo2.controller.ApiBase;
 import apidemo2.dso.service.ConfigService;
-import apidemo2.model.db.WaterCfgPropertiesDo;
+import apidemo2.model.data.WaterCfgPropertiesDo;
 import apidemo2.model.view.ConfigVo;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;

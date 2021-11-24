@@ -1,5 +1,8 @@
 package apidemo3.controller.cmds;
 
+import apidemo3.model.data.BullOrderDo;
+import apidemo3.model.data.CoProductDo;
+import apidemo3.model.data.UserValidateDo;
 import org.noear.snack.ONode;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;

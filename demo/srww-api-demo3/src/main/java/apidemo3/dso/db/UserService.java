@@ -3,8 +3,8 @@ package apidemo3.dso.db;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.extend.aspect.annotation.Service;
 import apidemo3.dso.db.mapper.UserMapper;
-import apidemo3.model.UserDo;
-import apidemo3.model.UserValidateDo;
+import apidemo3.model.data.UserDo;
+import apidemo3.model.data.UserValidateDo;
 
 import java.sql.SQLException;
 

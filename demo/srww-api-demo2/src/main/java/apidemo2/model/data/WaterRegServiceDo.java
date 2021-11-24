@@ -1,4 +1,4 @@
-package apidemo2.model.db;
+package apidemo2.model.data;
 
 import java.io.Serializable;
 import java.util.Date;

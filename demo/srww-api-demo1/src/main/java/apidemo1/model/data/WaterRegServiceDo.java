@@ -1,4 +1,4 @@
-package apidemo1.model.db;
+package apidemo1.model.data;
 
 import java.util.Date;
 import org.noear.weed.annotation.*;

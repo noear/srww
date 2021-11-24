@@ -3,9 +3,9 @@ package apidemo3.dso.db.mapper;
 import java.sql.SQLException;
 import java.util.*;
 
+import apidemo3.model.data.CoProductDo;
 import org.noear.weed.annotation.Db;
 import org.noear.weed.xml.Namespace;
-import apidemo3.model.*;
 
 @Db("sponge_sugar")
 @Namespace("zm.data.dobbin.bull.dso.db.mapper.CoProductMapper")

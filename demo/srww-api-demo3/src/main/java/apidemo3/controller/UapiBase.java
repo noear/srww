@@ -4,7 +4,7 @@ import org.noear.solon.annotation.Inject;
 import org.noear.solon.validation.annotation.Valid;
 import org.noear.srww.uapi.Uapi;
 import apidemo3.dso.db.UserService;
-import apidemo3.model.UserDo;
+import apidemo3.model.data.UserDo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

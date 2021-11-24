@@ -1,4 +1,4 @@
-package apidemo3.model;
+package apidemo3.model.data;
 
 import lombok.Data;
 

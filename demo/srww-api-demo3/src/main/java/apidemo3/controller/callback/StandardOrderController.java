@@ -6,9 +6,9 @@ import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.utils.EncryptUtils;
 import apidemo3.dso.LogUtil;
-import apidemo3.model.BullOrderDo;
+import apidemo3.model.data.BullOrderDo;
 import apidemo3.model.BullOrderStatus;
-import apidemo3.model.CoProductDo;
+import apidemo3.model.data.CoProductDo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

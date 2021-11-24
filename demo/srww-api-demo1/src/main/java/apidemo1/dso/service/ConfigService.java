@@ -1,16 +1,14 @@
 package apidemo1.dso.service;
 
-import java.math.*;
 import java.sql.SQLException;
-import java.time.*;
 import java.util.*;
 
+import apidemo1.model.data.WaterCfgPropertiesDo;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.extend.aspect.annotation.Service;
 import org.noear.solon.data.annotation.Cache;
 import org.noear.solon.data.annotation.CachePut;
 import org.noear.solon.data.annotation.CacheRemove;
-import apidemo1.model.db.*;
 
 @Service
 public class ConfigService{

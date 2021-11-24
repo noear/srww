@@ -7,7 +7,7 @@ import org.noear.solon.validation.annotation.NotNull;
 import apidemo3.controller.SysCodes;
 import apidemo3.controller.UapiBase;
 import apidemo3.dso.db.mapper.CoProductMapper;
-import apidemo3.model.CoProductDo;
+import apidemo3.model.data.CoProductDo;
 
 import java.util.Map;
 

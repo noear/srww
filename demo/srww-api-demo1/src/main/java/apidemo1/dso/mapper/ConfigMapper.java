@@ -1,16 +1,11 @@
 package apidemo1.dso.mapper;
 
-import java.math.*;
 import java.sql.SQLException;
-import java.time.*;
 import java.util.*;
 
-import org.noear.weed.BaseMapper;
-import org.noear.weed.DataItem;
-import org.noear.weed.DataList;
+import apidemo1.model.data.WaterCfgPropertiesDo;
 import org.noear.weed.annotation.Db;
 import org.noear.weed.xml.Namespace;
-import apidemo1.model.db.*;
 
 @Db("water")
 @Namespace("apidemo1.dso.mapper.ConfigMapper")

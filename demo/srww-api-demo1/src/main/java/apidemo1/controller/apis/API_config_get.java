@@ -2,15 +2,13 @@ package apidemo1.controller.apis;
 
 
 import apidemo1.controller.ApiBase;
-import apidemo1.dso.mapper.ConfigMapper;
 import apidemo1.dso.service.ConfigService;
-import apidemo1.model.db.WaterCfgPropertiesDo;
+import apidemo1.model.data.WaterCfgPropertiesDo;
 import apidemo1.model.view.ConfigVo;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.validation.annotation.NotEmpty;
-import org.noear.weed.annotation.Db;
 
 import java.util.List;
 import java.util.stream.Collectors;
