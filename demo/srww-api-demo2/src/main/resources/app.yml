@@ -13,7 +13,7 @@ solon.app:
   group: water
 
 solon.cloud.water:
-  server: water
+  server: "waterapi:9371"
   discovery:
     enable: true  #设为 false 时，solon.cloud.local 会生效（一般用于RPC本地调试）
 

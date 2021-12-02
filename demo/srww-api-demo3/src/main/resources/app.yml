@@ -6,5 +6,5 @@ solon.app:
   group: water
 
 solon.cloud.water:
-  server: water
+  server: "waterapi:9371"
 
