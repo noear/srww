@@ -9,8 +9,8 @@ import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.ModelAndView;
+import org.noear.solon.core.handle.Result;
 import org.noear.solon.core.handle.UploadedFile;
-import org.noear.srww.uadmin.model.ViewModel;
 import org.noear.water.utils.Datetime;
 import org.noear.water.utils.IOUtils;
 import org.noear.water.utils.JsondEntity;
@@ -72,36 +72,32 @@ public class WhitelistController extends BaseController2 {
 
     //保存ip白名单新增
     @Mapping("edit/ajax/save")
-    public ViewModel saveWhitelistAdd(Integer row_id, String tag, String type, String value, String note) throws Exception {
-
-
+    public Result saveWhitelistAdd(Integer row_id, String tag, String type, String value, String note) throws Exception {
         boolean result = DbWaterCfgApi.setWhitelist(row_id, tag, type, value, note);
+
         if (result) {
             DbWaterCfgApi.reloadWhitelist();
 
-            viewModel.code(1, "操作成功");
+            return Result.succeed();
         } else {
-            viewModel.code(0, "操作失败");
+            return Result.failure("操作失败");
         }
-
-        return viewModel;
     }
 
 
 
     //删除IP白名单记录
     @Mapping("ajax/del")
-    public ViewModel saveWhitelistDel(Integer row_id) throws Exception {
+    public Result saveWhitelistDel(Integer row_id) throws Exception {
         boolean result = DbWaterCfgApi.delWhitelist(row_id);
+
         if (result) {
             DbWaterCfgApi.reloadWhitelist();
 
-            viewModel.code(1, "删除成功");
+            return Result.succeed();
         } else {
-            viewModel.code(0, "删除失败");
+            return Result.failure("操作失败");
         }
-
-        return viewModel;
     }
 
 
@@ -123,13 +119,13 @@ public class WhitelistController extends BaseController2 {
 
     //批量导入
     @Mapping("ajax/import")
-    public ViewModel importDo(Context ctx, String tag, UploadedFile file) throws Exception {
+    public Result importDo(Context ctx, String tag, UploadedFile file) throws Exception {
 
         String jsonD = IOUtils.toString(file.content);
         JsondEntity entity = JsondUtils.decode(jsonD);
 
-        if(entity == null || "water_cfg_whitelist".equals(entity.table) == false){
-            return viewModel.code(0, "数据不对！");
+        if (entity == null || "water_cfg_whitelist".equals(entity.table) == false) {
+            return Result.failure("数据不对！");
         }
 
         List<WhitelistDo> list = entity.data.toObjectList(WhitelistDo.class);
@@ -138,18 +134,18 @@ public class WhitelistController extends BaseController2 {
             DbWaterCfgApi.impWhitelist(tag, m);
         }
 
-        return viewModel.code(1,"ok");
+        return Result.succeed();
     }
 
     //批量删除
     @Mapping("ajax/batch")
-    public ViewModel batchDo(Context ctx, String tag, Integer act, String ids) throws Exception {
+    public Result batchDo(Context ctx, String tag, Integer act, String ids) throws Exception {
         if(act == null){
             act = 0;
         }
 
         DbWaterCfgApi.delWhitelistByIds(act, ids);
 
-        return viewModel.code(1, "ok");
+        return Result.succeed();
     }
 }
