@@ -2,7 +2,7 @@ package admindemo2.dso;
 
 
 import admindemo2.dso.db.DbWaterCfgApi;
-import admindemo2.model.water_cfg.EnumDo;
+import admindemo2.model.data.water_cfg.EnumDo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

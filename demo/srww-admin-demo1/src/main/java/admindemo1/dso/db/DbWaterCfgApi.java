@@ -2,8 +2,8 @@ package admindemo1.dso.db;
 
 import admindemo1.Config;
 import admindemo1.dso.CacheUtil;
-import admindemo1.model.TagCountsVo;
-import admindemo1.model.water_cfg.WhitelistDo;
+import admindemo1.model.view.TagCountsVo;
+import admindemo1.model.data.water_cfg.WhitelistDo;
 import org.noear.water.dso.WhitelistApi;
 import org.noear.water.utils.TextUtils;
 import org.noear.weed.DbContext;

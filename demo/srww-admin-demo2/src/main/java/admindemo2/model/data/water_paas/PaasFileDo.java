@@ -1,4 +1,4 @@
-package admindemo2.model.water_paas;
+package admindemo2.model.data.water_paas;
 
 import lombok.Getter;
 

@@ -5,7 +5,7 @@ import admindemo2.controller.BaseController2;
 import admindemo2.dso.ConfigType;
 import admindemo2.dso.db.DbWaterCfgApi;
 import admindemo2.dso.EsUtil;
-import admindemo2.model.water_cfg.ConfigDo;
+import admindemo2.model.data.water_cfg.ConfigDo;
 import admindemo2.utils.JsonFormatTool;
 import org.noear.snack.ONode;
 import org.noear.solon.annotation.Controller;

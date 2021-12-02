@@ -1,4 +1,4 @@
-package admindemo2.model.water_cfg;
+package admindemo2.model.data.water_cfg;
 
 import admindemo2.dso.ConfigType;
 import com.zaxxer.hikari.HikariDataSource;

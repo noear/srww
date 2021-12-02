@@ -1,7 +1,7 @@
 package admindemo2.dso;
 
 
-import admindemo2.model.water_cfg.ConfigDo;
+import admindemo2.model.data.water_cfg.ConfigDo;
 import org.noear.solon.cloud.utils.http.HttpUtils;
 import org.noear.water.utils.Base64Utils;
 import org.noear.water.utils.TextUtils;

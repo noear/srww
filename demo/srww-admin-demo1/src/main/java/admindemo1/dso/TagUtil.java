@@ -1,6 +1,6 @@
 package admindemo1.dso;
 
-import admindemo1.model.TagCountsVo;
+import admindemo1.model.view.TagCountsVo;
 import org.noear.solon.core.handle.Context;
 import org.noear.water.utils.TextUtils;
 

@@ -1,4 +1,4 @@
-package admindemo1.model;
+package admindemo1.model.view;
 
 import lombok.Getter;
 

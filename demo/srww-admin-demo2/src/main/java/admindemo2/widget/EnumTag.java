@@ -1,7 +1,7 @@
 package admindemo2.widget;
 
 import admindemo2.dso.EnumUtil;
-import admindemo2.model.water_cfg.EnumDo;
+import admindemo2.model.data.water_cfg.EnumDo;
 import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;

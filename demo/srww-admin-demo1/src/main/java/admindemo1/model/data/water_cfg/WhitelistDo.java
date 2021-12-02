@@ -1,10 +1,9 @@
-package admindemo2.model.water_cfg;
+package admindemo1.model.data.water_cfg;
 
 import lombok.Getter;
 
 @Getter
-public class WhitelistDo
-{
+public class WhitelistDo {
     public transient int row_id;
     public String tag;
     public String type;
