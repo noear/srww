@@ -1,4 +1,4 @@
-server.port: 9020
+server.port: 8080
 server.request.maxRequestSize: 2Mb
 
 solon.app:
@@ -7,5 +7,5 @@ solon.app:
   title: "DEMO"
 
 solon.cloud.water:
-  server: "water"
+  server: "waterapi:9371"
 
