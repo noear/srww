@@ -13,6 +13,6 @@ public class XPluginImp implements Plugin {
     public void start(SolonApp app) {
         app.beanScan(XPluginImp.class);
 
-        CloudClient.configLoad("water_bcf", "bcf.yml");
+        CloudClient.configLoad("grit", "gritclient.yml");
     }
 }

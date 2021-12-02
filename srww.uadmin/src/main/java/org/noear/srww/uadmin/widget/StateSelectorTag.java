@@ -13,7 +13,10 @@ import org.noear.solon.core.handle.Context;
 import java.io.IOException;
 import java.util.Map;
 
-
+/**
+ * @author noear on 14-9-10.
+ * @see 1.0
+ */
 @Component("view:stateselector")
 public class StateSelectorTag implements TemplateDirectiveModel {
     @Override

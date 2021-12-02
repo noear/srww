@@ -25,7 +25,7 @@ import org.slf4j.MDC;
  * @author noear 2021/2/13 created
  */
 public class XPluginImp implements Plugin {
-    static final String clz_BcfClient = "org.noear.bcf.BcfClient";
+    static final String clzGritClient = "org.noear.grit.client.GritClient";
     static Logger log = LoggerFactory.getLogger(XPluginImp.class);
 
     boolean isDebugMode;
@@ -46,7 +46,7 @@ public class XPluginImp implements Plugin {
 
         String style = Solon.cfg().get("srww.weed.print.style");
         isWeedStyle2 = "sql".equals(style);
-        isTrackEnable = Solon.cfg().getBool("srww.weed.track.enable", true);
+        isTrackEnable = Solon.cfg().getBool("srww.weed.track.enable", isDebugMode);
         isErrorLogEnable = Solon.cfg().getBool("srww.weed.error.log.enable", true);
 
 
@@ -67,7 +67,7 @@ public class XPluginImp implements Plugin {
      * 初始化Weed监听事件
      */
     protected void initWeed() {
-        Class<?> bcfClz = Utils.loadClass(clz_BcfClient);
+        Class<?> bcfClz = Utils.loadClass(clzGritClient);
 
         if (bcfClz == null) {
             initWeedForApi();
@@ -106,7 +106,7 @@ public class XPluginImp implements Plugin {
                 }
             }
 
-            WaterClient.Track.track(service_name(), cmd, 1000);
+            WaterClient.Track.trackOfPerformance(Solon.cfg().appName() , cmd, 1000);
 
             if (isTrackEnable) {
                 String tag = cmd.context.schema();
@@ -114,8 +114,7 @@ public class XPluginImp implements Plugin {
                     tag = "sql";
                 }
 
-                CloudClient.metric().addMeter(service_name() + "_sql", tag, cmd.text, cmd.timespan());
-                //WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
+                CloudClient.metric().addMeter(Solon.cfg().appName()  + "_sql", tag, cmd.text, cmd.timespan());
             }
         });
     }
@@ -136,19 +135,19 @@ public class XPluginImp implements Plugin {
             }
 
             Context ctx = Context.current();
-            String user_name = user_name(ctx);
-            int user_puid = user_puid(ctx);
 
-//            if (user_name == null) {
-//                return;
-//            }
+            if (ctx == null) {
+                return;
+            }
 
 
             String sqlUp = cmd.text.toUpperCase();
-            String chkUp = "User_Id=? AND Pass_Wd=? AND Is_Disabled=0".toUpperCase();
 
-            if (cmd.timespan() > 2000 || cmd.isLog > 0 || sqlUp.indexOf("INSERT INTO ") >= 0 || sqlUp.indexOf("UPDATE ") >= 0 || sqlUp.indexOf("DELETE ") >= 0 || sqlUp.indexOf(chkUp) >= 0) {
-                WaterClient.Track.track(service_name(), cmd, ctx.userAgent(), ctx.pathNew(), user_puid + "." + user_name, ctx.realIp());
+            if (cmd.timespan() > 2000 || cmd.isLog > 0 || sqlUp.contains("INSERT INTO ") || sqlUp.contains("UPDATE ") || sqlUp.contains("DELETE ")) {
+                String userDisplayName = getUserDisplayName(ctx);
+                String userId = getUserId(ctx);
+
+                WaterClient.Track.trackOfBehavior(Solon.cfg().appName(), cmd, ctx.userAgent(), ctx.pathNew(), userId + "." + userDisplayName, ctx.realIp());
             }
 
             if (isTrackEnable) {
@@ -157,29 +156,20 @@ public class XPluginImp implements Plugin {
                     tag = "sql";
                 }
 
-                CloudClient.metric().addMeter(service_name() + "_sql", tag, cmd.text, cmd.timespan());
-                //WaterClient.Track.track(service_name() + "_sql", tag, cmd.text, cmd.timespan());
+                CloudClient.metric().addMeter(Solon.cfg().appName() + "_sql", tag, cmd.text, cmd.timespan());
             }
         });
     }
 
-    public String service_name() {
-        return Solon.cfg().appName();
-    }
 
     //用于作行为记录
-    public int user_puid(Context ctx) {
-        if (ctx != null) {
-            String tmp = ctx.attr("user_puid", "0");
-            return Integer.parseInt(tmp);
-        } else {
-            return 0;
-        }
+    public String getUserId(Context ctx) {
+        return ctx.attr("user_id", "0");
     }
 
-    public String user_name(Context ctx) {
+    public String getUserDisplayName(Context ctx) {
         if (ctx != null) {
-            return ctx.attr("user_name", null);
+            return ctx.attr("user_display_name", null);
         } else {
             return null;
         }

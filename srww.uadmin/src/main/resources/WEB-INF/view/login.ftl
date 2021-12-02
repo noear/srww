@@ -25,19 +25,20 @@
         url:"/login/ajax/check",
         data:$("form").serialize(),
         success:function(data){
-          if(data.code==1){
-            location.href=data.url;
+          if (rst.code == 200) {
+            location.href = rst.data;
+          } else {
+            alert(rst.description);
           }
-          else
-            alert(data.msg);
         }
       });
       return false;
     }
 
     function checkKey() {
-      if (window.event.keyCode == 13)
+      if (window.event.keyCode == 13) {
         checkClick();
+      }
     }
   </script>
 </head>

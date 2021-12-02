@@ -6,21 +6,21 @@ import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateDirectiveModel;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
-import org.noear.bcf.BcfClient;
-import org.noear.bcf.models.BcfGroupModel;
-import org.noear.bcf.models.BcfResourceModel;
+import org.noear.grit.client.GritClient;
+import org.noear.grit.model.domain.Resource;
+import org.noear.grit.model.domain.ResourceEntity;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.core.NvMap;
 import org.noear.solon.core.handle.Context;
 import org.noear.srww.uadmin.dso.Session;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Created by noear on 14-9-10.
+ * @author noear on 14-9-10.
+ * @see 1.0
  */
 @Component("view:toolmenu")
 public class ToolmenuTag implements TemplateDirectiveModel {
@@ -35,41 +35,37 @@ public class ToolmenuTag implements TemplateDirectiveModel {
         }
     }
 
-    public void build(Environment env, Map map) throws Exception {
+    private void build(Environment env, Map map) throws Exception {
         NvMap mapExt = new NvMap(map);
 
-        pack = mapExt.get("pack");
+        String groupCode = mapExt.get("pack");
 
-        Context request = Context.current();
-        //当前视图path
-        String cPath = request.pathNew();
-        StringBuffer sb = new StringBuffer();
+        Context ctx = Context.current();
+        String path = ctx.pathNew();
+        StringBuffer buf = new StringBuffer();
 
-        BcfGroupModel gPack = BcfClient.getGroupByCode(pack);
+        Resource resourceGroup = GritClient.global().resource().getResourceByCode(groupCode);
 
-        if (gPack.pgid > 0) {
-            sb.append("<toolmenu>");
-            sb.append("<tabbar>");
+        if (resourceGroup.resource_id > 0) {
+            buf.append("<toolmenu>");
+            buf.append("<tabbar>");
 
-            forPack(request, gPack.pgid, sb, cPath);
+            List<ResourceEntity> list = GritClient.global().auth()
+                    .getUriListByGroup(Session.current().getSubjectId(), resourceGroup.resource_id);
 
-            sb.append("</tabbar>");
-            sb.append("</toolmenu>");
+            for (Resource r : list) {
+                buildItem(ctx, buf, r.display_name, r.link_uri, path);
+            }
 
-            env.getOut().write(sb.toString());
+            buf.append("</tabbar>");
+            buf.append("</toolmenu>");
+
+            env.getOut().write(buf.toString());
         }
     }
 
-    private void forPack(Context request, int packID, StringBuffer sb, String cPath) throws SQLException {
-        List<BcfResourceModel> list = BcfClient.getUserResourcesByPack(Session.current().getPUID(), packID);
-
-        for (BcfResourceModel r : list) {
-            buildItem(request, sb, r.cn_name, r.uri_path, cPath);
-        }
-    }
-
-    private void buildItem(Context request, StringBuffer sb, String title, String url, String cPath) {
-        String url2 = url + "?" + request.uri().getQuery();
+    private void buildItem(Context ctx, StringBuffer sb, String title, String url, String cPath) {
+        String url2 = url + "?" + ctx.uri().getQuery();
 
         if (cPath.indexOf(url) > 0) {
             sb.append("<button onclick=\"location='" + url2 + "'\" class='sel'>");

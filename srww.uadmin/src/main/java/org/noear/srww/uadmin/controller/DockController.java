@@ -1,10 +1,11 @@
 package org.noear.srww.uadmin.controller;
 
-import org.noear.bcf.BcfClient;
-import org.noear.bcf.models.BcfResourceModel;
+import org.noear.grit.client.GritClient;
+import org.noear.grit.model.domain.Resource;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
+import org.noear.solon.core.event.EventBus;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.ModelAndView;
 
@@ -21,21 +22,20 @@ public class DockController extends BaseController {
     //支持外部url
     @Mapping("/**/$*") //视图 返回
     public ModelAndView dock1(Context ctx) {
-        String uri = ctx.pathNew().toLowerCase();
-        String query = ctx.queryString();
+        String path = ctx.path().toLowerCase();
 
         try {
-            BcfResourceModel res = BcfClient.getResourceByPath(uri);
-            viewModel.put("fun_name", res.cn_name);
-            viewModel.put("fun_url", res.note);
+            Resource res = GritClient.global().resource().getResourceByUri(path);
+            viewModel.set("fun_name", res.display_name);
+            viewModel.set("fun_url", res.link_uri);
 
-            if (query != null && query.indexOf("@=") >= 0) {
-                viewModel.put("fun_type", 1);
+            if (res.is_fullview) {
+                viewModel.set("fun_type", 1);
             } else {
-                viewModel.put("fun_type", 0);
+                viewModel.set("fun_type", 0);
             }
-        } catch (Exception ex) {
-
+        } catch (Exception e) {
+            EventBus.push(e);
         }
 
         return view("dock");
@@ -63,8 +63,8 @@ public class DockController extends BaseController {
             } else {
                 viewModel.put("fun_type", 0);
             }
-        } catch (Exception ex) {
-
+        } catch (Exception e) {
+            EventBus.push(e);
         }
 
         return view("dock");
