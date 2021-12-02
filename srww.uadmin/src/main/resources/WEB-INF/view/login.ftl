@@ -24,7 +24,7 @@
       $.ajax({
         url:"/login/ajax/check",
         data:$("form").serialize(),
-        success:function(data){
+        success:function(rst){
           if (rst.code == 200) {
             location.href = rst.data;
           } else {
