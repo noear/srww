@@ -7,5 +7,5 @@ solon.app:
   title: "DEMO"
 
 solon.cloud.water:
-  server: "waterapi"
+  server: "waterapi:9371"
 
