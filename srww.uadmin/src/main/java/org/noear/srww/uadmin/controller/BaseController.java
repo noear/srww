@@ -20,9 +20,9 @@ public abstract class BaseController {
     protected ViewModel viewModel = new ViewModel();
 
     /*
-    * @return 输出一个视图（自动放置viewModel）
-    * @param viewName 视图名字(内部uri)
-    * */
+     * @return 输出一个视图（自动放置viewModel）
+     * @param viewName 视图名字(内部uri)
+     * */
     public ModelAndView view(String viewName) {
         //设置必要参数
         viewModel.put("app", Solon.cfg().appTitle());
@@ -35,14 +35,10 @@ public abstract class BaseController {
     }
 
     /*
-    * @return 输出一个跳转视图
-    * @prarm  url 可以是任何URL地址
-    * */
+     * @return 输出一个跳转视图
+     * @prarm  url 可以是任何URL地址
+     * */
     public void redirect(String url) {
-        try {
-            Context.current().redirect(url);
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
+        Context.current().redirect(url);
     }
 }
