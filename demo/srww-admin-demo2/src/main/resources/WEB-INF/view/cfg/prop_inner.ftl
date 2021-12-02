@@ -29,14 +29,14 @@
             data:fromData,
             processData: false,
             contentType: false,
-            success:function (data) {
-                if(data.code==1) {
+            success:function (rst) {
+                if(rst.code == 200) {
                     top.layer.msg('操作成功');
                     setTimeout(function(){
                         location.reload();
                     },800);
                 }else{
-                    top.layer.msg(data.msg);
+                    top.layer.msg(rst.description);
                 }
             }
         });
@@ -68,14 +68,14 @@
             type:"POST",
             url:"ajax/batch",
             data:{act: act, ids: vm.sel_id},
-            success:function (data) {
-                if(data.code==1) {
+            success:function (rst) {
+                if(rst.code == 200) {
                     top.layer.msg('操作成功');
                     setTimeout(function(){
                         location.reload();
                     },800);
                 }else{
-                    top.layer.msg(data.msg);
+                    top.layer.msg(rst.description);
                 }
             }
         });

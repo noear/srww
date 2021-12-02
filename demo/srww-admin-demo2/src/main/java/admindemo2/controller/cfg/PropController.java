@@ -9,6 +9,7 @@ import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.ModelAndView;
+import org.noear.solon.core.handle.Result;
 import org.noear.solon.core.handle.UploadedFile;
 import org.noear.srww.uadmin.model.ViewModel;
 import org.noear.water.utils.Datetime;
@@ -27,25 +28,25 @@ public class PropController extends BaseController2 {
         List<TagCountsVo> tags = DbWaterCfgApi.getConfigTags();
 
 
-        tag_name = TagUtil.build(tag_name,tags);
+        tag_name = TagUtil.build(tag_name, tags);
 
-        viewModel.put("tag_name",tag_name);
-        viewModel.put("tags",tags);
+        viewModel.put("tag_name", tag_name);
+        viewModel.put("tags", tags);
         return view("cfg/prop");
     }
 
     @Mapping("inner")
     public ModelAndView innerDo(Context ctx, String tag_name, String key) throws SQLException {
-        int state = ctx.paramAsInt("state",1);
+        int state = ctx.paramAsInt("state", 1);
 
         TagUtil.cookieSet(tag_name);
 
-        List<ConfigDo> list = DbWaterCfgApi.getConfigsByTag(tag_name,key, state);
+        List<ConfigDo> list = DbWaterCfgApi.getConfigsByTag(tag_name, key, state);
 
-        viewModel.put("list",list);
-        viewModel.put("tag_name",tag_name);
-        viewModel.put("state",state);
-        viewModel.put("key",key);
+        viewModel.put("list", list);
+        viewModel.put("tag_name", tag_name);
+        viewModel.put("state", state);
+        viewModel.put("key", key);
 
         return view("cfg/prop_inner");
     }
@@ -54,49 +55,42 @@ public class PropController extends BaseController2 {
     //跳转编辑页面。
     @Mapping("edit")
     public ModelAndView editConfig(String tag_name, Integer row_id) throws SQLException {
-        if(row_id == null){
+        if (row_id == null) {
             row_id = 0;
         }
 
         ConfigDo cfg = DbWaterCfgApi.getConfig(row_id);
 
-        if(cfg.row_id > 0){
+        if (cfg.row_id > 0) {
             tag_name = cfg.tag;
         }
 
-        viewModel.put("row_id",row_id);
-        viewModel.put("cfg",cfg);
-        viewModel.put("tag_name",tag_name);
+        viewModel.put("row_id", row_id);
+        viewModel.put("cfg", cfg);
+        viewModel.put("tag_name", tag_name);
         return view("cfg/prop_edit");
     }
 
     //编辑、保存功能。
     @Mapping("edit/ajax/save")
-    public ViewModel save(Integer row_id, String tag, String key, Integer type, String value, String edit_mode) throws SQLException {
+    public Result save(Integer row_id, String tag, String key, Integer type, String value, String edit_mode) throws SQLException {
 
         boolean result = DbWaterCfgApi.setConfig(row_id, tag, key, type, value, edit_mode);
 
         if (result) {
-            viewModel.code(1, "保存成功");
+            return Result.succeed();
         } else {
-            viewModel.code(0, "保存失败");
+            return Result.failure();
         }
-
-        return viewModel;
     }
 
     //编辑、保存功能。
     @Mapping("edit/ajax/del")
-    public ViewModel del(Integer row_id) throws SQLException {
-
-
+    public Result del(Integer row_id) throws SQLException {
         DbWaterCfgApi.delConfig(row_id);
 
-        return viewModel.code(1, "操作成功");
+        return Result.succeed();
     }
-
-
-
 
 
     //批量导出
@@ -115,14 +109,12 @@ public class PropController extends BaseController2 {
 
     //批量导入
     @Mapping("ajax/import")
-    public ViewModel importDo(Context ctx, String tag, UploadedFile file) throws Exception {
-
-
+    public Result importDo(Context ctx, String tag, UploadedFile file) throws Exception {
         String jsonD = IOUtils.toString(file.content);
         JsondEntity entity = JsondUtils.decode(jsonD);
 
-        if(entity == null || "water_cfg_properties".equals(entity.table) == false){
-            return viewModel.code(0, "数据不对！");
+        if (entity == null || "water_cfg_properties".equals(entity.table) == false) {
+            return Result.failure("数据不对！");
         }
 
         List<ConfigDo> list = entity.data.toObjectList(ConfigDo.class);
@@ -131,19 +123,18 @@ public class PropController extends BaseController2 {
             DbWaterCfgApi.impConfig(tag, m);
         }
 
-        return viewModel.code(1,"ok");
+        return Result.succeed();
     }
 
     //批量处理
     @Mapping("ajax/batch")
-    public ViewModel batchDo(Context ctx, String tag, Integer act, String ids) throws Exception {
-
-        if(act == null){
+    public Result batchDo(Context ctx, String tag, Integer act, String ids) throws Exception {
+        if (act == null) {
             act = 0;
         }
 
         DbWaterCfgApi.delConfigByIds(act, ids);
 
-        return viewModel.code(1, "ok");
+        return Result.succeed();
     }
 }

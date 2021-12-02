@@ -31,7 +31,7 @@
                                 parent.location.href = "/cfg/whitelist?tag_name=" + vm.tag;
                             }, 800);
                         }else{
-                            top.layer.msg(rst.msg);
+                            top.layer.msg(rst.description);
                         }
                     }
                 });
@@ -58,7 +58,7 @@
                             parent.location.href="/cfg/whitelist?tag_name="+vm.tag;
                         },800);
                     }else{
-                        top.layer.msg(rst.msg);
+                        top.layer.msg(rst.description);
                     }
                 }
             });

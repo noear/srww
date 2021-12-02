@@ -45,14 +45,14 @@
                 type:"POST",
                 url:"/cfg/prop/edit/ajax/save",
                 data:vm,
-                success:function (data) {
-                    if(data.code==1) {
+                success:function (rst) {
+                    if(rst.code == 200) {
                         top.layer.msg('操作成功')
                         setTimeout(function(){
                             parent.location.href="/cfg/prop?tag_name="+vm.tag;
                         },800);
                     }else{
-                        top.layer.msg(data.msg);
+                        top.layer.msg(rst.description);
                     }
                 }
             });
@@ -71,14 +71,14 @@
                 type:"POST",
                 url:"/cfg/prop/edit/ajax/del",
                 data:{"row_id":row_id},
-                success:function (data) {
-                    if(data.code==1) {
+                success:function (rst) {
+                    if(rst.code == 200) {
                         top.layer.msg('操作成功')
                         setTimeout(function(){
                             parent.location.href="/cfg/prop?tag_name=${cfg.tag!}";
                         },800);
                     }else{
-                        top.layer.msg(data.msg);
+                        top.layer.msg(rst.description);
                     }
                 }
             });

@@ -41,17 +41,17 @@
                     tag: '${tag_name}',
                     key: key
                 },
-                success:function (data) {
-                    if (1 === data.code) {
+                success:function (rst) {
+                    if(rst.code == 200) {
                         var r = "";
-                        for (var idx in data.tbs) {
-                            var tb = data.tbs[idx];
+                        for (var idx in rst.data) {
+                            var tb = rst.data[idx];
                             r += '<li><a href="javascript:void(0);" onclick="get_ddl(this, \'' + key + '\', \'' + tb + '\')">' + tb + '</a></li>';
                         }
                         $("#tb-tbs").html(r);
                         $(".left").find('a').first().click();
                     } else {
-                        top.layer.msg(data.msg);
+                        top.layer.msg(rst.description);
                     }
                 }
             });
@@ -69,13 +69,13 @@
                     key: key,
                     tb: tb
                 },
-                success:function (data) {
-                    if (1 === data.code) {
+                success:function (rst) {
+                    if(rst.code == 200) {
                         //$("#code").html(data.ddl);
-                        window.editor.setValue(data.ddl);
+                        window.editor.setValue(rst.data);
                         window.editor.moveCursorTo(0, 0);
                     } else {
-                        top.layer.msg(data.msg);
+                        top.layer.msg(rst.description);
                     }
                 }
             });

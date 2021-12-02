@@ -7,7 +7,7 @@ import admindemo2.model.water_cfg.ConfigDo;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.ModelAndView;
-import org.noear.srww.uadmin.model.ViewModel;
+import org.noear.solon.core.handle.Result;
 import org.noear.water.utils.TextUtils;
 import org.noear.weed.DbContext;
 
@@ -57,7 +57,7 @@ public class DDLController extends BaseController2 {
     }
 
     @Mapping("ajax/tb")
-    public ViewModel tb(String tag, String key) throws SQLException {
+    public Result tb(String tag, String key) throws SQLException {
 
         ConfigDo cfg = DbWaterCfgApi.getConfigByTagName(tag, key);
         DbContext db = cfg.getDb();
@@ -68,12 +68,12 @@ public class DDLController extends BaseController2 {
         });
         tbs.sort(String::compareTo);
 
-        return new ViewModel().code(1, "成功").set("tbs", tbs);
+        return Result.succeed(tbs);
 
     }
 
     @Mapping("ajax/getddl")
-    public ViewModel get(String tag,
+    public Result get(String tag,
                          String key,
                          String tb) throws SQLException {
 
@@ -81,8 +81,6 @@ public class DDLController extends BaseController2 {
 
         String ddl = db.sql(buildSqlGetDDL(tb)).getDataItem().getString(DDL_COLUMN_NAME);
 
-        return new ViewModel().code(1, "成功").set("ddl", ddl);
-
+        return Result.succeed(ddl);
     }
-
 }

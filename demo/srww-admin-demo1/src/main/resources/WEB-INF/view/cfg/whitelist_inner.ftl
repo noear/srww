@@ -31,7 +31,7 @@
                             location.reload();
                         },800);
                     }else{
-                        top.layer.msg(rst.msg);
+                        top.layer.msg(rst.description);
                     }
                 }
             });
@@ -70,7 +70,7 @@
                             location.reload();
                         },800);
                     }else{
-                        top.layer.msg(rst.msg);
+                        top.layer.msg(rst.description);
                     }
                 }
             });
