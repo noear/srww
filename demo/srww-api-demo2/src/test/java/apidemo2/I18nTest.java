@@ -18,7 +18,7 @@ public class I18nTest {
 
     @Test
     public void test0() throws Exception {
-        String note = I18nUtils.getByName("title", "");
+        String note = I18nUtils.getByName("title", "zh_CN");
 
         assert note != null;
 
