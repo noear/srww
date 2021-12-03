@@ -23,10 +23,14 @@ public class BreakerFilter implements Filter {
 
     @Override
     public void doFilter(Context ctx, FilterChain chain) throws Throwable {
-        try (AutoCloseable entry = CloudClient.breaker().entry(breakerName)) {
+        if (CloudClient.breaker() == null) {
             chain.doFilter(ctx);
-        } catch (BreakerException ex) {
-            throw UapiCodes.CODE_4001017;
+        } else {
+            try (AutoCloseable entry = CloudClient.breaker().entry(breakerName)) {
+                chain.doFilter(ctx);
+            } catch (BreakerException ex) {
+                throw UapiCodes.CODE_4001017;
+            }
         }
     }
 }

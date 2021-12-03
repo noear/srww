@@ -10,7 +10,7 @@ import org.noear.srww.uapi.filter.BreakerFilter;
 import org.noear.srww.uapi.handler.*;
 
 /**
- * @author noear 2021/2/10 created
+ * @author noear 2021/2/10 created（建议方案）
  */
 @Mapping("/api/v2/app/**")
 @Component

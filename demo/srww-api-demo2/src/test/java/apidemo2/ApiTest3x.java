@@ -23,8 +23,8 @@ import java.util.Map;
 @RunWith(SolonJUnit4ClassRunner.class)
 @SolonTest(App.class)
 public class ApiTest3x extends HttpTestBase {
-    public static final String app_key = "73f0759694a9441980562788a9e4256b";
-    public static final String app_secret = "ZVJ4swhbNUV3Uc36";
+    public static final String app_key = "47fa368188be4e2689e1a74212c49cd8";
+    public static final String app_secret = "P5Lrn08HVkA13Ehb";
     public static final int client_ver_id = 10001; //1.0.1
 
     public ONode call(String apiName, Map<String, Object> args) throws Exception {

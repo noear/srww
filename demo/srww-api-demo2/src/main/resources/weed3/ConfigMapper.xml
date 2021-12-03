@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//noear.org//DTD Mapper 3.0//EN" "http://noear.org/dtd/weed3-mapper.dtd">
 <mapper namespace="apidemo2.dso.mapper.ConfigMapper"
         proxy="apidemo2.dso.service.ConfigService"
-        import="apidemo2.model.db.*"
+        import="apidemo2.model.data.*"
         db="water">
 
     <sql id="getConfigsByTag" return="List[WaterCfgPropertiesDo]" remarks="获取配置列表">
