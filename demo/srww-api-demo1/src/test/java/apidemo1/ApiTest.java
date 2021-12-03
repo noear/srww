@@ -16,7 +16,7 @@ import java.util.Map;
 @RunWith(SolonJUnit4ClassRunner.class)
 @SolonTest(App.class)
 public class ApiTest extends HttpTestBase {
-    public static final int app_id = 2;
+    public static final String app_id = "47fa368188be4e2689e1a74212c49cd8";
     public static final String app_sign_secret = "djjePPbqBz35U328";
 
     public ONode call(String method, Map<String, Object> args) throws Exception {
