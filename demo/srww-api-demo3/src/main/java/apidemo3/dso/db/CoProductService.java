@@ -1,6 +1,7 @@
 package apidemo3.dso.db;
 
 import org.noear.solon.annotation.Inject;
+import org.noear.solon.data.annotation.Cache;
 import org.noear.solon.extend.aspect.annotation.Service;
 import apidemo3.dso.db.mapper.CoProductMapper;
 import apidemo3.model.data.CoProductDo;
@@ -19,6 +20,7 @@ public class CoProductService {
     }
 
     //获取产品列表
+    @Cache
     public List<CoProductDo> list_co_product() throws SQLException {
         return mapper.list_co_product();
     }
