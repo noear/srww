@@ -10,6 +10,9 @@ import org.noear.srww.uapi.UapiCodes;
  */
 @Component(tag = "api")
 public class API_0 extends Uapi {
+    /**
+     * 没有mapping值，将做为默认接口；即找不到接口时，以此为处理
+     * */
     @Mapping
     public void exec(){
         throw  UapiCodes.CODE_4001011;

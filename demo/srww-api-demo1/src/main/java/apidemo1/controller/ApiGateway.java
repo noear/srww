@@ -6,6 +6,8 @@ import org.noear.srww.uapi.UapiGateway;
 import org.noear.srww.uapi.handler.*;
 
 /**
+ * 接口网关的 mapping 值要以 ** 结尾
+ *
  * @author noear 2021/2/10 created
  */
 @Mapping("/api/v1/app/**")
