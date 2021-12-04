@@ -27,14 +27,14 @@ import java.util.Map;
 @RunWith(SolonJUnit4ClassRunner.class)
 @SolonTest(App.class)
 public class ApiTest3_noapp extends HttpTestBase {
-    public static final String app_id = "100000001"; //不存在的 app
-    public static final String app_secret = "ZVJ4swhbNUV3Uc36";
+    public static final String app_key = "100000001"; //不存在的 app
+    public static final String app_secret_key = "ZVJ4swhbNUV3Uc36";
     public static final int client_ver_id = 10001; //1.0.1
 
     public ONode call(String apiName, Map<String, Object> args) throws Exception {
 
         String json0 = ONode.stringify(args);
-        String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_secret);
+        String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_secret_key);
 
         //生成领牌
         Claims claims = new DefaultClaims();
@@ -51,10 +51,10 @@ public class ApiTest3_noapp extends HttpTestBase {
                 .append("#")
                 .append(json_encoded0)
                 .append("#")
-                .append(app_secret)
+                .append(app_secret_key)
                 .append("#")
                 .append(timestamp);
-        String sign = String.format("%s.%d.%s.%d", app_id, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
+        String sign = String.format("%s.%d.%s.%d", app_key, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求
         Response response = path("/api/v2/app/" + apiName)

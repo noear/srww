@@ -17,11 +17,11 @@ import java.util.Map;
 @RunWith(SolonJUnit4ClassRunner.class)
 @SolonTest(App.class)
 public class ApiTest2x extends HttpTestBase {
-    public static final String app_id = "1";
-    public static final String app_sign_secret = "P5Lrn08HVkA13Ehb";
+    public static final String app_key = "1";
+    public static final String app_secret_key = "P5Lrn08HVkA13Ehb";
 
     public ONode call(String apiName, Map<String, Object> args) throws Exception {
-        args.put(Attrs.app_id, app_id);
+        args.put(Attrs.app_id, app_key);
 
         ONode node = new ONode();
         node.set("method", apiName);

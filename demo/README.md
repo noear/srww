@@ -22,4 +22,4 @@
 
 为了配合演示：
 * water/配置管理/日志配置，添加：demo/demoapi_log
-* sponge/应用控制/应用，添加：app_id
+* sponge/应用控制/应用，添加一个应用。并修改代码中的 app_key,

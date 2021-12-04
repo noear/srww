@@ -15,7 +15,6 @@ import org.noear.solon.test.SolonTest;
 import org.noear.srww.uapi.common.Attrs;
 import org.noear.water.utils.EncryptUtils;
 
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -25,13 +24,13 @@ import java.util.Map;
 @SolonTest(App.class)
 public class ApiTest3x extends HttpTestBase {
     public static final String app_key = "47fa368188be4e2689e1a74212c49cd8";
-    public static final String app_secret = "P5Lrn08HVkA13Ehb";
+    public static final String app_secret_key = "P5Lrn08HVkA13Ehb";
     public static final int client_ver_id = 10001; //1.0.1
 
     public ONode call(String apiName, Map<String, Object> args) throws Exception {
 
         String json0 = ONode.stringify(args);
-        String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_secret);
+        String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_secret_key);
 
         //生成领牌
         Claims claims = new DefaultClaims();
@@ -47,7 +46,7 @@ public class ApiTest3x extends HttpTestBase {
                 .append("#")
                 .append(json_encoded0)
                 .append("#")
-                .append(app_secret)
+                .append(app_secret_key)
                 .append("#")
                 .append(timestamp);
         String sign = String.format("%s.%d.%s.%d", app_key, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
@@ -64,7 +63,7 @@ public class ApiTest3x extends HttpTestBase {
 
         String json = null;
         if (response.code() == 200) {
-            json = EncryptUtils.aesDecrypt(json_encoded2, app_secret);
+            json = EncryptUtils.aesDecrypt(json_encoded2, app_secret_key);
         } else {
             //不是200时，可能不是正常数据体了
             json = json_encoded2;

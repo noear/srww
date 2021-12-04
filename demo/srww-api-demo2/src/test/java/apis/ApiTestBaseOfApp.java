@@ -10,7 +10,6 @@ import org.noear.solon.test.HttpTestBase;
 import org.noear.srww.uapi.common.Attrs;
 import org.noear.water.utils.EncryptUtils;
 
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -18,8 +17,8 @@ import java.util.Map;
  */
 @Slf4j
 public class ApiTestBaseOfApp extends HttpTestBase {
-    public static final String app_id = "47fa368188be4e2689e1a74212c49cd8";
-    public static final String app_secret = "P5Lrn08HVkA13Ehb";
+    public static final String app_key = "47fa368188be4e2689e1a74212c49cd8";
+    public static final String app_secret_key = "P5Lrn08HVkA13Ehb";
     public static final int client_ver_id = 10001; //1.0.1
 
     public ONode call(String apiName, Map<String, Object> args) throws Exception {
@@ -28,7 +27,7 @@ public class ApiTestBaseOfApp extends HttpTestBase {
         args.put(Attrs.g_deviceId, "e0a953c3ee6040eaa9fae2b667060e09");
 
         String json0 = ONode.stringify(args);
-        String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_secret);
+        String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_secret_key);
 
         //生成领牌
         Claims claims = new DefaultClaims();
@@ -44,10 +43,10 @@ public class ApiTestBaseOfApp extends HttpTestBase {
                 .append("#")
                 .append(json_encoded0)
                 .append("#")
-                .append(app_secret)
+                .append(app_secret_key)
                 .append("#")
                 .append(timestamp);
-        String sign = String.format("%s.%d.%s.%d", app_id, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
+        String sign = String.format("%s.%d.%s.%d", app_key, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求
         Response response = path("/api/v2/app/" + apiName)
@@ -65,13 +64,13 @@ public class ApiTestBaseOfApp extends HttpTestBase {
 
         String json_encoded2 = response.body().string();
 
-        String sign22 = EncryptUtils.md5(apiName + "#" + json_encoded2 + "#" + app_secret);
+        String sign22 = EncryptUtils.md5(apiName + "#" + json_encoded2 + "#" + app_secret_key);
 
         if (sign2.equals(sign22) == false) {
             throw new RuntimeException("签名对不上，数据被串改了");
         }
 
-        String json = EncryptUtils.aesDecrypt(json_encoded2, app_secret);
+        String json = EncryptUtils.aesDecrypt(json_encoded2, app_secret_key);
 
         System.out.println("Decoded: " + json);
 
