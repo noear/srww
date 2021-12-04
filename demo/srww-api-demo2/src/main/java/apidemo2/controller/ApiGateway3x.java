@@ -12,7 +12,7 @@ import org.noear.srww.uapi.handler.*;
 /**
  * @author noear 2021/2/10 created（建议方案）
  */
-@Mapping("/api/v2/app/**")
+@Mapping("/api/v3/app/**")
 @Component
 public class ApiGateway3x extends UapiGateway {
     @Override

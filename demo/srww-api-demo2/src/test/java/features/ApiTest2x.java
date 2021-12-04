@@ -30,7 +30,7 @@ public class ApiTest2x extends HttpTestBase {
         String json0 = node.toJson();
         String json_b640 = Base64.getEncoder().encodeToString(json0.getBytes(StandardCharsets.UTF_8));
 
-        String josn_b64 = path("/api/v1/web/")
+        String josn_b64 = path("/api/v2/web/")
                 .header(Attrs.h_token, "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMiwiaXNzIjoiZGVtb2FwaSIsImV4cCI6MTYyNDg2MTQ5OCwiaWF0IjoxNjI0ODU0Mjk4LCJqdGkiOiIifQ.GeZDjTFova9aonnWjRm_3Bb72sHM4ss0zjgB_gv4aG8")
                 .header("Content-type","application/json")
                 .bodyTxt(json_b640)

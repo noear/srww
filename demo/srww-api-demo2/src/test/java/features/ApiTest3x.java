@@ -52,7 +52,7 @@ public class ApiTest3x extends HttpTestBase {
         String sign = String.format("%s.%d.%s.%d", app_key, client_ver_id, EncryptUtils.md5(sb.toString()), timestamp);
 
         //请求
-        Response response = path("/api/v2/app/" + apiName)
+        Response response = path("/api/v3/app/" + apiName)
                 .header("Content-type", "application/json")
                 .header(Attrs.h_token, token)
                 .header(Attrs.h_sign, sign)

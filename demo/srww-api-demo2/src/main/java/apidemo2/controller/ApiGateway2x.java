@@ -15,7 +15,7 @@ import java.util.Base64;
 /**
  * @author noear 2021/2/10 created
  */
-@Mapping("/api/v1/web/")
+@Mapping("/api/v2/web/")
 @Controller
 public class ApiGateway2x extends UapiGateway {
     @Override

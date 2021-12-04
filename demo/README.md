@@ -16,10 +16,12 @@
 
 | 示例   | 介绍                             | 备注               |
 |------|--------------------------------|------------------|
-| srww-api-demo0 | 只有一个网关、一个接口                    | 有water环境即可运行     |
+| srww-api-demo0 | 只有一个网关、一个接口                    | 有water环境即可运行单元测试 |
 | srww-api-demo1 | srww-api-demo0 基础上，增加真接实口实现    | 需要water和sponge环境 |
 | srww-api-demo2 | srww-api-demo1 基础，增加更多的功能和体系结构 | 需要water和sponge环境 |
 
-为了配合演示：
+
+**为了配合演示：**
+
 * water/配置管理/日志配置，添加：demo/demoapi_log
-* sponge/应用控制/应用，添加一个应用。并修改代码中的 app_key,
+* sponge/应用控制/应用，添加一个应用。并修改代码中的 app_key,app_secret_key
