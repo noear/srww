@@ -6,7 +6,7 @@
 
     <groupId>org.noear</groupId>
     <artifactId>srww-parent</artifactId>
-    <version>1.4.3</version>
+    <version>1.4.4</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -50,7 +50,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <srww.ver>1.4.3</srww.ver>
+        <srww.ver>1.4.4</srww.ver>
 
         <water.ver>2.5.2</water.ver>
         <rock.ver>2.0.1</rock.ver>
