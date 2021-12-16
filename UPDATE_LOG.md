@@ -1,6 +1,7 @@
 #### 1.4.5
 * 升级 solon 为 1.6.7
 * 升级 snack3 为 3.2.2
+* 调整 OutputBuildHandler 去掉 ONode 依赖，改为上下文的渲染并返回接口
 
 #### 1.4.4
 * 升级 solon 为 1.6.6
