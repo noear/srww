@@ -3,7 +3,6 @@ package org.noear.srww.uapi.handler;
 import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.encoder.DefEncoder;
-import org.noear.snack.ONode;
 
 import org.noear.srww.uapi.encoder.Encoder;
 import org.noear.srww.uapi.common.Attrs;
@@ -38,14 +37,7 @@ public class OutputBuildHandler implements Handler {
             return;
         }
 
-        Object result = ctx.result;
-        String output = null;
-
-        if (result instanceof ONode) {
-            output = ((ONode) result).toJson();
-        } else {
-            output = ONode.stringify(result);
-        }
+        String output = ctx.renderAndReturn(ctx.result);
 
         ctx.result = output;
 
