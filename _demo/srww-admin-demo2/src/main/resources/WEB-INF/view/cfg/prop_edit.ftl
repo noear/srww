@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="${css}/main.css"/>
     <script src="/_session/domain.js"></script>
     <script src="${js}/jtadmin.js"></script>
-    <script src="${js}/layer.js"></script>
+    <script src="${js}/layer/layer.js"></script>
     <script src="//static.kdz6.cn/lib/ace/ace.js" ></script>
     <script src="//static.kdz6.cn/lib/ace/ext-language_tools.js"></script>
     <style>
