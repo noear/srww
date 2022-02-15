@@ -89,6 +89,12 @@
 
             <dependency>
                 <groupId>org.noear</groupId>
+                <artifactId>srww-job</artifactId>
+                <version>${srww.ver}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.noear</groupId>
                 <artifactId>srww-api</artifactId>
                 <version>${srww.ver}</version>
             </dependency>
@@ -357,6 +363,7 @@
         <module>../srww.uadmin</module>
 
         <module>../srww-lib</module>
+        <module>../srww-job</module>
         <module>../srww-api</module>
         <module>../srww-admin</module>
     </modules>
