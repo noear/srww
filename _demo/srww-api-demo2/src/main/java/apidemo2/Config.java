@@ -5,6 +5,7 @@ import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Configuration;
 import org.noear.solon.cloud.annotation.CloudConfig;
 import org.noear.solon.data.cache.CacheService;
+import org.noear.solon.data.cache.CacheServiceSupplier;
 import org.noear.weed.cache.LocalCache;
 import org.noear.weed.solon.plugin.CacheWrap;
 
@@ -27,8 +28,8 @@ public class Config {
      * 配置缓存
      * */
     @Bean
-    public CacheService cache1() {
-        return CacheWrap.wrap(new LocalCache());
+    public CacheService cache1(@CloudConfig(name = "cache1", group = "demo") CacheServiceSupplier supplier) {
+        return supplier.get();
     }
 
 //    @Bean
