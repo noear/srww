@@ -62,11 +62,11 @@ public class PagebarTag implements TemplateDirectiveModel {
         sb.append("<left>");
         sb.append(" <table>");
         sb.append("  <tr>");
-        sb.append("   <td><button type='button' class='form_button' onclick=\"UrlQueryBy('page',1)\" " + (1 == pageIndex ? "disabled='disabled'" : "") + " >首页</button></td>");
-        sb.append("   <td><button type='button' class='form_button' onclick=\"UrlQueryBy('page'," + (pageIndex - 1) + ")\" " + (1 == pageIndex ? "disabled='disabled'" : "") + " >上一页</button></td>");
-        sb.append("   <td><input  id='js_pager_no' type='text' value='" + (pageIndex) + "' onblur=\"UrlQueryBy('page',this.value);\" class='form_text' /></td>");
-        sb.append("   <td><button type='button' class='form_button' onclick=\"UrlQueryBy('page'," + (pageIndex + 1) + ")\" " + (pageCount == pageIndex ? "disabled='disabled'" : "") + " >下一页</button></td>");
-        sb.append("   <td><button type='button' class='form_button' onclick=\"UrlQueryBy('page'," + (pageCount) + ")\" " + (pageCount == pageIndex ? "disabled='disabled'" : "") + " >尾页</button></td>");
+        sb.append("   <td><button type='button' class='form_button' onclick=\"urlQueryBy('page',1)\" " + (1 == pageIndex ? "disabled='disabled'" : "") + " >首页</button></td>");
+        sb.append("   <td><button type='button' class='form_button' onclick=\"urlQueryBy('page'," + (pageIndex - 1) + ")\" " + (1 == pageIndex ? "disabled='disabled'" : "") + " >上一页</button></td>");
+        sb.append("   <td><input  id='js_pager_no' type='text' value='" + (pageIndex) + "' onblur=\"urlQueryBy('page',this.value);\" class='form_text' /></td>");
+        sb.append("   <td><button type='button' class='form_button' onclick=\"urlQueryBy('page'," + (pageIndex + 1) + ")\" " + (pageCount == pageIndex ? "disabled='disabled'" : "") + " >下一页</button></td>");
+        sb.append("   <td><button type='button' class='form_button' onclick=\"urlQueryBy('page'," + (pageCount) + ")\" " + (pageCount == pageIndex ? "disabled='disabled'" : "") + " >尾页</button></td>");
         sb.append("  </tr>");
         sb.append(" </table>");
         sb.append("</left>");
@@ -83,16 +83,16 @@ public class PagebarTag implements TemplateDirectiveModel {
                 "        \n" +
                 "        $('#js_pager_no').keyup(function(event){\n" +
                 "            if (event.keyCode == 13)\n" +
-                "                UrlQueryBy('page',this.value);\n" +
+                "                urlQueryBy('page',this.value);\n" +
                 "        });\n" +
                 "\n" +
                 "        $(document).keyup(function (event) {\n" +
                 "\n" +
                 "            if (event.ctrlKey) {\n" +
                 "                if (event.keyCode == 37)\n" +
-                "                    UrlQueryBy('page'," + (pageIndex - 1) + ");\n" +
+                "                    urlQueryBy('page'," + (pageIndex - 1) + ");\n" +
                 "                else if (event.keyCode == 39)\n" +
-                "                    UrlQueryBy('page'," + (pageIndex + 1) + ");\n" +
+                "                    urlQueryBy('page'," + (pageIndex + 1) + ");\n" +
                 "            }\n" +
                 "        });\n" +
                 "    });\n" +

@@ -46,7 +46,7 @@ public class StateSelectorTag implements TemplateDirectiveModel {
         sb.append("<script>").append("function " + clientID + "_onStateSelect(val,e) { ");
 
         if (forPage && Utils.isEmpty(onSelect))
-            sb.append("    UrlQueryBy('" + stateKey + "',val,'page');");
+            sb.append("    urlQueryBy('" + stateKey + "',val,'page');");
         else {
             sb.append("    $('#" + clinetStateKey + "').val(val);")
                     .append("    var m = $('#" + clientID + "');")
