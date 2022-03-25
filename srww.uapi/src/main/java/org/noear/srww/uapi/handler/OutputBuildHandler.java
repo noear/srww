@@ -56,6 +56,5 @@ public class OutputBuildHandler implements Handler {
         //用于记录日志，不能去掉（如果前后没成，保个底）
         ctx.attrSet(Attrs.output, output);
         ctx.status(400);
-
     }
 }
