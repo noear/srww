@@ -54,7 +54,7 @@ public abstract class UapiGateway extends Gateway {
                 result = Result.failure(Result.FAILURE_CODE, description);
             } else if (obj instanceof ONode) {
                 //处理ONode数据（为兼容旧的）
-                result = Result.succeed(obj);
+                result = Result.succeed(((ONode)obj).toData());
             } else if (obj instanceof Result) {
                 //处理Result结构
                 result = (Result) obj;
