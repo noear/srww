@@ -16,8 +16,8 @@ import org.slf4j.LoggerFactory;
  *
  * @author noear
  */
-public class EventInterceptorImpl implements CloudEventInterceptor {
-    static Logger log = LoggerFactory.getLogger(EventInterceptorImpl.class);
+public class EventInterceptor implements CloudEventInterceptor {
+    static Logger log = LoggerFactory.getLogger(EventInterceptor.class);
 
     @Override
     public boolean doInterceptor(Event event, CloudEventHandler handler) throws Throwable {
