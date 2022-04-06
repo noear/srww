@@ -3,9 +3,13 @@ package apidemo2;
 import com.zaxxer.hikari.HikariDataSource;
 import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Configuration;
+import org.noear.solon.cloud.CloudEventInterceptor;
+import org.noear.solon.cloud.CloudJobInterceptor;
 import org.noear.solon.cloud.annotation.CloudConfig;
 import org.noear.solon.data.cache.CacheService;
 import org.noear.solon.data.cache.CacheServiceSupplier;
+import org.noear.srww.base.interceptor.BaseEventInterceptor;
+import org.noear.srww.base.interceptor.BaseJobInterceptor;
 import org.noear.weed.cache.LocalCache;
 import org.noear.weed.solon.plugin.CacheWrap;
 
@@ -32,8 +36,19 @@ public class Config {
         return supplier.get();
     }
 
-//    @Bean
-//    public CacheService cache1(@CloudConfig("water_cache") MemCache cache) {
-//        return CacheWrap.wrap(cache);
-//    }
+    /**
+     * 任务拦截器（用于记录自己的性能与日志）
+     * */
+    @Bean
+    public CloudJobInterceptor jobInterceptor(){
+        return new BaseJobInterceptor();
+    }
+
+    /**
+     * 事件拦截器（用于记录自己的性能与日志）
+     * */
+    @Bean
+    public CloudEventInterceptor eventInterceptor(){
+        return new BaseEventInterceptor();
+    }
 }
