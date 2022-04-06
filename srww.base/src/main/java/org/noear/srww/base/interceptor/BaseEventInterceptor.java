@@ -33,7 +33,7 @@ public class BaseEventInterceptor implements CloudEventInterceptor {
         long timespan = 0;
 
         try {
-            boolean succeeded = handler.handler(event);
+            boolean succeeded = handler.handle(event);
             timespan = timecount.stop().milliseconds();
 
             if (succeeded) {
