@@ -56,19 +56,19 @@ public class Config {
         return new BaseEventInterceptor();
     }
 
-    /**
-     * 语言包工厂（替换本地语言包）
-     * */
-    @Bean
-    public I18nBundleFactory i18nBundleFactory(){
-        return new CloudI18nBundleFactory();
-    }
-
-    /**
-     * 应用工厂（提供ak/sk）
-     * */
-    @Bean
-    public IAppFactory iAppFactory(){
-        return new WaterAppFactoryImpl();
-    }
+//    /**
+//     * 语言包工厂（替换本地语言包）
+//     * */
+//    @Bean
+//    public I18nBundleFactory i18nBundleFactory(){
+//        return new CloudI18nBundleFactory();
+//    }
+//
+//    /**
+//     * 应用工厂（提供ak/sk）
+//     * */
+//    @Bean
+//    public IAppFactory iAppFactory(){
+//        return new WaterAppFactoryImpl();
+//    }
 }
