@@ -1,0 +1,38 @@
+package org.noear.srww.uapi.app.impl;
+
+import org.noear.srww.uapi.app.IApp;
+
+/**
+ * @author noear 2022/4/8 created
+ */
+public class RockAppImpl implements IApp {
+    @Override
+    public int getAppId() {
+        return 0;
+    }
+
+    @Override
+    public int getAppGroupId() {
+        return 0;
+    }
+
+    @Override
+    public String getAccessKey() {
+        return null;
+    }
+
+    @Override
+    public String getAppSecretKey() {
+        return null;
+    }
+
+    @Override
+    public String getAppSecretSalt() {
+        return null;
+    }
+
+    @Override
+    public String getLabel() {
+        return null;
+    }
+}

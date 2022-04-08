@@ -1,7 +1,7 @@
 package org.noear.srww.uapi.encoder;
 
-import org.noear.rock.model.AppModel;
 import org.noear.solon.core.handle.Context;
+import org.noear.srww.uapi.app.IApp;
 import org.noear.water.utils.EncryptUtils;
 
 public class AesEncoder implements Encoder {
@@ -23,7 +23,7 @@ public class AesEncoder implements Encoder {
     }
 
     @Override
-    public String tryEncode(Context context, AppModel app, String text) throws Exception {
-        return EncryptUtils.aesEncrypt(text, app.app_secret_key, algorithm, offset);
+    public String tryEncode(Context ctx, IApp app, String text) throws Exception {
+        return EncryptUtils.aesEncrypt(text, app.getAppSecretKey(), algorithm, offset);
     }
 }

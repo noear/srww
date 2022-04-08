@@ -20,7 +20,7 @@ public class BaseEventInterceptor implements CloudEventInterceptor {
     static Logger log = LoggerFactory.getLogger(BaseEventInterceptor.class);
 
     @Override
-    public boolean doInterceptor(Event event, CloudEventHandler handler) throws Throwable {
+    public boolean doIntercept(Event event, CloudEventHandler handler) throws Throwable {
         TagsMDC.tag0("event");
         TagsMDC.tag1(event.topic());
 

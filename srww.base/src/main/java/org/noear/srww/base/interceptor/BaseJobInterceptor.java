@@ -1,7 +1,6 @@
 package org.noear.srww.base.interceptor;
 
 import org.noear.solon.Solon;
-import org.noear.solon.Utils;
 import org.noear.solon.cloud.CloudClient;
 import org.noear.solon.cloud.CloudJobHandler;
 import org.noear.solon.cloud.CloudJobInterceptor;
@@ -20,7 +19,7 @@ public class BaseJobInterceptor implements CloudJobInterceptor {
     static Logger log = LoggerFactory.getLogger(BaseJobInterceptor.class);
 
     @Override
-    public void doInterceptor(Job job, CloudJobHandler handler) throws Throwable {
+    public void doIntercept(Job job, CloudJobHandler handler) throws Throwable {
         TagsMDC.tag0("job");
         TagsMDC.tag1(job.getName());
 

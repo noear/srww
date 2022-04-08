@@ -1,7 +1,7 @@
 package org.noear.srww.uapi.handler;
 
-import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.Uapi;
+import org.noear.srww.uapi.app.IApp;
 import org.noear.srww.uapi.encoder.DefEncoder;
 
 import org.noear.srww.uapi.encoder.Encoder;
@@ -46,8 +46,8 @@ public class OutputBuildHandler implements Handler {
         ctx.attrSet(Attrs.org_output, output);
 
         if (uapi.getAppId() > 0) {
-            AppModel app = uapi.getApp();
-            if (app.app_id == uapi.getAppId()) {
+            IApp app = uapi.getApp();
+            if (app.getAppId() == uapi.getAppId()) {
                 ctx.attrSet(Attrs.output, _encoder.tryEncode(ctx, app, output));
                 return;
             }

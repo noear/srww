@@ -1,11 +1,11 @@
 package org.noear.srww.uapi.decoder;
 
-import org.noear.rock.model.AppModel;
 import org.noear.solon.core.handle.Context;
+import org.noear.srww.uapi.app.IApp;
 
 public class DefDecoder implements Decoder {
     @Override
-    public String tryDecode(Context context, AppModel app, String text) throws Exception {
+    public String tryDecode(Context ctx, IApp app, String text) throws Exception {
         return text;
     }
 }

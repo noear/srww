@@ -6,16 +6,20 @@ import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Gateway;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.Result;
+import org.noear.solon.i18n.LocaleUtil;
 import org.noear.srww.uapi.common.Attrs;
 import org.slf4j.event.Level;
+
+import java.util.Locale;
 
 public abstract class UapiGateway extends Gateway {
 
     /**
      * 语言
      */
-    public String lang(Context c) {
-        return c.param(Attrs.g_lang);
+    public Locale lang(Context c) {
+        String lang = c.param(Attrs.g_lang);
+        return LocaleUtil.toLocale(lang);
     }
 
     @Override
@@ -54,7 +58,7 @@ public abstract class UapiGateway extends Gateway {
                 result = Result.failure(Result.FAILURE_CODE, description);
             } else if (obj instanceof ONode) {
                 //处理ONode数据（为兼容旧的）
-                result = Result.succeed(((ONode)obj).toData());
+                result = Result.succeed(((ONode) obj).toData());
             } else if (obj instanceof Result) {
                 //处理Result结构
                 result = (Result) obj;

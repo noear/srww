@@ -1,14 +1,22 @@
 package org.noear.srww.uapi;
 
-import org.noear.rock.i18n.I18nUtils;
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Note;
+import org.noear.solon.i18n.I18nService;
 import org.noear.water.utils.TextUtils;
 
 import java.sql.SQLException;
+import java.util.Locale;
 
 public class UapiCodes {
+
+    private static I18nService i18nService;
+
+    static {
+        i18nService = new I18nService(Solon.cfg().appName() + "_code");
+    }
+
     /**
      * 成功
      */
@@ -24,7 +32,7 @@ public class UapiCodes {
 
     /**
      * 系统正在维护中
-     * */
+     */
     @Note("系统正在维护中")
     public static final UapiCode CODE_4001000 = new UapiCode(4001000, "The system is being maintained");
 
@@ -82,10 +90,9 @@ public class UapiCodes {
 
     /**
      * 请求加解密失败
-     * */
+     */
     @Note("请求加解密失败")
     public static final UapiCode CODE_4001018 = new UapiCode(4001018, "The request for encryption and decryption failed");
-
 
 
     /**
@@ -95,15 +102,13 @@ public class UapiCodes {
     public static final UapiCode CODE_4001021 = new UapiCode(4001021, "Login is invalid or not logged in");
 
 
-
-
-    public static final String CODE_note(String lang, UapiCode uapiCode) throws SQLException {
+    public static final String CODE_note(Locale locale, UapiCode uapiCode) throws SQLException {
         if (Utils.isNotEmpty(Solon.cfg().appName())) {
-            if (lang == null) {
-                lang = "";
+            if (locale == null) {
+                locale = Locale.getDefault();
             }
 
-            String description = I18nUtils.getByCode(uapiCode.getCode(), lang);
+            String description = i18nService.get(locale, String.valueOf(uapiCode.getCode()));
 
             if (TextUtils.isEmpty(description) == false) {
                 if (uapiCode.getCode() == 4001014) {
@@ -121,13 +126,13 @@ public class UapiCodes {
         }
     }
 
-    public static final String CODE_note(String lang, int uapiCode) throws SQLException {
+    public static final String CODE_note(Locale locale, int uapiCode) throws SQLException {
         if (Utils.isNotEmpty(Solon.cfg().appName())) {
-            if (lang == null) {
-                lang = "";
+            if (locale == null) {
+                locale = Locale.getDefault();
             }
 
-            String description = I18nUtils.getByCode(uapiCode, lang);
+            String description = i18nService.get(locale, String.valueOf(uapiCode));
 
             if (TextUtils.isEmpty(description) == false) {
                 return description;

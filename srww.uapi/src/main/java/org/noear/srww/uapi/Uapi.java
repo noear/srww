@@ -1,9 +1,11 @@
 package org.noear.srww.uapi;
 
-import org.noear.rock.RockClient;
-import org.noear.rock.model.AppModel;
 import org.noear.solon.Utils;
+import org.noear.solon.core.Aop;
 import org.noear.solon.core.event.EventBus;
+import org.noear.srww.uapi.app.IApp;
+import org.noear.srww.uapi.app.IAppFactory;
+import org.noear.srww.uapi.app.IAppImpl;
 import org.noear.srww.uapi.common.Attrs;
 import org.noear.solon.annotation.Singleton;
 import org.noear.solon.core.handle.Context;
@@ -14,9 +16,11 @@ import java.sql.SQLException;
 @Singleton(false)
 public class Uapi {
     protected final Context ctx;
+    protected final IAppFactory appFactory;
 
     public Uapi() {
         ctx = Context.current();
+        appFactory = Aop.get(IAppFactory.class);
     }
 
 
@@ -88,12 +92,12 @@ public class Uapi {
         return _ip;
     }
 
-    private AppModel _app;
+    private IApp _app;
 
-    public AppModel getApp() {
+    public IApp getApp() {
         if (_app == null) {
             //先赋值，避各种后续异常时重复进入
-            _app = new AppModel();
+            _app = new IAppImpl();
 
             String appStr = ctx.param(Attrs.app_id);
 
@@ -104,7 +108,7 @@ public class Uapi {
                     } else {
                         _app = getAppByKey(appStr);
                     }
-                } catch (SQLException e) {
+                } catch (Exception e) {
                     EventBus.push(e);
                 }
             }
@@ -113,21 +117,21 @@ public class Uapi {
         return _app;
     }
 
-    public AppModel getAppById(int appID) throws SQLException {
-        return RockClient.getAppByID(appID);
+    public IApp getAppById(int appID) throws Exception {
+        return appFactory.getAppById(appID);
     }
 
-    public AppModel getAppByKey(String appKey) throws SQLException {
-        return RockClient.getAppByKey(appKey);
+    public IApp getAppByKey(String appKey) throws Exception {
+        return appFactory.getAppByKey(appKey);
     }
 
 
     public int getAppId() {
-        return getApp().app_id;
+        return getApp().getAppId();
     }
 
     public int getAgroupId() throws SQLException {
-        return getApp().agroup_id;
+        return getApp().getAppGroupId();
     }
 
     private int verId = -1;

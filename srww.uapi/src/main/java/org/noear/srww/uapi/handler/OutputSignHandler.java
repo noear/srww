@@ -1,8 +1,8 @@
 package org.noear.srww.uapi.handler;
 
-import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.UapiCodes;
+import org.noear.srww.uapi.app.IApp;
 import org.noear.srww.uapi.encoder.DefEncoder;
 import org.noear.srww.uapi.encoder.Encoder;
 import org.noear.solon.core.handle.Context;
@@ -39,16 +39,16 @@ public class OutputSignHandler implements Handler {
         String output = uapi.context().attr(Attrs.output);
 
         if (output != null) {
-            AppModel app = uapi.getApp();
+            IApp app = uapi.getApp();
 
-            if (app.app_id != uapi.getAppId()) {
+            if (app.getAppId() != uapi.getAppId()) {
                 log.error(UapiCodes.CODE_4001010.getDescription() + "[" + uapi.getAppId() + "]");
                 return;
             }
 
             //{name}#{output}#{secretKey}
             StringBuilder buf = new StringBuilder();
-            buf.append(uapi.name()).append("#").append(output).append("#").append(app.app_secret_key);
+            buf.append(uapi.name()).append("#").append(output).append("#").append(app.getAppSecretKey());
 
             String x_sign = _encoder.tryEncode(ctx, app, buf.toString());
             ctx.headerSet(Attrs.h_sign, x_sign);

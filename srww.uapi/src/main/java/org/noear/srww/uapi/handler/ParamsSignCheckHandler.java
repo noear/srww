@@ -1,7 +1,7 @@
 package org.noear.srww.uapi.handler;
 
-import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.Uapi;
+import org.noear.srww.uapi.app.IApp;
 import org.noear.srww.uapi.encoder.DefEncoder;
 import org.noear.srww.uapi.encoder.Encoder;
 import org.noear.srww.uapi.UapiCodes;
@@ -53,9 +53,9 @@ public class ParamsSignCheckHandler implements Handler {
 
             /** 如果是CMD方案，则进行签名对比（签权） */
             if (uapi.getAppId() > 0 && orgInput != null) {
-                AppModel app = uapi.getApp();
+                IApp app = uapi.getApp();
 
-                if (app.app_id != uapi.getAppId()) {
+                if (app.getAppId() != uapi.getAppId()) {
                     throw UapiCodes.CODE_4001010;
                 }
 
@@ -76,7 +76,7 @@ public class ParamsSignCheckHandler implements Handler {
     /**
      * 签权算法
      */
-    private boolean checkSign(Context context, Uapi uapi, AppModel app, String apiName, String orgInput) throws Exception {
+    private boolean checkSign(Context context, Uapi uapi, IApp app, String apiName, String orgInput) throws Exception {
         if (TextUtils.isEmpty(apiName)) {
             return false;
         }
@@ -89,7 +89,7 @@ public class ParamsSignCheckHandler implements Handler {
 
         //{name}#{verId}#{orgInput}#{secretKey}#{orgInputTimestamp}
         StringBuilder sb = new StringBuilder();
-        sb.append(apiName).append("#").append(verId).append("#").append(orgInput).append("#").append(app.app_secret_key).append("#").append(orgInputTimestamp);
+        sb.append(apiName).append("#").append(verId).append("#").append(orgInput).append("#").append(app.getAppSecretKey()).append("#").append(orgInputTimestamp);
 
         String _sign_ = _encoder.tryEncode(context, app, sb.toString());
 
