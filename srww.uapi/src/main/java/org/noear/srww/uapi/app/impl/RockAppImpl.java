@@ -1,38 +1,45 @@
 package org.noear.srww.uapi.app.impl;
 
+import org.noear.rock.model.AppModel;
 import org.noear.srww.uapi.app.IApp;
 
 /**
  * @author noear 2022/4/8 created
  */
 public class RockAppImpl implements IApp {
+    private AppModel appModel;
+
+    public RockAppImpl(AppModel appModel) {
+        this.appModel = appModel;
+    }
+
     @Override
     public int getAppId() {
-        return 0;
+        return appModel.app_id;
     }
 
     @Override
     public int getAppGroupId() {
-        return 0;
+        return appModel.agroup_id;
     }
 
     @Override
     public String getAccessKey() {
-        return null;
+        return appModel.app_key;
     }
 
     @Override
     public String getAppSecretKey() {
-        return null;
+        return appModel.app_secret_key;
     }
 
     @Override
     public String getAppSecretSalt() {
-        return null;
+        return appModel.app_secret_salt;
     }
 
     @Override
     public String getLabel() {
-        return null;
+        return appModel.name;
     }
 }
