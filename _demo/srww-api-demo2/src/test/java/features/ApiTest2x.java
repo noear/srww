@@ -36,7 +36,7 @@ public class ApiTest2x extends HttpTestBase {
                 .bodyTxt(json_b640)
                 .post();
 
-        String json = new String(Base64.getDecoder().decode(josn_b64));
+        String json =josn_b64;// new String(Base64.getDecoder().decode(josn_b64));
 
         System.out.println("Decoded: "+json);
 

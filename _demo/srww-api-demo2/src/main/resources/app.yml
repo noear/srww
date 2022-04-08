@@ -10,7 +10,7 @@ server.request.maxRequestSize: 2Mb
 
 solon.app:
   name: demoapi
-  group: water
+  group: demo
 
 solon.cloud.water:
   server: "waterapi:9371"
