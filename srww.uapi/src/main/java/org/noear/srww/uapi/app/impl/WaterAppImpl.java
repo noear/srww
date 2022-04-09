@@ -13,7 +13,7 @@ public class WaterAppImpl implements IApp {
     }
     @Override
     public int getAppId() {
-        return keyM.key_id;
+        return keyM.key_id();
     }
 
     @Override
@@ -23,21 +23,21 @@ public class WaterAppImpl implements IApp {
 
     @Override
     public String getAccessKey() {
-        return keyM.access_key;
+        return keyM.access_key();
     }
 
     @Override
     public String getAppSecretKey() {
-        return keyM.access_secret_key;
+        return keyM.access_secret_key();
     }
 
     @Override
     public String getAppSecretSalt() {
-        return keyM.access_secret_salt;
+        return keyM.access_secret_salt();
     }
 
     @Override
     public String getLabel() {
-        return keyM.label;
+        return keyM.label();
     }
 }
