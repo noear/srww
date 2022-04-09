@@ -29,6 +29,9 @@ public class ApiTest3x extends HttpTestBase {
 
     public ONode call(String apiName, Map<String, Object> args) throws Exception {
 
+        args.put(Attrs.g_lang, "en_US");
+        args.put(Attrs.g_deviceId, "e0a953c3ee6040eaa9fae2b667060e09");
+
         String json0 = ONode.stringify(args);
         String json_encoded0 = EncryptUtils.aesEncrypt(json0, app_secret_key);
 

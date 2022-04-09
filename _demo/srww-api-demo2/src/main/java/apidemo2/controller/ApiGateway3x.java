@@ -29,6 +29,8 @@ public class ApiGateway3x extends UapiGateway {
         before(new ParamsParseHandler()); //参数解析
         before(new ParamsSignCheckHandler(new Md5Encoder())); //参数签名较验
         before(new ParamsRebuildHandler(new AesDecoder())); //参数重构
+        before(new ParamsNeedCheckHandler("g_lang"));//参数必要性检查//即公共参数
+        before(new ParamsLocaleHandler());
 
         after(new OutputBuildHandler(new AesEncoder())); //输出构建
         after(new OutputSignHandler(new Md5Encoder())); //输出签名
