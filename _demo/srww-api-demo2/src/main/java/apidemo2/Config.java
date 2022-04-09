@@ -58,19 +58,19 @@ public class Config {
         return new BaseEventInterceptor();
     }
 
-    /**
-     * 语言包工厂（替换本地语言包）
-     * */
-    @Bean
-    public I18nBundleFactory i18nBundleFactory(){
-        return new RockCodeI18nBundleFactory();
-    }
-
-    /**
-     * 应用工厂（提供ak/sk）
-     * */
-    @Bean
-    public IAppFactory iAppFactory(){
-        return new RockAppFactoryImpl();
-    }
+//    /**
+//     * 使用 Rock 语言包工厂（替换本地语言包）
+//     * */
+//    @Bean
+//    public I18nBundleFactory i18nBundleFactory(){
+//        return new RockCodeI18nBundleFactory();
+//    }
+//
+//    /**
+//     * 使用 Rock 应用工厂（提供ak/sk）
+//     * */
+//    @Bean
+//    public IAppFactory iAppFactory(){
+//        return new RockAppFactoryImpl();
+//    }
 }
