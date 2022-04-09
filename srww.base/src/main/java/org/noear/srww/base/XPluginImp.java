@@ -44,10 +44,9 @@ public class XPluginImp implements Plugin {
 
         isDebugMode = Solon.cfg().isDebugMode() || Solon.cfg().isFilesMode();
 
-        String style = Solon.cfg().get("srww.weed.print.style");
-        isWeedStyle2 = "sql".equals(style);
-        isTrackEnable = Solon.cfg().getBool("srww.weed.track.enable", isDebugMode);
-        isErrorLogEnable = Solon.cfg().getBool("srww.weed.error.log.enable", true);
+        isWeedStyle2 = "sql".equals(SrwwConfig.weedPrintStyle());
+        isTrackEnable = SrwwConfig.weedTrackEnable(isDebugMode);
+        isErrorLogEnable = SrwwConfig.weedErrorLogEnable();
 
 
         initWeed();

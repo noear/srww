@@ -17,6 +17,10 @@
     <description>Java project for srww.uapi</description>
 
     <dependencies>
+        <dependency>
+            <groupId>org.noear</groupId>
+            <artifactId>srww.base</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.noear</groupId>

@@ -4,6 +4,7 @@ import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Note;
 import org.noear.solon.i18n.I18nService;
+import org.noear.srww.base.SrwwConfig;
 import org.noear.water.utils.TextUtils;
 
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ public class UapiCodes {
     private static I18nService i18nService;
 
     static {
-        i18nService = new I18nService(Solon.cfg().appName() + "_code");
+        i18nService = new I18nService(SrwwConfig.i18nCodeBundleName());
     }
 
     /**

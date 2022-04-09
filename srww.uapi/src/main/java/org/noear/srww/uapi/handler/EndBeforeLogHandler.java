@@ -8,6 +8,7 @@ import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
 import org.noear.solon.logging.utils.TagsMDC;
+import org.noear.srww.base.SrwwConfig;
 import org.noear.srww.uapi.Uapi;
 import org.noear.srww.uapi.common.Attrs;
 import org.noear.water.utils.Timecount;
@@ -19,7 +20,6 @@ import org.slf4j.event.Level;
  * 日志拦截器
  * */
 public class EndBeforeLogHandler implements Handler {
-    final String KEY_inputLimitSize = "srww.log.inputLimitSize";
 
     Logger logger;
     int inputLimitSize;
@@ -35,10 +35,10 @@ public class EndBeforeLogHandler implements Handler {
             logger = LoggerFactory.getLogger(EndBeforeLogHandler.class);
         }
 
-        inputLimitSize = Solon.cfg().getInt(KEY_inputLimitSize, 0);
+        inputLimitSize = SrwwConfig.logInputLimitSize();
         Solon.cfg().onChange((k, v) -> {
             //自动更新
-            if (KEY_inputLimitSize.equals(k)) {
+            if (SrwwConfig.KEY_inputLimitSize.equals(k)) {
                 inputLimitSize = Integer.parseInt(v);
             }
         });
