@@ -14,17 +14,17 @@
 
 ### 2、基于 srww-api 构建的接口服务示例：
 
-| 示例   | 介绍                                    | 备注               |
-|------|---------------------------------------|------------------|
-| srww-api-demo0 | 只有一个网关、一个接口                           | 有water环境即可运行单元测试 |
-| srww-api-demo1 | srww-api-demo0 基础上，增加真接实口实现           | 需要water和sponge环境 |
-| srww-api-demo2 | srww-api-demo1 基础，增加更多的功能、体系结构及业务接口单测 | 需要water和sponge环境 |
+| 示例   | 介绍                                    | 备注                      |
+|------|---------------------------------------|-------------------------|
+| srww-api-demo0 | 只有一个网关、一个接口                           | 有water环境即可运行单元测试        |
+| srww-api-demo1 | srww-api-demo0 基础上，增加真接实口实现           | 需 water 添加"访问密钥"和"多语言包" |
+| srww-api-demo2 | srww-api-demo1 基础，增加更多的功能、体系结构及业务接口单测 |        |
 
 
 **为了配合演示：**
 
 * water/配置管理/日志配置，添加：demo/demoapi_log
-* sponge/应用控制/应用，添加一个应用。并修改单测代码中的 app_key,app_secret_key
+* water/配置管理/访问密钥，添加: demo/demoapi 应用。并修改单测代码中的 app_key,app_secret_key
 
 
 一些细节问题，可通过检查和实现完成配置。在过程中不断了解
