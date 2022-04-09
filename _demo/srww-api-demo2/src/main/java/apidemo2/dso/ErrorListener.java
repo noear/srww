@@ -5,7 +5,6 @@ import org.noear.solon.annotation.Component;
 import org.noear.solon.core.event.EventListener;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.logging.utils.TagsMDC;
-import org.slf4j.MDC;
 
 /**
  * 全局未控制的异常监听
