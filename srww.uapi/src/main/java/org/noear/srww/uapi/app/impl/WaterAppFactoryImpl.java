@@ -4,8 +4,6 @@ import org.noear.srww.uapi.app.IApp;
 import org.noear.srww.uapi.app.IAppFactory;
 import org.noear.water.WaterClient;
 
-import java.io.IOException;
-
 /**
  * @author noear 2022/4/8 created
  */
