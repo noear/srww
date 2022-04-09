@@ -4,9 +4,19 @@
 
 实战项目中，建议使用 ApiGateway3x 风格开发接口，其对应的接口描述可参考：
 
-_doc/对外接口协议（草案）.md
+**_doc/对外接口协议（草案）.md**
 
 
 ---
 
 其中，src/test/java/apis 为业务接口单测试。每个接口必须增加单测
+
+
+---
+
+准备工作：
+
+* 使用 Water::配置管理/访问密钥，添加密钥；同时改掉单测里的相关密钥（ak/sk）
+* 使用 Water::配置管理/多语言包，添加语言包：
+  * [appName]语言包，对应本地messages的包，例：demoapi
+  * [appName_code]语言包，对应输出状态码的国际化需求，例：demoapi_code
