@@ -28,7 +28,7 @@ public class SrwwConfig {
     public static String i18nCodeBundleName() {
         String bundleName = Solon.cfg().get("srww.i18n.code.bundle");
         if (Utils.isEmpty(bundleName)) {
-            return Solon.cfg().appName() + "_code";
+            return Solon.cfg().appName() + "__code";
         } else {
             return bundleName;
         }
