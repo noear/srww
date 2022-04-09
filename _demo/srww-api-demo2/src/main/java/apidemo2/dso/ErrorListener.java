@@ -20,12 +20,11 @@ public class ErrorListener implements EventListener<Throwable> {
         Context ctx = Context.current();
 
         if (ctx != null) {
-            TagsMDC.tag0(ctx.path());
+            TagsMDC.tag1(ctx.path());
         }
 
-        //ThreadLocal;
+        TagsMDC.tag0("global");
 
-        MDC.put("tag0","12");
         log.error("{}", err);
     }
 }
