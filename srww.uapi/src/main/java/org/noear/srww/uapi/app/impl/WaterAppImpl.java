@@ -22,6 +22,11 @@ public class WaterAppImpl implements IApp {
     }
 
     @Override
+    public int getUserGroupId() {
+        return 0;
+    }
+
+    @Override
     public String getAccessKey() {
         return keyM.access_key();
     }

@@ -15,6 +15,11 @@ public class IAppImpl implements IApp{
     }
 
     @Override
+    public int getUserGroupId() {
+        return 0;
+    }
+
+    @Override
     public String getAccessKey() {
         return null;
     }

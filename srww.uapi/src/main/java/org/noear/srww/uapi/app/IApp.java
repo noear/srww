@@ -6,6 +6,7 @@ package org.noear.srww.uapi.app;
 public interface IApp {
     int getAppId();
     int getAppGroupId();
+    int getUserGroupId();
     String getAccessKey();
     String getAppSecretKey();
     String getAppSecretSalt();

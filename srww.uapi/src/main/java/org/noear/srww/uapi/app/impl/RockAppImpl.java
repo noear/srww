@@ -24,6 +24,11 @@ public class RockAppImpl implements IApp {
     }
 
     @Override
+    public int getUserGroupId() {
+        return appModel.ugroup_id;
+    }
+
+    @Override
     public String getAccessKey() {
         return appModel.app_key;
     }
