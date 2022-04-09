@@ -2,6 +2,7 @@ package org.noear.srww.uapi;
 
 import org.noear.solon.cloud.impl.CloudI18nBundleFactory;
 import org.noear.solon.core.Aop;
+import org.noear.solon.core.event.BeanLoadEndEvent;
 import org.noear.solon.i18n.I18nBundleFactory;
 import org.noear.srww.uapi.app.IAppFactory;
 import org.noear.srww.uapi.app.impl.WaterAppFactoryImpl;
@@ -15,7 +16,7 @@ public class XPluginImp implements Plugin {
     public void start(SolonApp app) {
         ValidatorManager.setFailureHandler(new ValidatorFailureHandlerSrwwImp());
 
-        Aop.beanOnloaded(() -> {
+        app.onEvent(BeanLoadEndEvent.class, e -> {
             if (Aop.get(IAppFactory.class) == null) {
                 Aop.wrapAndPut(IAppFactory.class, new WaterAppFactoryImpl());
             }
