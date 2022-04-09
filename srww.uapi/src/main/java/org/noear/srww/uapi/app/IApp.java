@@ -10,5 +10,6 @@ public interface IApp {
     String getAccessKey();
     String getAppSecretKey();
     String getAppSecretSalt();
+    String getTag();
     String getLabel();
 }

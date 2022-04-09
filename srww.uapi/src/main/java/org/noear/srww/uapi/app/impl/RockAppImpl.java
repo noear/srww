@@ -44,6 +44,11 @@ public class RockAppImpl implements IApp {
     }
 
     @Override
+    public String getTag() {
+        return "";
+    }
+
+    @Override
     public String getLabel() {
         return appModel.name;
     }

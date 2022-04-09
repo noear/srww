@@ -35,6 +35,11 @@ public class IAppImpl implements IApp{
     }
 
     @Override
+    public String getTag() {
+        return null;
+    }
+
+    @Override
     public String getLabel() {
         return null;
     }

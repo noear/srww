@@ -42,6 +42,11 @@ public class WaterAppImpl implements IApp {
     }
 
     @Override
+    public String getTag() {
+        return keyM.tag();
+    }
+
+    @Override
     public String getLabel() {
         return keyM.label();
     }
