@@ -19,4 +19,4 @@
 * 使用 Water::配置管理/访问密钥，添加密钥；同时改掉单测里的相关密钥（ak/sk）
 * 使用 Water::配置管理/多语言包，添加语言包：
   * [appName]语言包，对应本地messages的包，例：demoapi
-  * [appName_code]语言包，对应输出状态码的国际化需求，例：demoapi_code
+  * [appName__code]语言包，对应输出状态码的国际化需求，例：demoapi__code
