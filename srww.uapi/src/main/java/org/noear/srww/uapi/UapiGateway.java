@@ -6,7 +6,6 @@ import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Gateway;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.Result;
-import org.noear.solon.i18n.LocaleUtil;
 import org.noear.srww.uapi.common.Attrs;
 import org.slf4j.event.Level;
 
@@ -18,10 +17,12 @@ public abstract class UapiGateway extends Gateway {
      * 语言
      */
     public Locale lang(Context c) {
-        String lang = c.param(Attrs.g_lang);
-        return LocaleUtil.toLocale(lang);
+        return c.getLocale();
     }
 
+    /**
+     * 渲染定制
+     * */
     @Override
     public void render(Object obj, Context c) throws Throwable {
         if (c.getRendered()) {
