@@ -57,6 +57,8 @@ public class SsoLoginedChecker implements LoginedChecker {
             return false;
         }
 
+        //sso的重点是，每次登录都分配一个登录标识
+        //每次将当前用户的登录标识与执久层最后记录的是否一致
         String sso_key0 = ssoService.getUserSsoKey(user_id);
         return sso_key.equals(sso_key0);
     }
