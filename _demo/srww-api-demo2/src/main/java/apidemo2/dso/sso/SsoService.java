@@ -16,7 +16,7 @@ public class SsoService {
     RedisClient redisClient;
 
     /**
-     * 更新单点登录标识
+     * 更新单点登录标识（用户登录时设置一次）
      */
     public void setUserSsoKeyNew(long userId, String guid) {
         redisClient.open(ru -> {
@@ -25,7 +25,7 @@ public class SsoService {
     }
 
     /**
-     * 获取单点登录标识
+     * 获取单点登录标识（用户每次请求时，检测一下）
      */
     public String getUserSsoKey(long userId) {
         return redisClient.openAndGet(ru -> ru.key("user_sso_key_" + userId).get());
