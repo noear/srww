@@ -1,6 +1,7 @@
 package apidemo2;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.noear.redisx.RedisClient;
 import org.noear.rock.solon.RockCodeI18nBundleFactory;
 import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Configuration;
@@ -20,6 +21,7 @@ import org.noear.weed.cache.LocalCache;
 import org.noear.weed.solon.plugin.CacheWrap;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * @author noear 2021/2/17 created
@@ -32,6 +34,11 @@ public class Config {
     @Bean(value = "water")
     public DataSource db1(@CloudConfig(name = "water",group = "water") HikariDataSource ds) {
         return ds;
+    }
+
+    @Bean
+    public RedisClient redisClient(@CloudConfig(name = "water_redis", group = "water") Properties pops){
+        return new RedisClient(pops, 11);
     }
 
     /**
