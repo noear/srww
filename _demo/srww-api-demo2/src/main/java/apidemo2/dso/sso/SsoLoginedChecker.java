@@ -11,6 +11,7 @@ import org.noear.srww.uapi.common.Attrs;
 
 /**
  * 单点登录检测器（增加登录注解检查器）
+ *
  * <code><pre>
  * //使用时用 @Logined 进行控制
  * @Controller
@@ -23,7 +24,7 @@ import org.noear.srww.uapi.common.Attrs;
  * }
  * </pre></code>
  *
- * @author noear 2021/9/5 created
+ * @author noear 2021/9/5 created //这个组件的作用是为 @Logined 提供检测支持；从而进一步实现 sso
  */
 @Component
 public class SsoLoginedChecker implements LoginedChecker {
