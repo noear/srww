@@ -68,16 +68,16 @@ public class Config {
     /**
      * 使用 Rock 语言包工厂（替换本地语言包）
      * */
-    @Bean
-    public I18nBundleFactory i18nBundleFactory(){
-        return new RockCodeI18nBundleFactory();
-    }
+//    @Bean
+//    public I18nBundleFactory i18nBundleFactory(){
+//        return new RockCodeI18nBundleFactory();
+//    }
 
     /**
      * 使用 Rock 应用工厂（提供ak/sk）
      * */
-    @Bean
-    public IAppFactory iAppFactory(){
-        return new RockAppFactoryImpl();
-    }
+//    @Bean
+//    public IAppFactory iAppFactory(){
+//        return new RockAppFactoryImpl();
+//    }
 }
