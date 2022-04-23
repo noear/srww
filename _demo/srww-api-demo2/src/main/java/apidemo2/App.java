@@ -9,6 +9,7 @@ import org.noear.solon.serialization.JsonRenderFactory;
 public class App {
     public static void main(String[] args) {
         Solon.start(App.class, args, app -> {
+            app.enableCaching(true);
             app.onEvent(JsonRenderFactory.class, f -> {
                 f.addConvertor(Long.class, v -> String.valueOf(v));
             });

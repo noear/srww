@@ -9,6 +9,7 @@ import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.core.handle.Context;
+import org.noear.solon.data.annotation.Cache;
 import org.noear.solon.validation.annotation.Logined;
 import org.noear.solon.validation.annotation.NotEmpty;
 
@@ -24,6 +25,7 @@ public class API_config_get extends ApiBase {
     @Inject
     ConfigService configService;
 
+    @Cache
     @NotEmpty("tag")
     @Mapping("config.get")
     public List<ConfigVo> exec(String tag, Context ctx) throws Throwable {

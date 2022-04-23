@@ -2,23 +2,15 @@ package apidemo2;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.noear.redisx.RedisClient;
-import org.noear.rock.solon.RockCodeI18nBundleFactory;
 import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Configuration;
 import org.noear.solon.cloud.CloudEventInterceptor;
 import org.noear.solon.cloud.CloudJobInterceptor;
 import org.noear.solon.cloud.annotation.CloudConfig;
-import org.noear.solon.cloud.impl.CloudI18nBundleFactory;
 import org.noear.solon.data.cache.CacheService;
 import org.noear.solon.data.cache.CacheServiceSupplier;
-import org.noear.solon.i18n.I18nBundleFactory;
 import org.noear.srww.base.interceptor.BaseEventInterceptor;
 import org.noear.srww.base.interceptor.BaseJobInterceptor;
-import org.noear.srww.uapi.app.IAppFactory;
-import org.noear.srww.uapi.app.impl.RockAppFactoryImpl;
-import org.noear.srww.uapi.app.impl.WaterAppFactoryImpl;
-import org.noear.weed.cache.LocalCache;
-import org.noear.weed.solon.plugin.CacheWrap;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -45,7 +37,7 @@ public class Config {
      * 配置缓存
      * */
     @Bean
-    public CacheService cache1(@CloudConfig(name = "cache1", group = "demo") CacheServiceSupplier supplier) {
+    public CacheService cache1(@CloudConfig(name = "water_cache", group = "water") CacheServiceSupplier supplier) {
         return supplier.get();
     }
 

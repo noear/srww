@@ -28,7 +28,7 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>rock.client-solon-plugin</artifactId>
+            <artifactId>rock-solon-plugin</artifactId>
         </dependency>
 
         <dependency>

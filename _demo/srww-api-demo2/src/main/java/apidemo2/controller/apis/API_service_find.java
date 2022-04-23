@@ -13,6 +13,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.annotation.Mapping;
+import org.noear.solon.data.annotation.Cache;
 import org.noear.solon.validation.annotation.NotEmpty;
 import org.noear.srww.uapi.UapiCodes;
 
@@ -31,6 +32,7 @@ public class API_service_find extends ApiBase {
     @Inject
     ConfigService configService;
 
+    @Cache
     @NotEmpty({"service"})
     @Mapping("service.find")
     public DiscoverVo exec(String service) throws Throwable {
