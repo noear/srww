@@ -3,7 +3,7 @@ package features;
 import io.jsonwebtoken.Claims;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
+import org.noear.solon.sessionstate.jwt.JwtUtils;
 import org.noear.solon.test.SolonJUnit4ClassRunner;
 import org.noear.solon.test.SolonTest;
 

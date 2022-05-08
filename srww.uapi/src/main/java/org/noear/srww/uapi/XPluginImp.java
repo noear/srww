@@ -1,10 +1,13 @@
 package org.noear.srww.uapi;
 
+import org.noear.rock.solon.RockCodeI18nBundleFactory;
+import org.noear.rock.solon.RockI18nBundleFactory;
 import org.noear.solon.cloud.impl.CloudI18nBundleFactory;
 import org.noear.solon.core.Aop;
 import org.noear.solon.core.event.BeanLoadEndEvent;
 import org.noear.solon.i18n.I18nBundleFactory;
 import org.noear.srww.uapi.app.IAppFactory;
+import org.noear.srww.uapi.app.impl.RockAppFactoryImpl;
 import org.noear.srww.uapi.app.impl.WaterAppFactoryImpl;
 import org.noear.srww.uapi.validation.ValidatorFailureHandlerSrwwImp;
 import org.noear.solon.SolonApp;
@@ -18,11 +21,11 @@ public class XPluginImp implements Plugin {
 
         app.onEvent(BeanLoadEndEvent.class, e -> {
             if (Aop.get(IAppFactory.class) == null) {
-                Aop.wrapAndPut(IAppFactory.class, new WaterAppFactoryImpl());
+                Aop.wrapAndPut(IAppFactory.class, new RockAppFactoryImpl());
             }
 
             if (Aop.get(I18nBundleFactory.class) == null) {
-                Aop.wrapAndPut(I18nBundleFactory.class, new CloudI18nBundleFactory());
+                Aop.wrapAndPut(I18nBundleFactory.class, new RockCodeI18nBundleFactory());
             }
         });
     }

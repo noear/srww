@@ -7,7 +7,7 @@ import okhttp3.Response;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.noear.snack.ONode;
-import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
+import org.noear.solon.sessionstate.jwt.JwtUtils;
 import org.noear.solon.test.HttpTestBase;
 import org.noear.solon.test.KvMap;
 import org.noear.solon.test.SolonJUnit4ClassRunner;

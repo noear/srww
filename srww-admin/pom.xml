@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.noear</groupId>
         <artifactId>srww-parent</artifactId>
-        <version>1.5.3</version>
+        <version>1.6.0</version>
         <relativePath>../srww-parent/pom.xml</relativePath>
     </parent>
     <artifactId>srww-admin</artifactId>
@@ -33,7 +33,7 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.extend.sessionstate.jwt</artifactId>
+            <artifactId>solon.sessionstate.jwt</artifactId>
         </dependency>
 
         <dependency>

@@ -6,7 +6,7 @@ import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
-import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
+import org.noear.solon.sessionstate.jwt.JwtUtils;
 import org.noear.solon.logging.utils.TagsMDC;
 import org.noear.srww.base.SrwwConfig;
 import org.noear.srww.uapi.Uapi;

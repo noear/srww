@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.noear</groupId>
         <artifactId>srww-parent</artifactId>
-        <version>1.5.3</version>
+        <version>1.6.0</version>
         <relativePath>../srww-parent/pom.xml</relativePath>
     </parent>
 
@@ -39,7 +39,7 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.extend.sessionstate.jwt</artifactId>
+            <artifactId>solon.sessionstate.jwt</artifactId>
         </dependency>
 
         <dependency>
@@ -55,7 +55,6 @@
         <dependency>
             <groupId>org.noear</groupId>
             <artifactId>rock-solon-plugin</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>

@@ -5,7 +5,7 @@ import io.jsonwebtoken.impl.DefaultClaims;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Response;
 import org.noear.snack.ONode;
-import org.noear.solon.extend.sessionstate.jwt.JwtUtils;
+import org.noear.solon.sessionstate.jwt.JwtUtils;
 import org.noear.solon.test.HttpTestBase;
 import org.noear.srww.uapi.common.Attrs;
 import org.noear.water.utils.EncryptUtils;
