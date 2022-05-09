@@ -31,4 +31,12 @@ public class Api_config extends ApiTestBaseOfApp{
         assert node.get("code").getInt() == 200;
         assert node.get("data").count() > 0;
     }
+
+    @Test
+    public void config2_get() throws Exception {
+        ONode node = call("config/config.get", new KvMap().set("tag", "demo"));
+
+        assert node.get("code").getInt() == 200;
+        assert node.get("data").count() > 0;
+    }
 }

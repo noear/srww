@@ -44,7 +44,7 @@ public class EndHandler implements Handler {
             Action action = ctx.action();
 
             if (action != null) {
-                path = action.name();
+                path = action.fullName();
             }
 
             if (path == null) {
