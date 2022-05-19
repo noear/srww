@@ -7,6 +7,7 @@ import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.cloud.CloudClient;
+import org.noear.solon.core.AopContext;
 import org.noear.solon.core.Plugin;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.validation.ValidatorManager;
@@ -34,7 +35,7 @@ public class XPluginImp implements Plugin {
     boolean isErrorLogEnable;
 
     @Override
-    public void start(SolonApp app) {
+    public void start(AopContext context) {
         ValidatorManager.setNoRepeatSubmitChecker(new NoRepeatSubmitCheckerNew());
         ValidatorManager.setWhitelistChecker(new WhitelistCheckerNew());
 
@@ -51,7 +52,7 @@ public class XPluginImp implements Plugin {
 
         initWeed();
 
-        app.filter(Integer.MIN_VALUE, (ctx, chain) -> {
+        Solon.global().filter(Integer.MIN_VALUE, (ctx, chain) -> {
             try {
                 chain.doFilter(ctx);
             } finally {
