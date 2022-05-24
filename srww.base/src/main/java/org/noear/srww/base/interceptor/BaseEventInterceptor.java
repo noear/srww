@@ -37,16 +37,16 @@ public class BaseEventInterceptor implements CloudEventInterceptor {
             timespan = timecount.stop().milliseconds();
 
             if (succeeded) {
-                log.info("Event execution succeeded @{}ms", timespan);
+                log.info("Event execution succeeded @{}ms: {}", timespan, event.content());
                 return true;
             } else {
-                log.warn("Event execution failed @{}ms", timespan);
+                log.warn("Event execution failed @{}ms: {}", timespan, event.content());
                 return false;
             }
         } catch (Throwable e) {
             timespan = timecount.stop().milliseconds();
 
-            log.error("Event execution error @{}ms: {}", timespan, e);
+            log.error("Event execution error @{}ms: {}\r\n{}", timespan, event.content(), e);
             throw e;
         } finally {
             if (timespan > 0) {
