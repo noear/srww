@@ -5,6 +5,7 @@ import org.noear.snack.ONode;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
+import org.noear.solon.core.util.PathUtil;
 import org.noear.srww.uapi.UapiCodes;
 import org.noear.srww.uapi.UapiGateway;
 import org.noear.srww.uapi.encoder.Base64Encoder;
@@ -39,7 +40,7 @@ public class ApiGateway2x extends UapiGateway {
             ONode node = ONode.loadStr(json);
 
             //1.设定新路径（网关，将使用新路径做路由）
-            c.pathNew(node.get("method").getString());
+            c.pathNew(PathUtil.mergePath("/", node.get("method").getString()));
 
             //2.转换参数
             node.get("data").forEach((k, v) -> {
