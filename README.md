@@ -18,7 +18,6 @@
 * 采用 solon cloud 框架
 * 采用 water 技术中台
 * 采用 weed orm 框架
-* 采用 luna 结构组织模型
 * 采用集成式网关
 * 集成大量常用网关拦截器
 * 集成 jwt token
@@ -45,7 +44,7 @@
     <parent>
         <groupId>org.noear</groupId>
         <artifactId>srww-parent</artifactId>
-        <version>1.7.3</version>
+        <version>1.7.4</version>
     </parent>
     
     <dependencies>
@@ -69,7 +68,6 @@
 * 采用 solon cloud 框架
 * 采用 water 技术中台
 * 采用 weed orm 框架
-* 采用 luna 结构组织模型
 * 采用前后不分离模式，避免前后扯皮
 * 集成慢SQL自动记录
 * 集成登录用户的行为自动记录
@@ -97,7 +95,7 @@
     <parent>
         <groupId>org.noear</groupId>
         <artifactId>srww-parent</artifactId>
-        <version>1.7.3</version>
+        <version>1.7.4</version>
     </parent>
     
     <dependencies>
