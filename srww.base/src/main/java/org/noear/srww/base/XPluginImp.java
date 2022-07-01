@@ -4,7 +4,6 @@ package org.noear.srww.base;
 import org.noear.nami.NamiAttachment;
 import org.noear.snack.ONode;
 import org.noear.solon.Solon;
-import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.cloud.CloudClient;
 import org.noear.solon.core.AopContext;
@@ -14,7 +13,7 @@ import org.noear.solon.validation.ValidatorManager;
 import org.noear.solon.logging.utils.TagsMDC;
 import org.noear.srww.base.validation.NoRepeatSubmitCheckerNew;
 import org.noear.srww.base.validation.WhitelistCheckerNew;
-import org.noear.water.WaterClient;
+import org.noear.water.utils.BehaviorUtils;
 import org.noear.water.utils.TextUtils;
 import org.noear.weed.WeedConfig;
 import org.slf4j.Logger;
@@ -106,7 +105,7 @@ public class XPluginImp implements Plugin {
                 }
             }
 
-            WaterClient.Track.trackOfPerformance(Solon.cfg().appName() , cmd, 1000);
+            BehaviorUtils.trackOfPerformance(Solon.cfg().appName() , cmd, 1000);
 
             if (isTrackEnable) {
                 String tag = cmd.context.schema();
@@ -147,7 +146,7 @@ public class XPluginImp implements Plugin {
                 String userDisplayName = getUserDisplayName(ctx);
                 String userId = getUserId(ctx);
 
-                WaterClient.Track.trackOfBehavior(Solon.cfg().appName(), cmd, ctx.userAgent(), ctx.pathNew(), userId + "." + userDisplayName, ctx.realIp());
+                BehaviorUtils.trackOfBehavior(Solon.cfg().appName(), cmd, ctx.userAgent(), ctx.pathNew(), userId + "." + userDisplayName, ctx.realIp());
             }
 
             if (isTrackEnable) {
