@@ -1,3 +1,9 @@
+#### 1.8.1
+* 升级 solon 为 1.10.0
+* 升级 water 为 2.8.2（需要 water server 2.8.0 支持）
+* 升级 snack 为 3.2.31
+* 升级 weed3 为 3.4.27
+
 #### 1.8.0
 * 升级 solon 为 1.9.1
 * 升级 water 为 2.8.0（需要 water server 2.8.0 支持）
